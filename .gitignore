@@ -1,0 +1,33 @@
+# Data (xBD is huge — never commit)
+data/raw/
+data/processed/
+data/tiles/
+data/buildings/
+*.tif
+*.tiff
+*.npz
+*.npy
+
+# Model weights & artifacts
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+outputs/
+runs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
