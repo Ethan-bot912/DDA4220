@@ -86,18 +86,6 @@ The team's immediate next steps are:
 3. Fix the preprocessing and evaluation protocol, then implement B2 and B3.
 4. Complete the controlled comparison and error analysis before deciding whether to add the optional localization stage.
 
-## 6. Team organization
-
-**Table 3. Initial responsibility split for the four-member team.**
-
-| Team member | Primary responsibility |
-|---|---|
-| Member A | Data access and audit, event-aware splits, and optional localization. |
-| Member B | Building-crop pipeline, B1 baseline, and class-imbalance handling. |
-| Member C | B2 and B3 models, fusion comparison, and efficiency measurements. |
-| Member D | Evaluation scripts, visualizations, error analysis, and integration. |
-
-All four members will participate in scope decisions, experiment review, interpretation, and report writing. The final report will state each member's actual contribution and identify any reused data, code, or pretrained models.
 
 ## References
 
