@@ -2,7 +2,7 @@
 
 本项目拟使用 xBD / xView2 数据集，构建一个从灾前、灾后卫星影像到建筑物损毁等级的深度学习系统。当前项目定位为 **Application + Empirical Study**：重点不是提出全新的网络结构，而是把已有方法适配到一个有实际意义的问题上，建立可信 baseline，进行控制变量比较，并分析模型为什么有效或失败。
 
-英文 proposal 详见 [reports/proposal_draft.md](reports/proposal_draft.md)。本文档是对应的中文项目方案、执行顺序和协作说明。
+正式英文 proposal 详见 [reports/proposal.md](reports/proposal.md)。本文档保留对应的中文项目方案、执行顺序和协作说明。
 
 ## 1. 项目要解决的问题
 
@@ -26,19 +26,16 @@
 项目分为两个阶段，但为了保证研究问题可解释，先做分类控制实验，再扩展到完整端到端流程。
 
 ```text
-灾前图像 I_pre  ------------------------------┐
-                                              │
-灾后图像 I_post --> Stage A 建筑定位 ----------┤
-                                              v
-                         成对建筑裁剪 --> Stage B 损毁分类
-                                                   |
-                                                   v
-                                  损毁地图 + 各类别数量/面积统计
+灾前图像 I_pre --> Stage A 建筑轮廓 -----------┐
+                                              ├--> 成对建筑裁剪 --> Stage B 损毁分类
+灾后图像 I_post ------------------------------┘                         |
+                                                                         v
+                                                        损毁地图 + 各类别数量/面积统计
 ```
 
 ### Stage A：建筑物定位
 
-输入灾后图像，输出建筑物二值 mask。
+输入灾前图像，输出建筑物二值 mask。优先使用灾前影像是为了在建筑物尚未受损时获得更完整的 footprint。
 
 - 起始模型：U-Net 风格的二值分割网络。
 - 可选扩展：如果数据和算力允许，再比较 DeepLabV3+ 风格模型。
@@ -211,7 +208,7 @@ DDA4220-main/
 ├── stage_b_damage/           # Stage B：四级损毁分类
 ├── evaluation/               # 指标、可视化、端到端集成
 ├── reports/
-│   └── proposal_draft.md      # 英文 proposal 草稿
+│   └── proposal.md            # 正式英文 proposal
 ├── README.md                 # 中文项目方案与协作说明
 ├── requirements.txt
 └── SETUP.md

@@ -3,7 +3,7 @@
 从卫星图像中分割建筑物轮廓。
 
 - 模型候选：U-Net / DeepLabV3+ / Mask R-CNN
-- 输入：灾后影像 `I_post`
+- 输入：灾前影像 `I_pre`
 - 输出：建筑掩码 `M_building`
 - 指标：IoU、Dice / F1
 - 负责人：Member A
