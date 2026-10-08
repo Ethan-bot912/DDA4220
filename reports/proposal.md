@@ -4,9 +4,9 @@
 
 **Project type:** Application-oriented project with a controlled empirical study
 
-**Team member:** BIAN Yining 124090006
-                 LIU Zhaocheng 124090403
-                 WANG Kexin 124090614
+**Team member:** BIAN Yining 124090006<br>
+                 LIU Zhaocheng 124090403<br>
+                 WANG Kexin 124090614<br>
                  WANG Mian 124090618
 
 **Repository:** [DDA4220](https://github.com/Ethan-bot912/DDA4220)
