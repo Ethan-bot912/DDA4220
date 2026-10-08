@@ -19,7 +19,7 @@ The central research question is:
 
 > Does pre-disaster context improve building-level damage classification over a credible post-disaster-only baseline, and is any improvement worth the additional computational cost?
 
-We will use the four xBD damage categories: `no damage`, `minor damage`, `major damage`, and `destroyed` [1]. The core project will compare classifiers on identical building crops derived from ground-truth polygons. This isolates the value of temporal information from errors in building localization. If time and computing resources permit, we will add a localization stage and measure how predicted building footprints affect the complete pipeline.
+We will use the four xBD damage categories: `no damage`, `minor damage`, `major damage`, and `destroyed` [1]. The core project will compare two Stage B settings on identical building crops derived from ground-truth polygons: a post-disaster-only baseline and a paired pre- and post-disaster classifier. This isolates the practical value of adding pre-disaster context to the damage classifier from errors in building localization. If time and computing resources permit, we will add a localization stage and measure how predicted building footprints affect the complete pipeline.
 
 The project is an application and empirical study, not a claim of a new architecture. Its value will come from a controlled comparison, a reproducible data protocol, and an analysis of when paired imagery helps or fails.
 
@@ -32,12 +32,12 @@ We will examine the following resources before fixing the final experimental des
 | Reading or resource | Why it is relevant |
 |---|---|
 | Gupta et al., *xBD: A Dataset for Assessing Building Damage from Satellite Imagery* [1] | To understand the paired-image structure, polygon and damage labels, disaster metadata, evaluation setting, and known dataset limitations. |
-| Weber and Kané, *Building Disaster Damage Assessment in Satellite Imagery with Multi-Temporal Fusion* [2] | To examine the closest prior work on mono-temporal versus multi-temporal xBD models, data processing, and feature fusion. |
+| Weber and Kané, *Building Disaster Damage Assessment in Satellite Imagery with Multi-Temporal Fusion* [2] | To examine the closest prior work on mono-temporal versus multi-temporal xBD models, data processing, and practical ways to incorporate pre-disaster context. |
 | Ronneberger et al., *U-Net: Convolutional Networks for Biomedical Image Segmentation* [3] | To provide a practical starting method for the optional building-localization stage. |
-| He et al., *Deep Residual Learning for Image Recognition* [4] | To motivate a standard CNN encoder for the damage classifiers and a comparable backbone across model variants. |
+| He et al., *Deep Residual Learning for Image Recognition* [4] | To motivate a standard CNN encoder for the damage classifiers and a comparable backbone across the two input settings. |
 | Official xView2 data and baseline resources [5, 6] | To verify data access, file formats, preprocessing conventions, and the reference localization-classification pipeline. |
 
-Our first implementation will be a small, complete post-disaster-only classifier using ground-truth building crops and a ResNet-18 encoder. This is both a credible baseline and a feasibility check: it will expose data-loading problems and provide initial measurements of training time and memory before we implement the paired-image models.
+Our first implementation will be a small, complete post-disaster-only classifier using ground-truth building crops and a ResNet-18 encoder. This is both a credible baseline and a feasibility check: it will expose data-loading problems and provide initial measurements of training time and memory before we implement the paired-image classifier.
 
 ## 3. Planned data and implementation
 
@@ -49,25 +49,24 @@ Before training, we will verify access to the images, labels, and relevant basel
 
 Ground-truth polygons will define building crops with a fixed context margin. Every classifier will use the same crop coordinates, resolution, split, label mapping, and paired spatial augmentations. Class weights will be computed from the training partition to address damage-class imbalance.
 
-### 3.2 Model comparison
+### 3.2 Controlled Stage B comparison
 
-The controlled classification study will include three models:
+The controlled classification study will include two primary settings:
 
 - **B1 - post-only baseline:** a CNN predicts damage from the post-disaster crop.
-- **B2 - early fusion:** pre- and post-disaster RGB crops are concatenated at the input and processed by one CNN.
-- **B3 - two-stream fusion:** shared-weight CNN branches encode the two dates before their features are fused for four-class prediction.
+- **B2 - paired pre/post classifier:** a CNN predicts damage using the aligned pre- and post-disaster crops of the same building.
 
-B1 is the main credible baseline. B2 tests whether simply providing both dates is sufficient, while B3 tests whether explicit feature-level comparison is more effective. The variants will use the same backbone family and the same training and checkpoint-selection protocol. B3 will share encoder weights; any remaining differences in parameter count or computation will be measured and considered when interpreting the fusion comparison.
+B1 is the main credible baseline, while B2 tests whether adding pre-disaster context improves damage classification. The two settings will use the same data split, building crops, preprocessing, backbone family, training budget, and checkpoint-selection protocol. Their primary intended difference is whether Stage B receives the pre-disaster building crop. B2 will use a straightforward paired-input fusion method that is fixed before final test evaluation. Comparing multiple input-level, feature-level, or Siamese fusion architectures is outside the primary scope of this application-oriented project; if time and computing resources permit, alternative fusion methods may be studied only as supplementary ablations using the training and validation data.
 
-As a stretch objective, a U-Net-style model will segment building footprints from pre-disaster imagery [3]. The best damage classifier will then be evaluated using crops derived from predicted footprints. Results from ground-truth and predicted footprints will be reported separately so that localization error is not confused with classification error.
+As a stretch objective, a U-Net-style model will segment building footprints from pre-disaster imagery [3]. The selected damage classifier will then be evaluated using crops derived from predicted footprints. Results from ground-truth and predicted footprints will be reported separately so that localization error is not confused with classification error.
 
 ## 4. Evaluation and expected contribution
 
-The primary classification metric will be **Macro F1**, because overall accuracy can hide poor performance on less frequent severe-damage classes. We will also report balanced accuracy, per-class precision, recall and F1, and a confusion matrix. The primary experiment will compare B3 with B1 on the same held-out buildings; B2 will help determine whether any gain comes from temporal information alone or from the fusion design. If the optional localization stage is completed, it will be evaluated with intersection over union and Dice/F1.
+The primary classification metric will be **Macro F1**, because overall accuracy can hide poor performance on less frequent severe-damage classes. We will also report balanced accuracy, per-class precision, recall and F1, and a confusion matrix. The primary experiment will compare B2 with B1 on the same held-out buildings, directly testing whether adding the pre-disaster crop to Stage B improves damage classification. If the optional localization stage is completed, it will be evaluated with intersection over union and Dice/F1.
 
-All main models will share the same data split, preprocessing, training budget, and validation-based checkpoint rule. Where resources allow, the main comparison will use at least three fixed random seeds and report mean and standard deviation; otherwise, the single-seed limitation will be stated. We will record parameter count, peak memory, and inference latency on the same hardware, alongside prediction quality. Error analysis will examine damage class, disaster event, image alignment, shadows, small buildings, and ambiguous labels.
+Both primary settings will share the same data split, preprocessing, training budget, and validation-based checkpoint rule. Where resources allow, the main comparison will use at least three fixed random seeds and report mean and standard deviation; otherwise, the single-seed limitation will be stated. We will record parameter count, peak memory, and inference latency on the same hardware, alongside prediction quality, so that any benefit from pre-disaster context can be weighed against its additional computational cost. Error analysis will examine damage class, disaster event, image alignment, shadows, small buildings, and ambiguous labels.
 
-The expected core contribution is a reproducible comparison of post-only, early-fusion, and two-stream damage classifiers on an event-aware xBD subset. The study will show whether paired imagery improves prediction, under which conditions it helps, and its computational overhead. If the optional localization stage is completed, we will also estimate the performance loss caused by predicted rather than ground-truth building footprints.
+The expected core contribution is a reproducible satellite-image application for building-level damage classification, supported by a controlled comparison of post-disaster-only and paired pre/post settings on an event-aware xBD subset. The study will show whether adding the pre-disaster crop improves prediction, under which conditions it helps, and whether the gain justifies its computational overhead, rather than claiming a new fusion architecture. If the optional localization stage is completed, we will also estimate the performance loss caused by predicted rather than ground-truth building footprints.
 
 ## 5. Feasibility, risks, and next steps
 
@@ -80,14 +79,14 @@ The core scope is intentionally limited to the controlled building-crop comparis
 | Data access or scale prevents a full experiment | Verify access first, inspect actual examples, begin with three to five events, and preserve a reproducible manifest. If full access fails, use a verified official subset or a documented reduced experiment rather than silently substituting another dataset. |
 | Pre/post misalignment weakens the temporal comparison | Inspect overlays, apply spatial transforms jointly, record invalid pairs, and include alignment-related error analysis. |
 | Class imbalance hides failure on severe damage | Use training-only class weights and report Macro F1 and per-class results rather than accuracy alone. |
-| The paired models exceed available GPU time, memory, or queue capacity | Estimate cost with a small complete run, use compact backbones, reserve scheduling buffer, and prioritize B1-versus-B3 analysis over the stretch pipeline. |
+| The paired classifier exceeds available GPU time, memory, or queue capacity | Estimate cost with a small complete run, use a compact backbone, reserve scheduling buffer, and prioritize the post-only versus paired comparison over optional fusion ablations and the stretch pipeline. |
 
 The team's immediate next steps are:
 
 1. Read the selected papers and verify xBD data and baseline-code access.
 2. Inspect paired samples, create the event-aware split, and run one complete B1 pilot.
-3. Fix the preprocessing and evaluation protocol, then implement B2 and B3.
-4. Complete the controlled comparison and error analysis before deciding whether to add the optional localization stage.
+3. Fix the preprocessing and evaluation protocol, then implement the paired pre/post classifier with a straightforward fusion method.
+4. Complete the primary post-only versus paired comparison and error analysis; consider fusion ablations only if resources remain, before deciding whether to add the optional localization stage.
 
 
 ## References
