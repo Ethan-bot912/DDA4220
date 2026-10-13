@@ -1,0 +1,13 @@
+# Complete GPU core profile for Stage B / xBD GeoTIFF training on Windows.
+# Verified locally with Python 3.9.23, NVIDIA GeForce RTX 5070 Laptop GPU
+# (8 GB VRAM), NVIDIA driver 595.71, and torch.cuda.is_available() == True.
+#
+# This is an alternative to requirements.txt, not an add-on: do not install
+# both files into the same environment. A separate CUDA Toolkit is not needed.
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.7.1+cu128
+torchvision==0.22.1+cu128
+numpy==2.0.2
+rasterio==1.4.3
+matplotlib==3.9.2

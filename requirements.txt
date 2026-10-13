@@ -1,5 +1,5 @@
-# Verified core environment for the xBD GeoTIFF pilot (Python 3.12 on Windows).
-# Install the matching CPU or CUDA PyTorch build first, as described in SETUP.md.
+# CPU core profile verified for the xBD GeoTIFF pilot (Python 3.12 on Windows).
+# NVIDIA GPU users must install requirements-gpu.txt instead; do not mix profiles.
 torch==2.11.0
 torchvision==0.26.0
 numpy==1.26.4

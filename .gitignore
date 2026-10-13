@@ -30,6 +30,8 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+# Local Conda environment used for GPU training.
+4220project/
 *.egg-info/
 
 # Jupyter

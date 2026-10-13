@@ -212,11 +212,13 @@ DDA4220-main/
 ├── tools/                     # 数据提取、manifest 和审计脚本
 ├── DATASET.md                 # 本地数据获取与可复现实验步骤
 ├── README.md                 # 中文项目方案与协作说明
-├── requirements.txt
+├── requirements.txt           # CPU 核心 profile
+├── requirements-gpu.txt       # 经验证的 NVIDIA CUDA 训练 profile
 └── SETUP.md
 ```
 
 数据原文件、提取影像、manifest、审计结果和模型输出均不提交到仓库；只提交下载/解析说明、配置、脚本和必要的小型示例。具体规则见 [DATASET.md](DATASET.md)。
+CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.md](SETUP.md)。
 
 ## 8. 分工
 
