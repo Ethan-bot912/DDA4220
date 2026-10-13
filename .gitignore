@@ -3,10 +3,19 @@ data/raw/
 data/processed/
 data/tiles/
 data/buildings/
+/dataset/
+/output/
+/tmp/
 *.tif
 *.tiff
 *.npz
 *.npy
+*.tgz
+*.tar
+*.tar.gz
+*.part-*
+*.partial
+*.log
 
 # Model weights & artifacts
 *.pt

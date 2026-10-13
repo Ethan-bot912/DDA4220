@@ -2,7 +2,7 @@
 
 > 目标：30 分钟内配好本项目运行环境，能跑通 GPU 或 CPU 训练。
 > 本文按"零基础也能照抄"的标准写，也适合直接丢给 AI 助手照着执行。
-> **遇到报错先看文末 [常见问题速查](#七常见问题速查)，90% 的坑都在那里。**
+> **遇到报错先看文末 [常见问题速查](#八常见问题速查)，90% 的坑都在那里。**
 
 ---
 
@@ -83,17 +83,25 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 ```
 
-内容包含：numpy、matplotlib、opencv、albumentations、scikit-learn、segmentation-models-pytorch、shapely、rasterio（处理 xBD 的 GeoTIFF 用）、tqdm、jupyterlab。
+该文件固定了已验证的 Stage B / GeoTIFF 核心环境：PyTorch、Torchvision、NumPy、Rasterio 和 Matplotlib。尤其固定 NumPy 1.26.4，以避免未受测试的 NumPy 2.x 与 GeoTIFF 二进制依赖发生兼容性问题。
+
+如果需要 Jupyter、Stage A 或额外分析工具，再安装可选依赖：
+
+```bash
+pip install -r requirements-optional.txt
+```
 
 ## 5. 验证安装
 
 ```bash
-python -c "import torch, torchvision, cv2, numpy; print('OK, torch', torch.__version__)"
+python -c "import torch, torchvision, rasterio, numpy, matplotlib; print('OK, torch', torch.__version__)"
 ```
 
 打印 `OK, torch 2.x.x` 即配置完成。
 
 ## 6. 注册 Jupyter 内核（可选，用 notebook 时）
+
+先完成上一步的可选依赖安装，然后执行：
 
 ```bash
 python -m ipykernel install --user --name dda4220 --display-name "DDA4220 Project"
@@ -103,7 +111,13 @@ python -m ipykernel install --user --name dda4220 --display-name "DDA4220 Projec
 
 ---
 
-## 七、常见问题速查
+## 7. 获取 xBD / xView2 数据
+
+环境配置完成后，按 [DATASET.md](DATASET.md) 下载、合并、校验、提取并审计本地数据。原始影像、标签、manifest 和训练输出均不会上传到 GitHub。
+
+---
+
+## 八、常见问题速查
 
 | 报错/现象 | 原因 | 解决 |
 |-----------|------|------|
@@ -115,7 +129,7 @@ python -m ipykernel install --user --name dda4220 --display-name "DDA4220 Projec
 | GPU 显存不足 (CUDA out of memory) | batch 太大 | 调小 batch_size 或减小裁剪图尺寸 |
 | OneDrive 同步导致 .venv 报错 | 虚拟环境被云盘同步破坏 | **仓库不要放在 OneDrive 文件夹里**，放到如 `D:\code\` 的本地目录 |
 
-## 八、给 AI 助手的执行提示
+## 九、给 AI 助手的执行提示
 
 如果让 AI 帮你配环境，把下面这段直接发给它：
 
@@ -123,4 +137,4 @@ python -m ipykernel install --user --name dda4220 --display-name "DDA4220 Projec
 
 ---
 
-*配置完成后看 [README.md](README.md) 了解项目结构和分工。*
+*配置完成后看 [README.md](README.md) 了解项目结构和分工；准备数据时看 [DATASET.md](DATASET.md)。*
