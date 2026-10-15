@@ -1,0 +1,4 @@
+metric,B1,B2,B2_minus_B1,scope
+accuracy,0.889549436795995,0.872385124262471,-0.017164312533524018,frozen checkpoint val evaluation; seed=42
+macro_f1,0.601235705274549,0.6022778097528944,0.001042104478345407,frozen checkpoint val evaluation; seed=42
+balanced_accuracy,0.6682441600825038,0.7131692575178775,0.04492509743537376,frozen checkpoint val evaluation; seed=42

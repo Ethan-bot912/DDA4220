@@ -1,6 +1,6 @@
 # xBD / xView2 数据获取与本地准备
 
-本仓库只保存代码、文档和可复现的数据处理步骤；**不上传**原始下载分卷、完整压缩包、GeoTIFF 影像、JSON 标签、manifest、审计结果、模型权重或运行输出。这些文件体积很大，均应留在每位成员本地的 `dataset/` 和 `output/` 目录中。
+本仓库Git历史保存代码、文档、精选指标和精确验证影像清单；原始分卷、GeoTIFF影像与JSON标签留在本地。两份正式最佳权重、原始manifest、训练记录与逐建筑预测通过独立Release复现包提供，不写入Git历史。具体下载、选图规则和免重训复核见[复核入口](REPRODUCE_AND_DIAGNOSE.md)。
 
 ## 1. 下载官方分卷
 
@@ -18,6 +18,16 @@ xview2_geotiff.tgz.part-af
 将它们放在项目根目录下的 `dataset/`。完整归档约为 51 GiB（压缩后）；提取 pilot 前请预留足够磁盘空间。
 
 ## 2. 合并并验证完整归档（Windows PowerShell）
+
+也可直接使用六个分卷，校验后流式提取同一四事件子集，不额外创建约 51 GiB 的合并归档：
+
+```powershell
+.venv\Scripts\python.exe tools\prepare_pilot.py --parts-dir "D:\DDA4220 Dataset" --check-only
+# 下载齐全后，去掉 --check-only：
+.venv\Scripts\python.exe tools\prepare_pilot.py --parts-dir "D:\DDA4220 Dataset"
+```
+
+该入口固定使用下文的事件划分，先验证所有分卷按顺序拼接后的官方 SHA1，再提取、生成 manifest 并审计影像。已有非空输出目录会停止，便于检查中断状态；不会自动覆盖或删除已有数据。
 
 ```powershell
 cmd /c copy /b "dataset\xview2_geotiff.tgz.part-aa"+"dataset\xview2_geotiff.tgz.part-ab"+"dataset\xview2_geotiff.tgz.part-ac"+"dataset\xview2_geotiff.tgz.part-ad"+"dataset\xview2_geotiff.tgz.part-ae"+"dataset\xview2_geotiff.tgz.part-af" "dataset\xview2_geotiff_complete.tgz"
@@ -85,7 +95,7 @@ python -m stage_b_damage.train_baseline `
   --manifest dataset\pilot_tier3_4events\manifest_classification.csv `
   --project-root . `
   --output output\b1_smoke.json `
-  --mode post --epochs 1 --batch-size 8 --lr 0.001 `
+  --backbone smallcnn --mode post --epochs 1 --batch-size 8 --lr 0.001 `
   --crop-size 64 --context 8 --workers 0 --seed 42 `
   --max-train 128 --max-val 64 --device cpu
 ```
@@ -94,4 +104,4 @@ python -m stage_b_damage.train_baseline `
 
 ## 6. 本地文件策略
 
-`.gitignore` 已排除 `/dataset/`、`/output/`、归档、影像、模型权重和日志。提交到 GitHub 时只提交处理脚本、文档、配置和必要的小型代码；不要用 `git add -f` 绕过这些规则。
+`.gitignore` 已排除 `/dataset/`、`/output/`、归档、影像、模型权重和日志。提交Git时只收录处理脚本、文档、配置和精选小型结果；不要用 `git add -f` 绕过这些规则。经整理的最佳权重、原始manifest与预测结果放独立Release附件，校验值随包提供；原始影像不上传。

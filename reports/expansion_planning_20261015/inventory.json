@@ -1,0 +1,666 @@
+{
+  "status": "complete",
+  "official_sha1": "6eae3baddf86796c15638682a6432e3e6223cb39",
+  "compressed_bytes": 54940044445,
+  "uncompressed_regular_bytes": 139913221990,
+  "members_seen": 44149,
+  "elapsed_seconds": 794.7385592,
+  "sample_bytes": 484729270,
+  "by_event": {
+    "guatemala-volcano": {
+      "tiles": 28,
+      "complete_pairs": 28,
+      "valid_buildings": 813,
+      "unknown": 178,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "major": 23,
+        "destroyed": 33,
+        "minor": 26,
+        "no_damage": 731
+      },
+      "bytes": 354752542,
+      "metadata_types": {
+        "volcano": 28
+      },
+      "partitions": {
+        "hold": 20,
+        "test": 20,
+        "tier1": 72
+      }
+    },
+    "hurricane-florence": {
+      "tiles": 546,
+      "complete_pairs": 546,
+      "valid_buildings": 10728,
+      "unknown": 820,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 8466,
+        "major": 1949,
+        "minor": 232,
+        "destroyed": 81
+      },
+      "bytes": 6905760303,
+      "metadata_types": {
+        "flooding": 546
+      },
+      "partitions": {
+        "hold": 476,
+        "test": 432,
+        "tier1": 1276
+      }
+    },
+    "hurricane-harvey": {
+      "tiles": 522,
+      "complete_pairs": 522,
+      "valid_buildings": 37374,
+      "unknown": 581,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 18638,
+        "minor": 4510,
+        "major": 13378,
+        "destroyed": 848
+      },
+      "bytes": 6666823937,
+      "metadata_types": {
+        "flooding": 522
+      },
+      "partitions": {
+        "hold": 380,
+        "test": 432,
+        "tier1": 1276
+      }
+    },
+    "hurricane-matthew": {
+      "tiles": 405,
+      "complete_pairs": 405,
+      "valid_buildings": 22630,
+      "unknown": 1334,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "minor": 12331,
+        "no_damage": 4058,
+        "major": 2717,
+        "destroyed": 3524
+      },
+      "bytes": 5141537928,
+      "metadata_types": {
+        "wind": 405
+      },
+      "partitions": {
+        "hold": 376,
+        "test": 292,
+        "tier1": 952
+      }
+    },
+    "hurricane-michael": {
+      "tiles": 550,
+      "complete_pairs": 550,
+      "valid_buildings": 35128,
+      "unknown": 373,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 22692,
+        "major": 2919,
+        "destroyed": 1225,
+        "minor": 8292
+      },
+      "bytes": 7001345248,
+      "metadata_types": {
+        "wind": 550
+      },
+      "partitions": {
+        "hold": 436,
+        "test": 392,
+        "tier1": 1372
+      }
+    },
+    "mexico-earthquake": {
+      "tiles": 193,
+      "complete_pairs": 193,
+      "valid_buildings": 51362,
+      "unknown": 111,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 51084,
+        "minor": 221,
+        "major": 54,
+        "destroyed": 3
+      },
+      "bytes": 2542448548,
+      "metadata_types": {
+        "earthquake": 193
+      },
+      "partitions": {
+        "hold": 136,
+        "test": 152,
+        "tier1": 484
+      }
+    },
+    "midwest-flooding": {
+      "tiles": 445,
+      "complete_pairs": 445,
+      "valid_buildings": 13423,
+      "unknown": 473,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 12819,
+        "destroyed": 165,
+        "major": 193,
+        "minor": 246
+      },
+      "bytes": 5634894896,
+      "metadata_types": {
+        "flooding": 445
+      },
+      "partitions": {
+        "hold": 344,
+        "test": 320,
+        "tier1": 1116
+      }
+    },
+    "palu-tsunami": {
+      "tiles": 196,
+      "complete_pairs": 196,
+      "valid_buildings": 55178,
+      "unknown": 611,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 46796,
+        "major": 1178,
+        "destroyed": 7203,
+        "minor": 1
+      },
+      "bytes": 2577657432,
+      "metadata_types": {
+        "tsunami": 196
+      },
+      "partitions": {
+        "hold": 164,
+        "test": 168,
+        "tier1": 452
+      }
+    },
+    "santa-rosa-wildfire": {
+      "tiles": 377,
+      "complete_pairs": 377,
+      "valid_buildings": 21869,
+      "unknown": 86,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 15843,
+        "destroyed": 5810,
+        "minor": 121,
+        "major": 95
+      },
+      "bytes": 4796710288,
+      "metadata_types": {
+        "fire": 377
+      },
+      "partitions": {
+        "hold": 308,
+        "test": 296,
+        "tier1": 904
+      }
+    },
+    "socal-fire": {
+      "tiles": 1403,
+      "complete_pairs": 1403,
+      "valid_buildings": 18276,
+      "unknown": 693,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 15697,
+        "destroyed": 2333,
+        "minor": 136,
+        "major": 110
+      },
+      "bytes": 17727567817,
+      "metadata_types": {
+        "fire": 1403
+      },
+      "partitions": {
+        "hold": 1092,
+        "test": 1228,
+        "tier1": 3292
+      }
+    },
+    "joplin-tornado": {
+      "tiles": 149,
+      "complete_pairs": 149,
+      "valid_buildings": 14696,
+      "unknown": 656,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "destroyed": 3274,
+        "minor": 2192,
+        "major": 1005,
+        "no_damage": 8225
+      },
+      "bytes": 1906614401,
+      "metadata_types": {
+        "wind": 149
+      },
+      "partitions": {
+        "tier3": 596
+      }
+    },
+    "lower-puna-volcano": {
+      "tiles": 291,
+      "complete_pairs": 291,
+      "valid_buildings": 2856,
+      "unknown": 554,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 2277,
+        "minor": 49,
+        "destroyed": 504,
+        "major": 26
+      },
+      "bytes": 3675105778,
+      "metadata_types": {
+        "volcano": 291
+      },
+      "partitions": {
+        "tier3": 1164
+      }
+    },
+    "moore-tornado": {
+      "tiles": 227,
+      "complete_pairs": 227,
+      "valid_buildings": 22372,
+      "unknown": 586,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 19453,
+        "destroyed": 1584,
+        "minor": 886,
+        "major": 449
+      },
+      "bytes": 2903297949,
+      "metadata_types": {
+        "wind": 227
+      },
+      "partitions": {
+        "tier3": 908
+      }
+    },
+    "nepal-flooding": {
+      "tiles": 619,
+      "complete_pairs": 619,
+      "valid_buildings": 41582,
+      "unknown": 1683,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 31225,
+        "minor": 5134,
+        "major": 4721,
+        "destroyed": 502
+      },
+      "bytes": 7874325759,
+      "metadata_types": {
+        "flooding": 619
+      },
+      "partitions": {
+        "tier3": 2476
+      }
+    },
+    "pinery-bushfire": {
+      "tiles": 1845,
+      "complete_pairs": 1845,
+      "valid_buildings": 5437,
+      "unknown": 524,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 5027,
+        "major": 99,
+        "destroyed": 229,
+        "minor": 82
+      },
+      "bytes": 23275509530,
+      "metadata_types": {
+        "fire": 1845
+      },
+      "partitions": {
+        "tier3": 7380
+      }
+    },
+    "portugal-wildfire": {
+      "tiles": 1869,
+      "complete_pairs": 1869,
+      "valid_buildings": 22349,
+      "unknown": 1064,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 20787,
+        "destroyed": 1090,
+        "minor": 176,
+        "major": 296
+      },
+      "bytes": 23604259433,
+      "metadata_types": {
+        "fire": 1869
+      },
+      "partitions": {
+        "tier3": 7476
+      }
+    },
+    "sunda-tsunami": {
+      "tiles": 148,
+      "complete_pairs": 148,
+      "valid_buildings": 14357,
+      "unknown": 2590,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 14078,
+        "destroyed": 179,
+        "major": 100
+      },
+      "bytes": 1890292925,
+      "metadata_types": {
+        "tsunami": 148
+      },
+      "partitions": {
+        "tier3": 592
+      }
+    },
+    "tuscaloosa-tornado": {
+      "tiles": 343,
+      "complete_pairs": 343,
+      "valid_buildings": 14098,
+      "unknown": 908,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 10499,
+        "minor": 2036,
+        "destroyed": 1097,
+        "major": 466
+      },
+      "bytes": 4350730656,
+      "metadata_types": {
+        "wind": 343
+      },
+      "partitions": {
+        "tier3": 1372
+      }
+    },
+    "woolsey-fire": {
+      "tiles": 878,
+      "complete_pairs": 878,
+      "valid_buildings": 6829,
+      "unknown": 186,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "destroyed": 1876,
+        "minor": 189,
+        "no_damage": 4638,
+        "major": 126
+      },
+      "bytes": 11083586620,
+      "metadata_types": {
+        "fire": 878
+      },
+      "partitions": {
+        "tier3": 3512
+      }
+    }
+  },
+  "by_archive_partition": {
+    "hold": {
+      "tiles": 933,
+      "complete_pairs": 933,
+      "valid_buildings": 53137,
+      "unknown": 1255,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "major": 4605,
+        "destroyed": 4223,
+        "minor": 6338,
+        "no_damage": 37971
+      },
+      "bytes": 11869627060
+    },
+    "test": {
+      "tiles": 933,
+      "complete_pairs": 933,
+      "valid_buildings": 53850,
+      "unknown": 1012,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "minor": 4798,
+        "destroyed": 3775,
+        "no_damage": 41427,
+        "major": 3850
+      },
+      "bytes": 11869286842
+    },
+    "tier1": {
+      "tiles": 2799,
+      "complete_pairs": 2799,
+      "valid_buildings": 159794,
+      "unknown": 2993,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "no_damage": 117426,
+        "minor": 14980,
+        "destroyed": 13227,
+        "major": 14161
+      },
+      "bytes": 35610585037
+    },
+    "tier3": {
+      "tiles": 6369,
+      "complete_pairs": 6369,
+      "valid_buildings": 144576,
+      "unknown": 8751,
+      "invalid_bbox": 0,
+      "class_counts": {
+        "destroyed": 10335,
+        "minor": 10744,
+        "major": 7288,
+        "no_damage": 116209
+      },
+      "bytes": 80563723051
+    }
+  },
+  "missing_components": [],
+  "duplicate_member_names": [],
+  "cross_archive_partition_tile_overlap": [],
+  "label_parse_errors": [],
+  "unrecognized_regular_files": [],
+  "sampled_tiles": {
+    "guatemala-volcano": [
+      [
+        "hold",
+        "00000004"
+      ],
+      [
+        "hold",
+        "00000012"
+      ]
+    ],
+    "hurricane-florence": [
+      [
+        "hold",
+        "00000006"
+      ],
+      [
+        "hold",
+        "00000009"
+      ]
+    ],
+    "hurricane-harvey": [
+      [
+        "hold",
+        "00000004"
+      ],
+      [
+        "hold",
+        "00000005"
+      ]
+    ],
+    "hurricane-matthew": [
+      [
+        "hold",
+        "00000012"
+      ],
+      [
+        "hold",
+        "00000015"
+      ]
+    ],
+    "hurricane-michael": [
+      [
+        "hold",
+        "00000002"
+      ],
+      [
+        "hold",
+        "00000006"
+      ]
+    ],
+    "mexico-earthquake": [
+      [
+        "hold",
+        "00000014"
+      ],
+      [
+        "hold",
+        "00000016"
+      ]
+    ],
+    "midwest-flooding": [
+      [
+        "hold",
+        "00000009"
+      ],
+      [
+        "hold",
+        "00000015"
+      ]
+    ],
+    "palu-tsunami": [
+      [
+        "hold",
+        "00000009"
+      ],
+      [
+        "hold",
+        "00000013"
+      ]
+    ],
+    "santa-rosa-wildfire": [
+      [
+        "hold",
+        "00000008"
+      ],
+      [
+        "hold",
+        "00000010"
+      ]
+    ],
+    "socal-fire": [
+      [
+        "hold",
+        "00000005"
+      ],
+      [
+        "hold",
+        "00000007"
+      ]
+    ],
+    "joplin-tornado": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "lower-puna-volcano": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "moore-tornado": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "nepal-flooding": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "pinery-bushfire": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "portugal-wildfire": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "sunda-tsunami": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "tuscaloosa-tornado": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ],
+    "woolsey-fire": [
+      [
+        "tier3",
+        "00000000"
+      ],
+      [
+        "tier3",
+        "00000001"
+      ]
+    ]
+  },
+  "scope": "Archive and label census; full image decode audit not performed; no training or test evaluation"
+}

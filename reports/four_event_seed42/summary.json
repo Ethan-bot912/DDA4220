@@ -1,0 +1,180 @@
+{
+  "post": {
+    "best_epoch": 5,
+    "best_val": {
+      "n": 22372,
+      "accuracy": 0.889549436795995,
+      "macro_f1": 0.601235705274549,
+      "balanced_accuracy": 0.6682441600825038,
+      "per_class": {
+        "no_damage": {
+          "precision": 0.9798929078789204,
+          "recall": 0.9219143576826196,
+          "f1": 0.9500198649185538,
+          "support": 19453
+        },
+        "minor": {
+          "precision": 0.357396449704142,
+          "recall": 0.34085778781038373,
+          "f1": 0.3489312536106297,
+          "support": 886
+        },
+        "major": {
+          "precision": 0.35657686212361334,
+          "recall": 0.5011135857461024,
+          "f1": 0.41666666666666663,
+          "support": 449
+        },
+        "destroyed": {
+          "precision": 0.5551272166538165,
+          "recall": 0.9090909090909091,
+          "f1": 0.6893250359023455,
+          "support": 1584
+        }
+      },
+      "confusion": [
+        [
+          17934,
+          509,
+          163,
+          847
+        ],
+        [
+          248,
+          302,
+          199,
+          137
+        ],
+        [
+          29,
+          25,
+          225,
+          170
+        ],
+        [
+          91,
+          9,
+          44,
+          1440
+        ]
+      ]
+    },
+    "params": 11178564,
+    "training_seconds": 15705.2859479,
+    "training_peak_allocated_bytes": 521311744,
+    "inference_benchmark": [
+      {
+        "batch_size": 1,
+        "batch_latency_ms": 2.7358319999984815,
+        "amortized_ms_per_image": 2.7358319999984815,
+        "images_per_second": 365.5195202046599,
+        "peak_allocated_bytes": 121840640
+      },
+      {
+        "batch_size": 32,
+        "batch_latency_ms": 7.350898000004236,
+        "amortized_ms_per_image": 0.22971556250013236,
+        "images_per_second": 4353.209635065207,
+        "peak_allocated_bytes": 185278976
+      }
+    ],
+    "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "versions": {
+      "python": "3.12.15",
+      "torch": "2.7.1+cu128",
+      "torchvision": "0.22.1+cu128",
+      "numpy": "2.0.2",
+      "rasterio": "1.4.3"
+    },
+    "manifest_sha256": "39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0"
+  },
+  "early": {
+    "best_epoch": 9,
+    "best_val": {
+      "n": 22372,
+      "accuracy": 0.872385124262471,
+      "macro_f1": 0.6022778097528944,
+      "balanced_accuracy": 0.7131692575178775,
+      "per_class": {
+        "no_damage": {
+          "precision": 0.983268766492617,
+          "recall": 0.9002724515498894,
+          "f1": 0.9399420352082439,
+          "support": 19453
+        },
+        "minor": {
+          "precision": 0.2637920101458465,
+          "recall": 0.46952595936794583,
+          "f1": 0.3377994315874949,
+          "support": 886
+        },
+        "major": {
+          "precision": 0.2769089236430543,
+          "recall": 0.6703786191536748,
+          "f1": 0.39192708333333337,
+          "support": 449
+        },
+        "destroyed": {
+          "precision": 0.6784396415392725,
+          "recall": 0.8125,
+          "f1": 0.7394426888825051,
+          "support": 1584
+        }
+      },
+      "confusion": [
+        [
+          17513,
+          1105,
+          372,
+          463
+        ],
+        [
+          225,
+          416,
+          196,
+          49
+        ],
+        [
+          17,
+          33,
+          301,
+          98
+        ],
+        [
+          56,
+          23,
+          218,
+          1287
+        ]
+      ]
+    },
+    "params": 11187972,
+    "training_seconds": 15628.747014899996,
+    "training_peak_allocated_bytes": 526142464,
+    "inference_benchmark": [
+      {
+        "batch_size": 1,
+        "batch_latency_ms": 2.767482999988715,
+        "amortized_ms_per_image": 2.767482999988715,
+        "images_per_second": 361.33916631252214,
+        "peak_allocated_bytes": 122074624
+      },
+      {
+        "batch_size": 32,
+        "batch_latency_ms": 7.412980000008247,
+        "amortized_ms_per_image": 0.23165562500025771,
+        "images_per_second": 4316.752507084115,
+        "peak_allocated_bytes": 191607808
+      }
+    ],
+    "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "versions": {
+      "python": "3.12.15",
+      "torch": "2.7.1+cu128",
+      "torchvision": "0.22.1+cu128",
+      "numpy": "2.0.2",
+      "rasterio": "1.4.3"
+    },
+    "manifest_sha256": "39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "mode": "early",
+  "backbone": "resnet18",
+  "split": "val",
+  "metrics": {
+    "n": 22372,
+    "accuracy": 0.872385124262471,
+    "macro_f1": 0.6022778097528944,
+    "balanced_accuracy": 0.7131692575178775,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.983268766492617,
+        "recall": 0.9002724515498894,
+        "f1": 0.9399420352082439,
+        "support": 19453
+      },
+      "minor": {
+        "precision": 0.2637920101458465,
+        "recall": 0.46952595936794583,
+        "f1": 0.3377994315874949,
+        "support": 886
+      },
+      "major": {
+        "precision": 0.2769089236430543,
+        "recall": 0.6703786191536748,
+        "f1": 0.39192708333333337,
+        "support": 449
+      },
+      "destroyed": {
+        "precision": 0.6784396415392725,
+        "recall": 0.8125,
+        "f1": 0.7394426888825051,
+        "support": 1584
+      }
+    },
+    "confusion": [
+      [
+        17513,
+        1105,
+        372,
+        463
+      ],
+      [
+        225,
+        416,
+        196,
+        49
+      ],
+      [
+        17,
+        33,
+        301,
+        98
+      ],
+      [
+        56,
+        23,
+        218,
+        1287
+      ]
+    ]
+  },
+  "config": {
+    "manifest": "dataset\\pilot_tier3_4events\\manifest_classification.csv",
+    "output": "output\\resnet18\\early_seed42.json",
+    "project_root": "D:\\DDA4220\\DDA4220",
+    "mode": "early",
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 0,
+    "seed": 42,
+    "max_train": 0,
+    "max_val": 0,
+    "device": "cuda",
+    "benchmark_steps": 100,
+    "benchmark_warmup": 20
+  },
+  "manifest_sha256": "39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0",
+  "events": {
+    "train": [
+      "joplin-tornado",
+      "lower-puna-volcano"
+    ],
+    "val": [
+      "moore-tornado"
+    ],
+    "test": [
+      "nepal-flooding"
+    ]
+  },
+  "train_indices_sha256": "447c03d77e09f2257a6719033fc2f669942d25931ba5604ff02637ee1946fdf5",
+  "val_indices_sha256": "0436ea4ad6a3653794a738f10043d3614daf4dfa93dbeb74b978238c2ddf6e4d",
+  "evaluated_indices_sha256": "0436ea4ad6a3653794a738f10043d3614daf4dfa93dbeb74b978238c2ddf6e4d",
+  "checkpoint_sha256": "6f88a11cc007028324d223af5bb0ffbcfd57e79a49e0eb58aea8749981a6cab3",
+  "checkpoint_epoch": 9,
+  "test_evaluated": false,
+  "per_event": {
+    "moore-tornado": {
+      "n": 22372,
+      "accuracy": 0.872385124262471,
+      "macro_f1": 0.6022778097528944,
+      "balanced_accuracy": 0.7131692575178775,
+      "per_class": {
+        "no_damage": {
+          "precision": 0.983268766492617,
+          "recall": 0.9002724515498894,
+          "f1": 0.9399420352082439,
+          "support": 19453
+        },
+        "minor": {
+          "precision": 0.2637920101458465,
+          "recall": 0.46952595936794583,
+          "f1": 0.3377994315874949,
+          "support": 886
+        },
+        "major": {
+          "precision": 0.2769089236430543,
+          "recall": 0.6703786191536748,
+          "f1": 0.39192708333333337,
+          "support": 449
+        },
+        "destroyed": {
+          "precision": 0.6784396415392725,
+          "recall": 0.8125,
+          "f1": 0.7394426888825051,
+          "support": 1584
+        }
+      },
+      "confusion": [
+        [
+          17513,
+          1105,
+          372,
+          463
+        ],
+        [
+          225,
+          416,
+          196,
+          49
+        ],
+        [
+          17,
+          33,
+          301,
+          98
+        ],
+        [
+          56,
+          23,
+          218,
+          1287
+        ]
+      ]
+    }
+  }
+}

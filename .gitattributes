@@ -1,0 +1,4 @@
+
+# Preserve report and plot bytes across Windows/Linux checkouts.
+*.pdf binary
+*.png binary

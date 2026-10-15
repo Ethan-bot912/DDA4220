@@ -1,0 +1,38 @@
+{
+  "archive_bytes": 54940044445,
+  "full_extracted_bytes": 139913221990,
+  "existing_four_event_bytes": 16359343887,
+  "incremental_extraction_bytes_if_reused": 123553878103,
+  "free_bytes_now": 294624542720,
+  "metadata_manifest_estimated_bytes": 450011329.9346183,
+  "misc_output_budget_bytes": 3221225472,
+  "safety_reserve_bytes": 21474836480,
+  "additional_free_space_required_bytes": 0,
+  "desired_free_space_before_expansion_bytes": 148699951384.93463,
+  "timing": [
+    {
+      "mode": "post",
+      "measured_expanded_epoch_seconds": 2855.7944645095185,
+      "historical_calibration_multiplier": 2.440566067712832,
+      "baseline_20_epoch_seconds": 139395.10132888137,
+      "planning_20_epoch_lower_seconds": 167274.12159465763,
+      "planning_20_epoch_upper_seconds": 250911.18239198648,
+      "independent_val_seconds": 1239.6176682446026,
+      "final_test_seconds_if_later_authorized": 1365.6405570827715
+    },
+    {
+      "mode": "early",
+      "measured_expanded_epoch_seconds": 2759.8173104187026,
+      "historical_calibration_multiplier": 2.4757458312861735,
+      "baseline_20_epoch_seconds": 136652.12402761047,
+      "planning_20_epoch_lower_seconds": 163982.54883313255,
+      "planning_20_epoch_upper_seconds": 245973.82324969885,
+      "independent_val_seconds": 1258.6934658355253,
+      "final_test_seconds_if_later_authorized": 1386.6556519109658
+    }
+  ],
+  "two_models_one_seed_lower_hours": 92.01574178549727,
+  "two_models_one_seed_upper_hours": 138.02361267824594,
+  "three_seed_lower_hours": 276.0472253564918,
+  "three_seed_upper_hours": 414.0708380347378
+}

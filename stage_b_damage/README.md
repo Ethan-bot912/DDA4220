@@ -13,7 +13,7 @@
 
 B1 和 B2 必须共享相同的事件划分、建筑框、crop、预处理、backbone 系列、训练预算和验证集 checkpoint 选择规则；主比较唯一的实质差异是是否提供灾前 crop。Siamese、双流和其他融合结构不属于核心交付，只能在主比较完成后作为补充消融实验。
 
-正式实验计划使用两个设置共享的 ResNet-18 编码器。当前 `train_baseline.py` 中的 `SmallCNN` 仅用于检查数据读取和训练管线，不能作为正式结论的模型。
+四事件正式实验已使用 ResNet-18（B1三通道，B2六通道早期融合），各20轮、seed42。`SmallCNN` 仅用于冒烟检查。两份最佳权重和免重训验证方法见[复核入口](../REPRODUCE_AND_DIAGNOSE.md)。
 
 ## 当前状态
 
@@ -21,8 +21,9 @@ B1 和 B2 必须共享相同的事件划分、建筑框、crop、预处理、bac
 - [x] 按训练样本频率计算 class-weighted cross-entropy
 - [x] B1 post-only 冒烟训练（`train_baseline.py --mode post`）
 - [x] B2 配对输入冒烟训练（`train_baseline.py --mode early`）
-- [ ] 用共享 ResNet-18 完成正式 B1–B2 训练，并固定验证集 checkpoint 规则
-- [ ] 为正式报告补充 balanced accuracy、参数量、峰值内存、推理延迟和三组固定 seed
+- [x] 四事件子集 ResNet-18 B1–B2 训练，按验证集 Macro F1 选best（seed42）
+- [x] 报告 balanced accuracy、参数量、参考机峰值显存与验证吞吐
+- [ ] 全量扩展、同机独立推理延迟测量与三组固定seed
 - [ ] 仅在主比较完成后决定是否进行额外融合消融
 
 ## 当前 pilot 的运行方式

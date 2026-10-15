@@ -64,7 +64,9 @@ class XBDPairedDataset(Dataset):
         return len(self.rows)
 
     def _path(self, value: str) -> Path:
-        path = Path(value)
+        # Preserve the original manifest bytes/hash while accepting its Windows
+        # relative separators on Linux and macOS as well.
+        path = Path(value.replace("\\", "/"))
         return path if path.is_absolute() else self.project_root / path
 
     def _open(self, path: Path) -> rasterio.DatasetReader:

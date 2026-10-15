@@ -1,0 +1,161 @@
+{
+  "scope": "Disposable capacity benchmark only; no checkpoint, model selection, final training or held-out evaluation",
+  "batch_size": 32,
+  "crop_size": 128,
+  "seed": 42,
+  "train_rows_available": 2353,
+  "sample_events": {
+    "hurricane-harvey": 265,
+    "palu-tsunami": 601,
+    "joplin-tornado": 368,
+    "mexico-earthquake": 255,
+    "guatemala-volcano": 53,
+    "tuscaloosa-tornado": 18,
+    "sunda-tsunami": 650,
+    "midwest-flooding": 98,
+    "socal-fire": 28,
+    "lower-puna-volcano": 5,
+    "hurricane-michael": 9,
+    "woolsey-fire": 3
+  },
+  "sample_tiles_by_event": {
+    "guatemala-volcano": 2,
+    "hurricane-harvey": 2,
+    "hurricane-michael": 2,
+    "mexico-earthquake": 2,
+    "midwest-flooding": 2,
+    "palu-tsunami": 2,
+    "socal-fire": 2,
+    "joplin-tornado": 2,
+    "lower-puna-volcano": 2,
+    "pinery-bushfire": 2,
+    "sunda-tsunami": 2,
+    "tuscaloosa-tornado": 2,
+    "woolsey-fire": 2
+  },
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "gpu_total_bytes": 8585216000,
+  "ram_before": {
+    "total": 16944848896,
+    "available": 4797968384,
+    "load_percent": 71
+  },
+  "results": [
+    {
+      "mode": "post",
+      "train_batch": {
+        "mean_seconds": 0.27841483125001076,
+        "median_seconds": 0.27393674999996165,
+        "p10_seconds": 0.25892936999994165,
+        "p90_seconds": 0.3024858300000688,
+        "batches": 32,
+        "samples": 1024
+      },
+      "train_io": {
+        "mean_seconds": 0.22537009687499676,
+        "median_seconds": 0.21934230000010757,
+        "p10_seconds": 0.21006401999989066,
+        "p90_seconds": 0.24564236000007897,
+        "batches": 32,
+        "samples": 1024
+      },
+      "train_compute": {
+        "mean_seconds": 0.053044734375014,
+        "median_seconds": 0.05011525000008987,
+        "p10_seconds": 0.04791011999991497,
+        "p90_seconds": 0.06317219999998543,
+        "batches": 32,
+        "samples": 1024
+      },
+      "eval_batch": {
+        "mean_seconds": 0.241293203125025,
+        "median_seconds": 0.24000584999998864,
+        "p10_seconds": 0.21824368000009145,
+        "p90_seconds": 0.280201940000029,
+        "batches": 32,
+        "samples": 1024
+      },
+      "eval_io": {
+        "mean_seconds": 0.2100933468750128,
+        "median_seconds": 0.2070621000001438,
+        "p10_seconds": 0.20119863000008992,
+        "p90_seconds": 0.21695549000005485,
+        "batches": 32,
+        "samples": 1024
+      },
+      "eval_compute": {
+        "mean_seconds": 0.031199856250012203,
+        "median_seconds": 0.02826130000005378,
+        "p10_seconds": 0.014097350000020015,
+        "p90_seconds": 0.04133803999998236,
+        "batches": 32,
+        "samples": 1024
+      },
+      "train_peak_allocated_bytes": 519214080,
+      "train_peak_reserved_bytes": 551550976,
+      "eval_peak_allocated_bytes": 185278976,
+      "system_available_ram_min_bytes": 4500373504
+    },
+    {
+      "mode": "early",
+      "train_batch": {
+        "mean_seconds": 0.2669758687500021,
+        "median_seconds": 0.26632614999994075,
+        "p10_seconds": 0.24898121999999603,
+        "p90_seconds": 0.28288097999998174,
+        "batches": 32,
+        "samples": 1024
+      },
+      "train_io": {
+        "mean_seconds": 0.20611158125000628,
+        "median_seconds": 0.2027106499999718,
+        "p10_seconds": 0.1977366100001518,
+        "p90_seconds": 0.21601837000007437,
+        "batches": 32,
+        "samples": 1024
+      },
+      "train_compute": {
+        "mean_seconds": 0.06086428749999584,
+        "median_seconds": 0.061615500000016254,
+        "p10_seconds": 0.04937473999998474,
+        "p90_seconds": 0.06705629000009594,
+        "batches": 32,
+        "samples": 1024
+      },
+      "eval_batch": {
+        "mean_seconds": 0.24152484999996915,
+        "median_seconds": 0.23756864999995742,
+        "p10_seconds": 0.2203606100000343,
+        "p90_seconds": 0.2655203399999209,
+        "batches": 32,
+        "samples": 1024
+      },
+      "eval_io": {
+        "mean_seconds": 0.21087721875000653,
+        "median_seconds": 0.20902489999991758,
+        "p10_seconds": 0.20392110000011598,
+        "p90_seconds": 0.21710536000016417,
+        "batches": 32,
+        "samples": 1024
+      },
+      "eval_compute": {
+        "mean_seconds": 0.030647631249962615,
+        "median_seconds": 0.03144854999982272,
+        "p10_seconds": 0.013677600000005442,
+        "p90_seconds": 0.04396080999999868,
+        "batches": 32,
+        "samples": 1024
+      },
+      "train_peak_allocated_bytes": 525093376,
+      "train_peak_reserved_bytes": 591396864,
+      "eval_peak_allocated_bytes": 191607808,
+      "system_available_ram_min_bytes": 3874992128
+    }
+  ],
+  "ram_after": {
+    "total": 16944848896,
+    "available": 3760631808,
+    "load_percent": 77
+  },
+  "test_evaluated": false
+}

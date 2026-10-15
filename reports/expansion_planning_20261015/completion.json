@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "steps": [
+    "full_archive_and_label_inventory",
+    "event_disjoint_split_proposal",
+    "bounded_real_sample_capacity_profile_and_resource_budget"
+  ],
+  "formal_expanded_training_started": false,
+  "test_evaluated": false,
+  "full_archive_extracted": false,
+  "archive_sha1": "6eae3baddf86796c15638682a6432e3e6223cb39",
+  "latest_available_disk_gib": 274.39048767089844,
+  "split_proposal_sha256": "decb62c993f3f4341c7af725b2339624f5de5a62b02afb6de05b85f275eea94d",
+  "profile_uses_only_proposed_train_events": true,
+  "checks": "counts, class totals, disjoint events, profile train-only membership, and batch counts verified"
+}

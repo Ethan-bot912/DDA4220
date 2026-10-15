@@ -1,0 +1,7 @@
+{
+  "source": "Existing four-event manifest full-geometry rows, reservoir sample 2048",
+  "sample_rows": 2048,
+  "average_python_row_bytes": 2180.4375,
+  "csv_bytes_per_row": 1093.9678428581944,
+  "excludes": "shared header keys, list overhead, image handles, GDAL cache, optimizer, OS and other apps; full expanded manifest not loaded"
+}

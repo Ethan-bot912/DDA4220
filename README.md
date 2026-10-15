@@ -1,5 +1,17 @@
 # DDA4220 项目：基于灾前/灾后卫星图像的建筑物损毁评估
 
+## 当前进度（2026-10-15）
+
+已完成真实 xBD 四事件子集上的 **ResNet-18 B1/B2 各20轮、seed42** 训练与最佳权重验证；尚未启动19事件全量扩展或最终测试评估。当前验证 Macro F1：B1 **0.601236**，B2 **0.602278**。这是单seed、单验证事件的结果，不能据此宣称灾前信息稳定有效或无效。
+
+**队友请先读 [复核与排查入口](REPRODUCE_AND_DIAGNOSE.md)**：包含约105 MB免重训复现包、两份best权重、训练记录、逐建筑预测、精确440幅验证影像清单和运行方法。卫星影像不上传，按清单从官方数据准备。
+
+- [详实实验报告](reports/experiment_20261015/实验报告.md) / [PDF](reports/experiment_20261015/实验报告.pdf)
+- [数据选择说明](reports/four_event_seed42/DATA_SELECTION.md) / [验证影像名单](reports/four_event_seed42/validation_images.csv)
+- [全量扩展资源预算（团队版）](reports/expansion_planning_20261015/全量扩展准备与资源预算.md) / [四人分工建议](reports/expansion_planning_20261015/四人分工与协作方案.md)
+
+以下为项目研究方案；涉及未来多seed、全量和端到端定位的内容仍属于计划。
+
 本项目拟使用 xBD / xView2 数据集，构建一个从灾前、灾后卫星影像到建筑物损毁等级的深度学习系统。当前项目定位为 **Application + Empirical Study**：重点不是提出全新的网络结构，而是把已有方法适配到一个有实际意义的问题上，建立可信 baseline，进行控制变量比较，并分析模型为什么有效或失败。
 
 正式英文 proposal 详见 [reports/proposal.md](reports/proposal.md)。本文档保留对应的中文项目方案、执行顺序和协作说明。
@@ -50,7 +62,7 @@ ground-truth building polygon --> 成对建筑裁剪 --> B1 / B2 损毁分类 --
 - **B1 post-only baseline**：只输入灾后 crop，是本项目的可信基线。
 - **B2 paired pre/post classifier**：输入同一建筑对齐的灾前、灾后 crop，使用在最终测试前固定的直接融合方法。当前 pilot 以六通道早期拼接作为这一方法的实现。
 
-核心科学比较是 B2 与 B1：在完全相同的数据划分、建筑 crop、预处理、backbone 系列、训练预算和 checkpoint 选择规则下，唯一的主要差异是是否向分类器提供灾前 crop。正式实验计划让两个设置共享 ResNet-18 编码器；当前仓库的 `SmallCNN` 只用于验证数据和训练管线，不能作为正式结论的模型。
+核心科学比较是 B2 与 B1：在完全相同的数据划分、建筑 crop、预处理、backbone 系列、训练预算和 checkpoint 选择规则下，唯一的主要差异是是否向分类器提供灾前 crop。当前四事件正式训练已使用同系列 ResNet-18 编码器；`SmallCNN` 仅用于数据和训练管线冒烟检查，不用于正式成绩。
 
 Siamese、双流或其他输入级/特征级融合方式不再属于核心交付；只有在 B1–B2 的主比较完成且仍有时间与算力时，才作为仅使用训练集和验证集的补充消融实验。
 
@@ -252,7 +264,7 @@ CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.m
 - [x] 用小子集跑通 B1 的数据、训练和评估管线。
 - [x] 固定第一版 preprocessing、metric、seed 和 checkpoint 规则。
 - [x] 完成 B1 与 B2 配对输入的冒烟训练；当前 B2 使用六通道早期拼接。
-- [ ] 用共享 ResNet-18 和固定验证集 checkpoint 规则完成正式 B1–B2 比较。
+- [x] 四事件子集、seed42 的 ResNet-18 B1–B2 训练与最佳权重验证；多seed与全量比较待做。
 - [ ] 完成主比较后，再决定是否做补充融合消融，以及是否扩展 Stage A predicted-mask 和端到端 demo。
 
 ## 11. 参考资料
@@ -275,5 +287,5 @@ CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.m
 - `manifest_classification.csv`：81,506 条四分类建筑记录
 - `geotiff_audit.json`：2,220 个实际使用影像均通过 GeoTIFF 与框范围检查
 
-配对 crop 的惰性读取和 B1/B2 冒烟训练入口位于 `stage_b_damage/dataset.py` 与 `stage_b_damage/train_baseline.py`；当前 B2 是直接的六通道配对输入实现，正式主实验将把它与同一 ResNet-18 系列的 B1 做受控比较。数据文件本身留在本地，按 [DATASET.md](DATASET.md) 可重新生成。
+配对 crop 的惰性读取和 B1/B2 冒烟训练入口位于 `stage_b_damage/dataset.py` 与 `stage_b_damage/train_baseline.py`；当前 B2 是直接的六通道配对输入实现，四事件单seed主实验已与同一 ResNet-18 系列的 B1 做受控比较，详见本页顶部的复核入口。数据文件本身留在本地，按 [DATASET.md](DATASET.md) 可重新生成。
 

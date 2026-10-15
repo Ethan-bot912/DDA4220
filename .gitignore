@@ -42,3 +42,7 @@ venv/
 Thumbs.db
 .idea/
 .vscode/
+
+# Generated reproduction metadata and report layout previews
+/reproduction/
+/reports/experiment_20261015/rendered/

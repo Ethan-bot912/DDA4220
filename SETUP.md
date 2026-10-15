@@ -114,7 +114,7 @@ python -m ipykernel install --user --name dda4220 --display-name "DDA4220 Projec
 
 ## 7. 获取 xBD / xView2 数据
 
-环境配置完成后，按 [DATASET.md](DATASET.md) 下载、合并、校验、提取并审计本地数据。原始影像、标签、manifest 和训练输出均不会上传到 GitHub。
+环境配置完成后，按 [DATASET.md](DATASET.md) 下载、合并、校验、提取并审计本地数据。原始影像和标签不上传GitHub。精选训练结果可在仓库查看；原始manifest、最佳权重与逐建筑预测通过[Release复现包](REPRODUCE_AND_DIAGNOSE.md)下载，保持在被Git忽略的本地目录中。
 
 ---
 

@@ -1,0 +1,13 @@
+{
+  "validation_rows": 22372,
+  "prediction_pairing": "all matched",
+  "best_metrics_restored": "exact match both models",
+  "manifest_hash": "matched",
+  "paired_correctness": {
+    "(True, True)": 18527,
+    "(True, False)": 1374,
+    "(False, False)": 1481,
+    "(False, True)": 990
+  },
+  "test_evaluated": false
+}

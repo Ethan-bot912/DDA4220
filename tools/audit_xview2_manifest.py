@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 from collections import Counter
 from pathlib import Path
 
@@ -67,6 +68,9 @@ def main() -> int:
                     "sample_min": int(np.nanmin(sample)),
                     "sample_max": int(np.nanmax(sample)),
                 }
+                if source.count != 3:
+                    errors.append({"type": "unexpected_channel_count", "path": relative,
+                                   "count": source.count})
         except Exception as exc:  # keep auditing the rest of the manifest
             errors.append({"type": "unreadable_image", "path": relative, "error": repr(exc)})
 
@@ -74,6 +78,14 @@ def main() -> int:
         pre = image_stats.get(row["pre_image"])
         post = image_stats.get(row["post_image"])
         if pre is None or post is None:
+            continue
+        try:
+            bbox = [float(row[f"post_bbox_{suffix}"]) for suffix in ("xmin", "ymin", "xmax", "ymax")]
+        except (TypeError, ValueError):
+            errors.append({"type": "invalid_bbox", "row": row_number})
+            continue
+        if not all(math.isfinite(value) for value in bbox) or bbox[0] >= bbox[2] or bbox[1] >= bbox[3]:
+            errors.append({"type": "invalid_bbox", "row": row_number, "values": bbox})
             continue
         for suffix in ("xmin", "xmax"):
             x = float(row[f"post_bbox_{suffix}"])

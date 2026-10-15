@@ -10,7 +10,12 @@
 
 ## 待办
 
-- [ ] 评估脚本
+- [x] Stage B 冻结 checkpoint 评估（默认 val；最终 test 需显式标记）
+- [x] 分类指标、按事件指标、逐样本预测 CSV、混淆矩阵 PNG
+- [x] 受控 B1/B2 比较与多 seed 统计
 - [ ] damage map 生成器
 - [ ] 误差分析
 - [ ] 端到端 demo
+
+入口：`python -m evaluation.evaluate_classifier`、`python -m evaluation.compare_pair`。
+完整命令、数据准备和测试集使用规则见 `reports/READY_TO_RUN.md`。上述代码经过合成数据验证，真实数据上的评估与分析尚待执行。Stage A 定位及端到端 damage map 仍为可选扩展。

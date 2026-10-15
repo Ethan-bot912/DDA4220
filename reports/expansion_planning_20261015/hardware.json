@@ -1,0 +1,17 @@
+{
+  "disk": {
+    "DriveLetter": "D",
+    "Size": 699697983488,
+    "SizeRemaining": 294624579584,
+    "latest_snapshot_note": "Refreshed after user requested disk recheck; replaces initial 32.8 GiB available snapshot"
+  },
+  "memory": {
+    "TotalPhysicalMemory": 16944848896
+  },
+  "cpu": {
+    "Name": "Intel(R) Core(TM) i7-14650HX",
+    "NumberOfCores": 16,
+    "NumberOfLogicalProcessors": 24
+  },
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, 1091 MiB, 14 %"
+}
