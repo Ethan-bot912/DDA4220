@@ -82,6 +82,8 @@ python tools/reproduce_four_event.py --evaluate --device auto
 
 没有CUDA可选 `--device cpu`，会更慢。输出为 `output/reproduced_four_event_seed42/` 下两组指标JSON、逐建筑CSV、混淆矩阵PNG、比较表和 `reference_check.json`。目录非空会停止；重复复核请用 `--output-root output/reproduced_seed42_second`，保留历史。
 
+发布前已在参考机用这个入口重新完成两组各22,372栋验证：所有预测类别、混淆矩阵及三项主指标与原记录完全一致，见[发布前核验记录](reports/four_event_seed42/publication_verification.json)。
+
 这个入口不调用训练脚本，不执行反向传播，不选择新权重，不运行最终test。在参考环境中预期恢复上述结果；其他硬件若有差异，先看混淆矩阵和差异样本，不要直接重训或调参。这里复核的是用于选优的同一个val，不是新的独立测试成绩。
 
 ## 6 有结果但暂时没影像时

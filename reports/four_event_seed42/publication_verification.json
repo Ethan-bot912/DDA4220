@@ -1,0 +1,30 @@
+{
+  "verification_date": "2026-10-15",
+  "code_commit": "589fe8175ace6c7c05c650492ffdde2bc4b78efc",
+  "procedure": "tools/reproduce_four_event.py --evaluate --device cuda",
+  "training_performed": false,
+  "test_evaluated": false,
+  "validation_buildings_per_model": 22372,
+  "validation_image_checksums_matched": 440,
+  "bundle_sha256": "64468bbeee47d42d0d53240e2f5fba3bfb3de81cdca90604a34cca7ccf04b517",
+  "results": {
+    "post": {
+      "prediction_labels_all_identical": true,
+      "same_confusion": true,
+      "deltas": {
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "balanced_accuracy": 0.0
+      }
+    },
+    "early": {
+      "prediction_labels_all_identical": true,
+      "same_confusion": true,
+      "deltas": {
+        "accuracy": 0.0,
+        "macro_f1": 0.0,
+        "balanced_accuracy": 0.0
+      }
+    }
+  }
+}
