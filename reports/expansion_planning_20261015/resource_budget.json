@@ -34,5 +34,14 @@
   "two_models_one_seed_lower_hours": 92.01574178549727,
   "two_models_one_seed_upper_hours": 138.02361267824594,
   "three_seed_lower_hours": 276.0472253564918,
-  "three_seed_upper_hours": 414.0708380347378
+  "three_seed_upper_hours": 414.0708380347378,
+  "measurement_date": "2026-10-15",
+  "workload_assumptions": {
+    "train_rows_per_epoch": 269827,
+    "val_rows_per_epoch": 67351,
+    "optional_inference_rows": 74179,
+    "batch_size": 32,
+    "epochs": 20,
+    "scope": "Capacity calculation inputs only; does not assign events to datasets"
+  }
 }

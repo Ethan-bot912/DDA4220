@@ -8,7 +8,7 @@
 
 - [详实实验报告](reports/experiment_20261015/实验报告.md) / [PDF](reports/experiment_20261015/实验报告.pdf)
 - [数据选择说明](reports/four_event_seed42/DATA_SELECTION.md) / [验证影像名单](reports/four_event_seed42/validation_images.csv)
-- [全量扩展资源预算（团队版）](reports/expansion_planning_20261015/全量扩展准备与资源预算.md) / [四人分工建议](reports/expansion_planning_20261015/四人分工与协作方案.md)
+- [全量扩展资源预算](reports/expansion_planning_20261015/全量扩展准备与资源预算.md)
 
 以下为项目研究方案；涉及未来多seed、全量和端到端定位的内容仍属于计划。
 
@@ -232,18 +232,7 @@ DDA4220-main/
 数据原文件、提取影像、manifest、审计结果和模型输出均不提交到仓库；只提交下载/解析说明、配置、脚本和必要的小型示例。具体规则见 [DATASET.md](DATASET.md)。
 CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.md](SETUP.md)。
 
-## 8. 分工
-
-| 成员 | 主要职责 | 共同/次要职责 |
-|---|---|---|
-| Member A - Data & Localization | 数据解析、polygon -> mask、事件划分、U-Net、定位评估 | 数据审计、实验复核 |
-| Member B - Damage Classification | building crop、B1、类别不平衡、分类训练 | 分类实验、结果检查 |
-| Member C - Paired Modeling | B2 配对输入、灾害类型分析 | runtime 和补充融合消融 |
-| Member D - Evaluation & Integration | 指标脚本、混淆矩阵、可视化、predicted-mask、damage map | 错误分析、实验日志、报告图表 |
-
-所有成员共同参与 scope 决策、实验复核、结果解释和写作。分工是主要 ownership，不是把最终报告割裂成四份。
-
-## 9. 分阶段计划
+## 8. 分阶段计划
 
 | 阶段 | 目标 | 验收证据 |
 |---|---|---|
@@ -256,7 +245,7 @@ CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.m
 
 每次实验记录配置、seed、checkpoint、validation score、test score、时间、内存和备注，避免最终报告只依赖一个无法追溯的“最好结果”。
 
-## 10. 近期执行清单
+## 9. 近期执行清单
 
 - [x] 验证 xBD/xView2 数据访问，并实际查看灾前/灾后样本。
 - [x] 确认事件列表、类别分布和 event-aware train/validation/test split。
@@ -267,7 +256,7 @@ CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.m
 - [x] 四事件子集、seed42 的 ResNet-18 B1–B2 训练与最佳权重验证；多seed与全量比较待做。
 - [ ] 完成主比较后，再决定是否做补充融合消融，以及是否扩展 Stage A predicted-mask 和端到端 demo。
 
-## 11. 参考资料
+## 10. 参考资料
 
 1. Gupta et al., *xBD: A Dataset for Assessing Building Damage from Satellite Imagery*, 2019: https://arxiv.org/abs/1911.09296
 2. Weber and Kané, *Building Disaster Damage Assessment in Satellite Imagery with Multi-Temporal Fusion*, 2020: https://arxiv.org/abs/2004.05525
@@ -277,7 +266,7 @@ CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.m
 6. xView2 官方网站和数据资源：https://xview2.org/
 7. DDA4220 课程 L05，project guidance slides 64-73。
 
-## 12. 当前数据准备结果
+## 11. 当前数据准备结果
 
 已在本地 `dataset/pilot_tier3_4events/` 建立一个按灾害事件划分的可复现实验子集：
 

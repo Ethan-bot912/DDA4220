@@ -138,4 +138,4 @@ python -m ipykernel install --user --name dda4220 --display-name "DDA4220 Projec
 
 ---
 
-*配置完成后看 [README.md](README.md) 了解项目结构和分工；准备数据时看 [DATASET.md](DATASET.md)。*
+*配置完成后看 [README.md](README.md) 了解项目结构和实验流程；准备数据时看 [DATASET.md](DATASET.md)。*

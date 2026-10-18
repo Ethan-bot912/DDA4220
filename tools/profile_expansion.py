@@ -1,6 +1,6 @@
 """Bounded disposable speed/memory experiment; never saves trained weights."""
 from __future__ import annotations
-import csv,ctypes,json,os,random,sys,time
+import argparse,csv,ctypes,json,os,random,sys,time
 from pathlib import Path
 from collections import Counter
 
@@ -22,9 +22,11 @@ def ram():
  s=MEMORYSTATUSEX();s.length=ctypes.sizeof(s);ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(s));return dict(total=s.totalPhys,available=s.availPhys,load_percent=s.load)
 
 def main():
+ parser=argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('--train-events',nargs='+',required=True,help='Events permitted for profiling by your confirmed experiment protocol')
+ args=parser.parse_args()
  if (OUT/'profile.json').exists():raise FileExistsError('Existing profile preserved')
- plan=json.loads((OUT/'split_proposal.json').read_text())
- allowed=set(plan['train_events'])
+ allowed=set(args.train_events)
  rows=[];tile_events=Counter()
  for path in sorted(SAMPLE.glob('*/labels/*post_disaster.json')):
   event,tile=path.name.rsplit('_',3)[:2]
