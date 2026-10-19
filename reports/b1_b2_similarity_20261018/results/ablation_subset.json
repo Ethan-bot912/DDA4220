@@ -1,0 +1,40 @@
+{
+ "B1 post only": {
+  "acc": 0.718,
+  "macroF1": 0.6666,
+  "balAcc": 0.6723,
+  "pred_changed_vs_B2_normal_%": 22.95
+ },
+ "B2 normal (pre,post)": {
+  "acc": 0.7339,
+  "macroF1": 0.704,
+  "balAcc": 0.7103,
+  "pred_changed_vs_B2_normal_%": 0.0
+ },
+ "B2 pre=zeros": {
+  "acc": 0.3069,
+  "macroF1": 0.1351,
+  "balAcc": 0.2577,
+  "pred_changed_vs_B2_normal_%": 69.76
+ },
+ "B2 pre=post (no change)": {
+  "acc": 0.4405,
+  "macroF1": 0.3319,
+  "balAcc": 0.3799,
+  "pred_changed_vs_B2_normal_%": 50.36
+ },
+ "B2 pre=other building": {
+  "acc": 0.5587,
+  "macroF1": 0.5431,
+  "balAcc": 0.5642,
+  "pred_changed_vs_B2_normal_%": 37.11
+ },
+ "B1 vs B2 pred differ %": 22.95,
+ "mean|post-pre| by true class": {
+  "no_damage": 0.0816,
+  "minor": 0.095,
+  "major": 0.1152,
+  "destroyed": 0.1378
+ },
+ "AUC no_damage vs destroyed using only mean|post-pre|": 0.9018
+}
