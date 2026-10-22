@@ -1,0 +1,34 @@
+{
+  "release_tag": "expanded-seed42-20261022",
+  "release_url": "https://github.com/Ethan-bot912/DDA4220/releases/tag/expanded-seed42-20261022",
+  "completed_models": [
+    "B1 post, 20/20, best epoch 3",
+    "B2 early, 20/20, best epoch 10"
+  ],
+  "test_evaluated": false,
+  "publication_retrains_models": false,
+  "publication_runs_validation_inference": false,
+  "archive": {
+    "name": "DDA4220_expanded_seed42_20261022.zip",
+    "bytes": 374886801,
+    "sha256": "f4034c97a411bea917cd7ebc6f8ba43357d835ac7f93142a2cba587ffd8930e7",
+    "original_package_unchanged": true,
+    "contains_raw_images": false,
+    "note": "Original pre-publication snapshot. Its unpublished wording describes packaging time; see repository README for current publication status."
+  },
+  "data_files_in_release_zip": [
+    {
+      "path": "dataset/expanded_7events/manifest_classification.csv",
+      "bytes": 173788714,
+      "sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2"
+    },
+    {
+      "path": "dataset/expanded_7events/data_lock.json",
+      "bytes": 2220399,
+      "sha256": "cc6e74280e7d114d7577c831273b342aabaac966e07fa2ec497dde6509e4f234"
+    }
+  ],
+  "metadata_note": "Original git_commit/git_dirty retained as training provenance. Release commit is a later publication snapshot, not a claim that training ran from that commit.",
+  "frozen_source_note": "Exact raw SHA256 of three training sources matches both models. .gitattributes fixes their original line endings on Windows/Linux.",
+  "post_training_tool_change": "compare_expanded.py hardware note generalized to avoid assuming separate computers; training sources, configuration and metrics unchanged."
+}

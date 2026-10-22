@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "completed_epochs": 20,
+  "best_epoch": 10,
+  "best_macro_f1": 0.4508704904084147,
+  "updated_unix": 1792608809.3287134,
+  "session_elapsed_seconds": 2517.188,
+  "checkpoint": "D:\\DDA4220\\DDA4220\\output\\expanded_seed42\\b2\\last.pt"
+}

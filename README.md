@@ -1,6 +1,16 @@
 # DDA4220 项目：基于灾前/灾后卫星图像的建筑物损毁评估
 
-## 当前进度（2026-10-15）
+## 最新完成：扩大实验（2026-10-22）
+
+五训练事件104,152栋、两验证事件45,002栋，随机初始化ResNet-18，B1/B2各20轮、seed42。合并验证Macro F1为 **B1 0.462021 / B2 0.450870**；这是单seed验证集选优结果，封存测试集尚未评估。新旧验证事件不同，不能直接比较合并分数。
+
+- [扩大实验结果与复现入口](reports/expanded_seed42/README.md) / [完整分析报告](reports/expanded_seed42/analysis_report.md)
+- [完整ZIP、模型权重与校验文件（GitHub Release）](https://github.com/Ethan-bot912/DDA4220/releases/tag/expanded-seed42-20261022)
+- [固定配置](configs/expanded_seed42.json) / [数据与运行说明](docs/expanded_experiment/START_HERE.md)
+
+仓库保存代码、配置和小型实验记录；模型权重及完整manifest在Release，原始卫星影像从官方来源另行准备。下方四事件材料作为历史基线保留。
+
+## 历史四事件实验（2026-10-15）
 
 已完成真实 xBD 四事件子集上的 **ResNet-18 B1/B2 各20轮、seed42** 训练与最佳权重验证；尚未启动19事件全量扩展或最终测试评估。当前验证 Macro F1：B1 **0.601236**，B2 **0.602278**。这是单seed、单验证事件的结果，不能据此宣称灾前信息稳定有效或无效。
 
@@ -277,4 +287,3 @@ CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.m
 - `geotiff_audit.json`：2,220 个实际使用影像均通过 GeoTIFF 与框范围检查
 
 配对 crop 的惰性读取和 B1/B2 冒烟训练入口位于 `stage_b_damage/dataset.py` 与 `stage_b_damage/train_baseline.py`；当前 B2 是直接的六通道配对输入实现，四事件单seed主实验已与同一 ResNet-18 系列的 B1 做受控比较，详见本页顶部的复核入口。数据文件本身留在本地，按 [DATASET.md](DATASET.md) 可重新生成。
-

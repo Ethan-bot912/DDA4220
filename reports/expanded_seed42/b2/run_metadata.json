@@ -1,0 +1,145 @@
+{
+  "config": {
+    "experiment": "expanded_five_train_two_val_seed42_v1",
+    "manifest": "dataset/expanded_7events/manifest_classification.csv",
+    "archive_partitions": [
+      "tier3",
+      "tier1",
+      "hold",
+      "test"
+    ],
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "moore-tornado",
+      "hurricane-matthew"
+    ],
+    "sealed_test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 104152,
+    "expected_val_rows": 45002,
+    "expected_train_counts": {
+      "no_damage": 62331,
+      "minor": 17079,
+      "major": 17794,
+      "destroyed": 6948
+    },
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 0,
+    "seed": 42,
+    "max_open_files": 64,
+    "gdal_cache_mb": 128,
+    "pretrained": false,
+    "augmentation": false,
+    "selection": "pooled_validation_macro_f1_strict_improvement",
+    "precision": "float32",
+    "max_train": 0,
+    "max_val": 0
+  },
+  "mode": "early",
+  "backbone": "resnet18",
+  "args": {
+    "experiment": "expanded_five_train_two_val_seed42_v1",
+    "manifest": "dataset/expanded_7events/manifest_classification.csv",
+    "archive_partitions": [
+      "tier3",
+      "tier1",
+      "hold",
+      "test"
+    ],
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "moore-tornado",
+      "hurricane-matthew"
+    ],
+    "sealed_test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 104152,
+    "expected_val_rows": 45002,
+    "expected_train_counts": {
+      "no_damage": 62331,
+      "minor": 17079,
+      "major": 17794,
+      "destroyed": 6948
+    },
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 0,
+    "seed": 42,
+    "max_open_files": 64,
+    "gdal_cache_mb": 128,
+    "pretrained": false,
+    "augmentation": false,
+    "selection": "pooled_validation_macro_f1_strict_improvement",
+    "precision": "float32",
+    "max_train": 0,
+    "max_val": 0,
+    "mode": "early"
+  },
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "train_indices_sha256": "1b562a9424b71215111cc2b9dd7fe0366a7bbbe35ba85ceb59960b2169a30dac",
+  "val_indices_sha256": "00a00193f5800f384deb7fc09dc27eca1a204dd026e0683b5ead2e7cd0af8040",
+  "code_sha256": {
+    "tools/train_expanded.py": "b4d2f8c6ec367ce732831f26d4c73b5c849eba0a0e52bf7849087c7e428036d9",
+    "stage_b_damage/train_baseline.py": "13e7d72d77c90faeab48978b5e38599136b507bda9d1e70580318e2b6747b8c8",
+    "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230"
+  },
+  "label_to_id": {
+    "no_damage": 0,
+    "minor": 1,
+    "major": 2,
+    "destroyed": 3
+  },
+  "versions": {
+    "python": "3.12.15",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3"
+  },
+  "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "git_commit": "d28d0c4fb73e789d0b562f5e38bb27d1d6f27437",
+  "git_dirty": " M README.md\n M SETUP.md\n M stage_b_damage/dataset.py\n M tests/test_preparation.py\n M tools/build_xview2_manifest.py\n M tools/extract_xview2_subset.py\n?? configs/\n?? docs/\n?? \"reports/experiment_20261015/\\345\\256\\236\\351\\252\\214\\346\\212\\245\\345\\221\\212.docx\"\n?? tests/test_expanded.py\n?? tools/compare_expanded.py\n?? tools/package_expanded_handoff.py\n?? tools/prepare_expanded.py\n?? tools/run_expanded_session.py\n?? tools/train_expanded.py\n",
+  "events": {
+    "train": [
+      "hurricane-harvey",
+      "hurricane-michael",
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "tuscaloosa-tornado"
+    ],
+    "val": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ]
+  },
+  "test_evaluated": false
+}

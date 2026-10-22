@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import re
 from collections import Counter
 from pathlib import Path
@@ -62,6 +63,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--train-event", action="append", default=[])
     parser.add_argument("--val-event", action="append", default=[])
     parser.add_argument("--test-event", action="append", default=[])
+    parser.add_argument("--archive-split", action="append", default=[],
+                        help="Archive partitions to read; default tier3 (legacy pilot)")
     parser.add_argument(
         "--drop-unknown",
         action="store_true",
@@ -182,25 +185,23 @@ def main() -> int:
                 raise ValueError(f"event assigned to multiple splits: {event}")
             event_split[event] = split
 
-    image_root = data_root / "tier3" / "images"
-    label_root = data_root / "tier3" / "labels"
-    if not image_root.is_dir() or not label_root.is_dir():
-        raise FileNotFoundError(
-            f"Expected tier3/images and tier3/labels under {data_root}; "
-            "adjust the extractor or manifest script for a different split."
-        )
-
     images: dict[tuple[str, str, str], Path] = {}
-    for path in image_root.glob("*.tif"):
-        match = IMAGE_RE.match(path.name)
-        if match:
-            images[(match.group("event"), match.group("tile"), match.group("phase"))] = path
-
     labels: dict[tuple[str, str, str], Path] = {}
-    for path in label_root.glob("*.json"):
-        match = NAME_RE.match(path.name)
-        if match:
-            labels[(match.group("event"), match.group("tile"), match.group("phase"))] = path
+    for partition in sorted(set(args.archive_split or ["tier3"])):
+        for kind, extension, pattern, target in (
+            ("images", "*.tif", IMAGE_RE, images),
+            ("labels", "*.json", NAME_RE, labels),
+        ):
+            directory = data_root / partition / kind
+            if not directory.is_dir():
+                raise FileNotFoundError(directory)
+            for path in sorted(directory.glob(extension)):
+                match = pattern.match(path.name)
+                if match and match.group("event") in event_split:
+                    key = (match.group("event"), match.group("tile"), match.group("phase"))
+                    if key in target:
+                        raise ValueError(f"Duplicate event/tile/phase across archive partitions: {key}")
+                    target[key] = path
 
     rows: list[dict[str, str]] = []
     audit: dict[str, Any] = {
@@ -213,6 +214,7 @@ def main() -> int:
         "missing_components": [],
         "invalid_damage": [],
         "dropped_unknown": 0,
+        "dropped_invalid_bbox": 0,
         "damage_counts": Counter(),
         "rows_by_split": Counter(),
         "rows_by_event": Counter(),
@@ -248,6 +250,9 @@ def main() -> int:
                     audit["dropped_unknown"] += 1
                     continue
             bbox = bbox_for(post_feature)
+            if bbox is None or not all(math.isfinite(v) for v in bbox) or bbox[0] >= bbox[2] or bbox[1] >= bbox[3]:
+                audit["dropped_invalid_bbox"] += 1
+                continue
             row = {
                 "split": event_split[event],
                 "event": event,

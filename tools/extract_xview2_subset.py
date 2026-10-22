@@ -94,6 +94,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--force", action="store_true", help="replace files already in output"
     )
+    parser.add_argument("--skip-existing", action="store_true",
+                        help="Resume extraction, verifying existing files against archive bytes")
     return parser.parse_args()
 
 
@@ -134,6 +136,20 @@ def main() -> int:
 
             destination = output / split / kind / filename
             destination.parent.mkdir(parents=True, exist_ok=True)
+            if destination.exists() and args.skip_existing:
+                archived = stream.extractfile(member)
+                if archived is None:
+                    raise RuntimeError(member.name)
+                with archived, destination.open("rb") as existing:
+                    while True:
+                        block = archived.read(8 * 1024 * 1024)
+                        if block != existing.read(len(block) if block else 1):
+                            raise ValueError(f"Existing file differs from archive: {destination}")
+                        if not block:
+                            break
+                counts[f"{split}/{event}"] += 1
+                matched += 1
+                continue
             if destination.exists() and not args.force:
                 raise FileExistsError(
                     f"{destination} already exists; use --force to replace it"

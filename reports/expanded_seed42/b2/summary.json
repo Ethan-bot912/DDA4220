@@ -1,0 +1,3983 @@
+{
+  "config": {
+    "experiment": "expanded_five_train_two_val_seed42_v1",
+    "manifest": "dataset/expanded_7events/manifest_classification.csv",
+    "archive_partitions": [
+      "tier3",
+      "tier1",
+      "hold",
+      "test"
+    ],
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "moore-tornado",
+      "hurricane-matthew"
+    ],
+    "sealed_test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 104152,
+    "expected_val_rows": 45002,
+    "expected_train_counts": {
+      "no_damage": 62331,
+      "minor": 17079,
+      "major": 17794,
+      "destroyed": 6948
+    },
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 0,
+    "seed": 42,
+    "max_open_files": 64,
+    "gdal_cache_mb": 128,
+    "pretrained": false,
+    "augmentation": false,
+    "selection": "pooled_validation_macro_f1_strict_improvement",
+    "precision": "float32",
+    "max_train": 0,
+    "max_val": 0
+  },
+  "mode": "early",
+  "backbone": "resnet18",
+  "args": {
+    "experiment": "expanded_five_train_two_val_seed42_v1",
+    "manifest": "dataset/expanded_7events/manifest_classification.csv",
+    "archive_partitions": [
+      "tier3",
+      "tier1",
+      "hold",
+      "test"
+    ],
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "moore-tornado",
+      "hurricane-matthew"
+    ],
+    "sealed_test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 104152,
+    "expected_val_rows": 45002,
+    "expected_train_counts": {
+      "no_damage": 62331,
+      "minor": 17079,
+      "major": 17794,
+      "destroyed": 6948
+    },
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 0,
+    "seed": 42,
+    "max_open_files": 64,
+    "gdal_cache_mb": 128,
+    "pretrained": false,
+    "augmentation": false,
+    "selection": "pooled_validation_macro_f1_strict_improvement",
+    "precision": "float32",
+    "max_train": 0,
+    "max_val": 0,
+    "mode": "early"
+  },
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "train_indices_sha256": "1b562a9424b71215111cc2b9dd7fe0366a7bbbe35ba85ceb59960b2169a30dac",
+  "val_indices_sha256": "00a00193f5800f384deb7fc09dc27eca1a204dd026e0683b5ead2e7cd0af8040",
+  "code_sha256": {
+    "tools/train_expanded.py": "b4d2f8c6ec367ce732831f26d4c73b5c849eba0a0e52bf7849087c7e428036d9",
+    "stage_b_damage/train_baseline.py": "13e7d72d77c90faeab48978b5e38599136b507bda9d1e70580318e2b6747b8c8",
+    "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230"
+  },
+  "label_to_id": {
+    "no_damage": 0,
+    "minor": 1,
+    "major": 2,
+    "destroyed": 3
+  },
+  "versions": {
+    "python": "3.12.15",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3"
+  },
+  "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "git_commit": "d28d0c4fb73e789d0b562f5e38bb27d1d6f27437",
+  "git_dirty": " M README.md\n M SETUP.md\n M stage_b_damage/dataset.py\n M tests/test_preparation.py\n M tools/build_xview2_manifest.py\n M tools/extract_xview2_subset.py\n?? configs/\n?? docs/\n?? \"reports/experiment_20261015/\\345\\256\\236\\351\\252\\214\\346\\212\\245\\345\\221\\212.docx\"\n?? tests/test_expanded.py\n?? tools/compare_expanded.py\n?? tools/package_expanded_handoff.py\n?? tools/prepare_expanded.py\n?? tools/run_expanded_session.py\n?? tools/train_expanded.py\n",
+  "events": {
+    "train": [
+      "hurricane-harvey",
+      "hurricane-michael",
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "tuscaloosa-tornado"
+    ],
+    "val": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ]
+  },
+  "test_evaluated": false,
+  "status": "complete",
+  "completed_epochs": 20,
+  "best_epoch": 10,
+  "best_val": {
+    "n": 45002,
+    "accuracy": 0.611017288120528,
+    "macro_f1": 0.4508704904084147,
+    "balanced_accuracy": 0.5075770380044378,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.800615458396611,
+        "recall": 0.8520692441835737,
+        "f1": 0.8255413842128038,
+        "support": 23511
+      },
+      "minor": {
+        "precision": 0.6007681423084698,
+        "recall": 0.22486192025421806,
+        "f1": 0.3272406958819643,
+        "support": 13217
+      },
+      "major": {
+        "precision": 0.17269414073451078,
+        "recall": 0.1945672773215414,
+        "f1": 0.18297935541363436,
+        "support": 3166
+      },
+      "destroyed": {
+        "precision": 0.3380429094714809,
+        "recall": 0.7588097102584181,
+        "f1": 0.46772052612525644,
+        "support": 5108
+      }
+    },
+    "confusion": [
+      [
+        20033,
+        960,
+        719,
+        1799
+      ],
+      [
+        3746,
+        2972,
+        1938,
+        4561
+      ],
+      [
+        696,
+        624,
+        616,
+        1230
+      ],
+      [
+        547,
+        391,
+        294,
+        3876
+      ]
+    ]
+  },
+  "best_per_event": {
+    "hurricane-matthew": {
+      "n": 22630,
+      "accuracy": 0.28232434821034025,
+      "macro_f1": 0.25296438963485735,
+      "balanced_accuracy": 0.31768076900079273,
+      "per_class": {
+        "no_damage": {
+          "precision": 0.17321688500727803,
+          "recall": 0.2345983242976836,
+          "f1": 0.19928825622775803,
+          "support": 4058
+        },
+        "minor": {
+          "precision": 0.6009952499434517,
+          "recall": 0.21547319763198444,
+          "f1": 0.31721585482330467,
+          "support": 12331
+        },
+        "major": {
+          "precision": 0.12236286919831224,
+          "recall": 0.13875598086124402,
+          "f1": 0.13004484304932737,
+          "support": 2717
+        },
+        "destroyed": {
+          "precision": 0.24948089700996678,
+          "recall": 0.6818955732122588,
+          "f1": 0.36530860443903923,
+          "support": 3524
+        }
+      },
+      "confusion": [
+        [
+          952,
+          786,
+          662,
+          1658
+        ],
+        [
+          3376,
+          2657,
+          1795,
+          4503
+        ],
+        [
+          676,
+          596,
+          377,
+          1068
+        ],
+        [
+          492,
+          382,
+          247,
+          2403
+        ]
+      ]
+    },
+    "moore-tornado": {
+      "n": 22372,
+      "accuracy": 0.94350080457715,
+      "macro_f1": 0.6995882820217254,
+      "balanced_accuracy": 0.6996564221641932,
+      "per_class": {
+        "no_damage": {
+          "precision": 0.977209874014135,
+          "recall": 0.9808769855549273,
+          "f1": 0.9790399958952255,
+          "support": 19453
+        },
+        "minor": {
+          "precision": 0.5988593155893536,
+          "recall": 0.35553047404063204,
+          "f1": 0.4461756373937677,
+          "support": 886
+        },
+        "major": {
+          "precision": 0.49176954732510286,
+          "recall": 0.532293986636971,
+          "f1": 0.5112299465240642,
+          "support": 449
+        },
+        "destroyed": {
+          "precision": 0.8031624863685932,
+          "recall": 0.9299242424242424,
+          "f1": 0.8619075482738443,
+          "support": 1584
+        }
+      },
+      "confusion": [
+        [
+          19081,
+          174,
+          57,
+          141
+        ],
+        [
+          370,
+          315,
+          143,
+          58
+        ],
+        [
+          20,
+          28,
+          239,
+          162
+        ],
+        [
+          55,
+          9,
+          47,
+          1473
+        ]
+      ]
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.0104077267570595,
+      "lr": 0.001,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5231767477001023,
+        "macro_f1": 0.3441113010503665,
+        "balanced_accuracy": 0.43149948806185445,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.7660417432504186,
+            "recall": 0.7977117094126154,
+            "f1": 0.781556027836813,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.37592592592592594,
+            "recall": 0.04607702201709919,
+            "f1": 0.08209206712947362,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.12651605231866825,
+            "recall": 0.16803537586860393,
+            "f1": 0.144349477682811,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.2482645977950184,
+            "recall": 0.7141738449490994,
+            "f1": 0.3684476315523684,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            18755,
+            139,
+            1456,
+            3161
+          ],
+          [
+            3990,
+            609,
+            1822,
+            6796
+          ],
+          [
+            1043,
+            502,
+            532,
+            1089
+          ],
+          [
+            695,
+            370,
+            395,
+            3648
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.17300044189129474,
+          "macro_f1": 0.16679829671049887,
+          "balanced_accuracy": 0.26061087326330823,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.13151275601868487,
+              "recall": 0.18038442582552983,
+              "f1": 0.1521197007481297,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.358426005132592,
+              "recall": 0.03397940150839348,
+              "f1": 0.06207407407407408,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.16512885777919187,
+              "recall": 0.1910195068089805,
+              "f1": 0.1771331058020478,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.1760508155583438,
+              "recall": 0.6370601589103292,
+              "f1": 0.27586630621774394,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              732,
+              71,
+              440,
+              2815
+            ],
+            [
+              3355,
+              419,
+              1798,
+              6759
+            ],
+            [
+              912,
+              353,
+              519,
+              933
+            ],
+            [
+              567,
+              326,
+              386,
+              2245
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.8773913820847488,
+          "macro_f1": 0.509165000993167,
+          "balanced_accuracy": 0.5139054981773935,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9527409208648305,
+              "recall": 0.9264894874826505,
+              "f1": 0.9394318477977588,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.4212860310421286,
+              "recall": 0.2144469525959368,
+              "f1": 0.28421839940164545,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.01224105461393597,
+              "recall": 0.028953229398663696,
+              "f1": 0.017207147584381202,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.7224510813594233,
+              "recall": 0.8857323232323232,
+              "f1": 0.7958026091888826,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18023,
+              68,
+              1016,
+              346
+            ],
+            [
+              635,
+              190,
+              24,
+              37
+            ],
+            [
+              131,
+              149,
+              13,
+              156
+            ],
+            [
+              128,
+              44,
+              9,
+              1403
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2429.484000000002
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.8215102474793446,
+      "lr": 0.0009938441702975688,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.3790942624772232,
+        "macro_f1": 0.29283605662352974,
+        "balanced_accuracy": 0.41666579522778024,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.9437097321125806,
+            "recall": 0.47348049849006846,
+            "f1": 0.6305831704761095,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5244299674267101,
+            "recall": 0.036543845048044185,
+            "f1": 0.06832649596831235,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.060818430803931046,
+            "recall": 0.23847125710675932,
+            "f1": 0.0969191270860077,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.23602234411957124,
+            "recall": 0.918167580266249,
+            "f1": 0.3755154329636895,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            11132,
+            240,
+            7652,
+            4487
+          ],
+          [
+            525,
+            483,
+            3690,
+            8519
+          ],
+          [
+            74,
+            162,
+            755,
+            2175
+          ],
+          [
+            65,
+            36,
+            317,
+            4690
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.18391515687140964,
+          "macro_f1": 0.14389064109766636,
+          "balanced_accuracy": 0.2984257232271218,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.27236580516898606,
+              "recall": 0.033760473139477575,
+              "f1": 0.06007454505590879,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.5857988165680473,
+              "recall": 0.016057091882247992,
+              "f1": 0.031257399952640305,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.12518221574344024,
+              "recall": 0.2528524107471476,
+              "f1": 0.16745886654478978,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.19262621925035273,
+              "recall": 0.8910329171396141,
+              "f1": 0.31677175283732656,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              137,
+              29,
+              1024,
+              2868
+            ],
+            [
+              265,
+              198,
+              3477,
+              8391
+            ],
+            [
+              50,
+              78,
+              687,
+              1902
+            ],
+            [
+              51,
+              33,
+              300,
+              3140
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.5765242267119614,
+          "macro_f1": 0.4307873271788076,
+          "balanced_accuracy": 0.5042154737594584,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9736119720180643,
+              "recall": 0.5652084511386418,
+              "f1": 0.7152149873154232,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.4888507718696398,
+              "recall": 0.3216704288939052,
+              "f1": 0.3880190605854323,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.009818076812012706,
+              "recall": 0.1514476614699332,
+              "f1": 0.018440677966101694,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.4341736694677871,
+              "recall": 0.9785353535353535,
+              "f1": 0.6014745828482732,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              10995,
+              211,
+              6628,
+              1619
+            ],
+            [
+              260,
+              285,
+              213,
+              128
+            ],
+            [
+              24,
+              84,
+              68,
+              273
+            ],
+            [
+              14,
+              3,
+              17,
+              1550
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2416.0459999999985
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.7540117633027479,
+      "lr": 0.0009755282581475768,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5357317452557664,
+        "macro_f1": 0.40528071185937736,
+        "balanced_accuracy": 0.4976012882346194,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.9533987187482283,
+            "recall": 0.7152822083280167,
+            "f1": 0.8173511543134873,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5283311772315653,
+            "recall": 0.1544979950064311,
+            "f1": 0.23908207469851306,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.12473777634339196,
+            "recall": 0.2441566645609602,
+            "f1": 0.16511801772936024,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.25877116929657246,
+            "recall": 0.8764682850430697,
+            "f1": 0.3995716006961489,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            16817,
+            1303,
+            2157,
+            3234
+          ],
+          [
+            655,
+            2042,
+            2877,
+            7643
+          ],
+          [
+            89,
+            357,
+            773,
+            1947
+          ],
+          [
+            78,
+            163,
+            390,
+            4477
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.2314184710561202,
+          "macro_f1": 0.18676278822564174,
+          "balanced_accuracy": 0.30299328008734816,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.15796897038081806,
+              "recall": 0.02759980285855101,
+              "f1": 0.046989720998531576,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6436688311688312,
+              "recall": 0.12861892790527937,
+              "f1": 0.21439675566069616,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.13317349607672188,
+              "recall": 0.22488038277511962,
+              "f1": 0.1672826830937714,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.19691976595601587,
+              "recall": 0.8308740068104427,
+              "f1": 0.3183819931495678,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              112,
+              402,
+              868,
+              2676
+            ],
+            [
+              451,
+              1586,
+              2731,
+              7563
+            ],
+            [
+              84,
+              320,
+              611,
+              1702
+            ],
+            [
+              62,
+              156,
+              378,
+              2928
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.8435544430538173,
+          "macro_f1": 0.5614776115838005,
+          "balanced_accuracy": 0.6780287375128573,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9867099822799764,
+              "recall": 0.8587364416799466,
+              "f1": 0.9182860126982382,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.32548179871520344,
+              "recall": 0.5146726862302483,
+              "f1": 0.3987756886751203,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.10068365444375388,
+              "recall": 0.36080178173719374,
+              "f1": 0.1574344023323615,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.6369243421052632,
+              "recall": 0.9779040404040404,
+              "f1": 0.7714143426294822,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              16705,
+              901,
+              1289,
+              558
+            ],
+            [
+              204,
+              456,
+              146,
+              80
+            ],
+            [
+              5,
+              37,
+              162,
+              245
+            ],
+            [
+              16,
+              7,
+              12,
+              1549
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2426.467999999997
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.706007728219836,
+      "lr": 0.0009455032620941839,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.575352206568597,
+        "macro_f1": 0.4029474827353398,
+        "balanced_accuracy": 0.49276661900256996,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.8676517390315981,
+            "recall": 0.8117051592871422,
+            "f1": 0.8387465389179449,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.6139391868807653,
+            "recall": 0.13596126201104639,
+            "f1": 0.22262140733399408,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.29839391377852914,
+            "recall": 0.1114971572962729,
+            "f1": 0.16233616923430672,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.24649415251098059,
+            "recall": 0.9119028974158183,
+            "f1": 0.38808581545511356,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            19084,
+            644,
+            374,
+            3409
+          ],
+          [
+            2334,
+            1797,
+            383,
+            8703
+          ],
+          [
+            294,
+            392,
+            353,
+            2127
+          ],
+          [
+            283,
+            94,
+            73,
+            4658
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.23013698630136986,
+          "macro_f1": 0.18882887208860127,
+          "balanced_accuracy": 0.3006170457776,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.1882793017456359,
+              "recall": 0.1488417939871858,
+              "f1": 0.16625378475089458,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6328688130706391,
+              "recall": 0.10680398994404347,
+              "f1": 0.18276436303080767,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.21660181582360571,
+              "recall": 0.06146485093853515,
+              "f1": 0.09575688073394495,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.18829209414604708,
+              "recall": 0.8853575482406356,
+              "f1": 0.3105404598387579,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              604,
+              343,
+              231,
+              2880
+            ],
+            [
+              2058,
+              1317,
+              317,
+              8639
+            ],
+            [
+              286,
+              333,
+              167,
+              1931
+            ],
+            [
+              260,
+              88,
+              56,
+              3120
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9245485428213839,
+          "macro_f1": 0.6848387698922581,
+          "balanced_accuracy": 0.7192390559434635,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9836589130781924,
+              "recall": 0.9499820079165168,
+              "f1": 0.9665271966527197,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.5673758865248227,
+              "recall": 0.5417607223476298,
+              "f1": 0.5542725173210162,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.45145631067961167,
+              "recall": 0.4142538975501114,
+              "f1": 0.4320557491289199,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.6609368285345939,
+              "recall": 0.9709595959595959,
+              "f1": 0.7864996164663768,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18480,
+              301,
+              143,
+              529
+            ],
+            [
+              276,
+              480,
+              66,
+              64
+            ],
+            [
+              8,
+              59,
+              186,
+              196
+            ],
+            [
+              23,
+              6,
+              17,
+              1538
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2434.9370000000017
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.6702156580836268,
+      "lr": 0.0009045084971874737,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5903293186969468,
+        "macro_f1": 0.4273133849878622,
+        "balanced_accuracy": 0.5054401881332317,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.9359475796210698,
+            "recall": 0.7837182595380886,
+            "f1": 0.8530950506967916,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.6311154598825832,
+            "recall": 0.2440039343270031,
+            "f1": 0.35193976100834834,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.17797179314976494,
+            "recall": 0.08370183196462413,
+            "f1": 0.1138560687432868,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.2484505236161573,
+            "recall": 0.9103367267032106,
+            "f1": 0.3903626595030222,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            18426,
+            1041,
+            356,
+            3688
+          ],
+          [
+            1029,
+            3225,
+            760,
+            8203
+          ],
+          [
+            110,
+            616,
+            265,
+            2175
+          ],
+          [
+            122,
+            228,
+            108,
+            4650
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.2830755634114008,
+          "macro_f1": 0.21828684461244643,
+          "balanced_accuracy": 0.3129352874499901,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.23941605839416058,
+              "recall": 0.08082799408575653,
+              "f1": 0.1208548268238762,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6657190239279791,
+              "recall": 0.22788095045008516,
+              "f1": 0.33953600773320447,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.14576802507836992,
+              "recall": 0.06845785793154215,
+              "f1": 0.09316303531179564,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.1955211571401383,
+              "recall": 0.8745743473325767,
+              "f1": 0.3195935085809094,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              328,
+              616,
+              321,
+              2793
+            ],
+            [
+              827,
+              2810,
+              663,
+              8031
+            ],
+            [
+              105,
+              569,
+              186,
+              1857
+            ],
+            [
+              110,
+              226,
+              106,
+              3082
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9011264080100125,
+          "macro_f1": 0.5889521713713608,
+          "balanced_accuracy": 0.641146940730729,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.988043893650707,
+              "recall": 0.9303449339433506,
+              "f1": 0.9583267143235372,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.4668166479190101,
+              "recall": 0.4683972911963883,
+              "f1": 0.4676056338028169,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.37089201877934275,
+              "recall": 0.1759465478841871,
+              "f1": 0.23867069486404835,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.5309854385370809,
+              "recall": 0.98989898989899,
+              "f1": 0.6912056424950408,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18098,
+              425,
+              35,
+              895
+            ],
+            [
+              202,
+              415,
+              97,
+              172
+            ],
+            [
+              5,
+              47,
+              79,
+              318
+            ],
+            [
+              12,
+              2,
+              2,
+              1568
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2427.9850000000006
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.6335547409120416,
+      "lr": 0.0008535533905932737,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5515088218301408,
+        "macro_f1": 0.415538491353661,
+        "balanced_accuracy": 0.478881699014872,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.8314751476924443,
+            "recall": 0.7961805112500532,
+            "f1": 0.8134451590474535,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5657980456026058,
+            "recall": 0.131421653930544,
+            "f1": 0.21329895008288818,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.10213624277986615,
+            "recall": 0.35186355022109916,
+            "f1": 0.15831734527108648,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.38169642857142855,
+            "recall": 0.6360610806577917,
+            "f1": 0.47709251101321587,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            18719,
+            445,
+            3018,
+            1329
+          ],
+          [
+            2666,
+            1737,
+            5642,
+            3172
+          ],
+          [
+            725,
+            565,
+            1114,
+            762
+          ],
+          [
+            403,
+            323,
+            1133,
+            3249
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.21343349536014142,
+          "macro_f1": 0.2159573651515413,
+          "balanced_accuracy": 0.2862627011690772,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.1749079431877959,
+              "recall": 0.16387382947264661,
+              "f1": 0.16921119592875317,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.5511655472145397,
+              "recall": 0.1131295109885654,
+              "f1": 0.18772708922083164,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.1027455121436114,
+              "recall": 0.35811556864188443,
+              "f1": 0.15967834577828835,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.263219569356965,
+              "recall": 0.5099318955732123,
+              "f1": 0.347212829678292,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              665,
+              380,
+              1772,
+              1241
+            ],
+            [
+              2164,
+              1395,
+              5619,
+              3153
+            ],
+            [
+              664,
+              444,
+              973,
+              636
+            ],
+            [
+              309,
+              312,
+              1106,
+              1797
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.8934829250849275,
+          "macro_f1": 0.6159987748895733,
+          "balanced_accuracy": 0.6361963584399959,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9648869648869649,
+              "recall": 0.9280830720197399,
+              "f1": 0.9461272403312022,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.634508348794063,
+              "recall": 0.3860045146726862,
+              "f1": 0.4799999999999999,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.09812108559498957,
+              "recall": 0.31403118040089084,
+              "f1": 0.14952279957582187,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.8617210682492582,
+              "recall": 0.9166666666666666,
+              "f1": 0.8883450596512694,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18054,
+              65,
+              1246,
+              88
+            ],
+            [
+              502,
+              342,
+              23,
+              19
+            ],
+            [
+              61,
+              121,
+              141,
+              126
+            ],
+            [
+              94,
+              11,
+              27,
+              1452
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2423.469000000001
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.5937073578708479,
+      "lr": 0.0007938926261462366,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.6073730056441936,
+        "macro_f1": 0.4392423728019128,
+        "balanced_accuracy": 0.49908947190789943,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.8035156562825339,
+            "recall": 0.853515375781549,
+            "f1": 0.8277611632463648,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.6134289439374185,
+            "recall": 0.21358856018763714,
+            "f1": 0.3168527975756215,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.13916221535001405,
+            "recall": 0.15634870499052433,
+            "f1": 0.14725568942436412,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.33263122419748925,
+            "recall": 0.7729052466718872,
+            "f1": 0.46509984096130064,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20067,
+            811,
+            751,
+            1882
+          ],
+          [
+            3624,
+            2823,
+            2006,
+            4764
+          ],
+          [
+            773,
+            623,
+            495,
+            1275
+          ],
+          [
+            510,
+            345,
+            305,
+            3948
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.27481219619973485,
+          "macro_f1": 0.24476998064311659,
+          "balanced_accuracy": 0.31136377147673866,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.17009708737864077,
+              "recall": 0.21586988664366683,
+              "f1": 0.19026933101650736,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6065145030908227,
+              "recall": 0.2068769767253264,
+              "f1": 0.30852028783939045,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.10893180446590223,
+              "recall": 0.13286713286713286,
+              "f1": 0.11971480683137124,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.24407630522088353,
+              "recall": 0.6898410896708286,
+              "f1": 0.36057549688519724,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              876,
+              731,
+              697,
+              1754
+            ],
+            [
+              3104,
+              2551,
+              1959,
+              4717
+            ],
+            [
+              713,
+              585,
+              361,
+              1058
+            ],
+            [
+              457,
+              339,
+              297,
+              2431
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9437689969604863,
+          "macro_f1": 0.6643569173172117,
+          "balanced_accuracy": 0.637418095796272,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9680690072639225,
+              "recall": 0.9865316403639541,
+              "f1": 0.9772131272755047,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.6868686868686869,
+              "recall": 0.30699774266365687,
+              "f1": 0.4243369734789392,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.551440329218107,
+              "recall": 0.2984409799554566,
+              "f1": 0.38728323699421974,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.7946568884232582,
+              "recall": 0.9577020202020202,
+              "f1": 0.8685943315201832,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              19191,
+              80,
+              54,
+              128
+            ],
+            [
+              520,
+              272,
+              47,
+              47
+            ],
+            [
+              60,
+              38,
+              134,
+              217
+            ],
+            [
+              53,
+              6,
+              8,
+              1517
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2428.530999999999
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.543331475011567,
+      "lr": 0.0007269952498697733,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5624416692591441,
+        "macro_f1": 0.42614979613965354,
+        "balanced_accuracy": 0.5175623570182195,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.9233181588265048,
+            "recall": 0.7764025349836247,
+            "f1": 0.843511009449874,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5638009049773756,
+            "recall": 0.14140879170764925,
+            "f1": 0.22610694410839588,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.12896286231884058,
+            "recall": 0.35975994946304485,
+            "f1": 0.18986497749624937,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.30943828811616353,
+            "recall": 0.7926781519185592,
+            "f1": 0.44511625350409495,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            18254,
+            952,
+            2016,
+            2289
+          ],
+          [
+            1137,
+            1869,
+            4965,
+            5246
+          ],
+          [
+            203,
+            323,
+            1139,
+            1501
+          ],
+          [
+            176,
+            171,
+            712,
+            4049
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.23274414494034468,
+          "macro_f1": 0.21140669988605107,
+          "balanced_accuracy": 0.3169407883559562,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.19341061622940817,
+              "recall": 0.07811729916214884,
+              "f1": 0.11128664209232929,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6338514680483592,
+              "recall": 0.11904954991484876,
+              "f1": 0.2004506042192941,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.12538422131147542,
+              "recall": 0.3603238866396761,
+              "f1": 0.1860332541567696,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.23033035796447962,
+              "recall": 0.710272417707151,
+              "f1": 0.3478562990758113,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              317,
+              384,
+              1405,
+              1952
+            ],
+            [
+              966,
+              1468,
+              4726,
+              5171
+            ],
+            [
+              198,
+              299,
+              979,
+              1241
+            ],
+            [
+              158,
+              165,
+              698,
+              2503
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.8959413552655104,
+          "macro_f1": 0.6026165019865865,
+          "balanced_accuracy": 0.6767555130246288,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.989300093762065,
+              "recall": 0.9220685755410477,
+              "f1": 0.9545019157088124,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.4014014014014014,
+              "recall": 0.4525959367945824,
+              "f1": 0.42546419098143234,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.15625,
+              "recall": 0.35634743875278396,
+              "f1": 0.2172437202987101,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.69702434625789,
+              "recall": 0.976010101010101,
+              "f1": 0.8132561809573908,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              17937,
+              568,
+              611,
+              337
+            ],
+            [
+              171,
+              401,
+              239,
+              75
+            ],
+            [
+              5,
+              24,
+              160,
+              260
+            ],
+            [
+              18,
+              6,
+              14,
+              1546
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2432.282000000003
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.47971177438944046,
+      "lr": 0.0006545084971874737,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5419314697124572,
+        "macro_f1": 0.4104762706009345,
+        "balanced_accuracy": 0.4887076580651384,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.9348622834295869,
+            "recall": 0.7160478074092977,
+            "f1": 0.8109540210506034,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.4757548032936871,
+            "recall": 0.19671635015510328,
+            "f1": 0.27834278985119365,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.15067466266866567,
+            "recall": 0.19046114971572964,
+            "f1": 0.16824776785714288,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.24818850915730017,
+            "recall": 0.8516053249804229,
+            "f1": 0.38436050364479796,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            16835,
+            2142,
+            1145,
+            3389
+          ],
+          [
+            844,
+            2600,
+            2014,
+            7759
+          ],
+          [
+            115,
+            419,
+            603,
+            2029
+          ],
+          [
+            214,
+            304,
+            240,
+            4350
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.2564295183384887,
+          "macro_f1": 0.2144316063360728,
+          "balanced_accuracy": 0.3039622987318716,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.225,
+              "recall": 0.07540660423854115,
+              "f1": 0.11295681063122924,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6306053811659192,
+              "recall": 0.18246695320736356,
+              "f1": 0.28303666897289137,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.15064213814647692,
+              "recall": 0.159735001840265,
+              "f1": 0.1550553769203287,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.18979825922677282,
+              "recall": 0.7982406356413166,
+              "f1": 0.30667756881984193,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              306,
+              620,
+              518,
+              2614
+            ],
+            [
+              746,
+              2250,
+              1706,
+              7629
+            ],
+            [
+              114,
+              404,
+              434,
+              1765
+            ],
+            [
+              194,
+              294,
+              223,
+              2813
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.8307259073842302,
+          "macro_f1": 0.5247681439703618,
+          "balanced_accuracy": 0.6478607797603904,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9928519942335415,
+              "recall": 0.8496889939855036,
+              "f1": 0.9157087061300241,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.18450184501845018,
+              "recall": 0.39503386004514673,
+              "f1": 0.2515271289974847,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.15075825156110614,
+              "recall": 0.37639198218262804,
+              "f1": 0.21528662420382164,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.5679970436067997,
+              "recall": 0.9703282828282829,
+              "f1": 0.7165501165501166,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              16529,
+              1522,
+              627,
+              775
+            ],
+            [
+              98,
+              350,
+              308,
+              130
+            ],
+            [
+              1,
+              15,
+              169,
+              264
+            ],
+            [
+              20,
+              10,
+              17,
+              1537
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 3652.203
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.40239893415420713,
+      "lr": 0.0005782172325201155,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.611017288120528,
+        "macro_f1": 0.4508704904084147,
+        "balanced_accuracy": 0.5075770380044378,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.800615458396611,
+            "recall": 0.8520692441835737,
+            "f1": 0.8255413842128038,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.6007681423084698,
+            "recall": 0.22486192025421806,
+            "f1": 0.3272406958819643,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.17269414073451078,
+            "recall": 0.1945672773215414,
+            "f1": 0.18297935541363436,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.3380429094714809,
+            "recall": 0.7588097102584181,
+            "f1": 0.46772052612525644,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20033,
+            960,
+            719,
+            1799
+          ],
+          [
+            3746,
+            2972,
+            1938,
+            4561
+          ],
+          [
+            696,
+            624,
+            616,
+            1230
+          ],
+          [
+            547,
+            391,
+            294,
+            3876
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.28232434821034025,
+          "macro_f1": 0.25296438963485735,
+          "balanced_accuracy": 0.31768076900079273,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.17321688500727803,
+              "recall": 0.2345983242976836,
+              "f1": 0.19928825622775803,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6009952499434517,
+              "recall": 0.21547319763198444,
+              "f1": 0.31721585482330467,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.12236286919831224,
+              "recall": 0.13875598086124402,
+              "f1": 0.13004484304932737,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.24948089700996678,
+              "recall": 0.6818955732122588,
+              "f1": 0.36530860443903923,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              952,
+              786,
+              662,
+              1658
+            ],
+            [
+              3376,
+              2657,
+              1795,
+              4503
+            ],
+            [
+              676,
+              596,
+              377,
+              1068
+            ],
+            [
+              492,
+              382,
+              247,
+              2403
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.94350080457715,
+          "macro_f1": 0.6995882820217254,
+          "balanced_accuracy": 0.6996564221641932,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.977209874014135,
+              "recall": 0.9808769855549273,
+              "f1": 0.9790399958952255,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.5988593155893536,
+              "recall": 0.35553047404063204,
+              "f1": 0.4461756373937677,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.49176954732510286,
+              "recall": 0.532293986636971,
+              "f1": 0.5112299465240642,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.8031624863685932,
+              "recall": 0.9299242424242424,
+              "f1": 0.8619075482738443,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              19081,
+              174,
+              57,
+              141
+            ],
+            [
+              370,
+              315,
+              143,
+              58
+            ],
+            [
+              20,
+              28,
+              239,
+              162
+            ],
+            [
+              55,
+              9,
+              47,
+              1473
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 3505.2339999999995
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.3194412861213176,
+      "lr": 0.0005,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5862183902937648,
+        "macro_f1": 0.43613644355237247,
+        "balanced_accuracy": 0.49835530863521776,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.8333550318968884,
+            "recall": 0.8167666198800562,
+            "f1": 0.8249774455471066,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.569601364314645,
+            "recall": 0.20216387985170614,
+            "f1": 0.29841411659593475,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.13663823738450603,
+            "recall": 0.2428932406822489,
+            "f1": 0.17489197179895383,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.32104810996563576,
+            "recall": 0.7315974941268598,
+            "f1": 0.4462622402674946,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            19203,
+            1147,
+            1316,
+            1845
+          ],
+          [
+            2798,
+            2672,
+            3041,
+            4706
+          ],
+          [
+            536,
+            509,
+            769,
+            1352
+          ],
+          [
+            506,
+            363,
+            502,
+            3737
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.259169244365886,
+          "macro_f1": 0.23825898590323794,
+          "balanced_accuracy": 0.3018622417176885,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.1668228678537957,
+              "recall": 0.17545588960078856,
+              "f1": 0.1710305068460245,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6056338028169014,
+              "recall": 0.19179304192685104,
+              "f1": 0.29132791327913277,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.11653984781738086,
+              "recall": 0.21420684578579316,
+              "f1": 0.15095318376345482,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.23311846137588502,
+              "recall": 0.6259931895573212,
+              "f1": 0.3397243397243397,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              712,
+              706,
+              1100,
+              1540
+            ],
+            [
+              2553,
+              2365,
+              2825,
+              4588
+            ],
+            [
+              529,
+              477,
+              582,
+              1129
+            ],
+            [
+              474,
+              357,
+              487,
+              2206
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9170391560879672,
+          "macro_f1": 0.6235282927732954,
+          "balanced_accuracy": 0.6700175187870778,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9848735019973369,
+              "recall": 0.9505474733974194,
+              "f1": 0.9674060897771267,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.3905852417302799,
+              "recall": 0.34650112866817157,
+              "f1": 0.3672248803827751,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.2949526813880126,
+              "recall": 0.41648106904231624,
+              "f1": 0.34533702677746997,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.7032613688562241,
+              "recall": 0.9665404040404041,
+              "f1": 0.8141451741558097,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18491,
+              441,
+              216,
+              305
+            ],
+            [
+              245,
+              307,
+              216,
+              118
+            ],
+            [
+              7,
+              32,
+              187,
+              223
+            ],
+            [
+              32,
+              6,
+              15,
+              1531
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 3501.125
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.23273189539977296,
+      "lr": 0.0004217827674798847,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.4999333362961646,
+        "macro_f1": 0.3720179807560105,
+        "balanced_accuracy": 0.4535937139908617,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.8979918759654443,
+            "recall": 0.6676023988771214,
+            "f1": 0.7658453281288119,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.39310611928737416,
+            "recall": 0.15359007339033062,
+            "f1": 0.22088025678689951,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.1174079387852702,
+            "recall": 0.15508528111181302,
+            "f1": 0.13364180729450192,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.23551741211421026,
+            "recall": 0.8380971025841817,
+            "f1": 0.3677045308138286,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            15696,
+            2592,
+            1455,
+            3768
+          ],
+          [
+            1244,
+            2030,
+            1977,
+            7966
+          ],
+          [
+            207,
+            306,
+            491,
+            2162
+          ],
+          [
+            332,
+            236,
+            259,
+            4281
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.23327441449403447,
+          "macro_f1": 0.1997682789893025,
+          "balanced_accuracy": 0.2893365849749171,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.19520383693045565,
+              "recall": 0.10029571217348447,
+              "f1": 0.13250854631287645,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6318425760286226,
+              "recall": 0.14321628416186846,
+              "f1": 0.2335052227951871,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.13162393162393163,
+              "recall": 0.1417004048582996,
+              "f1": 0.13647642679900746,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.18354131534569984,
+              "recall": 0.7721339387060159,
+              "f1": 0.296582920050139,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              407,
+              493,
+              637,
+              2521
+            ],
+            [
+              1153,
+              1766,
+              1655,
+              7757
+            ],
+            [
+              205,
+              301,
+              385,
+              1826
+            ],
+            [
+              320,
+              235,
+              248,
+              2721
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.7696674414446629,
+          "macro_f1": 0.4490157690589906,
+          "balanced_accuracy": 0.576210668203832,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9931791607119657,
+              "recall": 0.7859456125019277,
+              "f1": 0.8774930410078343,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.1114394259181089,
+              "recall": 0.2979683972911964,
+              "f1": 0.16221198156682026,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.08432776451869531,
+              "recall": 0.23608017817371937,
+              "f1": 0.1242672919109027,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.46539379474940334,
+              "recall": 0.9848484848484849,
+              "f1": 0.6320907617504051,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              15289,
+              2099,
+              818,
+              1247
+            ],
+            [
+              91,
+              264,
+              322,
+              209
+            ],
+            [
+              2,
+              5,
+              106,
+              336
+            ],
+            [
+              12,
+              1,
+              11,
+              1560
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 3652.3600000000006
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.15600399081652574,
+      "lr": 0.00034549150281252633,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5886182836318385,
+        "macro_f1": 0.43035899805425065,
+        "balanced_accuracy": 0.48823011617625844,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.8108887310408223,
+            "recall": 0.8254434094679086,
+            "f1": 0.8181013405277802,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5573338735818476,
+            "recall": 0.20814103049103427,
+            "f1": 0.3030903982812758,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.17734724292101342,
+            "recall": 0.18793430195830702,
+            "f1": 0.18248734856617085,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.2923775238691501,
+            "recall": 0.7314017227877838,
+            "f1": 0.4177569048417757,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            19407,
+            1242,
+            816,
+            2046
+          ],
+          [
+            3311,
+            2751,
+            1653,
+            5502
+          ],
+          [
+            568,
+            509,
+            595,
+            1494
+          ],
+          [
+            647,
+            434,
+            291,
+            3736
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.27255855059655326,
+          "macro_f1": 0.2487249335586499,
+          "balanced_accuracy": 0.3107695836456588,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.2038432554634514,
+              "recall": 0.2666338097585017,
+              "f1": 0.23104847320093955,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6074766355140186,
+              "recall": 0.20030816640986132,
+              "f1": 0.30127462340672073,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.1473181484202792,
+              "recall": 0.14758925285241076,
+              "f1": 0.14745357602500458,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.21027150180368331,
+              "recall": 0.6285471055618616,
+              "f1": 0.3151230616019348,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1082,
+              695,
+              613,
+              1668
+            ],
+            [
+              3047,
+              2470,
+              1435,
+              5379
+            ],
+            [
+              561,
+              483,
+              401,
+              1272
+            ],
+            [
+              618,
+              418,
+              273,
+              2215
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9083229036295369,
+          "macro_f1": 0.6089524072313274,
+          "balanced_accuracy": 0.662867095913442,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9838926174496644,
+              "recall": 0.9420140852310698,
+              "f1": 0.9624980303587373,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.32298850574712645,
+              "recall": 0.31715575620767494,
+              "f1": 0.3200455580865603,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.30647709320695105,
+              "recall": 0.43207126948775054,
+              "f1": 0.3585951940850277,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.6778074866310161,
+              "recall": 0.9602272727272727,
+              "f1": 0.7946708463949843,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18325,
+              547,
+              203,
+              378
+            ],
+            [
+              264,
+              281,
+              218,
+              123
+            ],
+            [
+              7,
+              26,
+              194,
+              222
+            ],
+            [
+              29,
+              16,
+              18,
+              1521
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 3281.969000000001
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.09952605544070761,
+      "lr": 0.00027300475013022663,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5885071774587796,
+        "macro_f1": 0.4244353673376435,
+        "balanced_accuracy": 0.4755174863493625,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.765194109772423,
+            "recall": 0.850920845561652,
+            "f1": 0.8057837924923473,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5587425424506655,
+            "recall": 0.18423242793372172,
+            "f1": 0.2770981507823613,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.1439706556625401,
+            "recall": 0.1983575489576753,
+            "f1": 0.16684378320935175,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.3368846798855677,
+            "recall": 0.6685591229444009,
+            "f1": 0.4480157428665136,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20006,
+            1012,
+            1002,
+            1491
+          ],
+          [
+            4328,
+            2435,
+            2352,
+            4102
+          ],
+          [
+            922,
+            487,
+            628,
+            1129
+          ],
+          [
+            889,
+            424,
+            380,
+            3415
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.25634114007954045,
+          "macro_f1": 0.2420364870635505,
+          "balanced_accuracy": 0.29983705026733326,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.18256365990504964,
+              "recall": 0.31271562345983245,
+              "f1": 0.23053865019529476,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.5847984852583176,
+              "recall": 0.17533046792636445,
+              "f1": 0.26977788869478414,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.1194494936380161,
+              "recall": 0.16930437983069563,
+              "f1": 0.14007308160779536,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.23490345590948222,
+              "recall": 0.5419977298524404,
+              "f1": 0.32775632775632774,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1269,
+              665,
+              816,
+              1308
+            ],
+            [
+              3947,
+              2162,
+              2213,
+              4009
+            ],
+            [
+              896,
+              457,
+              460,
+              904
+            ],
+            [
+              839,
+              413,
+              362,
+              1910
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9245038440908279,
+          "macro_f1": 0.6277574108800893,
+          "balanced_accuracy": 0.6489027054851041,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9761904761904762,
+              "recall": 0.9631933377885159,
+              "f1": 0.9696483556291562,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.4130105900151286,
+              "recall": 0.30812641083521447,
+              "f1": 0.3529411764705882,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.3287671232876712,
+              "recall": 0.3741648106904232,
+              "f1": 0.35,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.7502492522432702,
+              "recall": 0.9501262626262627,
+              "f1": 0.8384401114206127,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18737,
+              347,
+              186,
+              183
+            ],
+            [
+              381,
+              273,
+              139,
+              93
+            ],
+            [
+              26,
+              30,
+              168,
+              225
+            ],
+            [
+              50,
+              11,
+              18,
+              1505
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 4253.25
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.061553009737020305,
+      "lr": 0.00020610737385376348,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5827074352251012,
+        "macro_f1": 0.41467299741525415,
+        "balanced_accuracy": 0.46794033493203196,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.7438627300332931,
+            "recall": 0.8647866955892987,
+            "f1": 0.7997797183541815,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5738095238095238,
+            "recall": 0.14587273965347658,
+            "f1": 0.23261144959884175,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.13899765074393108,
+            "recall": 0.2242577384712571,
+            "f1": 0.17162194827169447,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.35354852733398545,
+            "recall": 0.6368441660140955,
+            "f1": 0.45467887343629887,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20332,
+            733,
+            1160,
+            1286
+          ],
+          [
+            4918,
+            1928,
+            2702,
+            3669
+          ],
+          [
+            1082,
+            381,
+            710,
+            993
+          ],
+          [
+            1001,
+            318,
+            536,
+            3253
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.23269995581087052,
+          "macro_f1": 0.2262558038728403,
+          "balanced_accuracy": 0.28762202468651826,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.1742155870445344,
+              "recall": 0.3393297190734352,
+              "f1": 0.2302290586858385,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.5877944325481799,
+              "recall": 0.13356580974779012,
+              "f1": 0.21766999273111742,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.10655381944444445,
+              "recall": 0.18071402281928597,
+              "f1": 0.13406143344709898,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.23933843630399126,
+              "recall": 0.49687854710556184,
+              "f1": 0.3230627306273063,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1377,
+              504,
+              1044,
+              1133
+            ],
+            [
+              4516,
+              1647,
+              2565,
+              3603
+            ],
+            [
+              1055,
+              342,
+              491,
+              829
+            ],
+            [
+              956,
+              309,
+              508,
+              1751
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9367512962631861,
+          "macro_f1": 0.6729230075459833,
+          "balanced_accuracy": 0.6818846179334556,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9756034793350147,
+              "recall": 0.974399835500951,
+              "f1": 0.9750012859420811,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.503584229390681,
+              "recall": 0.31715575620767494,
+              "f1": 0.38919667590027707,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.438,
+              "recall": 0.48775055679287305,
+              "f1": 0.46153846153846156,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.7968169761273209,
+              "recall": 0.9482323232323232,
+              "f1": 0.8659556068031133,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18955,
+              229,
+              116,
+              153
+            ],
+            [
+              402,
+              281,
+              137,
+              66
+            ],
+            [
+              27,
+              39,
+              219,
+              164
+            ],
+            [
+              45,
+              9,
+              28,
+              1502
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 3995.0160000000033
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.038809290750263015,
+      "lr": 0.00014644660940672625,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.586196169059153,
+        "macro_f1": 0.41845485740491967,
+        "balanced_accuracy": 0.4695664655439529,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.7481955502641565,
+            "recall": 0.855344306920165,
+            "f1": 0.798190081168509,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5745591939546599,
+            "recall": 0.1725807671937656,
+            "f1": 0.2654331762378542,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.13641727637479348,
+            "recall": 0.18256475047378395,
+            "f1": 0.1561529109820343,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.34395482504789754,
+            "recall": 0.6677760375880971,
+            "f1": 0.4540432612312812,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20110,
+            987,
+            983,
+            1431
+          ],
+          [
+            4622,
+            2281,
+            2282,
+            4032
+          ],
+          [
+            1107,
+            438,
+            578,
+            1043
+          ],
+          [
+            1039,
+            264,
+            394,
+            3411
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.24524966858152894,
+          "macro_f1": 0.23110698981065633,
+          "balanced_accuracy": 0.2914280811631189,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.1711629125196438,
+              "recall": 0.32207984228684083,
+              "f1": 0.22353343595005987,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6129541864139021,
+              "recall": 0.15732706187657125,
+              "f1": 0.2503871966959215,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.10293728499603069,
+              "recall": 0.1431726168568274,
+              "f1": 0.11976600985221675,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.2377639751552795,
+              "recall": 0.5431328036322361,
+              "f1": 0.3307413167444272,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1307,
+              585,
+              854,
+              1312
+            ],
+            [
+              4265,
+              1940,
+              2162,
+              3964
+            ],
+            [
+              1077,
+              391,
+              389,
+              860
+            ],
+            [
+              987,
+              249,
+              374,
+              1914
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9310745574825675,
+          "macro_f1": 0.6648754099162487,
+          "balanced_accuracy": 0.6793682866943861,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9771853237709178,
+              "recall": 0.9665861306739321,
+              "f1": 0.9718568290476807,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.4236024844720497,
+              "recall": 0.38487584650112866,
+              "f1": 0.40331164991129503,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.4126637554585153,
+              "recall": 0.4209354120267261,
+              "f1": 0.41675854465270123,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.8018211033743974,
+              "recall": 0.9450757575757576,
+              "f1": 0.8675746160533179,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18803,
+              402,
+              129,
+              119
+            ],
+            [
+              357,
+              341,
+              120,
+              68
+            ],
+            [
+              30,
+              47,
+              189,
+              183
+            ],
+            [
+              52,
+              15,
+              20,
+              1497
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 4113.233999999997
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.02492500229983173,
+      "lr": 9.549150281252631e-05,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5809075152215457,
+        "macro_f1": 0.40432560917708643,
+        "balanced_accuracy": 0.4644561561779422,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.7295192717963306,
+            "recall": 0.8726553528135766,
+            "f1": 0.7946935218359641,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5946045824094605,
+            "recall": 0.12173715669213891,
+            "f1": 0.2020975946743704,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.16670987814363494,
+            "recall": 0.2030953885028427,
+            "f1": 0.18311262993022925,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.3269995152690257,
+            "recall": 0.6603367267032106,
+            "f1": 0.4373986902677819,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20517,
+            613,
+            847,
+            1534
+          ],
+          [
+            5246,
+            1609,
+            2052,
+            4310
+          ],
+          [
+            1133,
+            292,
+            643,
+            1098
+          ],
+          [
+            1228,
+            192,
+            315,
+            3373
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.23247901016349978,
+          "macro_f1": 0.22242915246513617,
+          "balanced_accuracy": 0.2985804301671152,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.18456108391210294,
+              "recall": 0.39945786101527847,
+              "f1": 0.2524725488669107,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6249418334108888,
+              "recall": 0.10891249695888411,
+              "f1": 0.18549723756906075,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.12538699690402477,
+              "recall": 0.14906146485093855,
+              "f1": 0.13620312762737516,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.22342938119981107,
+              "recall": 0.5368898978433598,
+              "f1": 0.31554369579719815,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1621,
+              353,
+              686,
+              1398
+            ],
+            [
+              4886,
+              1343,
+              1861,
+              4241
+            ],
+            [
+              1107,
+              268,
+              405,
+              937
+            ],
+            [
+              1169,
+              185,
+              278,
+              1892
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9333541927409261,
+          "macro_f1": 0.6621329933189459,
+          "balanced_accuracy": 0.6841585451347564,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9769918825293418,
+              "recall": 0.9713668842852002,
+              "f1": 0.9741712635974636,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.47755834829443444,
+              "recall": 0.3002257336343115,
+              "f1": 0.36867636867636866,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.379585326953748,
+              "recall": 0.5300668151447662,
+              "f1": 0.4423791821561338,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.8018408229561451,
+              "recall": 0.9349747474747475,
+              "f1": 0.8633051588458175,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18896,
+              260,
+              161,
+              136
+            ],
+            [
+              360,
+              266,
+              191,
+              69
+            ],
+            [
+              26,
+              24,
+              238,
+              161
+            ],
+            [
+              59,
+              7,
+              37,
+              1481
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 3726.422
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.016020650615177375,
+      "lr": 5.4496737905816096e-05,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5846184614017155,
+        "macro_f1": 0.4066806082982333,
+        "balanced_accuracy": 0.45894182693469227,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.7130151098901099,
+            "recall": 0.8831185402577517,
+            "f1": 0.7890026790294694,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5825076870515886,
+            "recall": 0.12900052962094272,
+            "f1": 0.21122398414271557,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.15595611285266459,
+            "recall": 0.18856601389766267,
+            "f1": 0.17071775807835288,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.35542894708009204,
+            "recall": 0.6350822239624119,
+            "f1": 0.45577801194239553,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20763,
+            677,
+            811,
+            1260
+          ],
+          [
+            5794,
+            1705,
+            2075,
+            3643
+          ],
+          [
+            1259,
+            330,
+            597,
+            980
+          ],
+          [
+            1304,
+            215,
+            345,
+            3244
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.2368979231109147,
+          "macro_f1": 0.2273222588965112,
+          "balanced_accuracy": 0.30062106891825763,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.1861883593507702,
+              "recall": 0.44381468703794974,
+              "f1": 0.26232612337047556,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6159579131959667,
+              "recall": 0.11394047522504258,
+              "f1": 0.19230769230769232,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.11694864945087563,
+              "recall": 0.14501288185498712,
+              "f1": 0.12947748931975023,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.24100177911591625,
+              "recall": 0.49971623155505107,
+              "f1": 0.32517773058812666,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1801,
+              386,
+              715,
+              1156
+            ],
+            [
+              5400,
+              1405,
+              1944,
+              3582
+            ],
+            [
+              1229,
+              286,
+              394,
+              808
+            ],
+            [
+              1243,
+              204,
+              316,
+              1761
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9363490076881816,
+          "macro_f1": 0.671254836947125,
+          "balanced_accuracy": 0.6754283288232134,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9750604206304314,
+              "recall": 0.9747596771706164,
+              "f1": 0.9749100257069409,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.46439628482972134,
+              "recall": 0.33860045146726864,
+              "f1": 0.391644908616188,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.4422657952069717,
+              "recall": 0.4521158129175947,
+              "f1": 0.44713656387665196,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.8148351648351648,
+              "recall": 0.9362373737373737,
+              "f1": 0.8713278495887191,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18962,
+              291,
+              96,
+              104
+            ],
+            [
+              394,
+              300,
+              131,
+              61
+            ],
+            [
+              30,
+              44,
+              203,
+              172
+            ],
+            [
+              61,
+              11,
+              29,
+              1483
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2758.4849999999997
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.011508132773818399,
+      "lr": 2.447174185242323e-05,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5819963557175236,
+        "macro_f1": 0.40486210337583955,
+        "balanced_accuracy": 0.45970702026000576,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.7207345599273819,
+            "recall": 0.8780570796648377,
+            "f1": 0.7916554818422364,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.5864608909154683,
+            "recall": 0.1265037451766664,
+            "f1": 0.20811550908638288,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.15881018401814972,
+            "recall": 0.19898926089703095,
+            "f1": 0.17664376840039253,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.34011109946546486,
+            "recall": 0.6352779953014879,
+            "f1": 0.44303365417434637,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20644,
+            642,
+            862,
+            1363
+          ],
+          [
+            5499,
+            1672,
+            2128,
+            3918
+          ],
+          [
+            1208,
+            313,
+            630,
+            1015
+          ],
+          [
+            1292,
+            224,
+            347,
+            3245
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.2315952275740168,
+          "macro_f1": 0.2228376264081649,
+          "balanced_accuracy": 0.2946358509162272,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.18301435406698566,
+              "recall": 0.41473632331197635,
+              "f1": 0.2539610683567225,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6097668279806423,
+              "recall": 0.11239964317573595,
+              "f1": 0.18981101068200493,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.12016175621028308,
+              "recall": 0.15311004784688995,
+              "f1": 0.13464961967955982,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.2280815690349396,
+              "recall": 0.4982973893303065,
+              "f1": 0.3129288069143723,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1683,
+              398,
+              735,
+              1242
+            ],
+            [
+              5098,
+              1386,
+              1991,
+              3856
+            ],
+            [
+              1181,
+              275,
+              416,
+              845
+            ],
+            [
+              1234,
+              214,
+              320,
+              1756
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9364384051492938,
+          "macro_f1": 0.6708603926697165,
+          "balanced_accuracy": 0.6785368300350927,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9750089988172983,
+              "recall": 0.974708271217807,
+              "f1": 0.9748586118251928,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.49480968858131485,
+              "recall": 0.3227990970654628,
+              "f1": 0.3907103825136612,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.42376237623762375,
+              "recall": 0.4766146993318486,
+              "f1": 0.4486373165618449,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.8083604777415853,
+              "recall": 0.9400252525252525,
+              "f1": 0.869235259778167,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18961,
+              244,
+              127,
+              121
+            ],
+            [
+              401,
+              286,
+              137,
+              62
+            ],
+            [
+              27,
+              38,
+              214,
+              170
+            ],
+            [
+              58,
+              10,
+              27,
+              1489
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2501.562
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.009680351486543589,
+      "lr": 6.15582970243117e-06,
+      "val": {
+        "n": 45002,
+        "accuracy": 0.5822185680636416,
+        "macro_f1": 0.4078219456078371,
+        "balanced_accuracy": 0.4630694105584041,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.7312560162572641,
+            "recall": 0.8724001531198162,
+            "f1": 0.7956167571761055,
+            "support": 23511
+          },
+          "minor": {
+            "precision": 0.577023498694517,
+            "recall": 0.13376711810547023,
+            "f1": 0.21718567655549412,
+            "support": 13217
+          },
+          "major": {
+            "precision": 0.1589856132650573,
+            "recall": 0.20593809222994314,
+            "f1": 0.17944131003164993,
+            "support": 3166
+          },
+          "destroyed": {
+            "precision": 0.33408255006129955,
+            "recall": 0.6401722787783869,
+            "f1": 0.4390440386680988,
+            "support": 5108
+          }
+        },
+        "confusion": [
+          [
+            20511,
+            714,
+            879,
+            1407
+          ],
+          [
+            5182,
+            1768,
+            2200,
+            4067
+          ],
+          [
+            1135,
+            335,
+            652,
+            1044
+          ],
+          [
+            1221,
+            247,
+            370,
+            3270
+          ]
+        ]
+      },
+      "per_event": {
+        "hurricane-matthew": {
+          "n": 22630,
+          "accuracy": 0.23367211665930182,
+          "macro_f1": 0.22471180854740203,
+          "balanced_accuracy": 0.2950771716794302,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.18541522889348977,
+              "recall": 0.3972400197141449,
+              "f1": 0.25282308657465496,
+              "support": 4058
+            },
+            "minor": {
+              "precision": 0.6036333608587944,
+              "recall": 0.11856297137296246,
+              "f1": 0.19819697688605706,
+              "support": 12331
+            },
+            "major": {
+              "precision": 0.12102448634956375,
+              "recall": 0.15826278984173722,
+              "f1": 0.13716108452950557,
+              "support": 2717
+            },
+            "destroyed": {
+              "precision": 0.2240924506971486,
+              "recall": 0.5062429057888763,
+              "f1": 0.3106660861993905,
+              "support": 3524
+            }
+          },
+          "confusion": [
+            [
+              1612,
+              426,
+              733,
+              1287
+            ],
+            [
+              4808,
+              1462,
+              2053,
+              4008
+            ],
+            [
+              1108,
+              297,
+              430,
+              882
+            ],
+            [
+              1166,
+              237,
+              337,
+              1784
+            ]
+          ]
+        },
+        "moore-tornado": {
+          "n": 22372,
+          "accuracy": 0.9347845521187198,
+          "macro_f1": 0.6727831864665668,
+          "balanced_accuracy": 0.6873642367602608,
+          "per_class": {
+            "no_damage": {
+              "precision": 0.9764401963316972,
+              "recall": 0.9715211021436282,
+              "f1": 0.9739744382601525,
+              "support": 19453
+            },
+            "minor": {
+              "precision": 0.4766355140186916,
+              "recall": 0.345372460496614,
+              "f1": 0.4005235602094241,
+              "support": 886
+            },
+            "major": {
+              "precision": 0.4051094890510949,
+              "recall": 0.49443207126948774,
+              "f1": 0.4453360080240722,
+              "support": 449
+            },
+            "destroyed": {
+              "precision": 0.8133552271483306,
+              "recall": 0.9381313131313131,
+              "f1": 0.871298739372618,
+              "support": 1584
+            }
+          },
+          "confusion": [
+            [
+              18899,
+              288,
+              146,
+              120
+            ],
+            [
+              374,
+              306,
+              147,
+              59
+            ],
+            [
+              27,
+              38,
+              222,
+              162
+            ],
+            [
+              55,
+              10,
+              33,
+              1486
+            ]
+          ]
+        }
+      },
+      "epoch_seconds": 2517.031000000001
+    }
+  ],
+  "train_rows": 104152,
+  "val_rows": 45002,
+  "class_counts": {
+    "major": 17794,
+    "minor": 17079,
+    "no_damage": 62331,
+    "destroyed": 6948
+  },
+  "class_weights": [
+    0.23359625041484833,
+    0.8525258302688599,
+    0.8182694911956787,
+    2.0956084728240967
+  ],
+  "training_seconds": 60877.09300000001,
+  "session_elapsed_seconds": 2517.188,
+  "session_peak_gpu_allocated_bytes": 523783168
+}

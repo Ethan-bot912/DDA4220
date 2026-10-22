@@ -1,0 +1,461 @@
+{
+  "scope": "single-seed best pooled validation selection; not held-out test performance",
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "config": {
+    "experiment": "expanded_five_train_two_val_seed42_v1",
+    "manifest": "dataset/expanded_7events/manifest_classification.csv",
+    "archive_partitions": [
+      "tier3",
+      "tier1",
+      "hold",
+      "test"
+    ],
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "moore-tornado",
+      "hurricane-matthew"
+    ],
+    "sealed_test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 104152,
+    "expected_val_rows": 45002,
+    "expected_train_counts": {
+      "no_damage": 62331,
+      "minor": 17079,
+      "major": 17794,
+      "destroyed": 6948
+    },
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 0,
+    "seed": 42,
+    "max_open_files": 64,
+    "gdal_cache_mb": 128,
+    "pretrained": false,
+    "augmentation": false,
+    "selection": "pooled_validation_macro_f1_strict_improvement",
+    "precision": "float32",
+    "max_train": 0,
+    "max_val": 0
+  },
+  "pooled": {
+    "B1": {
+      "n": 45002,
+      "accuracy": 0.614372694546909,
+      "macro_f1": 0.46202083080009243,
+      "balanced_accuracy": 0.5250572914521727,
+      "per_class": {
+        "no_damage": {
+          "precision": 0.8889748725418791,
+          "recall": 0.8306324699077028,
+          "f1": 0.8588139580905473,
+          "support": 23511
+        },
+        "minor": {
+          "precision": 0.6142529614061903,
+          "recall": 0.2432473329802527,
+          "f1": 0.3484905967156252,
+          "support": 13217
+        },
+        "major": {
+          "precision": 0.34980988593155893,
+          "recall": 0.17435249526216046,
+          "f1": 0.2327150084317032,
+          "support": 3166
+        },
+        "destroyed": {
+          "precision": 0.26827764763900874,
+          "recall": 0.8519968676585747,
+          "f1": 0.4080637599624941,
+          "support": 5108
+        }
+      },
+      "confusion": [
+        [
+          19529,
+          1024,
+          255,
+          2703
+        ],
+        [
+          1886,
+          3215,
+          554,
+          7562
+        ],
+        [
+          283,
+          726,
+          552,
+          1605
+        ],
+        [
+          270,
+          269,
+          217,
+          4352
+        ]
+      ]
+    },
+    "B2": {
+      "n": 45002,
+      "accuracy": 0.611017288120528,
+      "macro_f1": 0.4508704904084147,
+      "balanced_accuracy": 0.5075770380044378,
+      "per_class": {
+        "no_damage": {
+          "precision": 0.800615458396611,
+          "recall": 0.8520692441835737,
+          "f1": 0.8255413842128038,
+          "support": 23511
+        },
+        "minor": {
+          "precision": 0.6007681423084698,
+          "recall": 0.22486192025421806,
+          "f1": 0.3272406958819643,
+          "support": 13217
+        },
+        "major": {
+          "precision": 0.17269414073451078,
+          "recall": 0.1945672773215414,
+          "f1": 0.18297935541363436,
+          "support": 3166
+        },
+        "destroyed": {
+          "precision": 0.3380429094714809,
+          "recall": 0.7588097102584181,
+          "f1": 0.46772052612525644,
+          "support": 5108
+        }
+      },
+      "confusion": [
+        [
+          20033,
+          960,
+          719,
+          1799
+        ],
+        [
+          3746,
+          2972,
+          1938,
+          4561
+        ],
+        [
+          696,
+          624,
+          616,
+          1230
+        ],
+        [
+          547,
+          391,
+          294,
+          3876
+        ]
+      ]
+    },
+    "B2_minus_B1": {
+      "accuracy": -0.0033554064263809913,
+      "macro_f1": -0.011150340391677727,
+      "balanced_accuracy": -0.01748025344773496
+    }
+  },
+  "per_event": {
+    "hurricane-matthew": {
+      "B1": {
+        "n": 22630,
+        "accuracy": 0.30154661953159523,
+        "macro_f1": 0.2676846069848929,
+        "balanced_accuracy": 0.33979152085883074,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.2956342385699553,
+            "recall": 0.21192705766387382,
+            "f1": 0.2468781398019233,
+            "support": 4058
+          },
+          "minor": {
+            "precision": 0.6416079945491711,
+            "recall": 0.2290973968048009,
+            "f1": 0.33763595075893393,
+            "support": 12331
+          },
+          "major": {
+            "precision": 0.2828546562228024,
+            "recall": 0.11961722488038277,
+            "f1": 0.16813243662700464,
+            "support": 2717
+          },
+          "destroyed": {
+            "precision": 0.19860258310395934,
+            "recall": 0.7985244040862656,
+            "f1": 0.31809190075170973,
+            "support": 3524
+          }
+        },
+        "confusion": [
+          [
+            860,
+            635,
+            189,
+            2374
+          ],
+          [
+            1541,
+            2825,
+            436,
+            7529
+          ],
+          [
+            263,
+            677,
+            325,
+            1452
+          ],
+          [
+            245,
+            266,
+            199,
+            2814
+          ]
+        ]
+      },
+      "B2": {
+        "n": 22630,
+        "accuracy": 0.28232434821034025,
+        "macro_f1": 0.25296438963485735,
+        "balanced_accuracy": 0.31768076900079273,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.17321688500727803,
+            "recall": 0.2345983242976836,
+            "f1": 0.19928825622775803,
+            "support": 4058
+          },
+          "minor": {
+            "precision": 0.6009952499434517,
+            "recall": 0.21547319763198444,
+            "f1": 0.31721585482330467,
+            "support": 12331
+          },
+          "major": {
+            "precision": 0.12236286919831224,
+            "recall": 0.13875598086124402,
+            "f1": 0.13004484304932737,
+            "support": 2717
+          },
+          "destroyed": {
+            "precision": 0.24948089700996678,
+            "recall": 0.6818955732122588,
+            "f1": 0.36530860443903923,
+            "support": 3524
+          }
+        },
+        "confusion": [
+          [
+            952,
+            786,
+            662,
+            1658
+          ],
+          [
+            3376,
+            2657,
+            1795,
+            4503
+          ],
+          [
+            676,
+            596,
+            377,
+            1068
+          ],
+          [
+            492,
+            382,
+            247,
+            2403
+          ]
+        ]
+      },
+      "B2_minus_B1": {
+        "accuracy": -0.01922227132125498,
+        "macro_f1": -0.014720217350035536,
+        "balanced_accuracy": -0.022110751858038014
+      }
+    },
+    "moore-tornado": {
+      "B1": {
+        "n": 22372,
+        "accuracy": 0.9308063650992312,
+        "macro_f1": 0.6966582482664245,
+        "balanced_accuracy": 0.7191014611487596,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.979537226507162,
+            "recall": 0.9596977329974811,
+            "f1": 0.9695159950145409,
+            "support": 19453
+          },
+          "minor": {
+            "precision": 0.4693140794223827,
+            "recall": 0.4401805869074492,
+            "f1": 0.45428072218986604,
+            "support": 886
+          },
+          "major": {
+            "precision": 0.5291375291375291,
+            "recall": 0.5055679287305123,
+            "f1": 0.5170842824601366,
+            "support": 449
+          },
+          "destroyed": {
+            "precision": 0.749147588894301,
+            "recall": 0.9709595959595959,
+            "f1": 0.8457519934011547,
+            "support": 1584
+          }
+        },
+        "confusion": [
+          [
+            18669,
+            389,
+            66,
+            329
+          ],
+          [
+            345,
+            390,
+            118,
+            33
+          ],
+          [
+            20,
+            49,
+            227,
+            153
+          ],
+          [
+            25,
+            3,
+            18,
+            1538
+          ]
+        ]
+      },
+      "B2": {
+        "n": 22372,
+        "accuracy": 0.94350080457715,
+        "macro_f1": 0.6995882820217254,
+        "balanced_accuracy": 0.6996564221641932,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.977209874014135,
+            "recall": 0.9808769855549273,
+            "f1": 0.9790399958952255,
+            "support": 19453
+          },
+          "minor": {
+            "precision": 0.5988593155893536,
+            "recall": 0.35553047404063204,
+            "f1": 0.4461756373937677,
+            "support": 886
+          },
+          "major": {
+            "precision": 0.49176954732510286,
+            "recall": 0.532293986636971,
+            "f1": 0.5112299465240642,
+            "support": 449
+          },
+          "destroyed": {
+            "precision": 0.8031624863685932,
+            "recall": 0.9299242424242424,
+            "f1": 0.8619075482738443,
+            "support": 1584
+          }
+        },
+        "confusion": [
+          [
+            19081,
+            174,
+            57,
+            141
+          ],
+          [
+            370,
+            315,
+            143,
+            58
+          ],
+          [
+            20,
+            28,
+            239,
+            162
+          ],
+          [
+            55,
+            9,
+            47,
+            1473
+          ]
+        ]
+      },
+      "B2_minus_B1": {
+        "accuracy": 0.012694439477918817,
+        "macro_f1": 0.002930033755300876,
+        "balanced_accuracy": -0.0194450389845664
+      }
+    }
+  },
+  "resources": {
+    "B1": {
+      "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "training_seconds": 54260.340000000004,
+      "best_epoch": 3
+    },
+    "B2": {
+      "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "training_seconds": 60877.09300000001,
+      "best_epoch": 10
+    }
+  },
+  "hardware_note": "Both runs record the same GPU model; sessions and system load differ. Recorded elapsed times are not a controlled architecture speed benchmark.",
+  "test_evaluated": false,
+  "verification": {
+    "b1": {
+      "last_epoch": 20,
+      "best_epoch": 3,
+      "checkpoint_loads_ok": true,
+      "history_matches": true,
+      "frozen_code_config_manifest_ok": true,
+      "last_sha256": "fe20cb60d7a3c191dcf430257684ac4417d9cbe100cb78c5f5bc33fb2d48d3b2",
+      "best_sha256": "40db162a03167913ebedba886200d1905f036157f5b6003bff735c5633dc5ac1"
+    },
+    "b2": {
+      "last_epoch": 20,
+      "best_epoch": 10,
+      "checkpoint_loads_ok": true,
+      "history_matches": true,
+      "frozen_code_config_manifest_ok": true,
+      "last_sha256": "fdd4d4d8f5d8a79b35084adeeb56f4940e7ef1acd2168b56aca02b57bef79d8e",
+      "best_sha256": "67c66eb6bce960b561865f658927ddb3b577ad65d220b194b2bb80cdb2ce6243"
+    }
+  },
+  "generated_local": "2026-10-22T02:54:05.313418+08:00"
+}

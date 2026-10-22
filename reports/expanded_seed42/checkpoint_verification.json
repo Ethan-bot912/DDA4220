@@ -1,0 +1,20 @@
+{
+  "b1": {
+    "last_epoch": 20,
+    "best_epoch": 3,
+    "checkpoint_loads_ok": true,
+    "history_matches": true,
+    "frozen_code_config_manifest_ok": true,
+    "last_sha256": "fe20cb60d7a3c191dcf430257684ac4417d9cbe100cb78c5f5bc33fb2d48d3b2",
+    "best_sha256": "40db162a03167913ebedba886200d1905f036157f5b6003bff735c5633dc5ac1"
+  },
+  "b2": {
+    "last_epoch": 20,
+    "best_epoch": 10,
+    "checkpoint_loads_ok": true,
+    "history_matches": true,
+    "frozen_code_config_manifest_ok": true,
+    "last_sha256": "fdd4d4d8f5d8a79b35084adeeb56f4940e7ef1acd2168b56aca02b57bef79d8e",
+    "best_sha256": "67c66eb6bce960b561865f658927ddb3b577ad65d220b194b2bb80cdb2ce6243"
+  }
+}

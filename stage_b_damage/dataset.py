@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import math
+from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
@@ -38,6 +39,7 @@ class XBDPairedDataset(Dataset):
         crop_size: int = 128,
         context: int = 16,
         return_meta: bool = False,
+        max_open_files: int = 64,
     ) -> None:
         self.manifest_path = Path(manifest_path).resolve()
         self.project_root = (
@@ -48,15 +50,14 @@ class XBDPairedDataset(Dataset):
         self.crop_size = int(crop_size)
         self.context = int(context)
         self.return_meta = return_meta
-        self._handles: dict[str, rasterio.DatasetReader] = {}
+        self.max_open_files = int(max_open_files)
+        if self.max_open_files < 1:
+            raise ValueError("max_open_files must be positive")
+        self._handles = OrderedDict()
 
         with self.manifest_path.open("r", newline="", encoding="utf-8") as handle:
-            all_rows = list(csv.DictReader(handle))
-        self.rows = [
-            row
-            for row in all_rows
-            if row.get("split") == split and row.get("damage") in LABEL_TO_ID
-        ]
+            self.rows = [row for row in csv.DictReader(handle)
+                         if row.get("split") == split and row.get("damage") in LABEL_TO_ID]
         if not self.rows:
             raise ValueError(f"No labeled rows found for split={split!r}")
 
@@ -72,7 +73,11 @@ class XBDPairedDataset(Dataset):
     def _open(self, path: Path) -> rasterio.DatasetReader:
         key = str(path)
         if key not in self._handles:
+            if len(self._handles) >= self.max_open_files:
+                _, oldest = self._handles.popitem(last=False)
+                oldest.close()
             self._handles[key] = rasterio.open(path)
+        self._handles.move_to_end(key)
         return self._handles[key]
 
     def _window(self, row: dict[str, str]) -> Window:
@@ -131,7 +136,7 @@ class XBDPairedDataset(Dataset):
 
     def __getstate__(self) -> dict[str, Any]:
         state = self.__dict__.copy()
-        state["_handles"] = {}
+        state["_handles"] = OrderedDict()
         return state
 
     def close(self) -> None:

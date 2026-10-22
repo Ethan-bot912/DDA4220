@@ -9,7 +9,7 @@
 ## 〇、开始前的检查
 
 确认电脑上已装 **Python 3.9 – 3.12**。仓库提供两个已验证的核心环境：
-CPU profile 使用 Python 3.12；GPU profile 使用 Python 3.9。
+CPU profile 使用 Python 3.12；原GPU profile验证于Python 3.9。**2026-10-22扩大实验**实际使用Python **3.12.15**、RTX4060 Laptop和相同GPU核心依赖版本；重放本轮请以[参考记录](reports/expanded_seed42/b1/run_metadata.json)为准，不混用CPU profile。
 
 ```bash
 python --version
@@ -125,7 +125,7 @@ python -m ipykernel install --user --name dda4220 --display-name "DDA4220 Projec
 | `python` 不是内部或外部命令 | 没装 Python 或没加 PATH | 重装 Python，勾选 Add to PATH |
 | pip 下载很慢/超时 | 国内网络 | 保留 `requirements-gpu.txt` 中的 PyTorch CUDA 索引；只把普通 PyPI 包改用镜像 |
 | torch 装完 `cuda.is_available()` 为 False | 装成 CPU 版 / 驱动太旧 | 在新环境中重新执行 `python -m pip install -r requirements-gpu.txt`；检查 NVIDIA 驱动 |
-| `ModuleNotFoundError: No module named 'xxx'` | 忘了激活虚拟环境就 pip install | 激活 `.venv` 后重新 `pip install -r requirements.txt` |
+| `ModuleNotFoundError: No module named 'xxx'` | 解释器不对或依赖未装 | 激活 `.venv`；GPU路线安装 `requirements-gpu.txt`，CPU路线安装 `requirements.txt`，不要混装 |
 | rasterio 安装失败（Windows） | 缺编译依赖 | `pip install rasterio` 换用国内镜像试；或先 `pip install wheel` |
 | GPU 显存不足 (CUDA out of memory) | batch 太大 | 调小 batch_size 或减小裁剪图尺寸 |
 | OneDrive 同步导致 .venv 报错 | 虚拟环境被云盘同步破坏 | **仓库不要放在 OneDrive 文件夹里**，放到如 `D:\code\` 的本地目录 |

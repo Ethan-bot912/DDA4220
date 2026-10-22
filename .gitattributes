@@ -2,3 +2,12 @@
 # Preserve report and plot bytes across Windows/Linux checkouts.
 *.pdf binary
 *.png binary
+
+# Expanded checkpoints fingerprint source bytes, including line endings.
+# Keep the exact training-time checkout on Windows and Linux.
+/tools/train_expanded.py text eol=lf
+/stage_b_damage/train_baseline.py text eol=crlf
+/stage_b_damage/dataset.py text eol=crlf
+/configs/expanded_seed42.json text eol=lf
+# Preserve raw records (some writers emitted CRLF); CR is not trailing space.
+/reports/expanded_seed42/** -text whitespace=cr-at-eol

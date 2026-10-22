@@ -138,6 +138,29 @@ class PreparationTest(unittest.TestCase):
         with self.assertRaises(FileNotFoundError):
             archive_parts(parts_dir)
 
+    def test_multiple_partitions_and_duplicate_tiles(self):
+        parts_dir, content = self.create_parts()
+        output = self.directory / 'dataset' / 'multi'
+        self.command('extract_xview2_subset.py', '--parts-dir', parts_dir,
+                     '--expected-sha1', hashlib.sha1(content).hexdigest(), '--output', output,
+                     '--split', 'tier3', *[v for event in EVENTS for v in ['--event', event]])
+        for kind in ('images', 'labels'):
+            target = output / 'tier1' / kind
+            target.mkdir(parents=True)
+            for source in (output / 'tier3' / kind).glob(EVENTS[0] + '*'):
+                source.rename(target / source.name)
+        arguments = ['--data-root', output, '--output', output / 'manifest.csv',
+                     '--archive-split', 'tier3', '--archive-split', 'tier1',
+                     '--train-event', EVENTS[0], '--train-event', EVENTS[1],
+                     '--val-event', EVENTS[2], '--test-event', EVENTS[3], '--drop-unknown']
+        self.command('build_xview2_manifest.py', *arguments)
+        audit = json.loads((output / 'audit.json').read_text())
+        self.assertEqual(audit['building_rows'], 16)
+        source = next((output / 'tier1' / 'images').glob('*.tif'))
+        (output / 'tier3' / 'images' / source.name).write_bytes(source.read_bytes())
+        result = self.command('build_xview2_manifest.py', *arguments, success=False)
+        self.assertIn('Duplicate event/tile/phase', result.stderr)
+
     def test_comparison_rejects_uncontrolled_or_mixed_results(self):
         score = dict(accuracy=0.5, macro_f1=0.4, balanced_accuracy=0.3)
         b1 = dict(mode='post', backbone='resnet18', manifest_sha256='a', train_indices_sha256='b',
