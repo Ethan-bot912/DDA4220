@@ -78,6 +78,15 @@ def restore_rng(state, generator):
 def preflight(config, root, manifest):
     events = audit_splits(manifest)
     expected = {"train": sorted(config["train_events"]), "val": sorted(config["val_events"])}
+    # Within-event protocol v3 (change 2): a config declares an internal test split
+    # with BOTH fields; then test is counted and its events checked like train/val
+    # (counts and integrity only). Configs without them keep the two-split checks.
+    declared = [key for key in ("expected_test_rows", "test_events") if key in config]
+    if len(declared) == 1:
+        raise ValueError("expected_test_rows and test_events must be configured together")
+    with_test = len(declared) == 2
+    if with_test:
+        expected["test"] = sorted(config["test_events"])
     if events != expected:
         raise ValueError(f"Unexpected events/splits: {events}; expected {expected}. Test is sealed.")
     counts = Counter()
@@ -96,7 +105,10 @@ def preflight(config, root, manifest):
             if row["split"] == "train":
                 train_counts[row["damage"]] += 1
             image_paths.update((row["pre_image"], row["post_image"]))
-    if counts != {"train": config["expected_train_rows"], "val": config["expected_val_rows"]}:
+    expected_rows = {"train": config["expected_train_rows"], "val": config["expected_val_rows"]}
+    if with_test:
+        expected_rows["test"] = config["expected_test_rows"]
+    if counts != expected_rows:
         raise ValueError(f"Building counts differ: {counts}")
     if train_counts != config["expected_train_counts"]:
         raise ValueError(f"Training class counts differ: {train_counts}")

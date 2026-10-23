@@ -98,7 +98,17 @@ def build_model(backbone: str, mode: str) -> nn.Module:
 
 
 def audit_splits(manifest: Path) -> dict[str, list[str]]:
-    """Fail before training if an event or paired tile crosses data splits."""
+    """Fail before training or evaluation if a paired tile crosses data splits.
+
+    Since the within-event experiment, leakage is guarded per (event, tile_id),
+    not per event: one event may appear in train, val and test, but all
+    buildings of a tile must stay in one split. Reason: DDA4220 within-event control experiment,
+    implementation notes v3 (2026-10-23), section 4, change 1 -- the trainer and the frozen
+    evaluator share this single definition. Consequence: an event crossing
+    splits is no longer rejected HERE (this also applies to older event-split
+    runs); tools.train_expanded.preflight still compares each split's events
+    with the config, so event-disjoint configs there still reject it.
+    """
     owners: dict[tuple[str, ...], str] = {}
     events: dict[str, set[str]] = {}
     with manifest.open(newline="", encoding="utf-8") as handle:
@@ -107,10 +117,10 @@ def audit_splits(manifest: Path) -> dict[str, list[str]]:
             if split not in {"train", "val", "test"}:
                 raise ValueError(f"Unexpected split: {split!r}")
             events.setdefault(split, set()).add(row["event"])
-            for key in (("event", row["event"]), ("tile", row["event"], row["tile_id"])):
-                if key in owners and owners[key] != split:
-                    raise ValueError(f"Data leakage across splits: {key}")
-                owners[key] = split
+            key = ("tile", row["event"], row["tile_id"])
+            if key in owners and owners[key] != split:
+                raise ValueError(f"Data leakage across splits: {key}")
+            owners[key] = split
     return {split: sorted(names) for split, names in events.items()}
 
 
