@@ -1,0 +1,82 @@
+{
+  "post": {
+    "baseline_epoch_seconds": [
+      618.500355,
+      1003.1373743999999
+    ],
+    "fast_epoch_seconds": [
+      306.07338510000045,
+      316.05626550000034
+    ],
+    "baseline_mean_epoch_seconds": 810.8188647,
+    "fast_mean_epoch_seconds": 311.0648253000004,
+    "epoch_speedup": 2.6065912914390803,
+    "equivalence": [
+      {
+        "epoch": 1,
+        "train_loss_absdiff": 0.0,
+        "macro_f1_absdiff": 0.0,
+        "confusion_equal": true
+      },
+      {
+        "epoch": 2,
+        "train_loss_absdiff": 0.0,
+        "macro_f1_absdiff": 0.0,
+        "confusion_equal": true
+      }
+    ],
+    "bit_identical": true
+  },
+  "early": {
+    "baseline_epoch_seconds": [
+      976.4278129000002,
+      1039.7326878
+    ],
+    "fast_epoch_seconds": [
+      321.11827939999966,
+      317.87260400000014
+    ],
+    "baseline_mean_epoch_seconds": 1008.08025035,
+    "fast_mean_epoch_seconds": 319.4954416999999,
+    "epoch_speedup": 3.15522576781101,
+    "equivalence": [
+      {
+        "epoch": 1,
+        "train_loss_absdiff": 0.0,
+        "macro_f1_absdiff": 0.0,
+        "confusion_equal": true
+      },
+      {
+        "epoch": 2,
+        "train_loss_absdiff": 0.0,
+        "macro_f1_absdiff": 0.0,
+        "confusion_equal": true
+      }
+    ],
+    "bit_identical": true
+  },
+  "post_full": {
+    "best_epoch": 5,
+    "best_macro_f1": 0.601235705274549,
+    "accuracy": 0.889549436795995,
+    "balanced_accuracy": 0.6682441600825038,
+    "training_seconds": 6300.593102000001,
+    "reference": {
+      "best_epoch": 5,
+      "macro_f1": 0.601235705274549
+    },
+    "macro_f1_delta_vs_reference": 0.0
+  },
+  "early_full": {
+    "best_epoch": 9,
+    "best_macro_f1": 0.6022778097528944,
+    "accuracy": 0.872385124262471,
+    "balanced_accuracy": 0.7131692575178775,
+    "training_seconds": 6310.3987117000015,
+    "reference": {
+      "best_epoch": 9,
+      "macro_f1": 0.6022778098
+    },
+    "macro_f1_delta_vs_reference": -4.710565271182077e-11
+  }
+}
