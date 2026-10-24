@@ -80,3 +80,54 @@ python -m stage_b_damage.train_baseline `
 
 - 单机、单 seed 的加速测量；本机与参考机的绝对耗时不同，加速比应在同机同数据上比较。
 - 只用了验证集选优，封存测试集未评估；本报告不构成模型效果结论。
+
+## 8. 给其他 agent 的复现 prompt
+
+把下面整段交给另一个 coding agent（需要能访问本仓库和 `dataset/` 中的本地影像）：
+
+```text
+你在 DDA4220 仓库根目录。请复现并核对 reports/speed_four_event_20261024/README.md 的
+「四事件数据管线提速」实验，不要修改实验协议。
+
+【前置检查，不通过就停止】
+1. git log --oneline -1 应包含 25513fb 或其后续提交。
+2. 数据：dataset/pilot_tier3_4events/manifest_classification.csv 必须存在，SHA256 必须等于
+   39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0，目录应有 1,286 对 tile。
+   没有数据就按 DATASET.md 从官方六分卷提取；不要换数据集。
+3. 环境：Python 3.9–3.12；torch 2.7.1+cu128、torchvision 0.22.1+cu128、numpy 2.0.2、
+   rasterio 1.4.3；torch.cuda.is_available() 必须为 True；CPU 建议 ≥8 核。
+4. 确认没有残留训练进程，避免两份任务同时写 output/speed_four_event。
+
+【运行】
+python -m tools.speed_compare_four_event
+它会依次跑 6 个阶段：A（workers=0，2 轮）、B（workers=4，2 轮）、C（workers=4，20 轮），
+每个阶段 post 与 early 各一次；进度写 output/speed_four_event/status.json，结束时生成 comparison.json。
+预计 RTX 4060 Laptop 上约 4.5–5 小时。
+
+【验收标准，全部满足才算成功】
+- comparison.post.bit_identical 与 comparison.early.bit_identical 都为 true；
+  即 A/B 每个 epoch 的 train_loss 差、Macro F1 差都为 0.0，混淆矩阵逐元素相同。
+- post / early 的 epoch_speedup 都在 2.4–3.4 之间。
+- post_full: best_epoch=5，best_macro_f1=0.601235705274549（容差 1e-9）。
+- early_full: best_epoch=9，best_macro_f1=0.6022778097528944（容差 1e-9）。
+- 两模型 20 轮 training_seconds 合计约 12,600 s（容差 ±15%），对照发布记录 31,334 s。
+
+【硬约束】
+- 不改 stage_b_damage/train_baseline.py、dataset.py、manifest、事件划分、seed、epochs、lr、
+  crop size、context、backbone、选优规则。
+- 唯一允许变化的变量是 --workers（0 对 4）。
+- 不用 --max-train/--max-val，不改 batch size，不启用 ImageNet 权重。
+- 输出只写 output/（已 gitignore），不提交影像、权重、日志。
+- 任何指标不符就停止，报告阶段、epoch、实际值与期望值；不要改期望值或缩短训练绕过。
+
+【只想快速验证，不跑完整训练】
+python -m tools.profile_data_pipeline ^
+  --manifest "dataset\pilot_tier3_4events\manifest_classification.csv" ^
+  --project-root . --output "output\profile_loader.json" ^
+  --batches 60 --warmup 5 --workers 4
+期望 workers=4 约 3×；仅加大 GDAL 缓存几乎无收益；两个 max_abs_diff 都必须为 0.0。
+
+【汇报格式】
+commit、机器与 GPU、每阶段每轮耗时、两个加速比、bit_identical、两个 20 轮 best 指标与发布值的
+差值、总训练时长、是否通过验收。
+```
