@@ -1,0 +1,608 @@
+{
+  "scope": "validation only; selected checkpoints; different training pools and validation samples",
+  "test_evaluated": false,
+  "overall_and_events": [
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "pooled",
+      "n": 45002,
+      "best_epoch": 3,
+      "accuracy": 0.614372694546909,
+      "macro_f1": 0.46202083080009243,
+      "balanced_accuracy": 0.5250572914521727
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "n": 22630,
+      "best_epoch": 3,
+      "accuracy": 0.30154661953159523,
+      "macro_f1": 0.2676846069848929,
+      "balanced_accuracy": 0.33979152085883074
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "n": 22372,
+      "best_epoch": 3,
+      "accuracy": 0.9308063650992312,
+      "macro_f1": 0.6966582482664245,
+      "balanced_accuracy": 0.7191014611487596
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "pooled",
+      "n": 45002,
+      "best_epoch": 10,
+      "accuracy": 0.611017288120528,
+      "macro_f1": 0.4508704904084147,
+      "balanced_accuracy": 0.5075770380044378
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "n": 22630,
+      "best_epoch": 10,
+      "accuracy": 0.28232434821034025,
+      "macro_f1": 0.25296438963485735,
+      "balanced_accuracy": 0.31768076900079273
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "n": 22372,
+      "best_epoch": 10,
+      "accuracy": 0.94350080457715,
+      "macro_f1": 0.6995882820217254,
+      "balanced_accuracy": 0.6996564221641932
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "pooled",
+      "n": 9014,
+      "best_epoch": 6,
+      "accuracy": 0.7868870645662303,
+      "macro_f1": 0.6626385743019265,
+      "balanced_accuracy": 0.6656485432923863
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "n": 4537,
+      "best_epoch": 6,
+      "accuracy": 0.637425611637646,
+      "macro_f1": 0.4797124938527637,
+      "balanced_accuracy": 0.48092434823547725
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "n": 4477,
+      "best_epoch": 6,
+      "accuracy": 0.9383515747152111,
+      "macro_f1": 0.6695318916242583,
+      "balanced_accuracy": 0.6314661761068464
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "pooled",
+      "n": 9014,
+      "best_epoch": 15,
+      "accuracy": 0.7810073219436432,
+      "macro_f1": 0.646983801147267,
+      "balanced_accuracy": 0.6419220931757469
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "n": 4537,
+      "best_epoch": 15,
+      "accuracy": 0.6219969142605246,
+      "macro_f1": 0.4821911414856464,
+      "balanced_accuracy": 0.46288900945872213
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "n": 4477,
+      "best_epoch": 15,
+      "accuracy": 0.9421487603305785,
+      "macro_f1": 0.7202148100795016,
+      "balanced_accuracy": 0.721448431128292
+    }
+  ],
+  "per_class": [
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "no_damage",
+      "precision": 0.8889748725418791,
+      "recall": 0.8306324699077028,
+      "f1": 0.8588139580905473,
+      "support": 23511
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "minor",
+      "precision": 0.6142529614061903,
+      "recall": 0.2432473329802527,
+      "f1": 0.3484905967156252,
+      "support": 13217
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "major",
+      "precision": 0.34980988593155893,
+      "recall": 0.17435249526216046,
+      "f1": 0.2327150084317032,
+      "support": 3166
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "destroyed",
+      "precision": 0.26827764763900874,
+      "recall": 0.8519968676585747,
+      "f1": 0.4080637599624941,
+      "support": 5108
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "no_damage",
+      "precision": 0.2956342385699553,
+      "recall": 0.21192705766387382,
+      "f1": 0.2468781398019233,
+      "support": 4058
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "minor",
+      "precision": 0.6416079945491711,
+      "recall": 0.2290973968048009,
+      "f1": 0.33763595075893393,
+      "support": 12331
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "major",
+      "precision": 0.2828546562228024,
+      "recall": 0.11961722488038277,
+      "f1": 0.16813243662700464,
+      "support": 2717
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "destroyed",
+      "precision": 0.19860258310395934,
+      "recall": 0.7985244040862656,
+      "f1": 0.31809190075170973,
+      "support": 3524
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "no_damage",
+      "precision": 0.979537226507162,
+      "recall": 0.9596977329974811,
+      "f1": 0.9695159950145409,
+      "support": 19453
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "minor",
+      "precision": 0.4693140794223827,
+      "recall": 0.4401805869074492,
+      "f1": 0.45428072218986604,
+      "support": 886
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "major",
+      "precision": 0.5291375291375291,
+      "recall": 0.5055679287305123,
+      "f1": 0.5170842824601366,
+      "support": 449
+    },
+    {
+      "regime": "cross_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "destroyed",
+      "precision": 0.749147588894301,
+      "recall": 0.9709595959595959,
+      "f1": 0.8457519934011547,
+      "support": 1584
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "no_damage",
+      "precision": 0.800615458396611,
+      "recall": 0.8520692441835737,
+      "f1": 0.8255413842128038,
+      "support": 23511
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "minor",
+      "precision": 0.6007681423084698,
+      "recall": 0.22486192025421806,
+      "f1": 0.3272406958819643,
+      "support": 13217
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "major",
+      "precision": 0.17269414073451078,
+      "recall": 0.1945672773215414,
+      "f1": 0.18297935541363436,
+      "support": 3166
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "destroyed",
+      "precision": 0.3380429094714809,
+      "recall": 0.7588097102584181,
+      "f1": 0.46772052612525644,
+      "support": 5108
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "no_damage",
+      "precision": 0.17321688500727803,
+      "recall": 0.2345983242976836,
+      "f1": 0.19928825622775803,
+      "support": 4058
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "minor",
+      "precision": 0.6009952499434517,
+      "recall": 0.21547319763198444,
+      "f1": 0.31721585482330467,
+      "support": 12331
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "major",
+      "precision": 0.12236286919831224,
+      "recall": 0.13875598086124402,
+      "f1": 0.13004484304932737,
+      "support": 2717
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "destroyed",
+      "precision": 0.24948089700996678,
+      "recall": 0.6818955732122588,
+      "f1": 0.36530860443903923,
+      "support": 3524
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "no_damage",
+      "precision": 0.977209874014135,
+      "recall": 0.9808769855549273,
+      "f1": 0.9790399958952255,
+      "support": 19453
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "minor",
+      "precision": 0.5988593155893536,
+      "recall": 0.35553047404063204,
+      "f1": 0.4461756373937677,
+      "support": 886
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "major",
+      "precision": 0.49176954732510286,
+      "recall": 0.532293986636971,
+      "f1": 0.5112299465240642,
+      "support": 449
+    },
+    {
+      "regime": "cross_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "destroyed",
+      "precision": 0.8031624863685932,
+      "recall": 0.9299242424242424,
+      "f1": 0.8619075482738443,
+      "support": 1584
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "no_damage",
+      "precision": 0.9383416017009213,
+      "recall": 0.8449266113592853,
+      "f1": 0.8891873740765615,
+      "support": 4701
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "minor",
+      "precision": 0.674006116207951,
+      "recall": 0.8307576328684508,
+      "f1": 0.7442174573695763,
+      "support": 2653
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "major",
+      "precision": 0.32905982905982906,
+      "recall": 0.24251968503937008,
+      "f1": 0.27923844061650044,
+      "support": 635
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "pooled",
+      "label": "destroyed",
+      "precision": 0.7315436241610739,
+      "recall": 0.744390243902439,
+      "f1": 0.7379110251450677,
+      "support": 1025
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "no_damage",
+      "precision": 0.6275510204081632,
+      "recall": 0.15147783251231528,
+      "f1": 0.24404761904761904,
+      "support": 812
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "minor",
+      "precision": 0.6772784019975031,
+      "recall": 0.8767676767676768,
+      "f1": 0.7642190526501145,
+      "support": 2475
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "major",
+      "precision": 0.27638190954773867,
+      "recall": 0.2018348623853211,
+      "f1": 0.23329798515376457,
+      "support": 545
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "hurricane-matthew",
+      "label": "destroyed",
+      "precision": 0.6617050067658998,
+      "recall": 0.6936170212765957,
+      "f1": 0.6772853185595568,
+      "support": 705
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "no_damage",
+      "precision": 0.9534307654198663,
+      "recall": 0.9897145795834404,
+      "f1": 0.9712339137017411,
+      "support": 3889
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "minor",
+      "precision": 0.5151515151515151,
+      "recall": 0.19101123595505617,
+      "f1": 0.2786885245901639,
+      "support": 178
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "major",
+      "precision": 0.6285714285714286,
+      "recall": 0.4888888888888889,
+      "f1": 0.5499999999999999,
+      "support": 90
+    },
+    {
+      "regime": "within_event",
+      "model": "b1",
+      "scope": "moore-tornado",
+      "label": "destroyed",
+      "precision": 0.9013157894736842,
+      "recall": 0.85625,
+      "f1": 0.8782051282051281,
+      "support": 320
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "no_damage",
+      "precision": 0.9404175463288764,
+      "recall": 0.8527972771750691,
+      "f1": 0.8944667559125391,
+      "support": 4701
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "minor",
+      "precision": 0.6644717150553726,
+      "recall": 0.8367885412740294,
+      "f1": 0.7407407407407407,
+      "support": 2653
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "major",
+      "precision": 0.25985663082437277,
+      "recall": 0.2283464566929134,
+      "f1": 0.24308466051969826,
+      "support": 635
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "pooled",
+      "label": "destroyed",
+      "precision": 0.7816901408450704,
+      "recall": 0.6497560975609756,
+      "f1": 0.7096430474160895,
+      "support": 1025
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "no_damage",
+      "precision": 0.5584415584415584,
+      "recall": 0.2647783251231527,
+      "f1": 0.3592314118629908,
+      "support": 812
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "minor",
+      "precision": 0.6771929824561403,
+      "recall": 0.8577777777777778,
+      "f1": 0.7568627450980392,
+      "support": 2475
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "major",
+      "precision": 0.21473684210526317,
+      "recall": 0.1871559633027523,
+      "f1": 0.2,
+      "support": 545
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "hurricane-matthew",
+      "label": "destroyed",
+      "precision": 0.7047970479704797,
+      "recall": 0.5418439716312057,
+      "f1": 0.6126704089815557,
+      "support": 705
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "no_damage",
+      "precision": 0.9783393501805054,
+      "recall": 0.9755721265106712,
+      "f1": 0.9769537788077766,
+      "support": 3889
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "minor",
+      "precision": 0.470873786407767,
+      "recall": 0.5449438202247191,
+      "f1": 0.5052083333333333,
+      "support": 178
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "major",
+      "precision": 0.5180722891566265,
+      "recall": 0.4777777777777778,
+      "f1": 0.49710982658959535,
+      "support": 90
+    },
+    {
+      "regime": "within_event",
+      "model": "b2",
+      "scope": "moore-tornado",
+      "label": "destroyed",
+      "precision": 0.9161290322580645,
+      "recall": 0.8875,
+      "f1": 0.9015873015873015,
+      "support": 320
+    }
+  ]
+}

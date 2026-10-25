@@ -1,0 +1,17 @@
+{
+  "validation_only": true,
+  "test_evaluated": false,
+  "training_commit": "3ba5e61dd92f7400e1b169c1638a770e10820d03",
+  "checks": [
+    "20 epochs each",
+    "selected best matches history",
+    "confusion counts and class F1 recomputed",
+    "published records only; current source is not the frozen training version"
+  ],
+  "source_sha256": {
+    "reports/expanded_seed42/b1/summary.json": "3ba59bff19c1d75f11ba8b4a7143a5640d95bb742556a203f17d718f42e565b1",
+    "reports/expanded_seed42/b2/summary.json": "7aea90d1c1b0a0c578ee3f79618e964d72d6a7fd928ac5986816573479cf5a81",
+    "reports/within_event_mm/original_baseline/b1/seed42/attempt01/summary.json": "3945c971743ef20bab2f36a2e13e62a67a79bf6577eaba639fcaefc6a24c63f5",
+    "reports/within_event_mm/original_baseline/b2/seed42/attempt01/summary.json": "0ab0e8efdb383a96fcdd643645d3093bf0cbfcc0166db571619caa1abbcfb2ae"
+  }
+}
