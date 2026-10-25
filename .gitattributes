@@ -11,3 +11,7 @@
 /configs/expanded_seed42.json text eol=lf
 # Preserve raw records (some writers emitted CRLF); CR is not trailing space.
 /reports/expanded_seed42/** -text whitespace=cr-at-eol
+
+# Preserve original within-event evidence bytes; do not rewrite training fingerprints.
+/reports/within_event_mm/original_baseline/** -text whitespace=cr-at-eol
+/configs/within_event_matthew_moore_seed42.json text eol=lf

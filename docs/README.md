@@ -16,6 +16,7 @@
 | 四事件复现 | [权重与验证复核](../REPRODUCE_AND_DIAGNOSE.md) |
 | 四事件历史协议与运行指南 | [协议](../reports/PHASE3_PROTOCOL.md)、[历史运行指南](../reports/READY_TO_RUN.md) |
 | 扩大实验 | [入口](expanded_experiment/START_HERE.md)、[数据](expanded_experiment/DATA.md)、[运行](expanded_experiment/RUN.md)、[排障](expanded_experiment/TROUBLESHOOTING.md)、[交付](expanded_experiment/COLLABORATION.md)、[参考机验收](expanded_experiment/LOCAL_VALIDATION.md) |
+| 事件内原始基线 | [实验卡](../reports/within_event_mm/original_baseline/README.md)、[冻结协议](within_event_mm/PROTOCOL_v3.md)、[发布与复现](within_event_mm/PUBLICATION_PLAN.md) |
 | 提速的证据与适用边界 | [训练与效率说明](training.md) |
 | 实验身份、种子与记录 | [实验管理](experiment_management.md) |
 | 课程写作 | [paper 入口](../paper/README.md) |

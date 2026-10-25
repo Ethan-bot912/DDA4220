@@ -1,0 +1,349 @@
+{
+  "protocol": "DDA4220 within-event split v3 (2026-10-23)",
+  "algorithm": {
+    "objective": "sum_s ((A-T)/T)^2 + sum_c ((A_c-T_c)/max(T_c,1))^2",
+    "arithmetic": "exact",
+    "greedy_order": "rows desc, tile_id asc",
+    "tie_break": "J, then larger remaining capacity, then train/val/test",
+    "refinement": "single moves then pair swaps per round",
+    "improvement_threshold": "1e-12",
+    "max_rounds": 40
+  },
+  "source_manifest": "dataset/expanded_7events/manifest_classification.csv",
+  "source_manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "events": [
+    "hurricane-matthew",
+    "moore-tornado"
+  ],
+  "ratios": {
+    "train": "3/5",
+    "val": "1/5",
+    "test": "1/5"
+  },
+  "rows": 45002,
+  "per_event": {
+    "hurricane-matthew": {
+      "rows": 22630,
+      "tiles": 373,
+      "class_totals": {
+        "no_damage": 4058,
+        "minor": 12331,
+        "major": 2717,
+        "destroyed": 3524
+      },
+      "splits": {
+        "train": {
+          "tiles": 287,
+          "rows": 13557,
+          "target_rows": 13578,
+          "share_percent": 59.90720282810429,
+          "deviation_pp": -0.09279717189571365,
+          "class_counts": {
+            "no_damage": 2435,
+            "minor": 7390,
+            "major": 1617,
+            "destroyed": 2115
+          },
+          "class_targets": {
+            "no_damage": 2435,
+            "minor": 7399,
+            "major": 1630,
+            "destroyed": 2114
+          },
+          "class_deviation": {
+            "no_damage": {
+              "relative_deviation": 0.0,
+              "checked": true
+            },
+            "minor": {
+              "relative_deviation": -0.0012163805919718882,
+              "checked": true
+            },
+            "major": {
+              "relative_deviation": -0.007975460122699387,
+              "checked": true
+            },
+            "destroyed": {
+              "relative_deviation": 0.0004730368968779565,
+              "checked": true
+            }
+          }
+        },
+        "val": {
+          "tiles": 42,
+          "rows": 4537,
+          "target_rows": 4527,
+          "share_percent": 20.048608042421563,
+          "deviation_pp": 0.04418912947414936,
+          "class_counts": {
+            "no_damage": 812,
+            "minor": 2475,
+            "major": 545,
+            "destroyed": 705
+          },
+          "class_targets": {
+            "no_damage": 812,
+            "minor": 2466,
+            "major": 544,
+            "destroyed": 705
+          },
+          "class_deviation": {
+            "no_damage": {
+              "relative_deviation": 0.0,
+              "checked": true
+            },
+            "minor": {
+              "relative_deviation": 0.0036496350364963502,
+              "checked": true
+            },
+            "major": {
+              "relative_deviation": 0.001838235294117647,
+              "checked": true
+            },
+            "destroyed": {
+              "relative_deviation": 0.0,
+              "checked": true
+            }
+          }
+        },
+        "test": {
+          "tiles": 44,
+          "rows": 4536,
+          "target_rows": 4525,
+          "share_percent": 20.044189129474148,
+          "deviation_pp": 0.048608042421564294,
+          "class_counts": {
+            "no_damage": 811,
+            "minor": 2466,
+            "major": 555,
+            "destroyed": 704
+          },
+          "class_targets": {
+            "no_damage": 811,
+            "minor": 2466,
+            "major": 543,
+            "destroyed": 705
+          },
+          "class_deviation": {
+            "no_damage": {
+              "relative_deviation": 0.0,
+              "checked": true
+            },
+            "minor": {
+              "relative_deviation": 0.0,
+              "checked": true
+            },
+            "major": {
+              "relative_deviation": 0.022099447513812154,
+              "checked": true
+            },
+            "destroyed": {
+              "relative_deviation": -0.0014184397163120568,
+              "checked": true
+            }
+          }
+        }
+      },
+      "objective_J": 0.0005855888453024723,
+      "refinement_rounds": 6,
+      "converged": true
+    },
+    "moore-tornado": {
+      "rows": 22372,
+      "tiles": 220,
+      "class_totals": {
+        "no_damage": 19453,
+        "minor": 886,
+        "major": 449,
+        "destroyed": 1584
+      },
+      "splits": {
+        "train": {
+          "tiles": 165,
+          "rows": 13419,
+          "target_rows": 13423,
+          "share_percent": 59.981226533166456,
+          "deviation_pp": -0.017879492222420884,
+          "class_counts": {
+            "no_damage": 11675,
+            "minor": 531,
+            "major": 268,
+            "destroyed": 945
+          },
+          "class_targets": {
+            "no_damage": 11672,
+            "minor": 532,
+            "major": 269,
+            "destroyed": 950
+          },
+          "class_deviation": {
+            "no_damage": {
+              "relative_deviation": 0.00025702535983550376,
+              "checked": true
+            },
+            "minor": {
+              "relative_deviation": -0.0018796992481203006,
+              "checked": false
+            },
+            "major": {
+              "relative_deviation": -0.0037174721189591076,
+              "checked": false
+            },
+            "destroyed": {
+              "relative_deviation": -0.005263157894736842,
+              "checked": true
+            }
+          }
+        },
+        "val": {
+          "tiles": 28,
+          "rows": 4477,
+          "target_rows": 4475,
+          "share_percent": 20.011621669944574,
+          "deviation_pp": 0.008939746111210442,
+          "class_counts": {
+            "no_damage": 3889,
+            "minor": 178,
+            "major": 90,
+            "destroyed": 320
+          },
+          "class_targets": {
+            "no_damage": 3891,
+            "minor": 177,
+            "major": 90,
+            "destroyed": 317
+          },
+          "class_deviation": {
+            "no_damage": {
+              "relative_deviation": -0.0005140066820868671,
+              "checked": true
+            },
+            "minor": {
+              "relative_deviation": 0.005649717514124294,
+              "checked": false
+            },
+            "major": {
+              "relative_deviation": 0.0,
+              "checked": false
+            },
+            "destroyed": {
+              "relative_deviation": 0.00946372239747634,
+              "checked": true
+            }
+          }
+        },
+        "test": {
+          "tiles": 27,
+          "rows": 4476,
+          "target_rows": 4474,
+          "share_percent": 20.00715179688897,
+          "deviation_pp": 0.008939746111210442,
+          "class_counts": {
+            "no_damage": 3889,
+            "minor": 177,
+            "major": 91,
+            "destroyed": 319
+          },
+          "class_targets": {
+            "no_damage": 3890,
+            "minor": 177,
+            "major": 90,
+            "destroyed": 317
+          },
+          "class_deviation": {
+            "no_damage": {
+              "relative_deviation": -0.0002570694087403599,
+              "checked": true
+            },
+            "minor": {
+              "relative_deviation": 0.0,
+              "checked": false
+            },
+            "major": {
+              "relative_deviation": 0.011111111111111112,
+              "checked": false
+            },
+            "destroyed": {
+              "relative_deviation": 0.006309148264984227,
+              "checked": true
+            }
+          }
+        }
+      },
+      "objective_J": 0.0003306819194473695,
+      "refinement_rounds": 2,
+      "converged": true
+    }
+  },
+  "pooled": {
+    "train": {
+      "rows": 26976,
+      "class_counts": {
+        "no_damage": 14110,
+        "minor": 7921,
+        "major": 1885,
+        "destroyed": 3060
+      }
+    },
+    "val": {
+      "rows": 9014,
+      "class_counts": {
+        "no_damage": 4701,
+        "minor": 2653,
+        "major": 635,
+        "destroyed": 1025
+      }
+    },
+    "test": {
+      "rows": 9012,
+      "class_counts": {
+        "no_damage": 4700,
+        "minor": 2643,
+        "major": 646,
+        "destroyed": 1023
+      }
+    }
+  },
+  "acceptance": {
+    "total_deviation_limit_pp": 1.5,
+    "class_relative_deviation_limit": 0.25,
+    "class_check_min_total": 1000,
+    "pooled_minimum": 500,
+    "violations": [],
+    "pooled_shortfalls": [],
+    "passed": true
+  },
+  "config_fields": {
+    "expected_train_rows": 26976,
+    "expected_val_rows": 9014,
+    "expected_test_rows": 9012,
+    "expected_train_counts": {
+      "no_damage": 14110,
+      "minor": 7921,
+      "major": 1885,
+      "destroyed": 3060
+    },
+    "train_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "val_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "test_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ]
+  },
+  "outputs": {
+    "split_map.csv": {
+      "sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+      "bytes": 20337
+    },
+    "manifest_classification.csv": {
+      "sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+      "bytes": 47059765
+    }
+  }
+}

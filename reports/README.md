@@ -12,6 +12,7 @@
 | EX-001 | 扩大训练已完成，test 未评估 | 5 train / 2 val events；seed42 | [结果、记录与 Release](expanded_seed42/README.md) |
 | PERF-001 | GPU 提速研究已发布 | 四事件；RTX4060 Laptop；seed42 | [并行加载](speed_four_event_20261024/README.md)；与其指定基线比较 |
 | PERF-002 | CPU 缓存研究已发布 | 四事件；i7-1165G7 CPU；单 seed 对照 | [缓存与 workers](speed_io_cpu_20261025/README.md)；A 组基线不完整，倍数限该环境 |
+| WE-000 | 事件内原始基线完成，test未评估；历史补录 | Matthew/Moore固定tile划分；B1/B2 seed42 attempt01 | [实验卡与划分对照](within_event_mm/original_baseline/README.md)；与EX-001为不同数据条件的诊断比较 |
 
 ## 准备与历史材料
 
@@ -21,6 +22,6 @@
 
 ## 后续发布
 
-当前 main 尚未发布事件内实验和亮度增强成果。未来按[实验管理规则](../docs/experiment_management.md)登记 WE 系列实验：明确跨事件/事件内条件、对照、固定划分、模型、seed 和评估状态。保留无改善结果。
+本次登记WE-000事件内原始基线；亮度增强及后续因素实验尚未在本次发布。未来按[实验管理规则](../docs/experiment_management.md)登记 WE 系列实验：明确跨事件/事件内条件、对照、固定划分、模型、seed 和评估状态。保留无改善结果。
 
 已有目录原名与记录保留；新实验使用描述性目录和实验卡。多 seed 属于同一方案下的运行，后续新增运行无需再次重组仓库。

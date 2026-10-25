@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-26",
+  "upstream_base": "038cf8b6366abdd0db80ef4628bd795745b8c5b7",
+  "historical_training_commit": "3ba5e61dd92f7400e1b169c1638a770e10820d03",
+  "real_training_rerun": false,
+  "real_test_evaluated": false,
+  "checks": {
+    "within_event_final_suite": {
+      "tests": 22,
+      "passed": 21,
+      "skipped": 1,
+      "reason": "real manifest not copied to isolated worktree"
+    },
+    "real_manifest_reference_separate": {
+      "tests": 1,
+      "passed": 1,
+      "scope": "read-only original manifest; compare frozen split outputs"
+    },
+    "expanded_suite": {
+      "tests": 3,
+      "passed": 3,
+      "includes": "post and early CUDA synthetic uninterrupted versus resume, exact model/history equality"
+    },
+    "preparation_suite": {
+      "tests": 6,
+      "passed": 6
+    },
+    "overnight_chain": {
+      "tests": 10,
+      "passed": 10,
+      "fake_runner": true
+    },
+    "initial_failure_and_resolution": "Initial combined run failed only config LF byte check after Windows checkout. Restored original config bytes and added scoped eol=lf rule; final 22-test within-event suite passed with one real-manifest skip, separately verified.",
+    "original_evidence": "summary/history/run_metadata, split_map and split_report are byte-identical to original local records",
+    "metrics": "best epoch/history, confusion matrix class F1 and pooled F1, metadata/summary provenance and paired model sources verified",
+    "upstream_compatibility": "dataset.py unchanged from upstream; cache-dir entry points preserved; current integration source differs from historical checkpoint fingerprint",
+    "documentation": "updated local navigation links resolve; no raw imagery, weights, caches or unrelated experiments staged"
+  },
+  "local_log_sha256": {
+    "publication_tests.log": "1a83f3e15081b1d44418122527fa3bc92d577a2db3073514a3ffa650a700d579",
+    "within_event_final_tests.log": "e771f71758dfa30e2515e3f6ec37d3abba16061f89fef79d7cc9650d831fab8f",
+    "real_reference_test.log": "39a8f5d106d8b9d1db85ef46cf9916f873fc333a410737222fac016fa3601cac"
+  }
+}
