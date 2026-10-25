@@ -1,5 +1,7 @@
 # Phase 3：受控 ResNet-18 实验协议
 
+> 适用范围：历史四事件跨事件基线协议（FE-001）。后续实验需使用其自身明确发布的协议；总览见[实验索引](README.md)。
+
 以本仓库 `DATASET.md` 为准。交接文档曾误写事件名和 CLI 参数，不能直接使用其数据命令。
 
 - 数据：仅提取 `tier3`；训练 `joplin-tornado` / `lower-puna-volcano`，验证 `moore-tornado`，测试 `nepal-flooding`。

@@ -1,5 +1,7 @@
 # Deep Learning for Automated Building Damage Assessment from Paired Satellite Imagery
 
+> 文档定位：初始课程 proposal，作为历史方案保留；当前方向见[研究计划](../docs/research_plan.md)，已发布结果见[实验索引](README.md)。
+
 **DDA4220 Project Proposal**
 
 **Project type:** Application-oriented project with a controlled empirical study

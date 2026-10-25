@@ -1,289 +1,45 @@
-# DDA4220 项目：基于灾前/灾后卫星图像的建筑物损毁评估
+# DDA4220：灾前 / 灾后卫星图像建筑损毁评估
 
-## 最新完成：扩大实验（2026-10-22）
+基于 xBD / xView2 的课程研究项目，比较 **B1：仅灾后 RGB** 与 **B2：灾前＋灾后六通道早期融合**。当前正式分类实验使用随机初始化 ResNet-18，以及标注建筑位置生成的裁剪；自动建筑定位属于后续扩展。
 
-五训练事件104,152栋、两验证事件45,002栋，随机初始化ResNet-18，B1/B2各20轮、seed42。合并验证Macro F1为 **B1 0.462021 / B2 0.450870**；这是单seed验证集选优结果，封存测试集尚未评估。新旧验证事件不同，不能直接比较合并分数。
+## 从这里开始
 
-- [扩大实验结果与复现入口](reports/expanded_seed42/README.md) / [完整分析报告](reports/expanded_seed42/analysis_report.md)
-- [完整ZIP、模型权重与校验文件（GitHub Release）](https://github.com/Ethan-bot912/DDA4220/releases/tag/expanded-seed42-20261022)
-- [固定配置](configs/expanded_seed42.json) / [数据与运行说明](docs/expanded_experiment/START_HERE.md)
+| 你的目的 | 入口 |
+| --- | --- |
+| 看已发布实验、诊断和提速结果 | [实验与证据索引](reports/README.md) |
+| 安装环境、准备数据、运行或复现 | [文档导航](docs/README.md) |
+| 了解研究过程与下一步 | [研究历史](docs/research_history.md) / [研究计划](docs/research_plan.md) |
+| 新增实验、多 seed 与实验卡 | [实验管理规则](docs/experiment_management.md) |
+| 提交或 push 文件 | [贡献与推送规则](CONTRIBUTING.md) |
+| 准备课程 paper | [写作入口](paper/README.md) / [证据对应表](paper/evidence_map.md) |
 
-仓库保存代码、配置和小型实验记录；模型权重及完整manifest在Release，原始卫星影像从官方来源另行准备。下方四事件材料作为历史基线保留。
+## 已发布的模型实验
 
-## 历史四事件实验（2026-10-15）
+| 实验 | 划分 | B1 验证 Macro F1 | B2 验证 Macro F1 | 入口 |
+| --- | --- | ---: | ---: | --- |
+| 四事件，seed42 | 2 个训练事件、1 个验证事件、1 个封存测试事件 | 0.601236 | 0.602278 | [结果与复现](reports/four_event_seed42/README.md) |
+| 扩大实验，seed42 | 5 个训练事件、2 个验证事件；测试事件封存 | 0.462021 | 0.450870 | [结果与复现](reports/expanded_seed42/README.md) |
 
-已完成真实 xBD 四事件子集上的 **ResNet-18 B1/B2 各20轮、seed42** 训练与最佳权重验证；尚未启动19事件全量扩展或最终测试评估。当前验证 Macro F1：B1 **0.601236**，B2 **0.602278**。这是单seed、单验证事件的结果，不能据此宣称灾前信息稳定有效或无效。
+上述为单 seed、验证集选优结果，测试集尚未评估。两项实验的训练和验证范围不同，合并分数不能直接用于判断模型升级收益。
 
-**队友请先读 [复核与排查入口](REPRODUCE_AND_DIAGNOSE.md)**：包含约105 MB免重训复现包、两份best权重、训练记录、逐建筑预测、精确440幅验证影像清单和运行方法。卫星影像不上传，按清单从官方数据准备。
+另有[四事件诊断分析](reports/b1_b2_similarity_20261018/README.md)、[GPU 并行加载研究](reports/speed_four_event_20261024/README.md)和[CPU 裁剪缓存研究](reports/speed_io_cpu_20261025/README.md)。提速测量来自各自设备与协议，不能跨机器套用加速倍数。
 
-- [详实实验报告](reports/experiment_20261015/实验报告.md) / [PDF](reports/experiment_20261015/实验报告.pdf)
-- [数据选择说明](reports/four_event_seed42/DATA_SELECTION.md) / [验证影像名单](reports/four_event_seed42/validation_images.csv)
-- [全量扩展资源预算](reports/expansion_planning_20261015/全量扩展准备与资源预算.md)
+## 当前研究方向
 
-以下为项目研究方案；涉及未来多seed、全量和端到端定位的内容仍属于计划。
+拟先验证并适配提速流程，再围绕识别缺陷开展事件内因素对照、多 seed 与错误分析，最后冻结方案并评估测试集。**本仓库 main 尚未发布事件内实验与亮度增强成果**；后续发布时应同时更新协议、配置、实验卡和证据索引。
 
-本项目拟使用 xBD / xView2 数据集，构建一个从灾前、灾后卫星影像到建筑物损毁等级的深度学习系统。当前项目定位为 **Application + Empirical Study**：重点不是提出全新的网络结构，而是把已有方法适配到一个有实际意义的问题上，建立可信 baseline，进行控制变量比较，并分析模型为什么有效或失败。
+## 文件放在哪里
 
-正式英文 proposal 详见 [reports/proposal.md](reports/proposal.md)。本文档保留对应的中文项目方案、执行顺序和协作说明。
+| 位置 | 用途 |
+| --- | --- |
+| `docs/` | 数据与运行说明、研究规则和历史 |
+| `configs/` | 机器可读取的实验参数 |
+| `stage_b_damage/` | 分类模型、数据读取与训练代码 |
+| `stage_a_localization/` | 建筑定位扩展，目前为规划入口 |
+| `evaluation/` | 指标、冻结权重评估和比较 |
+| `tools/` | 数据准备、缓存、核验与运行工具 |
+| `tests/` | 程序正确性与协议约束检查 |
+| `reports/` | 精选实验记录、图表、报告及实验卡 |
+| `paper/` | 课程文章与结论的证据对应关系 |
 
-## 1. 项目要解决的问题
-
-自然灾害后，救援人员需要尽快知道哪些建筑物没有损毁、哪些受到轻度或重度损毁、哪些已经被摧毁。人工查看大范围卫星图像耗时且难以扩展。
-
-本项目研究以下核心问题：
-
-> 与只使用灾后图像相比，同时使用灾前和灾后图像，是否能更准确地判断建筑物损毁程度？这种提升是否值得额外的显存、推理时间和系统复杂度？
-
-四个损毁类别为：
-
-| 类别 | 含义 |
-|---|---|
-| `no damage` | 无损毁 |
-| `minor` | 轻度损毁 |
-| `major` | 重度损毁 |
-| `destroyed` | 完全摧毁 |
-
-## 2. 项目整体思路
-
-项目的核心交付是一个受控的 Stage B 建筑损毁分类比较：在由 ground-truth building polygon 生成的相同建筑裁剪上，对比只使用灾后图像的 B1 与使用对齐灾前/灾后图像的 B2。这样可以隔离“向分类器加入灾前信息”的实际价值，避免把建筑定位误差混入主结论。若时间和算力允许，再加入 Stage A 定位，并测量预测建筑轮廓对完整流程的影响。
-
-```text
-核心实验：
-ground-truth building polygon --> 成对建筑裁剪 --> B1 / B2 损毁分类 --> 指标与计算成本比较
-
-可选扩展：
-灾前图像 I_pre --> Stage A 预测建筑轮廓 --> predicted-footprint crops
-                                                   --> 已选分类器 --> damage map
-```
-
-### （可选扩展）Stage A：建筑物定位
-
-输入灾前图像，输出建筑物二值 mask。优先使用灾前影像是为了在建筑物尚未受损时获得更完整的 footprint。
-
-- 起始模型：U-Net 风格的二值分割网络。
-- 可选扩展：如果数据和算力允许，再比较 DeepLabV3+ 风格模型。
-- 输出：建筑区域 mask，或后续转换为建筑实例/候选框。
-- 指标：IoU、Dice/F1、precision、recall。
-
-### Stage B：建筑物损毁分类
-
-每栋建筑对应一个灾前 crop、一个灾后 crop 和一个四分类标签。
-
-- **B1 post-only baseline**：只输入灾后 crop，是本项目的可信基线。
-- **B2 paired pre/post classifier**：输入同一建筑对齐的灾前、灾后 crop，使用在最终测试前固定的直接融合方法。当前 pilot 以六通道早期拼接作为这一方法的实现。
-
-核心科学比较是 B2 与 B1：在完全相同的数据划分、建筑 crop、预处理、backbone 系列、训练预算和 checkpoint 选择规则下，唯一的主要差异是是否向分类器提供灾前 crop。当前四事件正式训练已使用同系列 ResNet-18 编码器；`SmallCNN` 仅用于数据和训练管线冒烟检查，不用于正式成绩。
-
-Siamese、双流或其他输入级/特征级融合方式不再属于核心交付；只有在 B1–B2 的主比较完成且仍有时间与算力时，才作为仅使用训练集和验证集的补充消融实验。
-
-## 3. 研究问题和假设
-
-### RQ1：灾前信息是否有用？
-
-在相同建筑、相同 crop、相同数据划分和相近训练预算下，B2 相比 B1 的 Macro F1 是否提升？
-
-预期灾前图像可能帮助模型区分原本的屋顶、植被、阴影和灾后变化，尤其可能提高 `major`、`destroyed` 的召回率；但图像错位、云层或质量差异也可能让灾前图像变成噪声。
-
-### RQ2：加入灾前信息的收益是否值得额外成本？
-
-除最终分数外，需要比较 B1 和 B2 的参数量、峰值显存、推理时间和吞吐量，判断灾前信息带来的收益是否值得额外计算开销。
-
-### （可选扩展）RQ3：定位误差会造成多大影响？
-
-先用 ground-truth building polygon 裁剪，测量分类器本身的能力；再用 Stage A 预测 mask 产生 crop，观察完整系统的性能损失。
-
-### RQ4：提升是否对不同灾害和不同类别都稳定？
-
-需要按灾害类型、损毁类别、建筑大小和图像质量做分组分析，避免只报告总体 accuracy。
-
-## 4. 数据集与数据协议
-
-计划使用 xBD / xView2 数据集，包括：
-
-- 灾前/灾后配对的高分辨率卫星图像；
-- 建筑物 polygon 标注；
-- 四级损毁标签；
-- 灾害事件及灾害类型元数据。
-
-全量数据规模较大，第一阶段只选择约 3-5 个 disaster events，完成一个可运行的完整 pilot 后再考虑扩展。数据量不是先验假设，必须先验证实际可访问性。完整的下载、校验、提取、manifest 和审计步骤见 [DATASET.md](DATASET.md)。
-
-### 数据审计：在训练前完成
-
-1. 确认 xBD/xView2 数据和标签能够下载或读取。
-2. 记录数据来源、访问日期、事件列表和可用的版本/校验信息。
-3. 实际查看灾前/灾后样本、polygon overlay、图像大小、标签分布和配准情况。
-4. 检查每个样本是否同时拥有图像、标签和元数据。
-5. 保存小规模 manifest，使同一子集可以复现。
-
-如果官方数据无法访问，不能直接换成没有说明的其他数据集。应使用可以验证的官方子集，或在报告中明确写出 fallback 数据和限制。
-
-### 数据划分：按事件划分，避免泄漏
-
-不能简单随机把同一个灾害事件的建筑拆到 train/validation/test，因为相邻图像和相同灾害环境可能让 test 过于容易。
-
-- 尽量按 disaster event 做 train/validation/test 划分。
-- 最终测试事件在模型选择阶段完全不使用。
-- 训练、验证、测试的事件列表和样本数量写入 manifest。
-- 如果 3 个事件无法形成理想划分，要使用 grouped split，并在报告中说明限制。
-
-### 输入和预处理
-
-- 先使用 ground-truth polygon 生成固定大小的建筑 crop，并保留少量周边上下文。
-- 候选设置为 128 x 128，具体尺寸和上下文边界在 pilot 后固定并记录。
-- B1 和 B2 使用完全相同的 crop、resize、normalization 和 paired spatial augmentation；任何补充融合消融也必须遵守同一数据协议。
-- 灾前、灾后必须共同应用旋转和翻转，避免人为破坏配对关系。
-- 光照等 photometric augmentation 要保守，不能人为制造虚假差异。
-- 空 crop、损坏文件、无效 polygon 和越界样本需要统计和记录，不能静默丢弃。
-
-### 类别不平衡
-
-`major` 和 `destroyed` 通常比 `no damage` 少，因此默认使用只根据训练集统计得到的 class-weighted cross-entropy。必要时再做 weighted sampling 或 focal loss 的受控 ablation。
-
-最终报告必须包含：类别数量、每类 precision/recall/F1、混淆矩阵，以及典型错误案例。不能只给 accuracy。
-
-## 5. 实验设计和评价方式
-
-### 5.1 训练前固定的内容
-
-在最终实验开始前固定并记录：
-
-- 数据子集、事件列表和 train/validation/test 划分；
-- crop 大小、上下文、resize、normalization 和 augmentation；
-- 类别映射和 class weights；
-- 模型结构、参数量和是否使用 pretrained initialization；
-- optimizer、learning rate、batch size、epoch、regularization；
-- 随机种子、软件版本和硬件环境；
-- primary metric 和 checkpoint 选择规则。
-
-训练期间按验证集定期评估，使用验证集选择 checkpoint。恢复验证集最优 checkpoint 后，只在最终阶段使用一次测试集评估。测试集不能用于反复调参或选择最好的模型。
-
-### 5.2 指标
-
-**（可选）Stage A：**
-
-- IoU；
-- Dice/F1；
-- precision、recall；
-- 典型场景 mask overlay。
-
-**Stage B：**
-
-- **主指标：Macro F1**，因为类别不平衡；
-- accuracy、balanced accuracy；
-- 每一类 precision、recall、F1；
-- confusion matrix；
-- 必要时补充 confidence/calibration 分析。
-
-**计算成本：**
-
-- 参数量和模型大小；
-- 固定硬件上的 peak memory；
-- warm-up 后固定 batch size 的推理 latency；
-- throughput。
-
-如果说某个模型更快或更省资源，必须同时报告预测质量和实际运行/内存开销。
-
-### 5.3 必须做的比较
-
-| 比较 | 目的 |
-|---|---|
-| B1 vs B2 | 加入灾前图像是否提升损毁分类？ |
-| B1/B2 + ground-truth crops | 在没有定位干扰时，分类器本身表现如何？ |
-| 选定分类器 + predicted-mask crops（可选） | 真实端到端使用时会损失多少？ |
-| 不同灾害类型、损毁类别 | 结果是否被某一个事件或类别主导？ |
-| 预测质量 vs latency/memory | 性能提升是否值得额外开销？ |
-| 输入质量和配准检查 | 失败是模型问题，还是输入 pipeline 丢失了关键信息？ |
-
-如果配对图像有效，要分析是否因为模型保留了灾前/灾后变化信息；如果无效，在主比较中要优先检查配准、crop、normalization 和通道拼接，再判断灾前信息是否真的没有帮助。Stage A 误差只在 predicted-footprint 的可选扩展中单独分析。
-
-### 5.4 重复实验
-
-如果算力允许，最终比较至少使用 3 个固定随机种子，报告 mean 和 standard deviation。如果只能完成单 seed，则要明确写出这一限制，并保留完整配置和日志。
-
-## 6. 可行性和风险控制
-
-| 风险 | 对策 |
-|---|---|
-| 数据下载/权限不可用 | 第一周先验证访问并查看真实样本；保存 manifest；必要时缩小为可验证子集 |
-| 数据太大、训练太慢 | 从 3-5 个事件开始；先跑一个小型完整实验，测显存、内存和时间 |
-| 两阶段工作量过大 | 最低交付是 ground-truth crops 上 B1 与 B2 的受控比较；预测 mask 是后续扩展 |
-| 类别严重不平衡 | class-weighted loss、Macro F1、per-class metrics、confusion matrix |
-| 数据泄漏 | 按 disaster event 分组划分，最终测试事件不参与调参 |
-| 灾前/灾后图像错位 | 先看 overlay；联合空间增强；统计无效配对；做错例分析 |
-| 定位误差传递到分类 | 分开报告 ground-truth crop 与 predicted-mask crop |
-| GPU 显存或队列不足 | 先用小型完整实验估计成本，采用紧凑 backbone，优先完成 B1 与 B2 的主比较，再考虑补充融合消融和可选端到端流程 |
-| label ambiguity、小建筑和阴影 | 报告典型案例，不对单个预测过度解释 |
-
-### Scope ladder：按优先级交付
-
-1. **Must have**：数据访问和样本审计、event-aware split、paired crop loader、B1 与 B2、Macro F1/per-class metrics、可信的受控比较。
-2. **Should have**：3 个 seed、runtime/memory、灾害类型和错例分析。
-3. **Stretch**：U-Net Stage A、predicted-mask crop、端到端 damage map、DeepLabV3+ 或其他融合方式的补充消融。
-
-这样可以避免为了追求完整 demo 而牺牲最核心的 baseline、对照实验和结果解释。
-
-## 7. 当前仓库结构
-
-```text
-DDA4220-main/
-├── stage_a_localization/     # Stage A：建筑物分割
-├── stage_b_damage/           # Stage B：四级损毁分类
-├── evaluation/               # 指标、可视化、端到端集成
-├── reports/
-│   └── proposal.md            # 正式英文 proposal
-├── tools/                     # 数据提取、manifest 和审计脚本
-├── DATASET.md                 # 本地数据获取与可复现实验步骤
-├── README.md                 # 中文项目方案与协作说明
-├── requirements.txt           # CPU 核心 profile
-├── requirements-gpu.txt       # 经验证的 NVIDIA CUDA 训练 profile
-└── SETUP.md
-```
-
-数据原文件、提取影像、manifest、审计结果和模型输出均不提交到仓库；只提交下载/解析说明、配置、脚本和必要的小型示例。具体规则见 [DATASET.md](DATASET.md)。
-CPU 与 GPU profile 是互斥的；安装命令和硬件验证方式见 [SETUP.md](SETUP.md)。
-
-## 8. 分阶段计划
-
-| 阶段 | 目标 | 验收证据 |
-|---|---|---|
-| Phase 1：数据审计 | 验证数据并建立子集 | 真实样本、polygon overlay、类别统计、manifest、事件划分 |
-| Phase 2：baseline | 跑通 B1 post-only | 可重复的训练/验证/测试流程和 baseline 指标 |
-| Phase 3：时间信息比较 | 完成 B2，并与 B1 做受控比较 | 相同 split/crop/训练规则下的比较表 |
-| Phase 4：可选建筑定位 | 完成 U-Net（若时间和资源允许） | IoU/Dice 和 mask overlay |
-| Phase 5：可选端到端集成 | 使用 predicted mask 生成 damage map（若时间和资源允许） | 端到端样例、数量/面积统计、错误案例 |
-| Phase 6：分析和写作 | 完成最终证据链 | 指标、效率、限制、贡献、引用和最终报告 |
-
-每次实验记录配置、seed、checkpoint、validation score、test score、时间、内存和备注，避免最终报告只依赖一个无法追溯的“最好结果”。
-
-## 9. 近期执行清单
-
-- [x] 验证 xBD/xView2 数据访问，并实际查看灾前/灾后样本。
-- [x] 确认事件列表、类别分布和 event-aware train/validation/test split。
-- [x] 完成 ground-truth paired crop dataloader。
-- [x] 用小子集跑通 B1 的数据、训练和评估管线。
-- [x] 固定第一版 preprocessing、metric、seed 和 checkpoint 规则。
-- [x] 完成 B1 与 B2 配对输入的冒烟训练；当前 B2 使用六通道早期拼接。
-- [x] 四事件子集、seed42 的 ResNet-18 B1–B2 训练与最佳权重验证；多seed与全量比较待做。
-- [ ] 完成主比较后，再决定是否做补充融合消融，以及是否扩展 Stage A predicted-mask 和端到端 demo。
-
-## 10. 参考资料
-
-1. Gupta et al., *xBD: A Dataset for Assessing Building Damage from Satellite Imagery*, 2019: https://arxiv.org/abs/1911.09296
-2. Weber and Kané, *Building Disaster Damage Assessment in Satellite Imagery with Multi-Temporal Fusion*, 2020: https://arxiv.org/abs/2004.05525
-3. Ronneberger et al., *U-Net: Convolutional Networks for Biomedical Image Segmentation*, 2015: https://arxiv.org/abs/1505.04597
-4. Chen et al., *Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation*, 2018: https://arxiv.org/abs/1802.02611
-5. He et al., *Deep Residual Learning for Image Recognition*, 2016: https://arxiv.org/abs/1512.03385
-6. xView2 官方网站和数据资源：https://xview2.org/
-7. DDA4220 课程 L05，project guidance slides 64-73。
-
-## 11. 当前数据准备结果
-
-已在本地 `dataset/pilot_tier3_4events/` 建立一个按灾害事件划分的可复现实验子集：
-
-- train：`joplin-tornado`、`lower-puna-volcano`
-- validation：`moore-tornado`
-- test：`nepal-flooding`
-- `manifest_classification.csv`：81,506 条四分类建筑记录
-- `geotiff_audit.json`：2,220 个实际使用影像均通过 GeoTIFF 与框范围检查
-
-配对 crop 的惰性读取和 B1/B2 冒烟训练入口位于 `stage_b_damage/dataset.py` 与 `stage_b_damage/train_baseline.py`；当前 B2 是直接的六通道配对输入实现，四事件单seed主实验已与同一 ResNet-18 系列的 B1 做受控比较，详见本页顶部的复核入口。数据文件本身留在本地，按 [DATASET.md](DATASET.md) 可重新生成。
+仓库保存源码、配置、文档及小型证据；权重与完整复现包见各报告链接的 GitHub Releases。原始影像、实际裁剪缓存、环境和临时输出留在运行机器。现有报告目录保留原名，以保持历史链接和脚本路径可用。
