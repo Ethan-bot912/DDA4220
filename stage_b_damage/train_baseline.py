@@ -39,6 +39,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--crop-size", type=int, default=128)
     parser.add_argument("--context", type=int, default=16)
     parser.add_argument("--workers", type=int, default=0)
+    parser.add_argument("--cache-dir", type=Path, default=None)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--max-train", type=int, default=0)
     parser.add_argument("--max-val", type=int, default=0)
@@ -235,6 +236,7 @@ def main() -> int:
         project_root=args.project_root,
         crop_size=args.crop_size,
         context=args.context,
+        cache_dir=args.cache_dir,
     )
     val_full = XBDPairedDataset(
         args.manifest,
@@ -242,6 +244,7 @@ def main() -> int:
         project_root=args.project_root,
         crop_size=args.crop_size,
         context=args.context,
+        cache_dir=args.cache_dir,
     )
     train_indices = choose_indices(len(train_full), args.max_train, args.seed)
     val_indices = choose_indices(len(val_full), args.max_val, args.seed + 1)

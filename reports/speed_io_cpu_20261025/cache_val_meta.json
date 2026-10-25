@@ -1,0 +1,36 @@
+{
+  "manifest": "D:\\dda4220-project\\DDA4220-main\\dataset\\pilot_tier3_4events\\manifest_classification.csv",
+  "manifest_sha256": "39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0",
+  "split": "val",
+  "rows": 500,
+  "total_rows_in_split": 22372,
+  "row_limit": 500,
+  "order": "tile",
+  "crop_size": 128,
+  "context": 16,
+  "dtype": "uint8",
+  "shape": [
+    500,
+    3,
+    128,
+    128
+  ],
+  "pre_file": "val_pre.npy",
+  "post_file": "val_post.npy",
+  "bytes_per_file": 24576000,
+  "lossless": true,
+  "round_trip_tolerance": 0.001,
+  "samples_bitwise_verified": 1000,
+  "verify_every": 1,
+  "float32_max_abs_error": 0.0,
+  "label_counts": {
+    "no_damage": 419,
+    "destroyed": 29,
+    "minor": 36,
+    "major": 16
+  },
+  "build_seconds": 4.486914600012824,
+  "crops_per_second": 111.43514966800817,
+  "torch_version": "2.7.1+cpu",
+  "numpy_version": "2.1.0"
+}

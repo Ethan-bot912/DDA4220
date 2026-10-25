@@ -1,0 +1,3 @@
+# Cache meta files are evidence; the .npy payloads are not.
+*.npy
+_acceptance/

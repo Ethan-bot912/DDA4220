@@ -1,0 +1,276 @@
+{
+  "mode": "post",
+  "backbone": "resnet18",
+  "config": {
+    "manifest": "D:\\dda4220-project\\DDA4220-main\\dataset\\pilot_tier3_4events\\manifest_classification.csv",
+    "output": "D:\\dda4220-project\\DDA4220-main\\reports\\compare_seed42\\probe\\B_post_w4_nocache.json",
+    "project_root": "D:\\dda4220-project\\DDA4220-main",
+    "mode": "post",
+    "backbone": "resnet18",
+    "epochs": 2,
+    "batch_size": 32,
+    "lr": 0.001,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 4,
+    "cache_dir": null,
+    "seed": 42,
+    "max_train": 0,
+    "max_val": 0,
+    "device": "cpu",
+    "benchmark_steps": 2,
+    "benchmark_warmup": 1
+  },
+  "device": "cpu",
+  "hardware": "CPU",
+  "versions": {
+    "python": "3.13.9",
+    "torch": "2.11.0+cpu",
+    "torchvision": "0.26.0+cpu",
+    "numpy": "2.5.4",
+    "rasterio": "1.3.11"
+  },
+  "events": {
+    "train": [
+      "joplin-tornado",
+      "lower-puna-volcano"
+    ],
+    "val": [
+      "moore-tornado"
+    ],
+    "test": [
+      "nepal-flooding"
+    ]
+  },
+  "manifest_sha256": "39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0",
+  "train_indices_sha256": "447c03d77e09f2257a6719033fc2f669942d25931ba5604ff02637ee1946fdf5",
+  "val_indices_sha256": "0436ea4ad6a3653794a738f10043d3614daf4dfa93dbeb74b978238c2ddf6e4d",
+  "train_rows": 17552,
+  "val_rows": 22372,
+  "class_counts": {
+    "destroyed": 3778,
+    "minor": 2241,
+    "major": 1031,
+    "no_damage": 10502
+  },
+  "class_weights": [
+    0.21445070207118988,
+    1.004980444908142,
+    2.184443473815918,
+    0.5961253046989441
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.9013895496473494,
+      "val": {
+        "n": 22372,
+        "accuracy": 0.35320936885392457,
+        "macro_f1": 0.27156285661228036,
+        "balanced_accuracy": 0.5090548311826917,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.9921473874962247,
+            "recall": 0.3377371099573331,
+            "f1": 0.5039309683604986,
+            "support": 19453
+          },
+          "minor": {
+            "precision": 0.04914766437901262,
+            "recall": 0.5011286681715575,
+            "f1": 0.08951612903225806,
+            "support": 886
+          },
+          "major": {
+            "precision": 0.07140300644237652,
+            "recall": 0.888641425389755,
+            "f1": 0.13218486002981614,
+            "support": 449
+          },
+          "destroyed": {
+            "precision": 0.43351063829787234,
+            "recall": 0.3087121212121212,
+            "f1": 0.36061946902654873,
+            "support": 1584
+          }
+        },
+        "confusion": [
+          [
+            6570,
+            8498,
+            3772,
+            613
+          ],
+          [
+            22,
+            444,
+            412,
+            8
+          ],
+          [
+            2,
+            30,
+            399,
+            18
+          ],
+          [
+            28,
+            62,
+            1005,
+            489
+          ]
+        ]
+      },
+      "lr": 0.001,
+      "epoch_seconds": 762.918583599996
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.7003955758930376,
+      "val": {
+        "n": 22372,
+        "accuracy": 0.23069014839978544,
+        "macro_f1": 0.1623831938226797,
+        "balanced_accuracy": 0.3451958557015236,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.9985775248933144,
+            "recall": 0.18043489436076698,
+            "f1": 0.30564263322884017,
+            "support": 19453
+          },
+          "minor": {
+            "precision": 0.03717948717948718,
+            "recall": 0.0327313769751693,
+            "f1": 0.034813925570228096,
+            "support": 886
+          },
+          "major": {
+            "precision": 0.009885764499121265,
+            "recall": 0.20044543429844097,
+            "f1": 0.01884224850832199,
+            "support": 449
+          },
+          "destroyed": {
+            "precision": 0.17073442549871837,
+            "recall": 0.9671717171717171,
+            "f1": 0.29023396798332857,
+            "support": 1584
+          }
+        },
+        "confusion": [
+          [
+            3510,
+            750,
+            8496,
+            6697
+          ],
+          [
+            2,
+            29,
+            470,
+            385
+          ],
+          [
+            0,
+            0,
+            90,
+            359
+          ],
+          [
+            3,
+            1,
+            48,
+            1532
+          ]
+        ]
+      },
+      "lr": 0.0005,
+      "epoch_seconds": 749.2839634999982
+    }
+  ],
+  "selection_metric": "validation macro_f1 (four fixed classes)",
+  "best_epoch": 1,
+  "best_val": {
+    "n": 22372,
+    "accuracy": 0.35320936885392457,
+    "macro_f1": 0.27156285661228036,
+    "balanced_accuracy": 0.5090548311826917,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.9921473874962247,
+        "recall": 0.3377371099573331,
+        "f1": 0.5039309683604986,
+        "support": 19453
+      },
+      "minor": {
+        "precision": 0.04914766437901262,
+        "recall": 0.5011286681715575,
+        "f1": 0.08951612903225806,
+        "support": 886
+      },
+      "major": {
+        "precision": 0.07140300644237652,
+        "recall": 0.888641425389755,
+        "f1": 0.13218486002981614,
+        "support": 449
+      },
+      "destroyed": {
+        "precision": 0.43351063829787234,
+        "recall": 0.3087121212121212,
+        "f1": 0.36061946902654873,
+        "support": 1584
+      }
+    },
+    "confusion": [
+      [
+        6570,
+        8498,
+        3772,
+        613
+      ],
+      [
+        22,
+        444,
+        412,
+        8
+      ],
+      [
+        2,
+        30,
+        399,
+        18
+      ],
+      [
+        28,
+        62,
+        1005,
+        489
+      ]
+    ]
+  },
+  "params": 11178564,
+  "parameter_bytes": 44714256,
+  "training_seconds": 1512.2613166999945,
+  "training_peak_allocated_bytes": null,
+  "inference_benchmark": [
+    {
+      "batch_size": 1,
+      "batch_latency_ms": 9.419149995665066,
+      "amortized_ms_per_image": 9.419149995665066,
+      "images_per_second": 106.16669237247794,
+      "peak_allocated_bytes": null
+    },
+    {
+      "batch_size": 32,
+      "batch_latency_ms": 239.1179500045837,
+      "amortized_ms_per_image": 7.47243593764324,
+      "images_per_second": 133.82516870601555,
+      "peak_allocated_bytes": null
+    }
+  ],
+  "benchmark_scope": "float32 forward only, resident synthetic tensors; excludes I/O and transfers",
+  "initialization": "random, shared 3-channel ResNet; B2 conv1 duplicates B1 weights / 2",
+  "normalization": "clip to [0,255], divide by 255; no ImageNet normalization",
+  "test_evaluated": false
+}

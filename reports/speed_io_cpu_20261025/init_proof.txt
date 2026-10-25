@@ -1,0 +1,32 @@
+======================================================================
+environment
+======================================================================
+python       3.13.9
+torch        2.7.1+cpu
+torchvision  0.22.1+cpu
+cuda avail   False
+
+======================================================================
+TEST 1: does weight init use the CUDA RNG?
+======================================================================
+init hash (cpu seed 42)                  : 25b5d217eb8aef977379f356c19a16f275b00abcb2d032a408aa87fcf85b6a5f
+init hash (cpu seed 42 + cuda seed 9999) : 25b5d217eb8aef977379f356c19a16f275b00abcb2d032a408aa87fcf85b6a5f
+identical                                : True
+=> init does NOT use the CUDA RNG
+
+======================================================================
+TEST 2: first-batch forward (CPU)
+======================================================================
+input  sha256 : 0ec507fd880b9ab40641563b6164448c7d933b71f2863fbd72292e39abdb6141
+output shape  : (8, 4)
+output sha256 : 27286386fb53924829b6ca3715308ec7814ad7e671d8adcc3509c4eddac3373f
+output sum    : -37.108840942382812
+output[0,:4]  : ['-1.519372820854187', '-1.9321678876876831', '-1.3027240037918091', '0.16369916498661041']
+
+No CUDA here -> CPU/GPU forward diff cannot be measured on this box.
+Run this same script on the RTX 4060 machine.
+
+======================================================================
+TEST 3: rebuild reproducibility
+======================================================================
+same hash on rebuild : True
