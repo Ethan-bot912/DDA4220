@@ -18,4 +18,4 @@
 - [ ] 端到端 demo
 
 入口：`python -m evaluation.evaluate_classifier`、`python -m evaluation.compare_pair`。
-完整命令、数据准备和测试集使用规则见 `reports/READY_TO_RUN.md`。上述代码经过合成数据验证，真实数据上的评估与分析尚待执行。Stage A 定位及端到端 damage map 仍为可选扩展。
+完整命令、数据准备和测试集使用规则见 `reports/READY_TO_RUN.md`。相关代码包含合成验证；四事件真实 val 复核和诊断已发布，详见[实验索引](../reports/README.md)。多 seed 汇总代码可用不代表多 seed 研究已完成。Stage A 定位及端到端 damage map 仍为可选扩展。
