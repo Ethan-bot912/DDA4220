@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "checkpoint_epoch": 7,
+  "checkpoint_sha256_before": "5eb917e6ffc4b4cf415947801195548517c0bb8260693f42d58aa0da84bacb8c",
+  "started": "2026-10-26T02:56:06.082545+08:00",
+  "same_attempt": true,
+  "source_changes": false,
+  "cause": "Windows denied atomic status.json replacement during epoch8; reader/delete sharing is a plausible cause, not proven.",
+  "mitigation": "Single resume from committed epoch7; no concurrent trainer-status reads; no automatic retries.",
+  "supervisor_sha256": "549613647144889e38755b79619d2da86a018a6e7d4919b96bccca8aeec8f9b6",
+  "test_evaluated": false,
+  "finished": "2026-10-26T03:14:05.189770+08:00",
+  "completed_epochs": 20
+}

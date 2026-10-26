@@ -15,3 +15,16 @@
 # Preserve original within-event evidence bytes; do not rewrite training fingerprints.
 /reports/within_event_mm/original_baseline/** -text whitespace=cr-at-eol
 /configs/within_event_matthew_moore_seed42.json text eol=lf
+
+# Eight-factor original evidence bytes and hashes.
+/reports/within_event_mm/eight_factor_final/** -text whitespace=cr-at-eol
+/reports/within_event_mm/baseline/** -text whitespace=cr-at-eol
+/reports/within_event_mm/class_weight/** -text whitespace=cr-at-eol
+/reports/within_event_mm/event_sampling/** -text whitespace=cr-at-eol
+/reports/within_event_mm/appearance_review/** -text whitespace=cr-at-eol
+/reports/within_event_mm/target_context/** -text whitespace=cr-at-eol
+/reports/within_event_mm/alignment/** -text whitespace=cr-at-eol
+/reports/within_event_mm/target_geometry/** -text whitespace=cr-at-eol
+/reports/within_event_mm/b2_structure/** -text whitespace=cr-at-eol
+/reports/within_event_mm/ordinal_learning/** -text whitespace=cr-at-eol
+/reports/within_event_mm/resolution/** -text whitespace=cr-at-eol

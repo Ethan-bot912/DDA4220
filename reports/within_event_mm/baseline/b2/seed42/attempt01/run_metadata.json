@@ -1,0 +1,188 @@
+{
+  "config": {
+    "experiment": "baseline",
+    "manifest": "dataset/within_event_mm/manifest_classification.csv",
+    "archive_partitions": [
+      "tier3",
+      "tier1",
+      "hold",
+      "test"
+    ],
+    "train_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "val_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "sealed_test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 26976,
+    "expected_val_rows": 9014,
+    "expected_train_counts": {
+      "no_damage": 14110,
+      "minor": 7921,
+      "major": 1885,
+      "destroyed": 3060
+    },
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 4,
+    "seed": 42,
+    "max_open_files": 64,
+    "gdal_cache_mb": 128,
+    "pretrained": false,
+    "augmentation": false,
+    "selection": "pooled_validation_macro_f1_strict_improvement",
+    "precision": "float32",
+    "max_train": 0,
+    "max_val": 0,
+    "expected_test_rows": 9012,
+    "test_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": false,
+    "cache_dir": "output/within_event_mm/cache_train_val_v1",
+    "cache_dtype": "uint8",
+    "attempt": "attempt01",
+    "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+    "split_map": "dataset/within_event_mm/split_map.csv",
+    "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+    "data_lock": "dataset/within_event_mm/data_lock.json",
+    "data_lock_sha256": "f551f7b620b33d55b50ab0af85f6eff572cc1035c9e85832adc65cef98e8d86c",
+    "class_weight_mode": "inverse_frequency"
+  },
+  "mode": "early",
+  "backbone": "resnet18",
+  "args": {
+    "experiment": "baseline",
+    "manifest": "dataset/within_event_mm/manifest_classification.csv",
+    "archive_partitions": [
+      "tier3",
+      "tier1",
+      "hold",
+      "test"
+    ],
+    "train_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "val_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "sealed_test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 26976,
+    "expected_val_rows": 9014,
+    "expected_train_counts": {
+      "no_damage": 14110,
+      "minor": 7921,
+      "major": 1885,
+      "destroyed": 3060
+    },
+    "backbone": "resnet18",
+    "epochs": 20,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "crop_size": 128,
+    "context": 16,
+    "workers": 4,
+    "seed": 42,
+    "max_open_files": 64,
+    "gdal_cache_mb": 128,
+    "pretrained": false,
+    "augmentation": false,
+    "selection": "pooled_validation_macro_f1_strict_improvement",
+    "precision": "float32",
+    "max_train": 0,
+    "max_val": 0,
+    "expected_test_rows": 9012,
+    "test_events": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": false,
+    "cache_dir": "output/within_event_mm/cache_train_val_v1",
+    "cache_dtype": "uint8",
+    "attempt": "attempt01",
+    "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+    "split_map": "dataset/within_event_mm/split_map.csv",
+    "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+    "data_lock": "dataset/within_event_mm/data_lock.json",
+    "data_lock_sha256": "f551f7b620b33d55b50ab0af85f6eff572cc1035c9e85832adc65cef98e8d86c",
+    "class_weight_mode": "inverse_frequency",
+    "mode": "early"
+  },
+  "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+  "train_indices_sha256": "b7e5487c448964af114906afb9e015ae5a1834fa9c124b54ed8721b55b24f50f",
+  "val_indices_sha256": "9c836c23e639a069260e2d6ae2ba457c53c9d5d680b826f129479bcff694bcaf",
+  "code_sha256": {
+    "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+    "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+    "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+    "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+    "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+    "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+    "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+  },
+  "label_to_id": {
+    "no_damage": 0,
+    "minor": 1,
+    "major": 2,
+    "destroyed": 3
+  },
+  "versions": {
+    "python": "3.12.15",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3"
+  },
+  "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "initialization_sha256": "503782b40f322d1d023fc4fe482b41db1b85d9fe417c5cc1bf8b2f7f8836f245",
+  "cache_sha256": "c0945bd511dbd7ab017bdcf557f087a34cce58d49da3552250fe79e20ef03cf3",
+  "class_weights": [
+    0.2688558101654053,
+    0.4789237976074219,
+    2.01249623298645,
+    1.239724040031433
+  ],
+  "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+  "data_lock_sha256": "f551f7b620b33d55b50ab0af85f6eff572cc1035c9e85832adc65cef98e8d86c",
+  "git_commit": "3ba5e61dd92f7400e1b169c1638a770e10820d03",
+  "git_dirty": " M README.md\n?? configs/within_event_mm/\n?? docs/within_event_mm/CLASS_WEIGHT_EXPERIMENT_PLAN.md\n?? docs/within_event_mm/PUBLICATION_PLAN.md\n?? evaluation/class_weight.py\n?? \"reports/experiment_20261015/\\345\\256\\236\\351\\252\\214\\346\\212\\245\\345\\221\\212.docx\"\n?? reports/within_event_mm/\n?? reports/within_event_mm_seed42/\n?? stage_b_damage/class_weight.py\n?? stage_b_damage/within_event_cache.py\n?? tests/test_class_weight.py\n?? tools/build_within_event_cache.py\n?? tools/prepare_within_event_publication.py\n?? tools/run_class_weight_batch.py\n?? tools/train_class_weight.py\n",
+  "events": {
+    "train": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "val": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ],
+    "test": [
+      "hurricane-matthew",
+      "moore-tornado"
+    ]
+  },
+  "test_evaluated": false
+}

@@ -1,0 +1,228 @@
+{
+  "base_b1": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\baseline\\b1\\seed42\\attempt01",
+    "summary_sha256": "5e08556bef0240c7bb3ec536451e0b8058701b6bf1baf5fa46e1c7093115e319",
+    "checkpoint_sha256": "272a75f6a7f1893da3f80c15e79695fb8a1fb46f9e8def4b1b744bc1d072101a",
+    "prediction_sha256": "7ba6428fff45f032261c6d1b206ed8f3dc5585f379a94a9e35925847a8e8d4a4",
+    "code_sha256": {
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "equal_b1": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\class_weight\\b1\\seed42\\attempt01",
+    "summary_sha256": "c010a446f1b5dff31ba684627647b5c2b6a4459636a2c7ef60fb86e82987d79c",
+    "checkpoint_sha256": "12bd4e659336f2fc3af751854108d02faf249350885cfd7299293c03b43cd98b",
+    "prediction_sha256": "f452fb3a9cf4497982ccf6121810a997a4ff49d82afb29a0895c73700bc0e2a5",
+    "code_sha256": {
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "event_sampling_b1": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\event_sampling\\b\\b1\\seed42\\attempt01",
+    "summary_sha256": "6f9520c2ab5a57cfcb6b5759fb17c9c6ede88a6b3452bc688d5434918e5f8c91",
+    "checkpoint_sha256": "63a190a2f8f88342ba5b4703584b400e0b3b88fb9783d8eb13aa242a86eb963b",
+    "prediction_sha256": "6d13beb091aac7e7b63d0111ff28561a8d2c865a49f0fdac7ebbbbc428c006be",
+    "code_sha256": {
+      "tools/train_event_sampling.py": "8a3bd497d990fab999b7bfadc5e6022d81127ac5b526d8f351490da7d7430ab9",
+      "stage_b_damage/event_sampling.py": "faa60daa5f559b7bd8669b4e64fae7429df95227b5046499359c4e155e77c7da",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "target_context_b1": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\target_context\\b\\b1\\seed42\\attempt01",
+    "summary_sha256": "8a0642de5fdade20c32ce8d09afeb2794ac4300cb92599901e9151d2ac049550",
+    "checkpoint_sha256": "a2efc23b7387eb380eff6f249bc1afd20a7df29c32ef74c96c9e0749b1585ccd",
+    "prediction_sha256": "3e42a250861a3afec90591db987c011b212f75fe3cb2733ce3b9e71f6338061d",
+    "code_sha256": {
+      "tools/train_target_context.py": "2d03c006157bb081a573ada8cf43845cd24ea23bd8a6aa2602127bf7160cb55c",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "ordinal_learning_b1": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\ordinal_learning\\b\\b1\\seed42\\attempt01",
+    "summary_sha256": "52d629d1b9ada86b7558a07636f25bf4b7912ac42bd5621dc746f4507051cdb8",
+    "checkpoint_sha256": "72db3e4d39c057cbb8fa1842331279fca056d3e08e719523f1e80fa49b000ae7",
+    "prediction_sha256": "66a9786b4f3d399985813c36ff1268bf115c4b50966feebc77e531405eb722c3",
+    "code_sha256": {
+      "tools/train_ordinal_learning.py": "0cc0cf929a327f58a89ca48758089735d0907ab99efc4ccee88a5b77bbb1d117",
+      "stage_b_damage/ordinal_learning.py": "3f0f9f21d483f4c378142161180e65f025f914b458fb582bb37745bffb8a8947",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "resolution_b1": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\resolution\\b\\b1\\seed42\\attempt01",
+    "summary_sha256": "9e40b1b77b7f27ef3414c36588f1284f70edf33151679b2ed36e306e28d7d5a4",
+    "checkpoint_sha256": "b3e890cd016d6c1d16f39eaa7a692d7fb58b000e9eebce080ff281d48c8f0160",
+    "prediction_sha256": "108d9864e95de9d4fc2aea68dc4360c946ac88bfc0a2e3b49262a858c01dd027",
+    "code_sha256": {
+      "tools/train_resolution.py": "17af07195d959bb248e2479ed2c35b1a6b14a4f269d318228ff5e140015f80ff",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "base_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\baseline\\b2\\seed42\\attempt01",
+    "summary_sha256": "89da65ba9e5e207b352c555918b78c44f1e7e9161ab7f173e3c04be80d838235",
+    "checkpoint_sha256": "cc410625fb4dd0a35843169198fd8bb66dc93f01281958a27dc776fa150f6e4d",
+    "prediction_sha256": "6e3394857fe94f1f28f75334841885f3c8a399ed7dc0e3ba78d63d5206861b6a",
+    "code_sha256": {
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "equal_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\class_weight\\b2\\seed42\\attempt01",
+    "summary_sha256": "ea7eec43d0e604a00b008614d773f20c51fec818d5055875abfbb595350e26b6",
+    "checkpoint_sha256": "5ae1c5538a56c9d556b3fef3c38fead352efc0805dcb7af833b2bb2035be9371",
+    "prediction_sha256": "16244997ec68234dbd6cb163a5b5ca3deae4daa307cbd0152508abe4f1e45196",
+    "code_sha256": {
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "event_sampling_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\event_sampling\\b\\b2\\seed42\\attempt01",
+    "summary_sha256": "f4522dd63b430ca4dadd33bcab22cf4dddcebebb9eea7d67c12ecdc840815a40",
+    "checkpoint_sha256": "962273215c78bc189fbea7c5d7a4241e3bf2b221a0c122c7945603765d5d6377",
+    "prediction_sha256": "aa83034e66295b24ba574eae2b76eb57c212fa789b54d420200c330df4456331",
+    "code_sha256": {
+      "tools/train_event_sampling.py": "8a3bd497d990fab999b7bfadc5e6022d81127ac5b526d8f351490da7d7430ab9",
+      "stage_b_damage/event_sampling.py": "faa60daa5f559b7bd8669b4e64fae7429df95227b5046499359c4e155e77c7da",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "target_context_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\target_context\\b\\b2\\seed42\\attempt01",
+    "summary_sha256": "6a40fa5ddad051cf3d1f045e7f7fdffd6e9d7ad43cf0ec02b8be7338d0077bff",
+    "checkpoint_sha256": "25a7a359a39e06df6617a48f55a2974b4ecdc081a6064d81daf1559bf170d973",
+    "prediction_sha256": "0bd87629aa8e1c8cf345062659a3ed1997cc036820b182b1f78abe8300490b3a",
+    "code_sha256": {
+      "tools/train_target_context.py": "2d03c006157bb081a573ada8cf43845cd24ea23bd8a6aa2602127bf7160cb55c",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "ordinal_learning_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\ordinal_learning\\b\\b2\\seed42\\attempt01",
+    "summary_sha256": "27898225ea73af39fbb787ed5f3dfac589012a8751ad8237c04d48cf4012e3c9",
+    "checkpoint_sha256": "bb93dd6a5e6a6d80cd8ebf6a12a418b9194879064c3457c3d5c209a98ab06419",
+    "prediction_sha256": "a3771d40499987cf32a540a7f72c27cffe2ae8aacb86b228f0fe6e8b1b962194",
+    "code_sha256": {
+      "tools/train_ordinal_learning.py": "0cc0cf929a327f58a89ca48758089735d0907ab99efc4ccee88a5b77bbb1d117",
+      "stage_b_damage/ordinal_learning.py": "3f0f9f21d483f4c378142161180e65f025f914b458fb582bb37745bffb8a8947",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "resolution_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\resolution\\b\\b2\\seed42\\attempt01",
+    "summary_sha256": "52d79b2be9e256884ff513aaad121b28c49bbaec41139ec1f9a34fbc4f11c239",
+    "checkpoint_sha256": "a58d7499f02dbcd087658d033b54e691fe4228e5806539d581c53e75a3ce15f7",
+    "prediction_sha256": "9415a19ef85677b86f2f916ef1acd9ffdcaf11a21437638bafb459e474bab496",
+    "code_sha256": {
+      "tools/train_resolution.py": "17af07195d959bb248e2479ed2c35b1a6b14a4f269d318228ff5e140015f80ff",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "structure_a_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\b2_structure\\a\\b2\\seed42\\attempt01",
+    "summary_sha256": "fe6010d5aa0d8c6f18175e54027c8bb67794040b9c59ff9f6132668dce24d320",
+    "checkpoint_sha256": "301b035245dd55cd8121ae14df1e365c289ec5ee1b93ccf3a7a108d732e17b12",
+    "prediction_sha256": "6e3394857fe94f1f28f75334841885f3c8a399ed7dc0e3ba78d63d5206861b6a",
+    "code_sha256": {
+      "stage_b_damage/b2_structure.py": "030724038440fb0c06380e42f3cd23529eede9f6edce2454a9c10ea957f38e3d",
+      "tools/train_b2_structure.py": "10fc01efe63e15f24f8f30339372eaa174ccc0c602fdb3cafb1e583d2ff17acd",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  },
+  "structure_b_b2": {
+    "local_run": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\b2_structure\\b\\b2\\seed42\\attempt01",
+    "summary_sha256": "57345f2df5a3b9aec164b555d8bf9e4cae2277127b681d72862e62a4a2fd0b3e",
+    "checkpoint_sha256": "59e2705769d490c0053dc71d5ce26e66576505d337e711f9cd0dbcff1411551a",
+    "prediction_sha256": "b5ccd9015f036db8895e51ee5d20882761e6ae88588be7436c34ffe6494599d1",
+    "code_sha256": {
+      "stage_b_damage/b2_structure.py": "030724038440fb0c06380e42f3cd23529eede9f6edce2454a9c10ea957f38e3d",
+      "tools/train_b2_structure.py": "10fc01efe63e15f24f8f30339372eaa174ccc0c602fdb3cafb1e583d2ff17acd",
+      "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+      "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+      "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+      "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+      "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+      "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+      "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888"
+    }
+  }
+}

@@ -16,3 +16,9 @@
 ## 图表登记规则
 
 每张最终图表记录：编号、文件、来源实验/运行、指标范围、样本数、seed 集合、源文件路径与版本、生成方式。正式采用时将待定项替换成可访问证据链接，注明重算或复制。不得用重新排版掩盖数值来源或评估条件变化。
+
+## 八因素证据更新（2026-10-27）
+
+- [WE-001–WE-008](../reports/within_event_mm/eight_factor_final/REPORT_ZH.md)：七项训练对照、一项诊断，固定事件内val，单seed42。B1的256 pooled-best +1.081pp而对应事件平均−0.171pp；不支持稳定改善。B2的256 +2.840pp为积极开发信号，存在摧毁召回取舍。
+- [事后口径敏感性](../reports/within_event_mm/eight_factor_final/metric_sensitivity.csv)、[固定模型tile区间](../reports/within_event_mm/eight_factor_final/tile_bootstrap.csv)：不包含训练seed/选优不确定性，不作显著性或跨事件主张。
+- [test接触勘误](../reports/within_event_mm/eight_factor_final/test_exposure_metadata_audit.json)：当前内部留出已在旧expanded验证出现；项目层面非未接触独立test。

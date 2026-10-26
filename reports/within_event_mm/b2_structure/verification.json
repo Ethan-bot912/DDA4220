@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "type": "synthetic CUDA software acceptance; not scientific results",
+  "recorded": "2026-10-26T05:46:26.690472+08:00",
+  "tests": 1,
+  "elapsed_seconds": 147.1,
+  "command": "python -m unittest tests.test_b2_structure -v",
+  "log_sha256": "f9f5bc9db9307e836de0580f798058560d2924da318955315a079e5d07d5c9d5",
+  "coverage": [
+    "A/B exact full vs resumed model optimizer scheduler RNG loss order validation",
+    "shared residual initialization; different full model hashes disclosed",
+    "both input phases have gradients; one shared encoder",
+    "val predictions reproduce best scores",
+    "wrong lr/context/architecture/cache and sample order rejected",
+    "invalid sealed test image is never opened"
+  ],
+  "runtime_timing": {
+    "early_concat": {
+      "step_seconds": 0.03333333333333333,
+      "parameter_count": 11187972,
+      "peak_gpu_bytes": 525092864
+    },
+    "feature_difference": {
+      "step_seconds": 0.05416666666666667,
+      "parameter_count": 11180612,
+      "peak_gpu_bytes": 720835584
+    }
+  },
+  "estimated_run_seconds": {
+    "a": 1819.7841499999938,
+    "b": 2957.14924374999
+  },
+  "source_sha256": {
+    "stage_b_damage/b2_structure.py": "030724038440fb0c06380e42f3cd23529eede9f6edce2454a9c10ea957f38e3d",
+    "tools/train_b2_structure.py": "10fc01efe63e15f24f8f30339372eaa174ccc0c602fdb3cafb1e583d2ff17acd",
+    "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+    "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe",
+    "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+    "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+    "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+    "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+    "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888",
+    "evaluation/b2_structure.py": "7fd5bccbab3fbee24eda0458245ad50c6f7679ed3e7425f50a5067348d960333",
+    "tests/test_b2_structure.py": "2413e842f1fedb183cd77bd72ca938146cfed13908b6524452852cff3c7fb61b",
+    "tests/test_class_weight.py": "68e99a1013bf39308b9ef941fa592562e113f3364c71c51da3d876c012050882",
+    "tests/test_expanded.py": "bf470b72d09d78033f7e7b9c5b2423b23d6b794dc4fc6f2d7182619dd37a656f",
+    "tools/run_b2_structure_batch.py": "0f2a2f90832c38088ab66428f95e371a9804f48fcb65356fb3b33f2f8b2e40b0",
+    "tools/run_class_weight_batch.py": "3997adadfc53f719471d6196e094468ed4f7b262be9ed71b59adfcb7f645c2b6",
+    "tools/run_expanded_session.py": "d13cc757eebdb838441b5702090419101c78f16226c55f2d1b65f6f68939005a",
+    "configs/within_event_mm/b2_structure/a_seed42.json": "36fc7d980d1f8e50d5d1dd9475ced7e08e29e48b37ec7091c4deac7e6f52b351",
+    "configs/within_event_mm/b2_structure/b_seed42.json": "2090d4fc5bc9e4247d6636b6b1a6188ffda60ea68c5948651f30a8a2853f97a0",
+    "docs/within_event_mm/B2_STRUCTURE_EXPERIMENT_PLAN.md": "83485f6e388522331ee124b80ae29c01db820c6675ac1e33c6e05381d3569cf6"
+  },
+  "test_images_read": false,
+  "review": "self-review; no independent review",
+  "preflight_metadata": "both real configs passed; 26976/9014 train/val; sealed test metadata count only",
+  "preserved_demo_failure": {
+    "log": "output/b2_structure_demo_acceptance.log",
+    "reason": "test fixture lacked save method; failed during setup before training; fixed test fixture only"
+  }
+}

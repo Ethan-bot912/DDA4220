@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-27T00:48:52.973913+08:00",
+  "status": "complete",
+  "automation3_deleted": true,
+  "test_evaluated": false,
+  "artifacts": {
+    "reports/within_event_mm/EIGHT_FACTOR_SUMMARY_REPORT.md": "60f21615362edd63e705f43cd89cb4c316f59c3fb9ef1089b03d831e7bd43c86",
+    "reports/within_event_mm/EIGHT_FACTOR_SUMMARY_AUDIT.json": "92e4c6474120cdee99cc3c320384f04d29aa5cab38867ab2dc2da207bf892f31",
+    "reports/within_event_mm/resolution/CONCLUSION_ZH.md": "eab04f6881bafe24be29fe1ed3f4242c490277e5e7b78cd635896f8e46c96488",
+    "reports/within_event_mm/resolution/README.md": "1b5ae3038d300eb5b6e249aae8ff54332c6fb14d51ef5738a9c005c2e95d8f0a",
+    "reports/within_event_mm/ADDITIONAL_FACTORS_PROGRESS.md": "fe018fde86a78ea8f27ac560675b488464de83d2b153ae3f954c8c17e7237185",
+    "docs/within_event_mm/ADDITIONAL_FACTORS_HANDOFF_20261026.md": "b2af6153ffe8cb550da977a5f7e6cd5a302bedae2bddd104a71134527d9dde76"
+  }
+}

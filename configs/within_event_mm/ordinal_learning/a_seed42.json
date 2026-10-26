@@ -1,0 +1,66 @@
+{
+  "experiment": "ordinal_learning",
+  "manifest": "dataset/within_event_mm/manifest_classification.csv",
+  "archive_partitions": [
+    "tier3",
+    "tier1",
+    "hold",
+    "test"
+  ],
+  "train_events": [
+    "hurricane-matthew",
+    "moore-tornado"
+  ],
+  "val_events": [
+    "hurricane-matthew",
+    "moore-tornado"
+  ],
+  "sealed_test_events": [
+    "nepal-flooding",
+    "hurricane-florence",
+    "santa-rosa-wildfire"
+  ],
+  "expected_train_rows": 26976,
+  "expected_val_rows": 9014,
+  "expected_train_counts": {
+    "no_damage": 14110,
+    "minor": 7921,
+    "major": 1885,
+    "destroyed": 3060
+  },
+  "backbone": "resnet18",
+  "epochs": 20,
+  "batch_size": 32,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "crop_size": 128,
+  "context": 16,
+  "workers": 4,
+  "seed": 42,
+  "max_open_files": 64,
+  "gdal_cache_mb": 128,
+  "pretrained": false,
+  "augmentation": false,
+  "selection": "pooled_validation_macro_f1_strict_improvement",
+  "precision": "float32",
+  "max_train": 0,
+  "max_val": 0,
+  "expected_test_rows": 9012,
+  "test_events": [
+    "hurricane-matthew",
+    "moore-tornado"
+  ],
+  "prefetch_factor": 2,
+  "pin_memory": true,
+  "persistent_workers": false,
+  "cache_dir": "output/within_event_mm/cache_train_val_v1",
+  "cache_dtype": "uint8",
+  "attempt": "attempt01",
+  "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+  "split_map": "dataset/within_event_mm/split_map.csv",
+  "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+  "data_lock": "dataset/within_event_mm/data_lock.json",
+  "data_lock_sha256": "f551f7b620b33d55b50ab0af85f6eff572cc1035c9e85832adc65cef98e8d86c",
+  "class_weight_mode": "inverse_frequency",
+  "loss_mode": "cross_entropy"
+}

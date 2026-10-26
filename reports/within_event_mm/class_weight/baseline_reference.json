@@ -1,0 +1,17 @@
+{
+  "decision": "rebuild_matched_A_with_same_accelerated_pipeline",
+  "formal_runs_started": false,
+  "historical_reference_only": {
+    "commit": "3ba5e61dd92f7400e1b169c1638a770e10820d03",
+    "b1": "output/within_event_mm/b1/summary.json",
+    "b2": "output/within_event_mm/b2/summary.json"
+  },
+  "planned_matched_runs": {
+    "b1": "output/within_event_mm/baseline/b1/seed42/attempt01",
+    "b2": "output/within_event_mm/baseline/b2/seed42/attempt01"
+  },
+  "reason": "Short synthetic equivalence does not establish historical 20-epoch trajectory equivalence.",
+  "formal_queue_started": true,
+  "queue_started": "2026-10-25T22:35:42+08:00",
+  "queue_status": "output/within_event_mm/class_weight/session_seed42_attempt01/status.json"
+}

@@ -1,0 +1,26 @@
+{
+  "val_buildings": 9014,
+  "test_evaluated": false,
+  "review": "local self-review; not independent review",
+  "models": {
+    "b1": {
+      "epochs_each": 20,
+      "same_val_ids_labels": true,
+      "prediction_recomputation": true,
+      "initialization_reconstructed": true,
+      "weights_original": true,
+      "paired_orders_sources": true,
+      "historical_A_full_trajectory_equal": true
+    },
+    "b2": {
+      "epochs_each": 20,
+      "same_val_ids_labels": true,
+      "prediction_recomputation": true,
+      "initialization_reconstructed": true,
+      "weights_original": true,
+      "paired_orders_sources": true,
+      "historical_A_full_trajectory_equal": true
+    }
+  },
+  "source_lock_unchanged": true
+}

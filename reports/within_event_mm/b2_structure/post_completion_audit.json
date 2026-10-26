@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "recorded": "2026-10-26T06:54:46.311589+08:00",
+  "frozen_sources": 19,
+  "all_sources_unchanged": true,
+  "all_runs_20_epochs": true,
+  "train_rows": 26976,
+  "val_prediction_identities": 9014,
+  "original_labels_unchanged": true,
+  "pooled_and_event_confusion_recomputed": true,
+  "paired_corrected_new_errors_recomputed": true,
+  "strict_best_selection_verified": true,
+  "common_residual_initialization_reconstructed": true,
+  "full_initialization_and_parameter_counts_reconstructed": true,
+  "identical_sample_orders": true,
+  "historical_a_20_epoch_trajectory_identical": true,
+  "cache_and_original_train_val_sources_verified": true,
+  "runs": {
+    "a": {
+      "summary_sha256": "fe6010d5aa0d8c6f18175e54027c8bb67794040b9c59ff9f6132668dce24d320",
+      "evaluation_sha256": "1fa0600b474913e1eea1439d6a5ca53d9af08b563cdd60832ecea7363d8ffd0f",
+      "best_epoch": 11,
+      "macro_f1": 0.6525206300851016,
+      "parameter_count": 11187972,
+      "training_seconds": 1586.657000000021,
+      "peak_gpu_mib": 501.7685546875
+    },
+    "b": {
+      "summary_sha256": "57345f2df5a3b9aec164b555d8bf9e4cae2277127b681d72862e62a4a2fd0b3e",
+      "evaluation_sha256": "9c24b20e534b009d798bcb79834369769d68d1788963fd0a60b4b23398c5e7b6",
+      "best_epoch": 7,
+      "macro_f1": 0.6736427449828637,
+      "parameter_count": 11180612,
+      "training_seconds": 2022.794999999991,
+      "peak_gpu_mib": 671.693359375
+    }
+  },
+  "test_evaluated": false,
+  "review": "self-review; no independent review"
+}

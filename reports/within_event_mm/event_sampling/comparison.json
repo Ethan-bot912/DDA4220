@@ -1,0 +1,5403 @@
+{
+  "statuses": {
+    "a_b1": "complete",
+    "a_b2": "complete",
+    "b_b1": "complete",
+    "b_b2": "complete"
+  },
+  "pairs": {
+    "b1": {
+      "a": {
+        "pooled": {
+          "metrics": {
+            "n": 9014,
+            "accuracy": 0.7881073885067672,
+            "macro_f1": 0.6642569376035327,
+            "balanced_accuracy": 0.6536503788124816,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.8975135135135135,
+                "recall": 0.8830036162518613,
+                "f1": 0.8901994424190436,
+                "support": 4701
+              },
+              "minor": {
+                "precision": 0.685874217978268,
+                "recall": 0.7851488880512627,
+                "f1": 0.7321616871704746,
+                "support": 2653
+              },
+              "major": {
+                "precision": 0.3590308370044053,
+                "recall": 0.2566929133858268,
+                "f1": 0.2993572084481176,
+                "support": 635
+              },
+              "destroyed": {
+                "precision": 0.7873051224944321,
+                "recall": 0.6897560975609756,
+                "f1": 0.735309412376495,
+                "support": 1025
+              }
+            },
+            "confusion": [
+              [
+                4151,
+                443,
+                60,
+                47
+              ],
+              [
+                379,
+                2083,
+                132,
+                59
+              ],
+              [
+                66,
+                321,
+                163,
+                85
+              ],
+              [
+                29,
+                190,
+                99,
+                707
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 59,
+              "support": 2653,
+              "rate": 0.02223897474557105
+            },
+            "major_to_minor": {
+              "count": 321,
+              "support": 635,
+              "rate": 0.5055118110236221
+            },
+            "major_recall": {
+              "count": 163,
+              "support": 635,
+              "rate": 0.2566929133858268
+            },
+            "no_damage_to_minor": {
+              "count": 443,
+              "support": 4701,
+              "rate": 0.09423526909168262
+            },
+            "no_damage_to_damage": {
+              "count": 550,
+              "support": 4701,
+              "rate": 0.1169963837481387
+            },
+            "destroyed_recall": {
+              "count": 707,
+              "support": 1025,
+              "rate": 0.6897560975609756
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 219,
+              "support": 1025,
+              "rate": 0.21365853658536585
+            }
+          }
+        },
+        "hurricane-matthew": {
+          "metrics": {
+            "n": 4537,
+            "accuracy": 0.637425611637646,
+            "macro_f1": 0.5275772233839724,
+            "balanced_accuracy": 0.5110347332031488,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.48034934497816595,
+                "recall": 0.4064039408866995,
+                "f1": 0.4402935290193462,
+                "support": 812
+              },
+              "minor": {
+                "precision": 0.6968544763221569,
+                "recall": 0.8145454545454546,
+                "f1": 0.7511177347242921,
+                "support": 2475
+              },
+              "major": {
+                "precision": 0.319672131147541,
+                "recall": 0.21467889908256882,
+                "f1": 0.25686059275521406,
+                "support": 545
+              },
+              "destroyed": {
+                "precision": 0.7258883248730964,
+                "recall": 0.6085106382978723,
+                "f1": 0.662037037037037,
+                "support": 705
+              }
+            },
+            "confusion": [
+              [
+                330,
+                397,
+                51,
+                34
+              ],
+              [
+                284,
+                2016,
+                117,
+                58
+              ],
+              [
+                54,
+                304,
+                117,
+                70
+              ],
+              [
+                19,
+                176,
+                81,
+                429
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 58,
+              "support": 2475,
+              "rate": 0.023434343434343436
+            },
+            "major_to_minor": {
+              "count": 304,
+              "support": 545,
+              "rate": 0.5577981651376147
+            },
+            "major_recall": {
+              "count": 117,
+              "support": 545,
+              "rate": 0.21467889908256882
+            },
+            "no_damage_to_minor": {
+              "count": 397,
+              "support": 812,
+              "rate": 0.48891625615763545
+            },
+            "no_damage_to_damage": {
+              "count": 482,
+              "support": 812,
+              "rate": 0.5935960591133005
+            },
+            "destroyed_recall": {
+              "count": 429,
+              "support": 705,
+              "rate": 0.6085106382978723
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 195,
+              "support": 705,
+              "rate": 0.2765957446808511
+            }
+          }
+        },
+        "moore-tornado": {
+          "metrics": {
+            "n": 4477,
+            "accuracy": 0.9408085771722136,
+            "macro_f1": 0.6990323075033973,
+            "balanced_accuracy": 0.6846950976962456,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.9702894870492635,
+                "recall": 0.9825147852918488,
+                "f1": 0.9763638686597674,
+                "support": 3889
+              },
+              "minor": {
+                "precision": 0.4652777777777778,
+                "recall": 0.37640449438202245,
+                "f1": 0.4161490683229813,
+                "support": 178
+              },
+              "major": {
+                "precision": 0.5227272727272727,
+                "recall": 0.5111111111111111,
+                "f1": 0.5168539325842696,
+                "support": 90
+              },
+              "destroyed": {
+                "precision": 0.9055374592833876,
+                "recall": 0.86875,
+                "f1": 0.886762360446571,
+                "support": 320
+              }
+            },
+            "confusion": [
+              [
+                3821,
+                46,
+                9,
+                13
+              ],
+              [
+                95,
+                67,
+                15,
+                1
+              ],
+              [
+                12,
+                17,
+                46,
+                15
+              ],
+              [
+                10,
+                14,
+                18,
+                278
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 1,
+              "support": 178,
+              "rate": 0.0056179775280898875
+            },
+            "major_to_minor": {
+              "count": 17,
+              "support": 90,
+              "rate": 0.18888888888888888
+            },
+            "major_recall": {
+              "count": 46,
+              "support": 90,
+              "rate": 0.5111111111111111
+            },
+            "no_damage_to_minor": {
+              "count": 46,
+              "support": 3889,
+              "rate": 0.011828233479043456
+            },
+            "no_damage_to_damage": {
+              "count": 68,
+              "support": 3889,
+              "rate": 0.017485214708151196
+            },
+            "destroyed_recall": {
+              "count": 278,
+              "support": 320,
+              "rate": 0.86875
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 24,
+              "support": 320,
+              "rate": 0.075
+            }
+          }
+        }
+      },
+      "b": {
+        "pooled": {
+          "metrics": {
+            "n": 9014,
+            "accuracy": 0.7701353450188596,
+            "macro_f1": 0.6339414816471526,
+            "balanced_accuracy": 0.6254902756226214,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.8978834824350862,
+                "recall": 0.8753456711338014,
+                "f1": 0.8864713485566565,
+                "support": 4701
+              },
+              "minor": {
+                "precision": 0.658203125,
+                "recall": 0.7621560497549943,
+                "f1": 0.7063755458515284,
+                "support": 2653
+              },
+              "major": {
+                "precision": 0.27789473684210525,
+                "recall": 0.2078740157480315,
+                "f1": 0.23783783783783782,
+                "support": 635
+              },
+              "destroyed": {
+                "precision": 0.7613122171945701,
+                "recall": 0.6565853658536586,
+                "f1": 0.7050811943425876,
+                "support": 1025
+              }
+            },
+            "confusion": [
+              [
+                4115,
+                495,
+                45,
+                46
+              ],
+              [
+                366,
+                2022,
+                183,
+                82
+              ],
+              [
+                67,
+                353,
+                132,
+                83
+              ],
+              [
+                35,
+                202,
+                115,
+                673
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 82,
+              "support": 2653,
+              "rate": 0.030908405578590276
+            },
+            "major_to_minor": {
+              "count": 353,
+              "support": 635,
+              "rate": 0.5559055118110237
+            },
+            "major_recall": {
+              "count": 132,
+              "support": 635,
+              "rate": 0.2078740157480315
+            },
+            "no_damage_to_minor": {
+              "count": 495,
+              "support": 4701,
+              "rate": 0.10529674537332483
+            },
+            "no_damage_to_damage": {
+              "count": 586,
+              "support": 4701,
+              "rate": 0.12465432886619868
+            },
+            "destroyed_recall": {
+              "count": 673,
+              "support": 1025,
+              "rate": 0.6565853658536586
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 237,
+              "support": 1025,
+              "rate": 0.23121951219512196
+            }
+          }
+        },
+        "hurricane-matthew": {
+          "metrics": {
+            "n": 4537,
+            "accuracy": 0.6023804275953273,
+            "macro_f1": 0.4849943108355171,
+            "balanced_accuracy": 0.47015130734617566,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.4578696343402226,
+                "recall": 0.35467980295566504,
+                "f1": 0.39972241498959055,
+                "support": 812
+              },
+              "minor": {
+                "precision": 0.6687200547570158,
+                "recall": 0.7894949494949495,
+                "f1": 0.724105984806374,
+                "support": 2475
+              },
+              "major": {
+                "precision": 0.2376237623762376,
+                "recall": 0.1761467889908257,
+                "f1": 0.20231822971549,
+                "support": 545
+              },
+              "destroyed": {
+                "precision": 0.6786941580756014,
+                "recall": 0.5602836879432624,
+                "f1": 0.6138306138306139,
+                "support": 705
+              }
+            },
+            "confusion": [
+              [
+                288,
+                451,
+                39,
+                34
+              ],
+              [
+                269,
+                1954,
+                171,
+                81
+              ],
+              [
+                52,
+                325,
+                96,
+                72
+              ],
+              [
+                20,
+                192,
+                98,
+                395
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 81,
+              "support": 2475,
+              "rate": 0.03272727272727273
+            },
+            "major_to_minor": {
+              "count": 325,
+              "support": 545,
+              "rate": 0.5963302752293578
+            },
+            "major_recall": {
+              "count": 96,
+              "support": 545,
+              "rate": 0.1761467889908257
+            },
+            "no_damage_to_minor": {
+              "count": 451,
+              "support": 812,
+              "rate": 0.5554187192118226
+            },
+            "no_damage_to_damage": {
+              "count": 524,
+              "support": 812,
+              "rate": 0.645320197044335
+            },
+            "destroyed_recall": {
+              "count": 395,
+              "support": 705,
+              "rate": 0.5602836879432624
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 212,
+              "support": 705,
+              "rate": 0.300709219858156
+            }
+          }
+        },
+        "moore-tornado": {
+          "metrics": {
+            "n": 4477,
+            "accuracy": 0.940138485593031,
+            "macro_f1": 0.6829079672032726,
+            "balanced_accuracy": 0.6587075175661112,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.9678806272129489,
+                "recall": 0.9840575983543327,
+                "f1": 0.9759020782863701,
+                "support": 3889
+              },
+              "minor": {
+                "precision": 0.4533333333333333,
+                "recall": 0.38202247191011235,
+                "f1": 0.41463414634146345,
+                "support": 178
+              },
+              "major": {
+                "precision": 0.5070422535211268,
+                "recall": 0.4,
+                "f1": 0.4472049689440994,
+                "support": 90
+              },
+              "destroyed": {
+                "precision": 0.9205298013245033,
+                "recall": 0.86875,
+                "f1": 0.8938906752411576,
+                "support": 320
+              }
+            },
+            "confusion": [
+              [
+                3827,
+                44,
+                6,
+                12
+              ],
+              [
+                97,
+                68,
+                12,
+                1
+              ],
+              [
+                15,
+                28,
+                36,
+                11
+              ],
+              [
+                15,
+                10,
+                17,
+                278
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 1,
+              "support": 178,
+              "rate": 0.0056179775280898875
+            },
+            "major_to_minor": {
+              "count": 28,
+              "support": 90,
+              "rate": 0.3111111111111111
+            },
+            "major_recall": {
+              "count": 36,
+              "support": 90,
+              "rate": 0.4
+            },
+            "no_damage_to_minor": {
+              "count": 44,
+              "support": 3889,
+              "rate": 0.01131396245821548
+            },
+            "no_damage_to_damage": {
+              "count": 62,
+              "support": 3889,
+              "rate": 0.015942401645667268
+            },
+            "destroyed_recall": {
+              "count": 278,
+              "support": 320,
+              "rate": 0.86875
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 25,
+              "support": 320,
+              "rate": 0.078125
+            }
+          }
+        }
+      },
+      "paired": {
+        "counts": {
+          "pooled": {
+            "both_correct": 6429,
+            "both_wrong": 1397,
+            "new_error": 675,
+            "corrected": 513
+          },
+          "hurricane-matthew": {
+            "both_correct": 2306,
+            "both_wrong": 1218,
+            "new_error": 586,
+            "corrected": 427
+          },
+          "moore-tornado": {
+            "both_correct": 4123,
+            "both_wrong": 179,
+            "new_error": 89,
+            "corrected": 86
+          }
+        },
+        "case_selection": "lowest SHA256 ID; <=5 per event/state/true/A/B class",
+        "cases": {
+          "hurricane-matthew/corrected/0/1/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "163"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000107",
+                "144"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "105"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000027",
+                "54"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000335",
+                "26"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/corrected/0/2/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "111"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "132"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "159"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "141"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "75"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/corrected/0/3/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "120"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "54"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "64"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/corrected/1/0/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "43"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000092",
+                "134"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "256"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000037",
+                "262"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000027",
+                "203"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/corrected/1/2/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000092",
+                "379"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "111"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "178"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "36"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "149"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/corrected/1/3/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "151"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "239"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "191"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "249"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "468"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/corrected/2/0/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "170"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "243"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "189"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "256"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "158"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/corrected/2/1/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "439"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000348",
+                "17"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "459"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "400"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "215"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/corrected/2/3/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000179",
+                "11"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "78"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "12"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "130"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "94"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/corrected/3/0/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000380",
+                "20"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "42"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000401",
+                "14"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000025",
+                "27"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "51"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/corrected/3/1/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000380",
+                "61"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000380",
+                "33"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000275",
+                "8"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "149"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000344",
+                "18"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/corrected/3/2/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000401",
+                "75"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000392",
+                "20"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000179",
+                "2"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "152"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000380",
+                "23"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/0/0/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "227"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "23"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "112"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "109"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "45"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/new_error/0/0/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "55"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "204"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "105"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "19"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "228"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/new_error/0/0/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "202"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000295",
+                "3"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "79"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "108"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/1/1/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "187"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000092",
+                "466"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000027",
+                "192"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "439"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000092",
+                "388"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/new_error/1/1/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "291"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000027",
+                "77"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "264"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "341"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "306"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/new_error/1/1/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "278"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000037",
+                "95"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000382",
+                "47"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "296"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "129"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/2/2/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "172"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "244"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "43"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "54"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "431"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/new_error/2/2/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "85"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "65"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "25"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "150"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "63"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/new_error/2/2/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000112",
+                "5"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000344",
+                "0"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "73"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "521"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "125"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/3/3/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000401",
+                "61"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000312",
+                "2"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000112",
+                "11"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/new_error/3/3/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "141"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000400",
+                "57"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "298"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000336",
+                "9"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "95"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/new_error/3/3/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "117"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "108"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000165",
+                "1"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000380",
+                "28"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000401",
+                "13"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/0/1/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "67"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "13"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "167"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "45"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000063",
+                "18"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/corrected/0/2/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "8"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "27"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000111",
+                "26"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/corrected/0/3/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000210",
+                "263"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "206"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "197"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000200",
+                "306"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000196",
+                "350"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/corrected/1/0/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000205",
+                "20"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "104"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000101",
+                "30"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "22"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "112"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/corrected/1/2/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "20"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "46"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "58"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "81"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "82"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/corrected/2/0/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000117",
+                "2"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000133",
+                "4"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/2/1/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "55"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "138"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/2/3/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "68"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "122"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000063",
+                "24"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000133",
+                "16"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000133",
+                "15"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/3/0/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "153"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/corrected/3/1/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "31"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "187"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "163"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "176"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "196"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/corrected/3/2/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "89"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "126"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "47"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "85"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "162"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/new_error/0/0/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000103",
+                "74"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000196",
+                "310"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000210",
+                "328"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "146"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "31"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/new_error/0/0/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "50"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "129"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "183"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/new_error/0/0/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000204",
+                "49"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000018",
+                "70"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "192"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000018",
+                "302"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000200",
+                "283"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/new_error/1/1/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "190"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "135"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "11"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "33"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "38"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/new_error/1/1/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "54"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "58"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "78"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "40"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/new_error/2/2/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "195"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "193"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "1"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000133",
+                "2"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000063",
+                "32"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/new_error/2/2/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "45"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "126"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "146"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "61"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "59"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/new_error/2/2/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "144"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "138"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/new_error/3/3/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "260"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "207"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "172"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "38"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/new_error/3/3/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "30"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "70"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/new_error/3/3/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "141"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "4"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "166"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "110"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "76"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            }
+          ]
+        }
+      },
+      "B_minus_A": {
+        "accuracy": -0.017972043487907596,
+        "macro_f1": -0.030315455956380077,
+        "balanced_accuracy": -0.028160103189860175
+      }
+    },
+    "b2": {
+      "a": {
+        "pooled": {
+          "metrics": {
+            "n": 9014,
+            "accuracy": 0.7711337918792989,
+            "macro_f1": 0.6525206300851016,
+            "balanced_accuracy": 0.6624626183978009,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.9628810226155359,
+                "recall": 0.8332269729844713,
+                "f1": 0.893374387045273,
+                "support": 4701
+              },
+              "minor": {
+                "precision": 0.6805960479429867,
+                "recall": 0.7919336600075386,
+                "f1": 0.7320557491289198,
+                "support": 2653
+              },
+              "major": {
+                "precision": 0.22792362768496421,
+                "recall": 0.30078740157480316,
+                "f1": 0.2593346911065852,
+                "support": 635
+              },
+              "destroyed": {
+                "precision": 0.7267384916748286,
+                "recall": 0.7239024390243902,
+                "f1": 0.7253176930596285,
+                "support": 1025
+              }
+            },
+            "confusion": [
+              [
+                3917,
+                518,
+                151,
+                115
+              ],
+              [
+                111,
+                2101,
+                380,
+                61
+              ],
+              [
+                24,
+                317,
+                191,
+                103
+              ],
+              [
+                16,
+                151,
+                116,
+                742
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 61,
+              "support": 2653,
+              "rate": 0.022992838296268376
+            },
+            "major_to_minor": {
+              "count": 317,
+              "support": 635,
+              "rate": 0.49921259842519683
+            },
+            "major_recall": {
+              "count": 191,
+              "support": 635,
+              "rate": 0.30078740157480316
+            },
+            "no_damage_to_minor": {
+              "count": 518,
+              "support": 4701,
+              "rate": 0.11018932142097426
+            },
+            "no_damage_to_damage": {
+              "count": 784,
+              "support": 4701,
+              "rate": 0.16677302701552862
+            },
+            "destroyed_recall": {
+              "count": 742,
+              "support": 1025,
+              "rate": 0.7239024390243902
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 167,
+              "support": 1025,
+              "rate": 0.1629268292682927
+            }
+          }
+        },
+        "hurricane-matthew": {
+          "metrics": {
+            "n": 4537,
+            "accuracy": 0.6063478069208729,
+            "macro_f1": 0.4790384388907964,
+            "balanced_accuracy": 0.4758551196519252,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.6915887850467289,
+                "recall": 0.18226600985221675,
+                "f1": 0.28849902534113064,
+                "support": 812
+              },
+              "minor": {
+                "precision": 0.6945214979195562,
+                "recall": 0.8092929292929293,
+                "f1": 0.7475275237917521,
+                "support": 2475
+              },
+              "major": {
+                "precision": 0.19185282522996058,
+                "recall": 0.26788990825688075,
+                "f1": 0.22358346094946402,
+                "support": 545
+              },
+              "destroyed": {
+                "precision": 0.6696165191740413,
+                "recall": 0.6439716312056738,
+                "f1": 0.6565437454808387,
+                "support": 705
+              }
+            },
+            "confusion": [
+              [
+                148,
+                441,
+                146,
+                77
+              ],
+              [
+                40,
+                2003,
+                373,
+                59
+              ],
+              [
+                16,
+                295,
+                146,
+                88
+              ],
+              [
+                10,
+                145,
+                96,
+                454
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 59,
+              "support": 2475,
+              "rate": 0.02383838383838384
+            },
+            "major_to_minor": {
+              "count": 295,
+              "support": 545,
+              "rate": 0.5412844036697247
+            },
+            "major_recall": {
+              "count": 146,
+              "support": 545,
+              "rate": 0.26788990825688075
+            },
+            "no_damage_to_minor": {
+              "count": 441,
+              "support": 812,
+              "rate": 0.5431034482758621
+            },
+            "no_damage_to_damage": {
+              "count": 664,
+              "support": 812,
+              "rate": 0.8177339901477833
+            },
+            "destroyed_recall": {
+              "count": 454,
+              "support": 705,
+              "rate": 0.6439716312056738
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 155,
+              "support": 705,
+              "rate": 0.2198581560283688
+            }
+          }
+        },
+        "moore-tornado": {
+          "metrics": {
+            "n": 4477,
+            "accuracy": 0.9381282108554836,
+            "macro_f1": 0.7239151513719659,
+            "balanced_accuracy": 0.7299263841257826,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.9779449922158796,
+                "recall": 0.9691437387503214,
+                "f1": 0.9735244737181971,
+                "support": 3889
+              },
+              "minor": {
+                "precision": 0.4827586206896552,
+                "recall": 0.550561797752809,
+                "f1": 0.5144356955380577,
+                "support": 178
+              },
+              "major": {
+                "precision": 0.5844155844155844,
+                "recall": 0.5,
+                "f1": 0.5389221556886228,
+                "support": 90
+              },
+              "destroyed": {
+                "precision": 0.8396501457725948,
+                "recall": 0.9,
+                "f1": 0.8687782805429864,
+                "support": 320
+              }
+            },
+            "confusion": [
+              [
+                3769,
+                77,
+                5,
+                38
+              ],
+              [
+                71,
+                98,
+                7,
+                2
+              ],
+              [
+                8,
+                22,
+                45,
+                15
+              ],
+              [
+                6,
+                6,
+                20,
+                288
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 2,
+              "support": 178,
+              "rate": 0.011235955056179775
+            },
+            "major_to_minor": {
+              "count": 22,
+              "support": 90,
+              "rate": 0.24444444444444444
+            },
+            "major_recall": {
+              "count": 45,
+              "support": 90,
+              "rate": 0.5
+            },
+            "no_damage_to_minor": {
+              "count": 77,
+              "support": 3889,
+              "rate": 0.01979943430187709
+            },
+            "no_damage_to_damage": {
+              "count": 120,
+              "support": 3889,
+              "rate": 0.03085626124967858
+            },
+            "destroyed_recall": {
+              "count": 288,
+              "support": 320,
+              "rate": 0.9
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 12,
+              "support": 320,
+              "rate": 0.0375
+            }
+          }
+        }
+      },
+      "b": {
+        "pooled": {
+          "metrics": {
+            "n": 9014,
+            "accuracy": 0.768693143998225,
+            "macro_f1": 0.6336472595144551,
+            "balanced_accuracy": 0.6235234612177046,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.903532008830022,
+                "recall": 0.8706658157838758,
+                "f1": 0.8867944968042466,
+                "support": 4701
+              },
+              "minor": {
+                "precision": 0.6592806679511882,
+                "recall": 0.7738409347908028,
+                "f1": 0.711981966360326,
+                "support": 2653
+              },
+              "major": {
+                "precision": 0.2581227436823105,
+                "recall": 0.2251968503937008,
+                "f1": 0.24053826745164003,
+                "support": 635
+              },
+              "destroyed": {
+                "precision": 0.7843137254901961,
+                "recall": 0.624390243902439,
+                "f1": 0.6952743074416078,
+                "support": 1025
+              }
+            },
+            "confusion": [
+              [
+                4093,
+                495,
+                57,
+                56
+              ],
+              [
+                341,
+                2053,
+                203,
+                56
+              ],
+              [
+                67,
+                361,
+                143,
+                64
+              ],
+              [
+                29,
+                205,
+                151,
+                640
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 56,
+              "support": 2653,
+              "rate": 0.021108179419525065
+            },
+            "major_to_minor": {
+              "count": 361,
+              "support": 635,
+              "rate": 0.568503937007874
+            },
+            "major_recall": {
+              "count": 143,
+              "support": 635,
+              "rate": 0.2251968503937008
+            },
+            "no_damage_to_minor": {
+              "count": 495,
+              "support": 4701,
+              "rate": 0.10529674537332483
+            },
+            "no_damage_to_damage": {
+              "count": 608,
+              "support": 4701,
+              "rate": 0.12933418421612422
+            },
+            "destroyed_recall": {
+              "count": 640,
+              "support": 1025,
+              "rate": 0.624390243902439
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 234,
+              "support": 1025,
+              "rate": 0.22829268292682928
+            }
+          }
+        },
+        "hurricane-matthew": {
+          "metrics": {
+            "n": 4537,
+            "accuracy": 0.599294688119903,
+            "macro_f1": 0.4801146608817354,
+            "balanced_accuracy": 0.4612627251874864,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.46434494195688225,
+                "recall": 0.3448275862068966,
+                "f1": 0.39575971731448767,
+                "support": 812
+              },
+              "minor": {
+                "precision": 0.6697216564833672,
+                "recall": 0.7971717171717172,
+                "f1": 0.7279099797085408,
+                "support": 2475
+              },
+              "major": {
+                "precision": 0.2135306553911205,
+                "recall": 0.1853211009174312,
+                "f1": 0.19842829076620824,
+                "support": 545
+              },
+              "destroyed": {
+                "precision": 0.7087378640776699,
+                "recall": 0.5177304964539007,
+                "f1": 0.5983606557377049,
+                "support": 705
+              }
+            },
+            "confusion": [
+              [
+                280,
+                440,
+                51,
+                41
+              ],
+              [
+                255,
+                1973,
+                191,
+                56
+              ],
+              [
+                53,
+                338,
+                101,
+                53
+              ],
+              [
+                15,
+                195,
+                130,
+                365
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 56,
+              "support": 2475,
+              "rate": 0.022626262626262626
+            },
+            "major_to_minor": {
+              "count": 338,
+              "support": 545,
+              "rate": 0.6201834862385321
+            },
+            "major_recall": {
+              "count": 101,
+              "support": 545,
+              "rate": 0.1853211009174312
+            },
+            "no_damage_to_minor": {
+              "count": 440,
+              "support": 812,
+              "rate": 0.541871921182266
+            },
+            "no_damage_to_damage": {
+              "count": 532,
+              "support": 812,
+              "rate": 0.6551724137931034
+            },
+            "destroyed_recall": {
+              "count": 365,
+              "support": 705,
+              "rate": 0.5177304964539007
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 210,
+              "support": 705,
+              "rate": 0.2978723404255319
+            }
+          }
+        },
+        "moore-tornado": {
+          "metrics": {
+            "n": 4477,
+            "accuracy": 0.9403618494527586,
+            "macro_f1": 0.703753745823467,
+            "balanced_accuracy": 0.6889843925305986,
+            "per_class": {
+              "no_damage": {
+                "precision": 0.970970206264324,
+                "recall": 0.9804577012085369,
+                "f1": 0.9756908904810645,
+                "support": 3889
+              },
+              "minor": {
+                "precision": 0.47619047619047616,
+                "recall": 0.449438202247191,
+                "f1": 0.4624277456647398,
+                "support": 178
+              },
+              "major": {
+                "precision": 0.5185185185185185,
+                "recall": 0.4666666666666667,
+                "f1": 0.4912280701754386,
+                "support": 90
+              },
+              "destroyed": {
+                "precision": 0.9136212624584718,
+                "recall": 0.859375,
+                "f1": 0.8856682769726247,
+                "support": 320
+              }
+            },
+            "confusion": [
+              [
+                3813,
+                55,
+                6,
+                15
+              ],
+              [
+                86,
+                80,
+                12,
+                0
+              ],
+              [
+                14,
+                23,
+                42,
+                11
+              ],
+              [
+                14,
+                10,
+                21,
+                275
+              ]
+            ]
+          },
+          "checks": {
+            "minor_to_destroyed": {
+              "count": 0,
+              "support": 178,
+              "rate": 0.0
+            },
+            "major_to_minor": {
+              "count": 23,
+              "support": 90,
+              "rate": 0.25555555555555554
+            },
+            "major_recall": {
+              "count": 42,
+              "support": 90,
+              "rate": 0.4666666666666667
+            },
+            "no_damage_to_minor": {
+              "count": 55,
+              "support": 3889,
+              "rate": 0.014142453072769349
+            },
+            "no_damage_to_damage": {
+              "count": 76,
+              "support": 3889,
+              "rate": 0.0195422987914631
+            },
+            "destroyed_recall": {
+              "count": 275,
+              "support": 320,
+              "rate": 0.859375
+            },
+            "destroyed_to_no_damage_or_minor": {
+              "count": 24,
+              "support": 320,
+              "rate": 0.075
+            }
+          }
+        }
+      },
+      "paired": {
+        "counts": {
+          "pooled": {
+            "both_correct": 6263,
+            "both_wrong": 1397,
+            "new_error": 688,
+            "corrected": 666
+          },
+          "hurricane-matthew": {
+            "both_correct": 2169,
+            "both_wrong": 1236,
+            "new_error": 582,
+            "corrected": 550
+          },
+          "moore-tornado": {
+            "both_correct": 4094,
+            "both_wrong": 161,
+            "new_error": 106,
+            "corrected": 116
+          }
+        },
+        "case_selection": "lowest SHA256 ID; <=5 per event/state/true/A/B class",
+        "cases": {
+          "hurricane-matthew/corrected/0/1/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000092",
+                "50"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "227"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000136",
+                "1"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "105"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000027",
+                "54"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/corrected/0/2/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000136",
+                "2"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "147"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "14"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "237"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "22"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/corrected/0/3/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "209"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "181"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "2"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "214"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "168"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/corrected/1/0/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "211"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "89"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000043",
+                "122"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "45"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "430"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/corrected/1/2/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "46"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "216"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "358"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "488"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "41"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/corrected/1/3/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "135"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "339"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000092",
+                "459"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000335",
+                "17"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000092",
+                "13"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/corrected/2/0/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "71"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/corrected/2/1/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "439"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000112",
+                "5"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "459"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "356"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "164"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/corrected/2/3/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000348",
+                "17"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "25"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "98"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "133"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "170"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/corrected/3/0/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000400",
+                "19"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "33"
+              ],
+              "actual": "3",
+              "a": "0",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/corrected/3/1/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "134"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000400",
+                "8"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/corrected/3/2/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000401",
+                "75"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000382",
+                "22"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "227"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000400",
+                "31"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000401",
+                "7"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/0/0/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "160"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "139"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "81"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "97"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "114"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/new_error/0/0/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "157"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "204"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "67"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000136",
+                "3"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "149"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/new_error/0/0/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000295",
+                "1"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "120"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "179"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/1/1/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "408"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "256"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "364"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000027",
+                "25"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "583"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/new_error/1/1/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000037",
+                "156"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000027",
+                "192"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "445"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "267"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "346"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "hurricane-matthew/new_error/1/1/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000037",
+                "170"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000037",
+                "261"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "288"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000152",
+                "332"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000106",
+                "242"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/2/2/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "244"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "32"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "54"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "73"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000302",
+                "219"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/new_error/2/2/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "217"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "85"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "214"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "66"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000032",
+                "264"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/new_error/2/2/3": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000297",
+                "164"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000382",
+                "48"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "32"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000156",
+                "294"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000392",
+                "38"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "hurricane-matthew/new_error/3/3/0": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000336",
+                "11"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "hurricane-matthew/new_error/3/3/1": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "141"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "108"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "43"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000114",
+                "0"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000336",
+                "9"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            }
+          ],
+          "hurricane-matthew/new_error/3/3/2": [
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000131",
+                "117"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000400",
+                "57"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000400",
+                "60"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000382",
+                "25"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "hurricane-matthew",
+                "00000401",
+                "43"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/0/1/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "67"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "50"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "83"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000018",
+                "125"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "56"
+              ],
+              "actual": "0",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/corrected/0/2/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "157"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000213",
+                "20"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "100"
+              ],
+              "actual": "0",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/corrected/0/3/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000196",
+                "319"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "192"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000204",
+                "188"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "200"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000210",
+                "331"
+              ],
+              "actual": "0",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/corrected/1/0/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "54"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "173"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "14"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "50"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "19"
+              ],
+              "actual": "1",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/corrected/1/2/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "75"
+              ],
+              "actual": "1",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/corrected/1/3/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "191"
+              ],
+              "actual": "1",
+              "a": "3",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/corrected/2/0/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000133",
+                "4"
+              ],
+              "actual": "2",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/2/1/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "195"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "45"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "147"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "88"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "137"
+              ],
+              "actual": "2",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/2/3/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "122"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "139"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "20"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "75"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000133",
+                "15"
+              ],
+              "actual": "2",
+              "a": "3",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/corrected/3/1/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "24"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "12"
+              ],
+              "actual": "3",
+              "a": "1",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/corrected/3/2/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "141"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "87"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "110"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "108"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "1"
+              ],
+              "actual": "3",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/new_error/0/0/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "74"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "13"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "57"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000196",
+                "150"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "34"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/new_error/0/0/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000196",
+                "287"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "12"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/new_error/0/0/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000210",
+                "248"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000018",
+                "302"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000189",
+                "133"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000018",
+                "314"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000101",
+                "9"
+              ],
+              "actual": "0",
+              "a": "0",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/new_error/1/1/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000205",
+                "102"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "53"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000101",
+                "30"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000063",
+                "21"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000205",
+                "104"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/new_error/1/1/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "190"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "130"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "79"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000101",
+                "41"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "54"
+              ],
+              "actual": "1",
+              "a": "1",
+              "b": "2"
+            }
+          ],
+          "moore-tornado/new_error/2/2/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "1"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000133",
+                "16"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000213",
+                "3"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/new_error/2/2/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000063",
+                "22"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "17"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "38"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000101",
+                "29"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "57"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/new_error/2/2/3": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "4"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "165"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "60"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "76"
+              ],
+              "actual": "2",
+              "a": "2",
+              "b": "3"
+            }
+          ],
+          "moore-tornado/new_error/3/3/0": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000003",
+                "142"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "70"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "28"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "111"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "260"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "0"
+            }
+          ],
+          "moore-tornado/new_error/3/3/1": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000029",
+                "30"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "158"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000017",
+                "126"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "21"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "197"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "1"
+            }
+          ],
+          "moore-tornado/new_error/3/3/2": [
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "63"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "85"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000110",
+                "84"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000104",
+                "128"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            },
+            {
+              "id": [
+                "moore-tornado",
+                "00000035",
+                "65"
+              ],
+              "actual": "3",
+              "a": "3",
+              "b": "2"
+            }
+          ]
+        }
+      },
+      "B_minus_A": {
+        "accuracy": -0.0024406478810738985,
+        "macro_f1": -0.01887337057064653,
+        "balanced_accuracy": -0.03893915718009622
+      }
+    }
+  },
+  "test_evaluated": false,
+  "scope": "single-seed exploratory validation; no significance or stability claim",
+  "sources": {
+    "a_b1": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\event_sampling\\a\\b1\\seed42\\attempt01",
+    "a_b2": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\event_sampling\\a\\b2\\seed42\\attempt01",
+    "b_b1": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\event_sampling\\b\\b1\\seed42\\attempt01",
+    "b_b2": "D:\\DDA4220\\DDA4220\\output\\within_event_mm\\event_sampling\\b\\b2\\seed42\\attempt01"
+  },
+  "failure_records": {
+    "a_b1": [],
+    "a_b2": [],
+    "b_b1": [],
+    "b_b2": [
+      "failure_1792953839483639200.json"
+    ]
+  },
+  "B2_minus_B1": {
+    "a": {
+      "accuracy": -0.016973596627468335,
+      "macro_f1": -0.011736307518431022,
+      "balanced_accuracy": 0.008812239585319293
+    },
+    "b": {
+      "accuracy": -0.001442201020634637,
+      "macro_f1": -0.00029422213269747477,
+      "balanced_accuracy": -0.00196681440491675
+    }
+  },
+  "gap_change": {
+    "accuracy": 0.015531395606833698,
+    "macro_f1": 0.011442085385733547,
+    "balanced_accuracy": -0.010779053990236043
+  }
+}
