@@ -1,0 +1,139 @@
+{
+  "id": "PERF-003",
+  "date": "2026-10-26",
+  "scope": "within-event Matthew/Moore training pipeline runtime; validation-selected checkpoints; internal test not read or evaluated",
+  "comparison": {
+    "old_pipeline": {
+      "label": "workers=0; no crop cache",
+      "b1_training_seconds": 18311.610000000004,
+      "b2_training_seconds": 17812.138999999996,
+      "combined_training_seconds": 36123.749000000004,
+      "combined_training_hours": 10.034374722222224
+    },
+    "new_pipeline": {
+      "label": "verified uint8 train/val crop cache; workers=4; prefetch_factor=2; pin_memory=true; persistent_workers=false",
+      "b1_training_seconds": 1444.641999999998,
+      "b2_training_seconds": 1501.9860000000062,
+      "combined_training_seconds": 2946.628000000004,
+      "combined_training_minutes": 49.110466666666735
+    },
+    "training_only": {
+    "speedup": 12.259351706425088,
+    "time_saved_seconds": 33177.12099999999,
+      "time_saved_hours": 9.215866944444444,
+    "time_reduction_fraction": 0.9184296181440081
+    },
+    "first_use_with_cache_build": {
+      "cache_build_seconds": 352.64100000000144,
+    "combined_seconds": 3299.2690000000057,
+    "combined_minutes": 54.98781666666676,
+    "speedup": 10.949015978994115,
+    "time_saved_seconds": 32824.47999999999,
+    "time_saved_hours": 9.117911111111107
+    },
+    "later_reuse": {
+      "cache_build_seconds": 0,
+      "note": "The same verified cache is reused when data, split, crop and implementation identities remain unchanged."
+    }
+  },
+  "per_model": {
+    "b1": {
+      "old_training_seconds": 18311.610000000004,
+      "new_training_seconds": 1444.641999999998,
+      "speedup": 12.675534838389046,
+      "old_mean_epoch_seconds": 915.5805000000002,
+      "new_mean_epoch_seconds": 72.2320999999999
+    },
+    "b2": {
+      "old_training_seconds": 17812.138999999996,
+      "new_training_seconds": 1501.9860000000062,
+      "speedup": 11.8590579406199,
+      "old_mean_epoch_seconds": 890.6069499999998,
+      "new_mean_epoch_seconds": 75.09930000000031
+    }
+  },
+  "shared_protocol": {
+    "experiment": "Matthew/Moore within-event deterministic tile split",
+    "seed": 42,
+    "epochs": 20,
+    "batch_size": 32,
+    "crop_size": 128,
+    "context": 16,
+    "train_rows": 26976,
+    "val_rows": 9014,
+    "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+    "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+    "train_indices_sha256": "b7e5487c448964af114906afb9e015ae5a1834fa9c124b54ed8721b55b24f50f",
+    "val_indices_sha256": "9c836c23e639a069260e2d6ae2ba457c53c9d5d680b826f129479bcff694bcaf",
+    "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "python": "3.12.15",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3"
+  },
+  "cache": {
+    "dtype": "uint8",
+    "build_seconds": 352.64100000000144,
+    "exact_roundtrip": true,
+    "test_images_read": false,
+    "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+    "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+    "data_lock_sha256": "f551f7b620b33d55b50ab0af85f6eff572cc1035c9e85832adc65cef98e8d86c",
+    "complete_json_sha256": "c0945bd511dbd7ab017bdcf557f087a34cce58d49da3552250fe79e20ef03cf3"
+  },
+  "source_records": {
+    "old_b1_summary": {
+      "repository_path": "reports/within_event_mm/original_baseline/b1/seed42/attempt01/summary.json",
+      "sha256": "3945c971743ef20bab2f36a2e13e62a67a79bf6577eaba639fcaefc6a24c63f5"
+    },
+    "old_b2_summary": {
+      "repository_path": "reports/within_event_mm/original_baseline/b2/seed42/attempt01/summary.json",
+      "sha256": "0ab0e8efdb383a96fcdd643645d3093bf0cbfcc0166db571619caa1abbcfb2ae"
+    },
+    "new_b1_summary": {
+      "local_only": "output/within_event_mm/baseline/b1/seed42/attempt01/summary.json",
+      "sha256": "5e08556bef0240c7bb3ec536451e0b8058701b6bf1baf5fa46e1c7093115e319"
+    },
+    "new_b2_summary": {
+      "local_only": "output/within_event_mm/baseline/b2/seed42/attempt01/summary.json",
+      "sha256": "89da65ba9e5e207b352c555918b78c44f1e7e9161ab7f173e3c04be80d838235"
+    },
+    "cache_completion": {
+      "local_only": "output/within_event_mm/cache_train_val_v1/complete.json",
+      "sha256": "c0945bd511dbd7ab017bdcf557f087a34cce58d49da3552250fe79e20ef03cf3"
+    }
+  },
+  "implementation": {
+    "configs/within_event_mm/class_weight/a_seed42.json": "b36f443ed1af933415e7bcc8096fcd905f812d2b648d5afb079ea35d2f0cabf0",
+    "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+    "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888",
+    "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+    "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+    "tools/run_class_weight_batch.py": "3997adadfc53f719471d6196e094468ed4f7b262be9ed71b59adfcb7f645c2b6",
+    "evaluation/class_weight.py": "ef45d4bf791e2f8cc18bd8cd84159cfda5ec836a6d6ed0469d1f7b52d403d80e",
+    "tests/test_class_weight.py": "68e99a1013bf39308b9ef941fa592562e113f3364c71c51da3d876c012050882"
+  },
+  "interpretation_limits": [
+    "This is one machine and one seed; it is not a repeated benchmark.",
+    "training_seconds excludes process startup, some checkpoint I/O and post-training independent validation export.",
+    "The first-use comparison adds the one-time cache build to training_seconds; the training-only speedup excludes it.",
+    "The pipeline changed sample ordering and training trajectory, so this is a runtime comparison rather than a bit-identical score reproduction.",
+    "The result does not imply equal speedup on another device, dataset, crop or software stack.",
+    "No held-out test evaluation was performed or used for this report."
+  ],
+  "verification": {
+    "date": "2026-10-26",
+    "command": "python -m unittest -v tests.test_class_weight",
+    "tests_run": 4,
+    "result": "OK",
+    "duration_seconds": 545.669,
+    "coverage": [
+      "class-weighted loss math and cache dtype behavior",
+      "uint8 and float32 cache round trips",
+      "sealed test protection and cache checksum rejection",
+      "deterministic validation export",
+      "paired GPU training and resume consistency"
+    ]
+  }
+}
