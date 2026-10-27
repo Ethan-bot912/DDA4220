@@ -1,0 +1,32 @@
+{
+  "archive": "eight-factor-reproduction-20261027.zip",
+  "sha256": "70096b9b4606133c55c20d697a28f17ac8935a431c3dfcec79fc638bcb4895ba",
+  "bytes": 764568359,
+  "unique_weights": 18,
+  "model_to_weight": {
+    "base_b1": "weights/272a75f6a7f1893da3f80c15e79695fb8a1fb46f9e8def4b1b744bc1d072101a.pt",
+    "equal_b1": "weights/12bd4e659336f2fc3af751854108d02faf249350885cfd7299293c03b43cd98b.pt",
+    "event_sampling_b1": "weights/63a190a2f8f88342ba5b4703584b400e0b3b88fb9783d8eb13aa242a86eb963b.pt",
+    "target_context_b1": "weights/a2efc23b7387eb380eff6f249bc1afd20a7df29c32ef74c96c9e0749b1585ccd.pt",
+    "ordinal_learning_b1": "weights/72db3e4d39c057cbb8fa1842331279fca056d3e08e719523f1e80fa49b000ae7.pt",
+    "resolution_b1": "weights/b3e890cd016d6c1d16f39eaa7a692d7fb58b000e9eebce080ff281d48c8f0160.pt",
+    "base_b2": "weights/cc410625fb4dd0a35843169198fd8bb66dc93f01281958a27dc776fa150f6e4d.pt",
+    "equal_b2": "weights/5ae1c5538a56c9d556b3fef3c38fead352efc0805dcb7af833b2bb2035be9371.pt",
+    "event_sampling_b2": "weights/962273215c78bc189fbea7c5d7a4241e3bf2b221a0c122c7945603765d5d6377.pt",
+    "target_context_b2": "weights/25a7a359a39e06df6617a48f55a2974b4ecdc081a6064d81daf1559bf170d973.pt",
+    "ordinal_learning_b2": "weights/bb93dd6a5e6a6d80cd8ebf6a12a418b9194879064c3457c3d5c209a98ab06419.pt",
+    "resolution_b2": "weights/a58d7499f02dbcd087658d033b54e691fe4228e5806539d581c53e75a3ce15f7.pt",
+    "structure_a_b2": "weights/301b035245dd55cd8121ae14df1e365c289ec5ee1b93ccf3a7a108d732e17b12.pt",
+    "structure_b_b2": "weights/59e2705769d490c0053dc71d5ce26e66576505d337e711f9cd0dbcff1411551a.pt",
+    "brightness_a_b1": "weights/e6a9a7e763717d49b16d6e377abc40918e9ab6ab11c6c22d2ea4465ac8802ce5.pt",
+    "brightness_b_b1": "weights/613fad877df1da95f72a9cc81696bfe88cd64817ec2d2bd6474e6fcb5fca8bd7.pt",
+    "brightness_a_b2": "weights/e040cc3941c3881c4bebd5476dd5738dc68e59f1c7f8ab7629a2f5e8d39cc17f.pt",
+    "brightness_b_b2": "weights/141bb858fabfe725842bf29a3c9e24a4b8c09f8e76a15718275f479528dc527e.pt"
+  },
+  "file_count": 217,
+  "zip_crc_check": "passed",
+  "additional_brightness_source_sha256": {
+    "output\\brightness_control_20261024\\code\\train_brightness.py": "b384c7bb0edd168b1410ad22117dcd4f975c2ddb8a16a18b04fd4f593dfea93e",
+    "output\\brightness_control_20261024\\code\\augmentation.py": "8c14c13ddac6f82790a282ba2c5d09b91b05af0c529d399d579a928ed90b6196"
+  }
+}

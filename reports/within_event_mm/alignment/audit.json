@@ -1,0 +1,38 @@
+{
+  "status": "complete",
+  "type": "sampled crop alignment diagnosis; not registration ground truth or training",
+  "test_evaluated": false,
+  "seed": 42,
+  "sampled_rows": 768,
+  "train_rows": 26976,
+  "val_rows": 9014,
+  "cache_sha256": "c0945bd511dbd7ab017bdcf557f087a34cce58d49da3552250fe79e20ef03cf3",
+  "baseline_sources": {
+    "b1": {
+      "summary_sha256": "5794e1f2e4fbaf7c66200c55ce26d99c3f03a16171aa9e5ffeaaae0aa74075bb",
+      "predictions_sha256": "7ba6428fff45f032261c6d1b206ed8f3dc5585f379a94a9e35925847a8e8d4a4"
+    },
+    "b2": {
+      "summary_sha256": "d4764cd4228a1d481e52f4f89ed12817046090fdc7d50bb279faca4ad41f7929",
+      "predictions_sha256": "6e3394857fe94f1f28f75334841885f3c8a399ed7dc0e3ba78d63d5206861b6a"
+    }
+  },
+  "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+  "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+  "data_lock_sha256": "f551f7b620b33d55b50ab0af85f6eff572cc1035c9e85832adc65cef98e8d86c",
+  "standardized": {
+    "b1": {
+      "eligible_strata": 0,
+      "suspected_minus_other_error_macro": null
+    },
+    "b2": {
+      "eligible_strata": 0,
+      "suspected_minus_other_error_macro": null
+    }
+  },
+  "tool_sha256": "e52ff9007f3173531fe4c379884508b83e15883918d8b4265aee3add810940db",
+  "plan_sha256": "0f59c14e7ee8c3e3f87dc7102f770f49366c186d8e4390c2f9cd1a8ba197c4f2",
+  "demo_sha256": "acd156bb68e7a8c7c297903702ab4e9bd6f82af87df9921d1279675d8dbb8f5e",
+  "samples_sha256": "7eb748be7bf7ea985a39471f7dd94e2905b07e682aacb76da3d03cadf27c66e0",
+  "strata_sha256": "0618a89a1cfbf37dfe41e9962a4ed964bff83bfaa01f9869db3926c851a3d1df"
+}

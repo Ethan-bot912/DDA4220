@@ -1,0 +1,11 @@
+{
+  "scope": "keys and split metadata only; no test imagery/inference",
+  "current_test_buildings": 9012,
+  "old_expanded_val_buildings": 45002,
+  "intersection": 9012,
+  "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+  "old_manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "boundary_review_sample_membership": "unverified: no authoritative sample manifest located; no claim of zero test exposure",
+  "model_level": "within-event models do not train or select on current test",
+  "project_level": "all current test keys appeared in older expanded validation used for checkpoint selection; not pristine independent test"
+}

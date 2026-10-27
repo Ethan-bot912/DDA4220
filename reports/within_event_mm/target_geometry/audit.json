@@ -1,0 +1,62 @@
+{
+  "status": "complete",
+  "type": "fixed-model validation geometry diagnosis; not retraining",
+  "test_evaluated": false,
+  "train_rows": 26976,
+  "val_rows": 9014,
+  "thresholds": {
+    "hurricane-matthew": {
+      "native_bbox_area": [
+        237.37537595552857,
+        742.5275158395407
+      ],
+      "bbox_crop_fraction": [
+        0.09560326907529992,
+        0.1877342851975333
+      ]
+    },
+    "moore-tornado": {
+      "native_bbox_area": [
+        706.8041532635363,
+        1855.4225814219863
+      ],
+      "bbox_crop_fraction": [
+        0.15893327809574076,
+        0.2899950609234072
+      ]
+    }
+  },
+  "standardized": {
+    "b1/native_bbox_area": {
+      "low_minus_high_error_rate_macro_strata": 0.04071266738618847,
+      "included_event_class_strata": 8
+    },
+    "b1/bbox_crop_fraction": {
+      "low_minus_high_error_rate_macro_strata": 0.07095091293663983,
+      "included_event_class_strata": 8
+    },
+    "b2/native_bbox_area": {
+      "low_minus_high_error_rate_macro_strata": 0.017238653857263645,
+      "included_event_class_strata": 8
+    },
+    "b2/bbox_crop_fraction": {
+      "low_minus_high_error_rate_macro_strata": 0.0609754773041602,
+      "included_event_class_strata": 8
+    }
+  },
+  "baseline_sources": {
+    "b1": {
+      "summary_sha256": "5794e1f2e4fbaf7c66200c55ce26d99c3f03a16171aa9e5ffeaaae0aa74075bb",
+      "evaluation_sha256": "1b16332f46b98357d4016e214e4c99856543127136fa68be0aff50fa51e09068"
+    },
+    "b2": {
+      "summary_sha256": "d4764cd4228a1d481e52f4f89ed12817046090fdc7d50bb279faca4ad41f7929",
+      "evaluation_sha256": "e9b4dbdd6d531aad8a1f70aa30e0aa4298b0e7b23c60a77c3ae93f73a9ddf37e"
+    }
+  },
+  "manifest_sha256": "3d2d38eadafccb2c13484299f3fb3e04c5005513136feeb71c08715fc90ca731",
+  "split_map_sha256": "1fbdfc3a5a88bb12e648e89aa7af232730833ca7d0b10e077d9c5dd7b285c4b8",
+  "data_lock_sha256": "f551f7b620b33d55b50ab0af85f6eff572cc1035c9e85832adc65cef98e8d86c",
+  "tool_sha256": "e735954ecf701fc80631b0ff57b1ff01f1a96b52628fe489c5843efce3e09649",
+  "plan_sha256": "0ba427070c0a0c281e78d6bf1a0ea892e522effdc5708e563c8da02ea0dec985"
+}

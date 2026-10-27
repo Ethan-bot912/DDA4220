@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "recorded": "2026-10-26T01:11:23.158795+08:00",
+  "type": "synthetic acceptance; not scientific results",
+  "tests": 2,
+  "elapsed_seconds": 418.642,
+  "command": "python -m unittest tests.test_event_sampling -v",
+  "checks": [
+    "fixed class draw quotas; balanced event quotas; odd extra rotates",
+    "natural order equals original; independent global RNG; reject nontrain/empty stratum",
+    "B1/B2 x A/B CUDA continuous vs resumed exact model tensors, scheduler, history and loader RNG",
+    "val export recomputes selected metrics exactly",
+    "paired provenance/exposure audit and invalid condition resume refused",
+    "unreadable synthetic sealed image never opened"
+  ],
+  "source_sha256": {
+    "configs/within_event_mm/event_sampling/a_seed42.json": "156a55602db84c26c97cd533638d6876777a20cd3be818c564a57130952b9033",
+    "configs/within_event_mm/event_sampling/b_seed42.json": "879d0313532b35c14d8014ac71ef95b5fb90bd212541d1df43f51d8d540b749a",
+    "docs/within_event_mm/EVENT_SAMPLING_EXPERIMENT_PLAN.md": "ef79bbc0e622983bae003f7ea9ddd86eefa456e2608718ae0bccab867fe24552",
+    "evaluation/event_sampling.py": "935fb32d4ed042fa56fd51f98e40d306a809b7b690e28fa0fb6e26e1bf5ede21",
+    "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+    "stage_b_damage/dataset.py": "b9575d6add607fa9bebfa0c0ef0dd2ec90367f85a4083df7bbe1f0616ffb1230",
+    "stage_b_damage/event_sampling.py": "faa60daa5f559b7bd8669b4e64fae7429df95227b5046499359c4e155e77c7da",
+    "stage_b_damage/train_baseline.py": "c31ce8e3e0bcf260f46b80a58ebb2a1eb837e101102392fe46a42d10a6b2201c",
+    "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+    "tests/test_event_sampling.py": "8b74a5dd2122c088ad999a69ba44f208cc83abdb692a339665c2393048217034",
+    "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888",
+    "tools/run_class_weight_batch.py": "3997adadfc53f719471d6196e094468ed4f7b262be9ed71b59adfcb7f645c2b6",
+    "tools/run_event_sampling_batch.py": "83f8ccc3750b7daacf7cd4c2f56796a343b6482764626f0184afbbb99bbac749",
+    "tools/run_expanded_session.py": "d13cc757eebdb838441b5702090419101c78f16226c55f2d1b65f6f68939005a",
+    "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+    "tools/train_event_sampling.py": "8a3bd497d990fab999b7bfadc5e6022d81127ac5b526d8f351490da7d7430ab9",
+    "tools/train_expanded.py": "f1f8290279ebfa27a275ebdcdf18c02feefa1a77dc007cb5c105805df47d9ebe"
+  },
+  "local_demo_log_sha256": "6a0a0c0c6beef1406a5771af6f5e8bbf656e92c50b877fb12950da57231a2280",
+  "environment": {
+    "python": "3.12.15",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "review": "self-review; no independent reviewer",
+  "test_images_read": false,
+  "scope": "within-event fixed benchmark",
+  "formal_runs_started": false,
+  "design_note": "Initial draft preceded implementation; final evidence/design clarification added after synthetic demo, before formal training. Science-relevant sampler/trainer/evaluator unchanged after passing demo."
+}

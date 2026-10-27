@@ -1,0 +1,108 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "type": "random_known_shift",
+      "expected": [
+        0,
+        0
+      ],
+      "dx": 0,
+      "dy": 0,
+      "correlation": 1.000000000019129,
+      "zero_correlation": 1.000000000019129,
+      "improvement": 0.0,
+      "peak_gap": 0.971833870907912,
+      "texture": 0.11785705387592316,
+      "reliable": true,
+      "suspected": false
+    },
+    {
+      "type": "random_known_shift",
+      "expected": [
+        3,
+        -2
+      ],
+      "dx": 3,
+      "dy": -2,
+      "correlation": 1.000000000019129,
+      "zero_correlation": -0.010624133918081428,
+      "improvement": 1.0106241339372104,
+      "peak_gap": 0.971833870907912,
+      "texture": 0.11785705387592316,
+      "reliable": true,
+      "suspected": true
+    },
+    {
+      "type": "random_known_shift",
+      "expected": [
+        -4,
+        5
+      ],
+      "dx": -4,
+      "dy": 5,
+      "correlation": 1.000000000019129,
+      "zero_correlation": -0.0060959615563481555,
+      "improvement": 1.006095961575477,
+      "peak_gap": 0.9722848373037489,
+      "texture": 0.11785705387592316,
+      "reliable": true,
+      "suspected": true
+    },
+    {
+      "type": "random_known_shift",
+      "expected": [
+        8,
+        0
+      ],
+      "dx": 8,
+      "dy": 0,
+      "correlation": 1.000000000019129,
+      "zero_correlation": 0.006715509661393732,
+      "improvement": 0.9932844903577351,
+      "peak_gap": 0.9712333614868323,
+      "texture": 0.11785705387592316,
+      "reliable": false,
+      "suspected": false
+    },
+    {
+      "type": "periodic_ambiguity",
+      "dx": -1,
+      "dy": -6,
+      "correlation": 1.0,
+      "zero_correlation": 0.0,
+      "improvement": 1.0,
+      "peak_gap": 0.0,
+      "texture": 0.3535533845424652,
+      "reliable": false,
+      "suspected": false
+    },
+    {
+      "type": "brightness_pressure",
+      "dx": 3,
+      "dy": -2,
+      "correlation": 1.0000000000191094,
+      "zero_correlation": -0.010624134162300925,
+      "improvement": 1.0106241341814104,
+      "peak_gap": 0.9718338722845855,
+      "texture": 0.11785705387592316,
+      "reliable": true,
+      "suspected": true
+    },
+    {
+      "type": "central_replacement_pressure",
+      "dx": 3,
+      "dy": -2,
+      "correlation": 0.5347794868663214,
+      "zero_correlation": -0.007770276280498502,
+      "improvement": 0.5425497631468199,
+      "peak_gap": 0.5032080983901951,
+      "texture": 0.11785705387592316,
+      "reliable": true,
+      "suspected": true
+    }
+  ],
+  "constant_rejected": true,
+  "tool_sha256": "e52ff9007f3173531fe4c379884508b83e15883918d8b4265aee3add810940db",
+  "plan_sha256": "0f59c14e7ee8c3e3f87dc7102f770f49366c186d8e4390c2f9cd1a8ba197c4f2"
+}

@@ -1,0 +1,11 @@
+{
+  "b1": {
+    "historical_A_trajectory_equal": true
+  },
+  "b2": {
+    "historical_A_trajectory_equal": true
+  },
+  "source_lock_unchanged": true,
+  "test_evaluated": false,
+  "review": "self-audit; no independent review"
+}

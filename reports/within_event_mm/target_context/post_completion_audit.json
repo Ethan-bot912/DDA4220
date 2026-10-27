@@ -1,0 +1,12 @@
+{
+  "recorded": "2026-10-26T05:44:47.972063+08:00",
+  "status": "passed",
+  "frozen_sources": 17,
+  "all_sources_unchanged": true,
+  "all_four_runs_20_epochs": true,
+  "paired_initialization_and_orders": true,
+  "val_prediction_identities": 9014,
+  "pooled_confusion_recomputed": true,
+  "test_evaluated": false,
+  "review": "self-review; no independent review"
+}

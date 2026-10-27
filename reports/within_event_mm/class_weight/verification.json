@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-25",
+  "type": "synthetic software acceptance; not scientific results",
+  "status": "passed",
+  "checks": [
+    {
+      "tests": 3,
+      "elapsed_seconds": 321.964,
+      "command": "python -m unittest tests.test_class_weight.ClassWeightTest -v",
+      "note": "Core three tests as loaded at launch; export-specific fourth test was subsequently added and separately run."
+    },
+    {
+      "tests": 1,
+      "elapsed_seconds": 8.6,
+      "command": "python -m unittest tests.test_class_weight.ClassWeightTest.test_export_deterministic_inference -v"
+    }
+  ],
+  "coverage": [
+    "B1/B2 x inverse/equal: two-epoch CUDA uninterrupted vs one-epoch+resume; exact final model tensors, history and loader RNG",
+    "A/B same initialization and epoch order",
+    "uint8 and float32 exact crops; sealed invalid image never read",
+    "reject cache corruption, source/data/code/environment changes and cross-condition resume",
+    "weighted CE arithmetic and loss accumulation denominator",
+    "val predictions reproduce best pooled/per-event scores",
+    "paired error analysis and missing-run status",
+    "failure audit preserved after successful recovery",
+    "four-worker spawn tensors equal zero-worker tensors; deterministic export"
+  ],
+  "environment": {
+    "python": "3.12.15",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3",
+    "gdal": "3.9.3",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "source_sha256": {
+    "stage_b_damage/class_weight.py": "65579b6c907b32e38c6a55200a91dcec5572561343a77206a563c78bd69a6c37",
+    "stage_b_damage/within_event_cache.py": "fca3cb6181f4d562c7991c04c0b806c29d1bd38938b34e57b54de8f2b2a208e6",
+    "tools/build_within_event_cache.py": "70b82480d1b8746ea4920158a56c5bea59540822971355bc6792826870512888",
+    "tools/train_class_weight.py": "e99f746c8ab6fc6c4cc84f40b3a592c0af21f0f19f6811585062f28925394f15",
+    "evaluation/class_weight.py": "ef45d4bf791e2f8cc18bd8cd84159cfda5ec836a6d6ed0469d1f7b52d403d80e",
+    "tests/test_class_weight.py": "68e99a1013bf39308b9ef941fa592562e113f3364c71c51da3d876c012050882",
+    "configs/within_event_mm/class_weight/a_seed42.json": "b36f443ed1af933415e7bcc8096fcd905f812d2b648d5afb079ea35d2f0cabf0",
+    "configs/within_event_mm/class_weight/b_seed42.json": "9ec5ff71c7ac4ad0468f68f8757a3197965206dfa91ed765345ab97ced59afd3"
+  },
+  "local_logs_sha256": {
+    "output/class_weight_software_acceptance.log": "bc20c9646b4f02031fbad21bccbe10432a1e686b8cdb392592ff8c231e5c4458",
+    "output/class_weight_export_acceptance.log": "76f02fc882a0859eb9f5fccb1fc4d0d2b39d04af4ed53b693e3883c2385b6ed3"
+  },
+  "real_metadata_preflight": {
+    "status": "passed",
+    "train": 26976,
+    "val": 9014,
+    "sealed_test": 9012,
+    "manifest_split_map_data_lock": "matched frozen hashes"
+  },
+  "real_cache_built": false,
+  "formal_runs_started": false,
+  "test_images_read": false,
+  "speedup_measured": false,
+  "review": "self review; no independent reviewer",
+  "remote_rules_commit": "038cf8b6366abdd0db80ef4628bd795745b8c5b7"
+}

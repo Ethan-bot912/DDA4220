@@ -1,0 +1,3 @@
+run,status,seed,attempt,best_epoch,val_macro_f1
+a_b2,complete,42,attempt01,11,0.6525206300851016
+b_b2,complete,42,attempt01,7,0.6736427449828637

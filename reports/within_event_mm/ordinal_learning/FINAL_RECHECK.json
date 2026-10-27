@@ -1,0 +1,163 @@
+{
+  "recorded": "2026-10-26T14:31:05.012316+08:00",
+  "source_files_unchanged": 20,
+  "val_buildings": 9014,
+  "test_evaluated": false,
+  "review": "additional self-review, not independent review",
+  "models": {
+    "b1": {
+      "all_four_metric_recomputations_match": true,
+      "same_manifest_val_ids_labels": true,
+      "same_seed_initialization_reconstructed": true,
+      "A_full_trajectory_matches_historical": true,
+      "epochs_each": 20,
+      "delta_f1_pp": -0.34257736738937394,
+      "ordinal": {
+        "a": {
+          "pooled": {
+            "mean_absolute_grade_error": 0.2703572220989572,
+            "two_or_more_grade_errors": 451,
+            "overestimated": 826,
+            "underestimated": 1084,
+            "support": 9014
+          },
+          "hurricane-matthew": {
+            "mean_absolute_grade_error": 0.4606568216883403,
+            "two_or_more_grade_errors": 392,
+            "overestimated": 727,
+            "underestimated": 918,
+            "support": 4537
+          },
+          "moore-tornado": {
+            "mean_absolute_grade_error": 0.07750725932544114,
+            "two_or_more_grade_errors": 59,
+            "overestimated": 99,
+            "underestimated": 166,
+            "support": 4477
+          }
+        },
+        "b": {
+          "pooled": {
+            "mean_absolute_grade_error": 0.26935877523851787,
+            "two_or_more_grade_errors": 408,
+            "overestimated": 972,
+            "underestimated": 985,
+            "support": 9014
+          },
+          "hurricane-matthew": {
+            "mean_absolute_grade_error": 0.45801190213797666,
+            "two_or_more_grade_errors": 352,
+            "overestimated": 876,
+            "underestimated": 813,
+            "support": 4537
+          },
+          "moore-tornado": {
+            "mean_absolute_grade_error": 0.07817735090462363,
+            "two_or_more_grade_errors": 56,
+            "overestimated": 96,
+            "underestimated": 172,
+            "support": 4477
+          }
+        }
+      },
+      "paired": {
+        "pooled": {
+          "both_correct": 6583,
+          "both_wrong": 1436,
+          "new_error": 521,
+          "corrected": 474
+        },
+        "hurricane-matthew": {
+          "both_correct": 2444,
+          "both_wrong": 1241,
+          "new_error": 448,
+          "corrected": 404
+        },
+        "moore-tornado": {
+          "both_correct": 4139,
+          "both_wrong": 195,
+          "new_error": 73,
+          "corrected": 70
+        }
+      },
+      "runtime_ratio": 1.1670859697398814
+    },
+    "b2": {
+      "all_four_metric_recomputations_match": true,
+      "same_manifest_val_ids_labels": true,
+      "same_seed_initialization_reconstructed": true,
+      "A_full_trajectory_matches_historical": true,
+      "epochs_each": 20,
+      "delta_f1_pp": 1.468911201111145,
+      "ordinal": {
+        "a": {
+          "pooled": {
+            "mean_absolute_grade_error": 0.30086532061238075,
+            "two_or_more_grade_errors": 518,
+            "overestimated": 1328,
+            "underestimated": 735,
+            "support": 9014
+          },
+          "hurricane-matthew": {
+            "mean_absolute_grade_error": 0.5126735728454926,
+            "two_or_more_grade_errors": 453,
+            "overestimated": 1184,
+            "underestimated": 602,
+            "support": 4537
+          },
+          "moore-tornado": {
+            "mean_absolute_grade_error": 0.08621844985481349,
+            "two_or_more_grade_errors": 65,
+            "overestimated": 144,
+            "underestimated": 133,
+            "support": 4477
+          }
+        },
+        "b": {
+          "pooled": {
+            "mean_absolute_grade_error": 0.26159307743510096,
+            "two_or_more_grade_errors": 407,
+            "overestimated": 873,
+            "underestimated": 1011,
+            "support": 9014
+          },
+          "hurricane-matthew": {
+            "mean_absolute_grade_error": 0.45139960326206746,
+            "two_or_more_grade_errors": 358,
+            "overestimated": 835,
+            "underestimated": 813,
+            "support": 4537
+          },
+          "moore-tornado": {
+            "mean_absolute_grade_error": 0.06924279651552379,
+            "two_or_more_grade_errors": 49,
+            "overestimated": 38,
+            "underestimated": 198,
+            "support": 4477
+          }
+        }
+      },
+      "paired": {
+        "pooled": {
+          "both_correct": 6536,
+          "both_wrong": 1469,
+          "new_error": 415,
+          "corrected": 594
+        },
+        "hurricane-matthew": {
+          "both_correct": 2423,
+          "both_wrong": 1320,
+          "new_error": 328,
+          "corrected": 466
+        },
+        "moore-tornado": {
+          "both_correct": 4113,
+          "both_wrong": 149,
+          "new_error": 87,
+          "corrected": 128
+        }
+      },
+      "runtime_ratio": 1.1007710830001012
+    }
+  }
+}

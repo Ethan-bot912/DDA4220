@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-27T00:45:07.483534+08:00",
+  "self_review": true,
+  "source_files_unchanged": 34,
+  "all_four_20_epochs": true,
+  "val_buildings": 9014,
+  "test_evaluated": false,
+  "old_A_hashes_preserved": true,
+  "previous_three_runs_preserved": true,
+  "B1_first11_B2_first12_preserved": true,
+  "models": {
+    "b1": {
+      "delta_f1_pp": 1.0813872189561757,
+      "event_f1_delta_pp": {
+        "hurricane-matthew": -0.44958644563122263,
+        "moore-tornado": 0.10724900131120485
+      },
+      "paired_errors": {
+        "both_correct": 6583,
+        "both_wrong": 1319,
+        "new_error": 521,
+        "corrected": 591
+      },
+      "additional": {
+        "a": {
+          "MAE": 0.2703572220989572,
+          "cross_at_least2": 451,
+          "best_epoch": 14,
+          "last_f1": 0.6568825505909349,
+          "training_seconds": 2090.2200000000084,
+          "peak_allocated_bytes_this_last_session": 521311744
+        },
+        "b": {
+          "MAE": 0.2561570889727091,
+          "cross_at_least2": 401,
+          "best_epoch": 17,
+          "last_f1": 0.6617669910927411,
+          "training_seconds": 10711.519000000013,
+          "peak_allocated_bytes_this_last_session": 1164351488
+        }
+      },
+      "time_ratio_sleep_adjusted_estimate": 1.8526990259398521
+    },
+    "b2": {
+      "delta_f1_pp": 2.8397160953955614,
+      "event_f1_delta_pp": {
+        "hurricane-matthew": 3.372623239522871,
+        "moore-tornado": 1.0391554794892954
+      },
+      "paired_errors": {
+        "both_correct": 6535,
+        "both_wrong": 1457,
+        "new_error": 416,
+        "corrected": 606
+      },
+      "additional": {
+        "a": {
+          "MAE": 0.30086532061238075,
+          "cross_at_least2": 518,
+          "best_epoch": 11,
+          "last_f1": 0.6321644385753924,
+          "training_seconds": 1789.359999999997,
+          "peak_allocated_bytes_this_last_session": 526142464
+        },
+        "b": {
+          "MAE": 0.2618149545151986,
+          "cross_at_least2": 398,
+          "best_epoch": 16,
+          "last_f1": 0.661832845309325,
+          "training_seconds": 4199.405999999999,
+          "peak_allocated_bytes_this_last_session": 1189629440
+        }
+      },
+      "time_ratio_sleep_adjusted_estimate": 2.346875978003312
+    }
+  },
+  "evidence_sha256": {
+    "comparison.json": "617f478ac14a552b54053c87fb792e75c8437d42d32e65bb7d07c9e6511fe61f",
+    "post_completion_audit.json": "059ff98bdc60a8c80fb197e3349246e669cea04766b739219c4126297dea96b4",
+    "recovery_audit.json": "780dbad0d30e584defcd0afe75786e1658b6c1d497589fcac2de4e81b6ef561f",
+    "results.csv": "72a490fdebf77ab639d2ef30dac564b13627759be66379039a1dc8b4fa002aef"
+  },
+  "sleep_seconds_system_event_approx": 6838.970442
+}

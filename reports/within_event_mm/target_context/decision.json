@@ -1,0 +1,10 @@
+{
+  "description": "pooled F1 does not improve consistently across both architectures",
+  "both_pooled_f1_up": false,
+  "historical_natural_trajectory_equal": {
+    "b1": true,
+    "b2": true
+  },
+  "test_evaluated": false,
+  "next_action": "Inspect evidence; do not stack interventions or claim unseen-event improvement."
+}
