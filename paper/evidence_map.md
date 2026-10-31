@@ -5,6 +5,7 @@
 | 候选内容 | 来源 | 可支持的范围 / 尚缺什么 |
 | --- | --- | --- |
 | 四事件 B1/B2 验证表现接近 | [FE-001](../reports/four_event_seed42/README.md) | 单 seed、Moore val 选优及复核；尚缺多 seed 与最终 test |
+| 同一 FE-001 划分上的 Swin-T B1 高于旧 ResNet B1 | [FE-001 Swin-T B1](../reports/fe001_swin_t_b1/README.md) | 单 seed、Moore val 选优结果；Macro-F1/accuracy/balanced accuracy 均提高；尚缺多 seed、sealed test，不能归因于单一配置因素 |
 | 两模型存在不同类别取舍，B2 对输入干预敏感 | [FE-A01](../reports/b1_b2_similarity_20261018/README.md) | 完整 val 与重平衡子集分开；镜像影像与官方影像来源分开；相关性不直接证明光照/错位因果 |
 | 扩大实验中不同验证事件表现有差异 | [EX-001](../reports/expanded_seed42/README.md) | 5 train / 2 val，单 seed；不与四事件合并分数直接比较；尚未最终 test |
 | 并行加载可改善参考 GPU 环境的耗时 | [PERF-001](../reports/speed_four_event_20261024/README.md) | 指定机器和协议，说明短对照与历史完整耗时基线 |

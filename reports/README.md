@@ -7,7 +7,7 @@
 | 编号 | 类型与状态 | 数据 / seed | 入口与范围 |
 | --- | --- | --- | --- |
 | CHECK-001 | 流程验证说明已发布 | 合成数据与真实小规模 pilot | [运行指南](READY_TO_RUN.md)；不登记为模型成绩 |
-| FE-001 | 四事件正式训练与 val 复核已完成 | 2 train events / Moore val / Nepal sealed test；seed42 | [实验卡](four_event_seed42/README.md)、[完整报告](experiment_20261015/README.md)；两个目录属于同一实验 |
+| FE-001 | 四事件正式训练与 val 复核已完成；Swin-T B1 补充运行已完成 | 2 train events / Moore val / Nepal sealed test；seed42 | [ResNet 实验卡](four_event_seed42/README.md)、[完整报告](experiment_20261015/README.md)、[Swin-T B1 补充](fe001_swin_t_b1/README.md) |
 | FE-A01 | 固定模型诊断已发布 | Moore 完整 val 与特定子集；另含镜像影像分析 | [诊断报告](b1_b2_similarity_20261018/README.md)；不是新训练，数据来源与子集数字不能混用 |
 | EX-001 | 扩大训练已完成，test 未评估 | 5 train / 2 val events；seed42 | [结果、记录与 Release](expanded_seed42/README.md) |
 | PERF-001 | GPU 提速研究已发布 | 四事件；RTX4060 Laptop；seed42 | [并行加载](speed_four_event_20261024/README.md)；与其指定基线比较 |

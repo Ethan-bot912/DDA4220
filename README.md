@@ -18,6 +18,7 @@
 | 实验 | 划分 | B1 验证 Macro F1 | B2 验证 Macro F1 | 入口 |
 | --- | --- | ---: | ---: | --- |
 | 四事件，seed42 | 2 个训练事件、1 个验证事件、1 个封存测试事件 | 0.601236 | 0.602278 | [结果与复现](reports/four_event_seed42/README.md) |
+| 四事件，seed42，Swin-T B1 补充 | 与 FE-001 相同划分；Nepal sealed test 未评估 | **0.750682** | — | [结果与分析](reports/fe001_swin_t_b1/README.md) |
 | 扩大实验，seed42 | 5 个训练事件、2 个验证事件；测试事件封存 | 0.462021 | 0.450870 | [结果与复现](reports/expanded_seed42/README.md) |
 | 事件内原始基线 WE-000，seed42 | Matthew/Moore内按tile分组；内部test封存 | 0.662639 | 0.646984 | [实验卡与划分影响分析](reports/within_event_mm/original_baseline/README.md) |
 

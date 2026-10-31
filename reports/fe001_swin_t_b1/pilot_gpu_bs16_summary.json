@@ -1,0 +1,234 @@
+{
+  "config": {
+    "experiment_id": "swin_t_fe001_b1_v1",
+    "project_root": "..",
+    "manifest": "dataset/pilot_tier3_4events/manifest_classification.csv",
+    "manifest_sha256": "39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0",
+    "output_dir": "runs/fe001_b1_swin_t_seed42",
+    "train_split": "train",
+    "val_split": "val",
+    "test_split": "test",
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano"
+    ],
+    "val_events": [
+      "moore-tornado"
+    ],
+    "test_events": [
+      "nepal-flooding"
+    ],
+    "expected_train_rows": 17552,
+    "expected_val_rows": 22372,
+    "expected_test_rows": 41582,
+    "expected_train_counts": {
+      "no_damage": 10502,
+      "minor": 2241,
+      "major": 1031,
+      "destroyed": 3778
+    },
+    "model": "swin_t",
+    "pretrained": true,
+    "pretrained_weights": "IMAGENET1K_V1",
+    "num_classes": 4,
+    "crop_size": 224,
+    "context": 16,
+    "crop_source": "original_geotiff_window",
+    "center_crop": false,
+    "normalization": "imagenet",
+    "augmentation": "none",
+    "epochs": 1,
+    "batch_size": 16,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "loss": "train_only_inverse_frequency_cross_entropy",
+    "sampler": "none",
+    "checkpoint_selection": "val_macro_f1_strict_improvement",
+    "tie_rule": "earlier_epoch",
+    "seed": 42,
+    "device": "cuda",
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "max_open_files": 64,
+    "amp": true,
+    "amp_dtype": "float16",
+    "channels_last": true,
+    "deterministic": true,
+    "allow_tf32": false,
+    "compile": false,
+    "max_train": 128,
+    "max_val": 64,
+    "eval_test": false
+  },
+  "config_sha256": "f279ded0d98900622550a90f396aa45d7c2831ff4c4d43889910abdbf1acfbf7",
+  "manifest": "dataset/pilot_tier3_4events/manifest_classification.csv",
+  "manifest_sha256": "39b802dd01776e2f136dba3c12ba7ffb54a52eac173ca306500a45f74651a2a0",
+  "model": "swin_t",
+  "pretrained_weights": "IMAGENET1K_V1",
+  "device": "cuda",
+  "hardware": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "versions": {
+    "python": "3.9.23",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3"
+  },
+  "train_rows": 128,
+  "val_rows": 64,
+  "class_counts": {
+    "no_damage": 3,
+    "minor": 28,
+    "major": 25,
+    "destroyed": 72
+  },
+  "class_weights": [
+    3.1525614261627197,
+    0.3377744257450104,
+    0.3783073425292969,
+    0.13135671615600586
+  ],
+  "acceleration": {
+    "amp": true,
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "channels_last": true,
+    "compile": false
+  },
+  "status": "complete",
+  "best_epoch": 1,
+  "best_val": {
+    "n": 64,
+    "accuracy": 0.015625,
+    "macro_f1": 0.3333333333333333,
+    "balanced_accuracy": 0.5,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 63
+      },
+      "minor": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "major": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0
+      },
+      "destroyed": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "support": 1
+      }
+    },
+    "confusion": [
+      [
+        0,
+        37,
+        25,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "macro_ap": 0.4956407452422895
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.4076756089925766,
+      "train_rows_seen": 128,
+      "learning_rate": 0.0,
+      "val": {
+        "n": 64,
+        "accuracy": 0.015625,
+        "macro_f1": 0.3333333333333333,
+        "balanced_accuracy": 0.5,
+        "per_class": {
+          "no_damage": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 63
+          },
+          "minor": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "major": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "destroyed": {
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "support": 1
+          }
+        },
+        "confusion": [
+          [
+            0,
+            37,
+            25,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "macro_ap": 0.4956407452422895
+      },
+      "epoch_seconds": 26.2350297
+    }
+  ],
+  "training_seconds": 27.048875699999996,
+  "test_evaluated": false
+}

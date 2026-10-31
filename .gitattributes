@@ -16,6 +16,12 @@
 /reports/within_event_mm/original_baseline/** -text whitespace=cr-at-eol
 /configs/within_event_matthew_moore_seed42.json text eol=lf
 
+# FE-001 Swin-T supplemental source and evidence.
+/stage_b_damage/swin_t_fe001/** text eol=lf
+/configs/swin_t_fe001_b1.json text eol=lf
+/docs/swin_t_fe001_b1_plan.md text eol=lf
+/reports/fe001_swin_t_b1/** -text whitespace=cr-at-eol
+
 # Eight-factor original evidence bytes and hashes.
 /reports/within_event_mm/eight_factor_final/** -text whitespace=cr-at-eol
 /reports/within_event_mm/baseline/** -text whitespace=cr-at-eol
