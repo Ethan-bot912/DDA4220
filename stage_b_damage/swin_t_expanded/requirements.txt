@@ -1,0 +1,6 @@
+# Provenance for the environment used by the existing FE-001 records.
+torch==2.7.1
+torchvision==0.22.1
+numpy==2.0.2
+rasterio==1.4.3
+

@@ -19,6 +19,7 @@
 | --- | --- | ---: | ---: | --- |
 | 四事件，seed42 | 2 个训练事件、1 个验证事件、1 个封存测试事件 | 0.601236 | 0.602278 | [结果与复现](reports/four_event_seed42/README.md) |
 | 扩大实验，seed42 | 5 个训练事件、2 个验证事件；测试事件封存 | 0.462021 | 0.450870 | [结果与复现](reports/expanded_seed42/README.md) |
+| 扩大实验，Swin-T B1，seed42 | 与 ResNet expanded 相同划分；测试事件封存 | **0.507549** | — | [结果与分析](reports/expanded_swin_t_seed42_bs16/README.md) |
 | 事件内原始基线 WE-000，seed42 | Matthew/Moore内按tile分组；内部test封存 | 0.662639 | 0.646984 | [实验卡与划分影响分析](reports/within_event_mm/original_baseline/README.md) |
 
 上述为单 seed、验证集选优结果，测试集尚未评估。上述实验的训练和验证范围不同，合并分数不能直接用于判断模型升级收益。

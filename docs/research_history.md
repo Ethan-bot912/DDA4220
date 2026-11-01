@@ -9,6 +9,7 @@
 | 2026-10-18 四事件诊断 | 使用已有权重和预测，检查输入敏感性、错误类型及变化量 | [FE-A01](../reports/b1_b2_similarity_20261018/README.md) |
 | 2026-10-15 扩展规划 | 盘点更大数据范围与资源成本，属于准备证据 | [资源预算](../reports/expansion_planning_20261015/全量扩展准备与资源预算.md) |
 | 2026-10-22 扩大实验 | 5 个训练事件、2 个验证事件的跨事件比较；不是 19 事件全量实验 | [EX-001](../reports/expanded_seed42/README.md) |
+| 2026-10-31 扩大 Swin-T B1 | 在 EX-001 相同事件划分上运行 batch16 的预训练 Swin-T；单 seed，封存 test 未评估 | [Swin-T expanded B1](../reports/expanded_swin_t_seed42_bs16/README.md) |
 | 2026-10-24/25 效率研究 | 在各自机器上评估并行读取及裁剪缓存 | [PERF-001](../reports/speed_four_event_20261024/README.md)、[PERF-002](../reports/speed_io_cpu_20261025/README.md) |
 | 2026-10-24 事件内原始基线 | 在Matthew/Moore内按tile划分，诊断划分条件对性能的影响 | [WE-000](../reports/within_event_mm/original_baseline/README.md)；seed42，test未评估 |
 

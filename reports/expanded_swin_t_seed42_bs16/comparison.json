@@ -1,0 +1,41 @@
+{
+  "protocol": {
+    "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+    "train_rows": 104152,
+    "val_rows": 45002,
+    "seed": 42,
+    "test_evaluated": false,
+    "note": "Same expanded event split; model initialization, crop, batch, learning rate, normalization, and hardware differ."
+  },
+  "pooled": {
+    "SwinT": {
+      "accuracy": 0.6559041820363539,
+      "macro_f1": 0.5075485398956672,
+      "balanced_accuracy": 0.5637837024467955
+    },
+    "ResNet18": {
+      "accuracy": 0.614372694546909,
+      "macro_f1": 0.46202083080009243,
+      "balanced_accuracy": 0.5250572914521727
+    },
+    "SwinT_minus_ResNet18": {
+      "accuracy": 0.041531487504444,
+      "macro_f1": 0.0455277090655748,
+      "balanced_accuracy": 0.0387264109946228
+    }
+  },
+  "best_epochs": {
+    "SwinT": 6,
+    "ResNet18": 3
+  },
+  "event_metrics": {
+    "hurricane-matthew": {
+      "SwinT": {"accuracy": 0.3730446310207689, "macro_f1": 0.3365823915862885, "balanced_accuracy": 0.4115565256201118},
+      "ResNet18": {"accuracy": 0.30154661953159523, "macro_f1": 0.2676846069848929, "balanced_accuracy": 0.33979152085883074}
+    },
+    "moore-tornado": {
+      "SwinT": {"accuracy": 0.9420257464688003, "macro_f1": 0.7628516487115347, "balanced_accuracy": 0.8012185337761589},
+      "ResNet18": {"accuracy": 0.9308063650992312, "macro_f1": 0.6966582482664245, "balanced_accuracy": 0.7191014611487596}
+    }
+  }
+}

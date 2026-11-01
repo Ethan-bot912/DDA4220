@@ -1,0 +1,108 @@
+{
+  "config": {
+    "experiment_id": "swin_t_expanded_b1_seed42_bs16_v1",
+    "project_root": "..",
+    "manifest": "dataset/expanded_7events/manifest_classification.csv",
+    "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+    "output_dir": "runs/expanded_b1_swin_t_seed42_bs16",
+    "train_split": "train",
+    "val_split": "val",
+    "test_split": "test",
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "moore-tornado",
+      "hurricane-matthew"
+    ],
+    "test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 104152,
+    "expected_val_rows": 45002,
+    "expected_train_counts": {
+      "no_damage": 62331,
+      "minor": 17079,
+      "major": 17794,
+      "destroyed": 6948
+    },
+    "model": "swin_t",
+    "pretrained": true,
+    "pretrained_weights": "IMAGENET1K_V1",
+    "num_classes": 4,
+    "crop_size": 224,
+    "context": 16,
+    "crop_source": "original_geotiff_window",
+    "center_crop": false,
+    "normalization": "imagenet",
+    "augmentation": "none",
+    "epochs": 20,
+    "batch_size": 16,
+    "gradient_accumulation_steps": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "scheduler": "cosine",
+    "loss": "train_only_inverse_frequency_cross_entropy",
+    "sampler": "none",
+    "checkpoint_selection": "val_macro_f1_strict_improvement",
+    "tie_rule": "earlier_epoch",
+    "seed": 42,
+    "device": "cuda",
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "max_open_files": 64,
+    "amp": true,
+    "amp_dtype": "float16",
+    "channels_last": true,
+    "deterministic": true,
+    "allow_tf32": false,
+    "compile": false,
+    "max_train": 0,
+    "max_val": 0,
+    "eval_test": false
+  },
+  "config_sha256": "024f92d9c8412546d3e042235c13aa0d42c2e94ba26215f3570b1eabc4f71408",
+  "manifest": "D:\\dda4220 final project\\dataset\\expanded_7events\\manifest_classification.csv",
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "model": "swin_t",
+  "pretrained_weights": "IMAGENET1K_V1",
+  "device": "cuda",
+  "hardware": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "versions": {
+    "python": "3.9.23",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3"
+  },
+  "train_rows": 104152,
+  "val_rows": 45002,
+  "class_counts": {
+    "no_damage": 62331,
+    "minor": 17079,
+    "major": 17794,
+    "destroyed": 6948
+  },
+  "class_weights": [
+    0.23359625041484833,
+    0.8525258302688599,
+    0.8182694911956787,
+    2.0956084728240967
+  ],
+  "acceleration": {
+    "amp": true,
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "channels_last": true,
+    "compile": false
+  }
+}
