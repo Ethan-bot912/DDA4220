@@ -8,6 +8,7 @@ when CUDA is available.  Importing this module never starts training.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 import os
@@ -35,6 +36,33 @@ from modeling import build_model
 
 IMAGENET_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_STD = (0.229, 0.224, 0.225)
+
+
+class ModelEMA:
+    """Exponential moving average of model parameters for stable validation."""
+
+    def __init__(self, model: nn.Module, decay: float) -> None:
+        self.decay = float(decay)
+        self.module = copy.deepcopy(model).eval()
+        for parameter in self.module.parameters():
+            parameter.requires_grad_(False)
+
+    @torch.no_grad()
+    def update(self, model: nn.Module) -> None:
+        ema_state = self.module.state_dict()
+        model_state = model.state_dict()
+        for name, ema_value in ema_state.items():
+            model_value = model_state[name].detach()
+            if torch.is_floating_point(ema_value):
+                ema_value.mul_(self.decay).add_(model_value, alpha=1.0 - self.decay)
+            else:
+                ema_value.copy_(model_value)
+
+    def state_dict(self) -> dict[str, Any]:
+        return self.module.state_dict()
+
+    def load_state_dict(self, state: dict[str, Any]) -> None:
+        self.module.load_state_dict(state)
 
 
 def sha256_file(path: Path) -> str:
@@ -170,6 +198,7 @@ def train_epoch(
     config: dict,
     amp_enabled: bool,
     amp_dtype: torch.dtype,
+    ema: ModelEMA | None = None,
 ) -> tuple[float, int]:
     model.train()
     accumulation = max(1, int(config["gradient_accumulation_steps"]))
@@ -177,12 +206,15 @@ def train_epoch(
     loss_sum = 0.0
     seen = 0
     for step, batch in enumerate(loader, start=1):
+        window_start = ((step - 1) // accumulation) * accumulation + 1
+        window_end = min(window_start + accumulation - 1, len(loader))
+        window_size = window_end - window_start + 1
         images = prepare_images(batch["image"], device, config)
         labels = batch["label"].to(device, non_blocking=bool(config["pin_memory"]))
         with autocast_context(device, amp_enabled, amp_dtype):
             logits = model(images)
             loss = criterion(logits, labels)
-            scaled_loss = loss / accumulation
+            scaled_loss = loss / window_size
         if amp_enabled:
             scaler.scale(scaled_loss).backward()
         else:
@@ -190,10 +222,17 @@ def train_epoch(
         should_step = step % accumulation == 0 or step == len(loader)
         if should_step:
             if amp_enabled:
+                scaler.unscale_(optimizer)
+            clip_norm = float(config.get("gradient_clip_norm", 0.0))
+            if clip_norm > 0.0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=clip_norm)
+            if amp_enabled:
                 scaler.step(optimizer)
                 scaler.update()
             else:
                 optimizer.step()
+            if ema is not None:
+                ema.update(model)
             optimizer.zero_grad(set_to_none=True)
         batch_size = int(labels.numel())
         loss_sum += float(loss.detach()) * batch_size
@@ -229,6 +268,7 @@ def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) 
         manifest, config["train_split"], project_root=project_root,
         crop_size=config["crop_size"], context=config["context"],
         max_rows=0, max_open_files=config["max_open_files"],
+        augmentation=config.get("augmentation"),
     )
     full_val = XBDPostDataset(
         manifest, config["val_split"], project_root=project_root,
@@ -249,6 +289,7 @@ def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) 
         manifest, config["train_split"], project_root=project_root,
         crop_size=config["crop_size"], context=config["context"],
         max_rows=config["max_train"], max_open_files=config["max_open_files"],
+        augmentation=config.get("augmentation"),
     )
     val = full_val if not config["max_val"] else XBDPostDataset(
         manifest, config["val_split"], project_root=project_root,
@@ -258,8 +299,56 @@ def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) 
     return train, val
 
 
+def set_backbone_trainable(model: nn.Module, trainable: bool) -> None:
+    for name, parameter in model.named_parameters():
+        if not name.startswith("head."):
+            parameter.requires_grad_(trainable)
+
+
+def build_optimizer_and_scheduler(
+    model: nn.Module, config: dict
+) -> tuple[torch.optim.Optimizer, Any]:
+    head_parameters: list[nn.Parameter] = []
+    backbone_parameters: list[nn.Parameter] = []
+    for name, parameter in model.named_parameters():
+        if name.startswith("head."):
+            head_parameters.append(parameter)
+        else:
+            backbone_parameters.append(parameter)
+    if not head_parameters or not backbone_parameters:
+        raise RuntimeError("Expected non-empty Swin backbone and classification head parameter groups")
+    base_lr = float(config.get("learning_rate", 1e-4))
+    backbone_lr = float(config.get("backbone_learning_rate", base_lr))
+    head_lr = float(config.get("head_learning_rate", base_lr))
+    optimizer = torch.optim.AdamW(
+        [
+            {"params": backbone_parameters, "lr": backbone_lr, "group_name": "backbone"},
+            {"params": head_parameters, "lr": head_lr, "group_name": "head"},
+        ],
+        weight_decay=float(config["weight_decay"]),
+    )
+    epochs = int(config["epochs"])
+    warmup_epochs = int(config.get("warmup_epochs", 0))
+    if warmup_epochs > 0:
+        if warmup_epochs >= epochs:
+            raise ValueError("warmup_epochs must be smaller than epochs")
+        warmup = torch.optim.lr_scheduler.LinearLR(
+            optimizer, start_factor=0.1, end_factor=1.0, total_iters=warmup_epochs
+        )
+        cosine = torch.optim.lr_scheduler.CosineAnnealingLR(
+            optimizer, T_max=max(1, epochs - warmup_epochs)
+        )
+        scheduler = torch.optim.lr_scheduler.SequentialLR(
+            optimizer, schedulers=[warmup, cosine], milestones=[warmup_epochs]
+        )
+    else:
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
+    return optimizer, scheduler
+
+
 def make_checkpoint(
     model: nn.Module,
+    ema: ModelEMA | None,
     optimizer: torch.optim.Optimizer,
     scheduler: Any,
     scaler: Any,
@@ -273,6 +362,7 @@ def make_checkpoint(
 ) -> dict:
     return {
         "model": model.state_dict(),
+        "ema_model": ema.state_dict() if ema is not None else None,
         "optimizer": optimizer.state_dict(),
         "scheduler": scheduler.state_dict(),
         "scaler": scaler.state_dict(),
@@ -331,23 +421,30 @@ def main() -> int:
     val_loader = make_loader(val_ds, config, train=False, seed=int(config["seed"]) + 1)
 
     model, weight_name = build_model(
-        num_classes=int(config["num_classes"]), pretrained=bool(config["pretrained"])
+        num_classes=int(config["num_classes"]),
+        pretrained=bool(config["pretrained"]),
+        head_dropout=float(config.get("head_dropout", 0.0)),
     )
     model = model.to(device)
     if bool(config["channels_last"]):
         model = model.to(memory_format=torch.channels_last)
+    freeze_backbone_epochs = int(config.get("freeze_backbone_epochs", 0))
+    if freeze_backbone_epochs > 0:
+        set_backbone_trainable(model, False)
     counts = train_ds.class_counts()
+    class_weight_power = float(config.get("class_weight_power", 1.0))
+    if class_weight_power < 0.0:
+        raise ValueError("class_weight_power must be non-negative")
+    total_rows = float(sum(counts.values()))
     weights = torch.tensor(
-        [1.0 / max(counts[name], 1) for name in LABEL_TO_ID],
+        [(total_rows / max(counts[name], 1)) ** class_weight_power for name in LABEL_TO_ID],
         dtype=torch.float32,
         device=device,
     )
     weights = weights / weights.mean()
     criterion = nn.CrossEntropyLoss(weight=weights)
-    optimizer = torch.optim.AdamW(
-        model.parameters(), lr=float(config["learning_rate"]), weight_decay=float(config["weight_decay"])
-    )
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=int(config["epochs"]))
+    optimizer, scheduler = build_optimizer_and_scheduler(model, config)
+    ema = ModelEMA(model, float(config["ema_decay"])) if bool(config.get("ema", False)) else None
 
     history: list[dict] = []
     best_epoch = 0
@@ -361,6 +458,8 @@ def main() -> int:
         if checkpoint["config_sha256"] != stable_hash(config):
             raise RuntimeError("Resume config differs; use a new output directory")
         model.load_state_dict(checkpoint["model"])
+        if ema is not None and checkpoint.get("ema_model") is not None:
+            ema.load_state_dict(checkpoint["ema_model"])
         optimizer.load_state_dict(checkpoint["optimizer"])
         scheduler.load_state_dict(checkpoint["scheduler"])
         scaler.load_state_dict(checkpoint["scaler"])
@@ -369,6 +468,7 @@ def main() -> int:
         best_val = checkpoint["best_val"]
         restore_rng(checkpoint["rng"], loader_generator)
         start_epoch = int(checkpoint["epoch"]) + 1
+        set_backbone_trainable(model, start_epoch > freeze_backbone_epochs)
 
     provenance = {
         "config": config,
@@ -390,6 +490,18 @@ def main() -> int:
         "val_rows": len(val_ds),
         "class_counts": counts,
         "class_weights": weights.detach().cpu().tolist(),
+        "class_weight_power": class_weight_power,
+        "head_dropout": float(config.get("head_dropout", 0.0)),
+        "freeze_backbone_epochs": freeze_backbone_epochs,
+        "learning_rates": {
+            "backbone": float(config.get("backbone_learning_rate", config["learning_rate"])),
+            "head": float(config.get("head_learning_rate", config["learning_rate"])),
+        },
+        "ema": {
+            "enabled": bool(config.get("ema", False)),
+            "decay": float(config.get("ema_decay", 0.0)),
+            "evaluation": bool(config.get("eval_use_ema", False)),
+        },
         "acceleration": {
             "amp": amp_enabled,
             "num_workers": config["num_workers"],
@@ -405,17 +517,34 @@ def main() -> int:
 
     started = time.perf_counter()
     for epoch in range(start_epoch, int(config["epochs"]) + 1):
+        if freeze_backbone_epochs and epoch == freeze_backbone_epochs + 1:
+            set_backbone_trainable(model, True)
+        learning_rates_used = {
+            str(group.get("group_name", index)): float(group["lr"])
+            for index, group in enumerate(optimizer.param_groups)
+        }
         epoch_started = time.perf_counter()
         train_loss, seen = train_epoch(
-            model, train_loader, optimizer, criterion, scaler, device, config, amp_enabled, amp_dtype
+            model,
+            train_loader,
+            optimizer,
+            criterion,
+            scaler,
+            device,
+            config,
+            amp_enabled,
+            amp_dtype,
+            ema=ema,
         )
-        val_metrics = evaluate(model, val_loader, device, config, amp_enabled, amp_dtype)
+        evaluation_model = ema.module if (ema is not None and bool(config.get("eval_use_ema", True))) else model
+        val_metrics = evaluate(evaluation_model, val_loader, device, config, amp_enabled, amp_dtype)
         scheduler.step()
         record = {
             "epoch": epoch,
             "train_loss": train_loss,
             "train_rows_seen": seen,
-            "learning_rate": optimizer.param_groups[0]["lr"],
+            "learning_rates": learning_rates_used,
+            "evaluation_checkpoint": "ema" if evaluation_model is not model else "online",
             "val": val_metrics,
             "epoch_seconds": time.perf_counter() - epoch_started,
         }
@@ -425,8 +554,18 @@ def main() -> int:
             best_epoch = epoch
             best_val = val_metrics
         checkpoint = make_checkpoint(
-            model, optimizer, scheduler, scaler, epoch, history, best_epoch, best_val,
-            config, manifest, loader_generator,
+            model,
+            ema,
+            optimizer,
+            scheduler,
+            scaler,
+            epoch,
+            history,
+            best_epoch,
+            best_val,
+            config,
+            manifest,
+            loader_generator,
         )
         torch.save(checkpoint, last_path)
         if improved:
@@ -440,6 +579,7 @@ def main() -> int:
         "status": "complete",
         "best_epoch": best_epoch,
         "best_val": best_val,
+        "best_checkpoint_variant": "ema" if ema is not None and bool(config.get("eval_use_ema", True)) else "online",
         "history": history,
         "training_seconds": time.perf_counter() - started,
         "test_evaluated": False,

@@ -12,6 +12,7 @@ from typing import Any
 import numpy as np
 import rasterio
 import torch
+import torchvision.transforms.functional as TF
 from rasterio.enums import Resampling
 from rasterio.windows import Window
 from torch.utils.data import Dataset
@@ -48,6 +49,7 @@ class XBDPostDataset(Dataset):
         max_rows: int = 0,
         return_meta: bool = False,
         max_open_files: int = 64,
+        augmentation: dict | str | None = None,
     ) -> None:
         self.manifest_path = Path(manifest_path).resolve()
         self.project_root = Path(project_root).resolve()
@@ -56,6 +58,10 @@ class XBDPostDataset(Dataset):
         self.context = int(context)
         self.return_meta = bool(return_meta)
         self.max_open_files = max(1, int(max_open_files))
+        if isinstance(augmentation, dict):
+            self.augmentation = dict(augmentation) if split == "train" else {}
+        else:
+            self.augmentation = {"enabled": False}
         self._handles: OrderedDict[str, rasterio.DatasetReader] = OrderedDict()
         with self.manifest_path.open("r", newline="", encoding="utf-8") as handle:
             reader = csv.DictReader(handle)
@@ -136,10 +142,40 @@ class XBDPostDataset(Dataset):
         array = np.clip(array, 0, 255) / 255.0
         return torch.from_numpy(np.ascontiguousarray(array))
 
+    def _augment(self, image: torch.Tensor) -> torch.Tensor:
+        """Apply label-preserving aerial-image augmentation before normalization."""
+        if not self.augmentation.get("enabled", False):
+            return image
+
+        # A random D4 transform preserves the building damage label while
+        # removing the model's dependence on arbitrary north/up orientation.
+        if self.augmentation.get("d4", True):
+            k = int(torch.randint(0, 4, ()).item())
+            image = torch.rot90(image, k=k, dims=(-2, -1))
+            if bool(torch.rand(()) < 0.5):
+                image = torch.flip(image, dims=(-1,))
+
+        probability = float(self.augmentation.get("color_jitter_probability", 0.0))
+        if probability > 0.0 and bool(torch.rand(()) < probability):
+            brightness = float(self.augmentation.get("brightness", 0.0))
+            contrast = float(self.augmentation.get("contrast", 0.0))
+            saturation = float(self.augmentation.get("saturation", 0.0))
+            if brightness:
+                factor = 1.0 + (2.0 * float(torch.rand(()).item()) - 1.0) * brightness
+                image = TF.adjust_brightness(image, factor)
+            if contrast:
+                factor = 1.0 + (2.0 * float(torch.rand(()).item()) - 1.0) * contrast
+                image = TF.adjust_contrast(image, factor)
+            if saturation:
+                factor = 1.0 + (2.0 * float(torch.rand(()).item()) - 1.0) * saturation
+                image = TF.adjust_saturation(image, factor)
+        return image.clamp(0.0, 1.0).contiguous()
+
     def __getitem__(self, index: int) -> dict[str, Any]:
         row = self.rows[index]
         image_path = self._resolve_image(row["post_image"])
         image = self._read_crop(self._open(image_path), self._window(row), self.crop_size)
+        image = self._augment(image)
         item: dict[str, Any] = {
             "image": image,
             "label": torch.tensor(LABEL_TO_ID[row["damage"]], dtype=torch.long),

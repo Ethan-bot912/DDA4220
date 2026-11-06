@@ -1,0 +1,51 @@
+{
+  "protocol": {
+    "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+    "train_rows": 104152,
+    "val_rows": 45002,
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": ["moore-tornado", "hurricane-matthew"],
+    "test_evaluated": false,
+    "checkpoint_variant": "ema"
+  },
+  "runs": {
+    "b1_v0": {
+      "experiment_id": "swin_t_expanded_b1_seed42_bs16_v1",
+      "best_epoch": 6,
+      "accuracy": 0.6559041820,
+      "macro_f1": 0.5075485399,
+      "balanced_accuracy": 0.5637837024,
+      "macro_ap": 0.6293034423,
+      "event_macro_f1": 0.5497170201
+    },
+    "b1_fast_v1": {
+      "experiment_id": "swin_t_expanded_b1_fast_v1_seed42_bs16",
+      "best_epoch": 9,
+      "accuracy": 0.6474378916,
+      "macro_f1": 0.4925209752,
+      "balanced_accuracy": 0.5423683968,
+      "macro_ap": 0.6418041704,
+      "event_macro_f1": 0.5601694746
+    }
+  },
+  "event_metrics": {
+    "b1_v0": {
+      "hurricane-matthew": {"accuracy": 0.3730446310, "macro_f1": 0.3365823916, "macro_ap": 0.4232705194},
+      "moore-tornado": {"accuracy": 0.9420257465, "macro_f1": 0.7628516487, "macro_ap": 0.8118670096}
+    },
+    "b1_fast_v1": {
+      "hurricane-matthew": {"accuracy": 0.3384445426, "macro_f1": 0.3194585468, "macro_ap": 0.4179903070},
+      "moore-tornado": {"accuracy": 0.9599946362, "macro_f1": 0.8008804015, "macro_ap": 0.8498237469}
+    }
+  },
+  "per_class_f1": {
+    "b1_v0": {"no_damage": 0.8691972245, "minor": 0.4162660256, "major": 0.2632236568, "destroyed": 0.4815072526},
+    "b1_fast_v1": {"no_damage": 0.8155027478, "minor": 0.3371188102, "major": 0.1986537023, "destroyed": 0.6188086406}
+  }
+}

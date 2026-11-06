@@ -70,6 +70,7 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default=None)
     parser.add_argument("--allow-test", action="store_true")
+    parser.add_argument("--use-online", action="store_true", help="Use the non-EMA model when an EMA checkpoint is present")
     args = parser.parse_args()
     if args.split == "test" and not args.allow_test:
         raise RuntimeError("Test evaluation is guarded; pass --allow-test only after protocol freeze")
@@ -88,9 +89,15 @@ def main() -> int:
         max_open_files=config["max_open_files"],
     )
     loader = make_loader(dataset, config, train=False, seed=int(config["seed"]) + 17)
-    model, _ = build_model(num_classes=int(config["num_classes"]), pretrained=False)
+    model, _ = build_model(
+        num_classes=int(config["num_classes"]),
+        pretrained=False,
+        head_dropout=float(config.get("head_dropout", 0.0)),
+    )
     checkpoint = torch.load(args.checkpoint.resolve(), map_location="cpu", weights_only=False)
-    model.load_state_dict(checkpoint["model"])
+    use_ema = bool(config.get("eval_use_ema", False)) and not args.use_online
+    state_key = "ema_model" if use_ema and checkpoint.get("ema_model") is not None else "model"
+    model.load_state_dict(checkpoint[state_key])
     model = model.to(device).eval()
     if config["channels_last"]:
         model = model.to(memory_format=torch.channels_last)
@@ -102,6 +109,7 @@ def main() -> int:
         json.dumps({
             "split": args.split,
             "checkpoint": str(args.checkpoint.resolve()),
+            "checkpoint_variant": "ema" if state_key == "ema_model" else "online",
             "manifest_sha256": config["manifest_sha256"],
             "metrics": metrics,
         }, indent=2, ensure_ascii=False), encoding="utf-8"
