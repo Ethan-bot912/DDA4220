@@ -9,6 +9,7 @@
 | 扩大实验中不同验证事件表现有差异 | [EX-001](../reports/expanded_seed42/README.md) | 5 train / 2 val，单 seed；不与四事件合并分数直接比较；尚未最终 test |
 | 同一 expanded 划分下的 Swin-T B1 配方高于 ResNet-18 B1 | [Swin-T expanded B1](../reports/expanded_swin_t_seed42_bs16/README.md) | pooled val Macro-F1 +4.553pp；单 seed、validation 选优；预训练、crop、batch、LR 和归一化同时不同，尚不能归因于单一架构或推广到 test |
 | Swin-T B1 第一轮增强的取舍 | [B1-fast-v1](../reports/expanded_swin_t_b1_fast_v1_seed42_bs16/README.md) | pooled Macro-F1 为 0.492521，Macro-AP 与事件平均 Macro-F1 提升；`destroyed` precision 改善但 `minor` 下降；单 seed、validation 选优、test 未评估 |
+| Swin-T B1-v2 多项增强的取舍 | [B1-v2](../reports/expanded_swin_t_b1_v2_seed42_bs16/README.md) | pooled Macro-F1 为 0.504974、Macro-AP 为 0.649172；相对 v1 改善，但 Macro-F1 仍略低于 v0；`minor`/`major` 仍是瓶颈；单 seed、validation 选优、test 未评估 |
 | 并行加载可改善参考 GPU 环境的耗时 | [PERF-001](../reports/speed_four_event_20261024/README.md) | 指定机器和协议，说明短对照与历史完整耗时基线 |
 | CPU 裁剪缓存与 worker 对照 | [PERF-002](../reports/speed_io_cpu_20261025/README.md) | 指定 CPU 环境；A 组基线不完整；微基准与训练耗时分开；不外推 GPU 收益 |
 | 事件内验证较跨事件设置明显提高，Matthew改善最突出 | [WE-000](../reports/within_event_mm/original_baseline/README.md) / [分析](../reports/within_event_mm/original_baseline/analysis_report.md) | 单seed且训练池/验证样本变化，支持分布差异解释，不证明净因果效应或未知事件泛化提升；test未评估 |

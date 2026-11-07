@@ -15,6 +15,7 @@ import os
 import platform
 import random
 import time
+from collections import Counter
 from contextlib import nullcontext
 from pathlib import Path
 from typing import Any
@@ -27,7 +28,8 @@ import rasterio
 import torch
 import torchvision
 from torch import nn
-from torch.utils.data import DataLoader
+from torch.nn import functional as F
+from torch.utils.data import DataLoader, Sampler, WeightedRandomSampler
 
 from dataset import LABEL_TO_ID, XBDPostDataset
 from metrics import metrics_from_predictions
@@ -63,6 +65,48 @@ class ModelEMA:
 
     def load_state_dict(self, state: dict[str, Any]) -> None:
         self.module.load_state_dict(state)
+
+
+class EventWeightedSampler(WeightedRandomSampler):
+    """Weighted sampler that records the event mix drawn for each epoch."""
+
+    def __init__(self, weights: torch.Tensor, dataset: XBDPostDataset, **kwargs: Any) -> None:
+        super().__init__(weights, **kwargs)
+        self.dataset = dataset
+        self.last_event_counts: dict[str, int] = {}
+
+    def __iter__(self):
+        indices = list(super().__iter__())
+        counts = Counter(self.dataset.rows[int(index)]["event"] for index in indices)
+        self.last_event_counts = dict(sorted(counts.items()))
+        return iter(indices)
+
+
+def split_model_outputs(outputs: Any) -> tuple[torch.Tensor, torch.Tensor | None]:
+    if isinstance(outputs, dict):
+        return outputs["logits"], outputs.get("ordinal")
+    if isinstance(outputs, (tuple, list)):
+        return outputs[0], outputs[1] if len(outputs) > 1 else None
+    return outputs, None
+
+
+def combined_loss(
+    outputs: Any,
+    labels: torch.Tensor,
+    criterion: nn.Module,
+    ordinal_weight: float,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    logits, ordinal_logits = split_model_outputs(outputs)
+    ce_loss = criterion(logits, labels)
+    if ordinal_logits is None or ordinal_weight <= 0.0:
+        ordinal_loss = logits.new_zeros(())
+        return ce_loss, ce_loss, ordinal_loss
+    ordinal_targets = torch.stack(
+        [(labels >= threshold).to(dtype=ordinal_logits.dtype) for threshold in (1, 2, 3)],
+        dim=1,
+    )
+    ordinal_loss = F.binary_cross_entropy_with_logits(ordinal_logits, ordinal_targets)
+    return ce_loss + float(ordinal_weight) * ordinal_loss, ce_loss, ordinal_loss
 
 
 def sha256_file(path: Path) -> str:
@@ -121,18 +165,21 @@ def make_loader(
     train: bool,
     seed: int | None = None,
     generator: torch.Generator | None = None,
+    sampler: Any | None = None,
 ) -> DataLoader:
     workers = int(config["num_workers"])
     kwargs: dict[str, Any] = {
         "dataset": dataset,
         "batch_size": int(config["batch_size"]),
-        "shuffle": train,
+        "shuffle": train and sampler is None,
         "num_workers": workers,
         "pin_memory": bool(config["pin_memory"]),
         "drop_last": False,
         "worker_init_fn": worker_seed,
         "generator": generator if generator is not None else torch.Generator().manual_seed(int(seed)),
     }
+    if sampler is not None:
+        kwargs["sampler"] = sampler
     if workers > 0:
         kwargs["persistent_workers"] = bool(config["persistent_workers"])
         kwargs["prefetch_factor"] = int(config["prefetch_factor"])
@@ -181,7 +228,8 @@ def evaluate(
         for batch in loader:
             images = prepare_images(batch["image"], device, config)
             with autocast_context(device, amp_enabled, amp_dtype):
-                logits = model(images)
+                outputs = model(images)
+                logits, _ = split_model_outputs(outputs)
             probabilities.extend(torch.softmax(logits.float(), dim=1).cpu().numpy())
             predicted.extend(logits.argmax(dim=1).cpu().tolist())
             actual.extend(batch["label"].tolist())
@@ -199,11 +247,14 @@ def train_epoch(
     amp_enabled: bool,
     amp_dtype: torch.dtype,
     ema: ModelEMA | None = None,
-) -> tuple[float, int]:
+    ordinal_weight: float = 0.0,
+) -> tuple[float, int, float, float]:
     model.train()
     accumulation = max(1, int(config["gradient_accumulation_steps"]))
     optimizer.zero_grad(set_to_none=True)
     loss_sum = 0.0
+    ce_sum = 0.0
+    ordinal_sum = 0.0
     seen = 0
     for step, batch in enumerate(loader, start=1):
         window_start = ((step - 1) // accumulation) * accumulation + 1
@@ -212,8 +263,10 @@ def train_epoch(
         images = prepare_images(batch["image"], device, config)
         labels = batch["label"].to(device, non_blocking=bool(config["pin_memory"]))
         with autocast_context(device, amp_enabled, amp_dtype):
-            logits = model(images)
-            loss = criterion(logits, labels)
+            outputs = model(images)
+            loss, ce_loss, ordinal_loss = combined_loss(
+                outputs, labels, criterion, ordinal_weight
+            )
             scaled_loss = loss / window_size
         if amp_enabled:
             scaler.scale(scaled_loss).backward()
@@ -236,8 +289,11 @@ def train_epoch(
             optimizer.zero_grad(set_to_none=True)
         batch_size = int(labels.numel())
         loss_sum += float(loss.detach()) * batch_size
+        ce_sum += float(ce_loss.detach()) * batch_size
+        ordinal_sum += float(ordinal_loss.detach()) * batch_size
         seen += batch_size
-    return loss_sum / max(seen, 1), seen
+    denominator = max(seen, 1)
+    return loss_sum / denominator, seen, ce_sum / denominator, ordinal_sum / denominator
 
 
 def rng_state(loader_generator: torch.Generator) -> dict:
@@ -253,10 +309,26 @@ def rng_state(loader_generator: torch.Generator) -> dict:
 def restore_rng(state: dict, loader_generator: torch.Generator) -> None:
     random.setstate(state["python"])
     np.random.set_state(state["numpy"])
-    torch.set_rng_state(state["torch"])
+    # Checkpoints are loaded with ``map_location=device``.  When resuming on
+    # CUDA that also moves the CPU RNG tensors to the GPU, while
+    # ``torch.set_rng_state`` and ``Generator.set_state`` require CPU
+    # ByteTensors.  Normalize the states here so resume works on either
+    # device without changing the saved random stream.
+    torch_state = state["torch"]
+    if not isinstance(torch_state, torch.Tensor):
+        torch_state = torch.tensor(torch_state, dtype=torch.uint8)
+    torch.set_rng_state(torch_state.detach().cpu())
     if state.get("cuda"):
-        torch.cuda.set_rng_state_all(state["cuda"])
-    loader_generator.set_state(state["loader"])
+        cuda_states = []
+        for cuda_state in state["cuda"]:
+            if not isinstance(cuda_state, torch.Tensor):
+                cuda_state = torch.tensor(cuda_state, dtype=torch.uint8)
+            cuda_states.append(cuda_state.detach().cpu())
+        torch.cuda.set_rng_state_all(cuda_states)
+    loader_state = state["loader"]
+    if not isinstance(loader_state, torch.Tensor):
+        loader_state = torch.tensor(loader_state, dtype=torch.uint8)
+    loader_generator.set_state(loader_state.detach().cpu())
 
 
 def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) -> tuple[XBDPostDataset, XBDPostDataset]:
@@ -301,8 +373,53 @@ def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) 
 
 def set_backbone_trainable(model: nn.Module, trainable: bool) -> None:
     for name, parameter in model.named_parameters():
-        if not name.startswith("head."):
+        if not (name.startswith("head.") or name.startswith("ordinal_head.")):
             parameter.requires_grad_(trainable)
+
+
+def build_event_sampler(
+    dataset: XBDPostDataset,
+    config: dict,
+    generator: torch.Generator,
+) -> tuple[EventWeightedSampler | None, dict[str, Any]]:
+    settings = config.get("event_sampler", {})
+    if not isinstance(settings, dict) or not bool(settings.get("enabled", False)):
+        return None, {"enabled": False}
+    event_counts = Counter(row["event"] for row in dataset.rows)
+    max_count = max(event_counts.values())
+    power = float(settings.get("power", 0.5))
+    cap = float(settings.get("max_weight", 2.0))
+    if power < 0.0 or cap <= 0.0:
+        raise ValueError("event sampler power must be non-negative and max_weight positive")
+    raw_weights = {
+        event: min((max_count / count) ** power, cap)
+        for event, count in event_counts.items()
+    }
+    weights = torch.tensor(
+        [raw_weights[row["event"]] for row in dataset.rows], dtype=torch.double
+    )
+    # Keep the average sampling weight at one while preserving the cap ratio.
+    weights = weights / weights.mean()
+    requested_samples = int(settings.get("samples_per_epoch", 0))
+    samples_per_epoch = len(dataset) if requested_samples <= 0 else min(requested_samples, len(dataset))
+    sampler = EventWeightedSampler(
+        weights,
+        dataset,
+        num_samples=samples_per_epoch,
+        replacement=bool(settings.get("replacement", True)),
+        generator=generator,
+    )
+    metadata = {
+        "enabled": True,
+        "power": power,
+        "max_weight": cap,
+        "replacement": bool(settings.get("replacement", True)),
+        "samples_per_epoch": samples_per_epoch,
+        "event_counts": dict(sorted(event_counts.items())),
+        "raw_event_weights": dict(sorted(raw_weights.items())),
+        "normalized_mean_weight": float(weights.mean()),
+    }
+    return sampler, metadata
 
 
 def build_optimizer_and_scheduler(
@@ -311,7 +428,7 @@ def build_optimizer_and_scheduler(
     head_parameters: list[nn.Parameter] = []
     backbone_parameters: list[nn.Parameter] = []
     for name, parameter in model.named_parameters():
-        if name.startswith("head."):
+        if name.startswith("head.") or name.startswith("ordinal_head."):
             head_parameters.append(parameter)
         else:
             backbone_parameters.append(parameter)
@@ -417,13 +534,19 @@ def main() -> int:
     amp_enabled, amp_dtype, scaler = make_amp(device, config)
     train_ds, val_ds = validate_dataset_contract(config, manifest, project_root)
     loader_generator = torch.Generator().manual_seed(int(config["seed"]))
-    train_loader = make_loader(train_ds, config, train=True, generator=loader_generator)
+    event_sampler, event_sampler_metadata = build_event_sampler(
+        train_ds, config, loader_generator
+    )
+    train_loader = make_loader(
+        train_ds, config, train=True, generator=loader_generator, sampler=event_sampler
+    )
     val_loader = make_loader(val_ds, config, train=False, seed=int(config["seed"]) + 1)
 
     model, weight_name = build_model(
         num_classes=int(config["num_classes"]),
         pretrained=bool(config["pretrained"]),
         head_dropout=float(config.get("head_dropout", 0.0)),
+        ordinal=float(config.get("ordinal_loss_weight", 0.0)) > 0.0,
     )
     model = model.to(device)
     if bool(config["channels_last"]):
@@ -443,6 +566,9 @@ def main() -> int:
     )
     weights = weights / weights.mean()
     criterion = nn.CrossEntropyLoss(weight=weights)
+    ordinal_loss_weight = float(config.get("ordinal_loss_weight", 0.0))
+    if ordinal_loss_weight < 0.0:
+        raise ValueError("ordinal_loss_weight must be non-negative")
     optimizer, scheduler = build_optimizer_and_scheduler(model, config)
     ema = ModelEMA(model, float(config["ema_decay"])) if bool(config.get("ema", False)) else None
 
@@ -471,6 +597,7 @@ def main() -> int:
         set_backbone_trainable(model, start_epoch > freeze_backbone_epochs)
 
     provenance = {
+        "experiment_id": config.get("experiment_id"),
         "config": config,
         "config_sha256": stable_hash(config),
         "manifest": str(manifest),
@@ -491,6 +618,8 @@ def main() -> int:
         "class_counts": counts,
         "class_weights": weights.detach().cpu().tolist(),
         "class_weight_power": class_weight_power,
+        "ordinal_loss_weight": ordinal_loss_weight,
+        "event_sampler": event_sampler_metadata,
         "head_dropout": float(config.get("head_dropout", 0.0)),
         "freeze_backbone_epochs": freeze_backbone_epochs,
         "learning_rates": {
@@ -524,7 +653,7 @@ def main() -> int:
             for index, group in enumerate(optimizer.param_groups)
         }
         epoch_started = time.perf_counter()
-        train_loss, seen = train_epoch(
+        train_loss, seen, train_ce_loss, train_ordinal_loss = train_epoch(
             model,
             train_loader,
             optimizer,
@@ -535,6 +664,7 @@ def main() -> int:
             amp_enabled,
             amp_dtype,
             ema=ema,
+            ordinal_weight=ordinal_loss_weight,
         )
         evaluation_model = ema.module if (ema is not None and bool(config.get("eval_use_ema", True))) else model
         val_metrics = evaluate(evaluation_model, val_loader, device, config, amp_enabled, amp_dtype)
@@ -542,7 +672,10 @@ def main() -> int:
         record = {
             "epoch": epoch,
             "train_loss": train_loss,
+            "train_ce_loss": train_ce_loss,
+            "train_ordinal_loss": train_ordinal_loss,
             "train_rows_seen": seen,
+            "sampled_event_counts": event_sampler.last_event_counts if event_sampler is not None else None,
             "learning_rates": learning_rates_used,
             "evaluation_checkpoint": "ema" if evaluation_model is not model else "online",
             "val": val_metrics,
@@ -577,6 +710,7 @@ def main() -> int:
     summary = {
         **provenance,
         "status": "complete",
+        "completed_epochs": len(history),
         "best_epoch": best_epoch,
         "best_val": best_val,
         "best_checkpoint_variant": "ema" if ema is not None and bool(config.get("eval_use_ema", True)) else "online",

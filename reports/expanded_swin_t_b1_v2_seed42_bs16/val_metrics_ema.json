@@ -1,0 +1,65 @@
+{
+  "split": "val",
+  "checkpoint": "D:\\dda4220 final project\\swin-t\\runs\\expanded_b1_v2_seed42_bs16\\best.pt",
+  "checkpoint_variant": "ema",
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "metrics": {
+    "n": 45002,
+    "accuracy": 0.6606817474778899,
+    "macro_f1": 0.5049744351848207,
+    "balanced_accuracy": 0.5500225930671755,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.7504030279666363,
+        "recall": 0.9107226404661648,
+        "f1": 0.8228264002305697,
+        "support": 23511
+      },
+      "minor": {
+        "precision": 0.6684303350970018,
+        "recall": 0.2580767193765605,
+        "f1": 0.37237991266375553,
+        "support": 13217
+      },
+      "major": {
+        "precision": 0.24415692821368948,
+        "recall": 0.18477574226152874,
+        "f1": 0.21035598705501618,
+        "support": 3166
+      },
+      "destroyed": {
+        "precision": 0.48210502843126324,
+        "recall": 0.8465152701644479,
+        "f1": 0.6143354407899411,
+        "support": 5108
+      }
+    },
+    "confusion": [
+      [
+        21412,
+        1056,
+        518,
+        525
+      ],
+      [
+        5743,
+        3411,
+        1176,
+        2887
+      ],
+      [
+        851,
+        497,
+        585,
+        1233
+      ],
+      [
+        528,
+        139,
+        117,
+        4324
+      ]
+    ],
+    "macro_ap": 0.6491718424320626
+  }
+}

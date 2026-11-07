@@ -20,6 +20,7 @@ from train_b1 import (
     make_loader,
     prepare_images,
     sha256_file,
+    split_model_outputs,
 )
 
 
@@ -34,9 +35,10 @@ def evaluate_export(model, loader: DataLoader, device: torch.device, config: dic
             images = prepare_images(batch["image"], device, config)
             if amp_enabled:
                 with torch.autocast(device_type=device.type, dtype=amp_dtype):
-                    logits = model(images)
+                    outputs = model(images)
             else:
-                logits = model(images)
+                outputs = model(images)
+            logits, _ = split_model_outputs(outputs)
             probabilities = torch.softmax(logits.float(), dim=1).cpu()
             predictions = probabilities.argmax(dim=1)
             labels = batch["label"]
@@ -93,6 +95,7 @@ def main() -> int:
         num_classes=int(config["num_classes"]),
         pretrained=False,
         head_dropout=float(config.get("head_dropout", 0.0)),
+        ordinal=float(config.get("ordinal_loss_weight", 0.0)) > 0.0,
     )
     checkpoint = torch.load(args.checkpoint.resolve(), map_location="cpu", weights_only=False)
     use_ema = bool(config.get("eval_use_ema", False)) and not args.use_online

@@ -1,0 +1,169 @@
+{
+  "experiment_id": "swin_t_expanded_b1_v2_seed42_bs16",
+  "config": {
+    "experiment_id": "swin_t_expanded_b1_v2_seed42_bs16",
+    "project_root": "..",
+    "manifest": "dataset/expanded_7events/manifest_classification.csv",
+    "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+    "output_dir": "runs/expanded_b1_v2_seed42_bs16",
+    "train_split": "train",
+    "val_split": "val",
+    "test_split": "test",
+    "train_events": [
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "hurricane-harvey",
+      "hurricane-michael",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "moore-tornado",
+      "hurricane-matthew"
+    ],
+    "test_events": [
+      "nepal-flooding",
+      "hurricane-florence",
+      "santa-rosa-wildfire"
+    ],
+    "expected_train_rows": 104152,
+    "expected_val_rows": 45002,
+    "expected_train_counts": {
+      "no_damage": 62331,
+      "minor": 17079,
+      "major": 17794,
+      "destroyed": 6948
+    },
+    "model": "swin_t",
+    "pretrained": true,
+    "pretrained_weights": "IMAGENET1K_V1",
+    "num_classes": 4,
+    "head_dropout": 0.2,
+    "crop_size": 224,
+    "context": 16,
+    "crop_source": "original_geotiff_window",
+    "center_crop": false,
+    "normalization": "imagenet",
+    "augmentation": {
+      "enabled": true,
+      "d4": true,
+      "color_jitter_probability": 0.3,
+      "brightness": 0.15,
+      "contrast": 0.15,
+      "saturation": 0.15
+    },
+    "epochs": 20,
+    "batch_size": 16,
+    "gradient_accumulation_steps": 2,
+    "learning_rate": 0.0001,
+    "backbone_learning_rate": 2e-05,
+    "head_learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "scheduler": "warmup_cosine",
+    "warmup_epochs": 2,
+    "freeze_backbone_epochs": 1,
+    "loss": "weighted_ce_plus_ordinal",
+    "class_weight_power": 0.7,
+    "ordinal_loss_weight": 0.2,
+    "sampler": "capped_event_weighted",
+    "event_sampler": {
+      "enabled": true,
+      "power": 0.5,
+      "max_weight": 2.0,
+      "replacement": true,
+      "samples_per_epoch": 104152
+    },
+    "gradient_clip_norm": 1.0,
+    "ema": true,
+    "ema_decay": 0.999,
+    "eval_use_ema": true,
+    "checkpoint_selection": "val_macro_f1_strict_improvement",
+    "tie_rule": "earlier_epoch",
+    "seed": 42,
+    "device": "cuda",
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "max_open_files": 64,
+    "amp": true,
+    "amp_dtype": "float16",
+    "channels_last": true,
+    "deterministic": true,
+    "allow_tf32": false,
+    "compile": false,
+    "max_train": 0,
+    "max_val": 0,
+    "eval_test": false
+  },
+  "config_sha256": "8fbead6f337e92f006825a57b9c1710c8b2f6c4d15e7c3c71456ebd6539bedf3",
+  "manifest": "D:\\dda4220 final project\\dataset\\expanded_7events\\manifest_classification.csv",
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "model": "swin_t",
+  "pretrained_weights": "IMAGENET1K_V1",
+  "device": "cuda",
+  "hardware": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "versions": {
+    "python": "3.9.23",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3"
+  },
+  "train_rows": 104152,
+  "val_rows": 45002,
+  "class_counts": {
+    "no_damage": 62331,
+    "minor": 17079,
+    "major": 17794,
+    "destroyed": 6948
+  },
+  "class_weights": [
+    0.380049467086792,
+    0.940609335899353,
+    0.9139900803565979,
+    1.7653511762619019
+  ],
+  "class_weight_power": 0.7,
+  "ordinal_loss_weight": 0.2,
+  "event_sampler": {
+    "enabled": true,
+    "power": 0.5,
+    "max_weight": 2.0,
+    "replacement": true,
+    "samples_per_epoch": 104152,
+    "event_counts": {
+      "hurricane-harvey": 37374,
+      "hurricane-michael": 35128,
+      "joplin-tornado": 14696,
+      "lower-puna-volcano": 2856,
+      "tuscaloosa-tornado": 14098
+    },
+    "raw_event_weights": {
+      "hurricane-harvey": 1.0,
+      "hurricane-michael": 1.031473508935454,
+      "joplin-tornado": 1.594722857033717,
+      "lower-puna-volcano": 2.0,
+      "tuscaloosa-tornado": 1.628193578255827
+    },
+    "normalized_mean_weight": 1.0000000000000002
+  },
+  "head_dropout": 0.2,
+  "freeze_backbone_epochs": 1,
+  "learning_rates": {
+    "backbone": 2e-05,
+    "head": 0.0005
+  },
+  "ema": {
+    "enabled": true,
+    "decay": 0.999,
+    "evaluation": true
+  },
+  "acceleration": {
+    "amp": true,
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "channels_last": true,
+    "compile": false
+  }
+}
