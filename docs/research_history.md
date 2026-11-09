@@ -12,6 +12,7 @@
 | 2026-10-31 扩大 Swin-T B1 | 在 EX-001 相同事件划分上运行 batch16 的预训练 Swin-T；单 seed，封存 test 未评估 | [Swin-T expanded B1](../reports/expanded_swin_t_seed42_bs16/README.md) |
 | 2026-11-06 Swin-T B1-fast-v1 | 在同一 expanded 划分上加入 D4/颜色增强、温和类别权重、warmup、分层学习率和 EMA；单 seed，封存 test 未评估 | [B1-fast-v1](../reports/expanded_swin_t_b1_fast_v1_seed42_bs16/README.md) |
 | 2026-11-07 Swin-T B1-v2 | 在同一 expanded 划分上加入 capped event sampler、ordinal BCE、增强组合和 EMA；20 轮完整训练，epoch4 按 Macro-F1 选优；封存 test 未评估 | [B1-v2](../reports/expanded_swin_t_b1_v2_seed42_bs16/README.md) |
+| 2026-11-09 Swin-T B1-v3-scale | 在同一划分上做相对 bbox 尺度裁剪消融；7 轮早停，epoch5 按 Macro-F1 选优；未超过 v2，封存 test 未评估 | [B1-v3-scale](../reports/expanded_swin_t_b1_v3_scale_seed42_bs16/README.md) |
 | 2026-10-24/25 效率研究 | 在各自机器上评估并行读取及裁剪缓存 | [PERF-001](../reports/speed_four_event_20261024/README.md)、[PERF-002](../reports/speed_io_cpu_20261025/README.md) |
 | 2026-10-24 事件内原始基线 | 在Matthew/Moore内按tile划分，诊断划分条件对性能的影响 | [WE-000](../reports/within_event_mm/original_baseline/README.md)；seed42，test未评估 |
 

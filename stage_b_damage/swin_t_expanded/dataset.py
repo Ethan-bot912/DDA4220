@@ -50,6 +50,7 @@ class XBDPostDataset(Dataset):
         return_meta: bool = False,
         max_open_files: int = 64,
         augmentation: dict | str | None = None,
+        crop_geometry: dict | None = None,
     ) -> None:
         self.manifest_path = Path(manifest_path).resolve()
         self.project_root = Path(project_root).resolve()
@@ -58,6 +59,7 @@ class XBDPostDataset(Dataset):
         self.context = int(context)
         self.return_meta = bool(return_meta)
         self.max_open_files = max(1, int(max_open_files))
+        self.crop_geometry = dict(crop_geometry) if isinstance(crop_geometry, dict) else {}
         if isinstance(augmentation, dict):
             self.augmentation = dict(augmentation) if split == "train" else {}
         else:
@@ -116,7 +118,42 @@ class XBDPostDataset(Dataset):
         ymax = float(row["post_bbox_ymax"])
         width = max(xmax - xmin, 1.0)
         height = max(ymax - ymin, 1.0)
-        side = max(2, int(math.ceil(max(width, height) + 2 * self.context)))
+        geometry = self.crop_geometry
+        mode = str(geometry.get("mode", "fixed"))
+        if mode == "relative":
+            if self.split == "train":
+                margins = [float(value) for value in geometry.get(
+                    "train_margin_ratios", [0.5, 0.75, 1.0]
+                )]
+                if not margins:
+                    raise ValueError("train_margin_ratios must not be empty")
+                margin_ratio = margins[int(torch.randint(0, len(margins), ()).item())]
+                jitter_range = geometry.get(
+                    "train_scale_jitter", geometry.get("scale_jitter", [1.0, 1.0])
+                )
+                jitter_low, jitter_high = (
+                    float(jitter_range[0]), float(jitter_range[1])
+                )
+                if jitter_low <= 0.0 or jitter_high < jitter_low:
+                    raise ValueError("train_scale_jitter must be a positive [low, high] range")
+                scale_jitter = float(
+                    jitter_low + (jitter_high - jitter_low) * torch.rand(()).item()
+                )
+            else:
+                margin_ratio = float(geometry.get("val_margin_ratio", 0.75))
+                scale_jitter = 1.0
+            if margin_ratio < 0.0:
+                raise ValueError("relative crop margin_ratio must be non-negative")
+            side = max(
+                2,
+                int(math.ceil(
+                    max(width, height) * (1.0 + 2.0 * margin_ratio) * scale_jitter
+                )),
+            )
+        elif mode == "fixed":
+            side = max(2, int(math.ceil(max(width, height) + 2 * self.context)))
+        else:
+            raise ValueError(f"Unsupported crop_geometry mode: {mode}")
         center_x = (xmin + xmax) / 2.0
         center_y = (ymin + ymax) / 2.0
         return Window(

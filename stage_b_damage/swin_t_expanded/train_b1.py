@@ -341,10 +341,12 @@ def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) 
         crop_size=config["crop_size"], context=config["context"],
         max_rows=0, max_open_files=config["max_open_files"],
         augmentation=config.get("augmentation"),
+        crop_geometry=config.get("crop_geometry"),
     )
     full_val = XBDPostDataset(
         manifest, config["val_split"], project_root=project_root,
         crop_size=config["crop_size"], context=config["context"],
+        crop_geometry=config.get("crop_geometry"),
         max_rows=0, max_open_files=config["max_open_files"],
     )
     if len(full_train) != config["expected_train_rows"]:
@@ -362,10 +364,12 @@ def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) 
         crop_size=config["crop_size"], context=config["context"],
         max_rows=config["max_train"], max_open_files=config["max_open_files"],
         augmentation=config.get("augmentation"),
+        crop_geometry=config.get("crop_geometry"),
     )
     val = full_val if not config["max_val"] else XBDPostDataset(
         manifest, config["val_split"], project_root=project_root,
         crop_size=config["crop_size"], context=config["context"],
+        crop_geometry=config.get("crop_geometry"),
         max_rows=config["max_val"], max_open_files=config["max_open_files"],
     )
     return train, val
@@ -645,6 +649,9 @@ def main() -> int:
     )
 
     started = time.perf_counter()
+    early_stopping_patience = int(config.get("early_stopping_patience", 0))
+    stale_epochs = 0
+    stopping_reason = "max_epochs"
     for epoch in range(start_epoch, int(config["epochs"]) + 1):
         if freeze_backbone_epochs and epoch == freeze_backbone_epochs + 1:
             set_backbone_trainable(model, True)
@@ -686,6 +693,9 @@ def main() -> int:
         if improved:
             best_epoch = epoch
             best_val = val_metrics
+            stale_epochs = 0
+        else:
+            stale_epochs += 1
         checkpoint = make_checkpoint(
             model,
             ema,
@@ -706,6 +716,21 @@ def main() -> int:
         with (output_dir / "history.jsonl").open("a", encoding="utf-8") as history_file:
             history_file.write(json.dumps(record, ensure_ascii=False) + "\n")
         print(json.dumps(record, ensure_ascii=False), flush=True)
+        if early_stopping_patience > 0 and stale_epochs >= early_stopping_patience:
+            stopping_reason = "early_stopping"
+            print(
+                json.dumps(
+                    {
+                        "early_stopping": True,
+                        "epoch": epoch,
+                        "best_epoch": best_epoch,
+                        "patience": early_stopping_patience,
+                    },
+                    ensure_ascii=False,
+                ),
+                flush=True,
+            )
+            break
 
     summary = {
         **provenance,
@@ -714,6 +739,7 @@ def main() -> int:
         "best_epoch": best_epoch,
         "best_val": best_val,
         "best_checkpoint_variant": "ema" if ema is not None and bool(config.get("eval_use_ema", True)) else "online",
+        "stopping_reason": stopping_reason,
         "history": history,
         "training_seconds": time.perf_counter() - started,
         "test_evaluated": False,

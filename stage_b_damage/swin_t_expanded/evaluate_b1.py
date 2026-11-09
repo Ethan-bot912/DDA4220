@@ -87,6 +87,7 @@ def main() -> int:
         project_root=project_root,
         crop_size=config["crop_size"],
         context=config["context"],
+        crop_geometry=config.get("crop_geometry"),
         return_meta=True,
         max_open_files=config["max_open_files"],
     )
