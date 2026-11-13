@@ -26,6 +26,8 @@
 6. 失败时按 [故障排查](TROUBLESHOOTING.md) 收集证据，别自行改变实验参数。
 7. 完成后按 [Git与交付](COLLABORATION.md) 返回结果。
 
+后续只使用 Swin-T 的 B2 改进路线见 [Swin-T B2 改进方案](B2_SWINT_IMPROVEMENT_PLAN.md)。该文档是补充实验设计，不修改本页记录的早期融合主对照。
+
 所有命令均在仓库根目录执行。Windows PowerShell 使用 `.venv/Scripts/python.exe`；Linux 使用 `.venv/bin/python`。数据目录固定为仓库内相对路径，不照抄作者D盘绝对路径。用户目录、环境和数据不进Git。
 
 ## 固定协议
