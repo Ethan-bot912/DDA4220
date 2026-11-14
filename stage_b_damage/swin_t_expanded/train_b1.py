@@ -214,10 +214,12 @@ def rng_state(loader_generator: torch.Generator) -> dict:
 def restore_rng(state: dict, loader_generator: torch.Generator) -> None:
     random.setstate(state["python"])
     np.random.set_state(state["numpy"])
-    torch.set_rng_state(state["torch"])
+    # torch.load(..., map_location=device) moves RNG byte tensors to CUDA.
+    # CPU generators require CPU byte tensors, so normalize before restoring.
+    torch.set_rng_state(state["torch"].cpu())
     if state.get("cuda"):
-        torch.cuda.set_rng_state_all(state["cuda"])
-    loader_generator.set_state(state["loader"])
+        torch.cuda.set_rng_state_all([value.cpu() for value in state["cuda"]])
+    loader_generator.set_state(state["loader"].cpu())
 
 
 def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) -> tuple[XBDPostDataset, XBDPostDataset]:

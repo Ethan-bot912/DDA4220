@@ -1,0 +1,64 @@
+{
+  "split": "val",
+  "checkpoint": "C:\\Users\\lenovo\\.codex\\visualizations\\2026\\11\\13\\01a1d4e5-b0ae-7c33-b11f-340ef24320c0\\DDA4220-b1-seed2026-20ep\\runs\\expanded_b1_swin_t_seed2026_bs16\\best.pt",
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "metrics": {
+    "n": 45002,
+    "accuracy": 0.6554375361095063,
+    "macro_f1": 0.5033725166245675,
+    "balanced_accuracy": 0.5470240432977526,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.7585554047295849,
+        "recall": 0.903194249500234,
+        "f1": 0.8245801378506942,
+        "support": 23511
+      },
+      "minor": {
+        "precision": 0.6462700661000944,
+        "recall": 0.2589089808579859,
+        "f1": 0.3697061365600692,
+        "support": 13217
+      },
+      "major": {
+        "precision": 0.20966709346991036,
+        "recall": 0.20688566013897663,
+        "f1": 0.2082670906200318,
+        "support": 3166
+      },
+      "destroyed": {
+        "precision": 0.48713470718360696,
+        "recall": 0.8191072826938136,
+        "f1": 0.6109367014674747,
+        "support": 5108
+      }
+    },
+    "confusion": [
+      [
+        21235,
+        816,
+        908,
+        552
+      ],
+      [
+        5753,
+        3422,
+        1293,
+        2749
+      ],
+      [
+        629,
+        778,
+        655,
+        1104
+      ],
+      [
+        377,
+        279,
+        268,
+        4184
+      ]
+    ],
+    "macro_ap": 0.6186483775651106
+  }
+}
