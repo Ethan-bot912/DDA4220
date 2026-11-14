@@ -61,6 +61,13 @@ The completed run record is in
 `reports/expanded_swin_t_b2_early_seed42_bs16/`; its best epoch is 8 and its
 validation pooled Macro-F1 is 0.498054, below the B1 reference 0.507549.
 
+The matched seed-sensitivity follow-up is recorded in
+`reports/expanded_swin_t_b2_early_seed2026_bs16/`. It changes only the
+training seed to 2026: the selected epoch is 1 and pooled validation
+Macro-F1 is 0.548661. This is a secondary validation-only run, not a new
+primary B2 claim; the two-seed spread and different selected epochs must be
+reported before drawing an architecture conclusion.
+
 ## Scope boundary
 
 This first run is early 6-channel fusion only.  Two-stream/late fusion,

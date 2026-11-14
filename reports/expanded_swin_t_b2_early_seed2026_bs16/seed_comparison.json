@@ -1,0 +1,69 @@
+{
+  "scope": "validation_only",
+  "aligned_validation_rows": 45002,
+  "test_rows_read": 0,
+  "runs": {
+    "b2_seed2026": {
+      "seed": 2026,
+      "best_epoch": 1,
+      "accuracy": 0.6532376338829385,
+      "macro_f1": 0.5486609050556734,
+      "balanced_accuracy": 0.5483397221107305,
+      "macro_ap": 0.6131548055186189,
+      "final_epoch": 20,
+      "final_macro_f1": 0.4537228487780882
+    },
+    "b2_seed42": {
+      "seed": 42,
+      "best_epoch": 8,
+      "accuracy": 0.653904270921292,
+      "macro_f1": 0.498054243873752,
+      "balanced_accuracy": 0.542918339388683,
+      "macro_ap": 0.63595715188697,
+      "final_epoch": 20,
+      "final_macro_f1": 0.455563791527636
+    },
+    "b1_seed42": {
+      "seed": 42,
+      "best_epoch": 6,
+      "accuracy": 0.655904182036354,
+      "macro_f1": 0.507548539895667,
+      "balanced_accuracy": 0.563783702446796,
+      "macro_ap": 0.629303442293419
+    }
+  },
+  "deltas": {
+    "b2_seed2026_minus_b2_seed42": {
+      "accuracy": -0.000666637038354,
+      "macro_f1": 0.050606661182,
+      "balanced_accuracy": 0.005421382722,
+      "macro_ap": -0.022802346368
+    },
+    "b2_seed2026_minus_b1_seed42": {
+      "accuracy": -0.002666548153,
+      "macro_f1": 0.041112365160,
+      "balanced_accuracy": -0.015443980336,
+      "macro_ap": -0.016148636775
+    },
+    "b2_seed42_minus_b1_seed42": {
+      "accuracy": -0.001999911115,
+      "macro_f1": -0.009494296022,
+      "balanced_accuracy": -0.020865363058,
+      "macro_ap": 0.006653709594
+    }
+  },
+  "selected_epoch_trajectory": [
+    {"epoch": 1, "b2_seed2026_macro_f1": 0.548660905056, "b2_seed42_macro_f1": 0.463315561368},
+    {"epoch": 8, "b2_seed2026_macro_f1": 0.474786691651, "b2_seed42_macro_f1": 0.498054243874},
+    {"epoch": 11, "b2_seed2026_macro_f1": 0.515655040069, "b2_seed42_macro_f1": 0.477373362520},
+    {"epoch": 20, "b2_seed2026_macro_f1": 0.453722848778, "b2_seed42_macro_f1": 0.455563791528}
+  ],
+  "paired_b1_seed42_vs_b2_seed2026": {
+    "both_correct": 24975,
+    "b1_only_correct": 4542,
+    "b2_only_correct": 4422,
+    "both_wrong": 11063,
+    "disagreement_count": 8964,
+    "disagreement_rate": 0.199191147060131
+  }
+}
