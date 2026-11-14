@@ -16,6 +16,8 @@
 /stage_b_damage/swin_t_expanded/** text eol=lf whitespace=-blank-at-eof
 /configs/swin_t_expanded_b1_seed42_bs16.json text eol=lf
 /reports/expanded_swin_t_seed42_bs16/** -text whitespace=cr-at-eol
+/configs/swin_t_expanded_b1_seed2026_bs16.json text eol=lf
+/reports/expanded_swin_t_b1_seed2026_bs16/** text eol=lf whitespace=cr-at-eol
 
 # Preserve original within-event evidence bytes; do not rewrite training fingerprints.
 /reports/within_event_mm/original_baseline/** -text whitespace=cr-at-eol
