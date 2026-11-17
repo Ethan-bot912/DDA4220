@@ -6,6 +6,7 @@
     "status": "implemented",
     "source_branch": "exp/swin-t-b2-optimized-v2",
     "source_commit": "3941ce8",
+    "implementation_commit": "ec92a47707d5d6c9a17122f660400925b9e9a4cc",
     "planned_entrypoint": "stage_b_damage/swin_t_b2_maskdiff/train.py"
   },
   "project_root": "..",
