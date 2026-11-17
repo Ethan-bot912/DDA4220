@@ -13,7 +13,7 @@
 | 本次改动 / 固定条件 | 增加 building-mask 辅助监督、stage3/4 空间差分和 predicted-mask pooling；关闭 gate、hard negative 和额外辅助 loss |
 | 模型 / 计划种子 | shared Siamese Swin-T；seed 2026 |
 | 配置 / 来源 | [设计态配置](../../configs/swin_t_b2_maskdiff_seed2026_v1.json)、[完整方案](../../docs/expanded_experiment/B2_MASKDIFF_EXPERIMENT_PLAN.md) |
-| 运行设置 | batch 8 + accumulation 2；AMP；workers 4；无增强；attempt01 |
+| 运行设置 | batch 8 + accumulation 2；AMP；workers 4；无增强；attempt03 |
 | 选优 / 最终评估 | val pooled Macro-F1；test 未评估 |
 | 结果与限制 | 正式运行中；完成前不填写推测结果 |
 | paper 用途 | 补充实验；仅在配对 seed 验证后考虑正文 |
@@ -22,7 +22,7 @@
 
 | 模型 | seed | attempt | 状态 | summary / history / metadata | 权重与校验入口 |
 |---|---:|---|---|---|---|
-| Swin-T B2-MaskDiff | 2026 | attempt02 | 运行中 | 待完成 | 待完成 |
+| Swin-T B2-MaskDiff | 2026 | attempt03 | 运行中 | 待完成 | 待完成 |
 
 ## 结论与下一步
 

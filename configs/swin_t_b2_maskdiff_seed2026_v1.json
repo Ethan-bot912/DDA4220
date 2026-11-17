@@ -12,7 +12,7 @@
   "project_root": "..",
   "manifest": "dataset/expanded_7events/manifest_classification.csv",
   "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
-  "output_dir": "runs/swin_t_b2_maskdiff_seed2026_v1_attempt02",
+  "output_dir": "runs/swin_t_b2_maskdiff_seed2026_v1_attempt03",
   "train_split": "train",
   "val_split": "val",
   "test_split": "test",
@@ -98,7 +98,8 @@
     "enabled": true,
     "checkpoint": "../local_checkpoints/expanded_b1_swin_t_seed2026_bs16/best.pt",
     "load_encoder": true,
-    "load_post_classifier": true,
+    "load_post_classifier": false,
+    "post_classifier_note": "The fused damage head has a different input representation; only the B1 encoder is transferred",
     "load_mask_heads": false
   },
   "epochs": 20,

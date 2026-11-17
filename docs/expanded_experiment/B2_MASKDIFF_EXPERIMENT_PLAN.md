@@ -1,6 +1,6 @@
 # B2-MaskDiff：冠军启发的 mask-aware 空间差分实验
 
-> 状态：代码已实现；smoke/128-sample benchmark 通过；seed 2026 full 20-epoch 运行中。
+> 状态：代码已实现；smoke/128-sample benchmark 通过；seed 2026 full 20-epoch attempt03 运行中。
 
 ## 1. 问题
 
@@ -77,7 +77,7 @@ F ──> masked attention pooling ──> four-class damage head
 | AMP | FP16 |
 | workers | 4 |
 | augmentation | 主实验关闭 |
-| warm start | B1 seed2026 encoder + post head；mask heads 从新初始化 |
+| warm start | 仅 B1 seed2026 encoder；融合分类头与 mask heads 从新初始化 |
 | 分类 loss | train-only inverse-frequency CE |
 | mask loss | Dice + Focal |
 
