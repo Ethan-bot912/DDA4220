@@ -1,9 +1,9 @@
 {
   "experiment_id": "swin_t_b2_maskdiff_seed2026_v1",
-  "status": "design_only",
+  "status": "ready",
   "comparison_role": "champion_inspired_mask_aware_spatial_difference",
   "implementation": {
-    "status": "not_implemented",
+    "status": "implemented",
     "source_branch": "exp/swin-t-b2-optimized-v2",
     "source_commit": "3941ce8",
     "planned_entrypoint": "stage_b_damage/swin_t_b2_maskdiff/train.py"
@@ -11,7 +11,7 @@
   "project_root": "..",
   "manifest": "dataset/expanded_7events/manifest_classification.csv",
   "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
-  "output_dir": "runs/swin_t_b2_maskdiff_seed2026_v1",
+  "output_dir": "runs/swin_t_b2_maskdiff_seed2026_v1_attempt02",
   "train_split": "train",
   "val_split": "val",
   "test_split": "test",
@@ -95,13 +95,13 @@
   },
   "warm_start": {
     "enabled": true,
-    "checkpoint": "../runs/expanded_b1_swin_t_seed2026_bs16/best.pt",
+    "checkpoint": "../local_checkpoints/expanded_b1_swin_t_seed2026_bs16/best.pt",
     "load_encoder": true,
     "load_post_classifier": true,
     "load_mask_heads": false
   },
   "epochs": 20,
-  "early_stopping_patience": 5,
+  "early_stopping_patience": 0,
   "batch_size": 8,
   "gradient_accumulation_steps": 2,
   "learning_rate": 0.0001,

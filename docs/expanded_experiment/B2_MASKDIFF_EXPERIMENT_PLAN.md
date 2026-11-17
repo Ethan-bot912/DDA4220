@@ -1,6 +1,6 @@
 # B2-MaskDiff：冠军启发的 mask-aware 空间差分实验
 
-> 状态：设计稿，代码尚未实现，也未启动训练。
+> 状态：代码已实现；smoke/128-sample benchmark 通过；等待 seed 2026 full 20-epoch 启动。
 
 ## 1. 问题
 
@@ -115,4 +115,4 @@ M1 和 M2 必须各自保留独立输出；不能把 M2 的收益直接归因于
 
 设计态配置：[swin_t_b2_maskdiff_seed2026_v1.json](../../configs/swin_t_b2_maskdiff_seed2026_v1.json)。
 
-配置中的 `status=design_only` 和 `implementation.status=not_implemented` 是刻意的；只有代码、契约测试和小规模 smoke 通过后，才能创建正式运行目录。
+配置中的实现状态已更新；契约预检和 bounded smoke 已通过。

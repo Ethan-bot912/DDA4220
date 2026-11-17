@@ -24,6 +24,7 @@ data/buildings/
 checkpoints/
 outputs/
 runs/
+/local_checkpoints/
 
 # Python
 __pycache__/
