@@ -1,0 +1,152 @@
+{
+  "experiment_id": "swin_t_b2_maskdiff_seed2026_v1",
+  "status": "design_only",
+  "comparison_role": "champion_inspired_mask_aware_spatial_difference",
+  "implementation": {
+    "status": "not_implemented",
+    "source_branch": "exp/swin-t-b2-optimized-v2",
+    "source_commit": "3941ce8",
+    "planned_entrypoint": "stage_b_damage/swin_t_b2_maskdiff/train.py"
+  },
+  "project_root": "..",
+  "manifest": "dataset/expanded_7events/manifest_classification.csv",
+  "manifest_sha256": "77e78d056d2a7494a739c5a8debaa93e11ad4357f6afcaf97aca4538c2769ed2",
+  "output_dir": "runs/swin_t_b2_maskdiff_seed2026_v1",
+  "train_split": "train",
+  "val_split": "val",
+  "test_split": "test",
+  "train_events": [
+    "joplin-tornado",
+    "lower-puna-volcano",
+    "hurricane-harvey",
+    "hurricane-michael",
+    "tuscaloosa-tornado"
+  ],
+  "val_events": ["moore-tornado", "hurricane-matthew"],
+  "test_events": [
+    "nepal-flooding",
+    "hurricane-florence",
+    "santa-rosa-wildfire"
+  ],
+  "expected_train_rows": 104152,
+  "expected_val_rows": 45002,
+  "expected_train_counts": {
+    "no_damage": 62331,
+    "minor": 17079,
+    "major": 17794,
+    "destroyed": 6948
+  },
+  "model": {
+    "family": "shared_siamese_swin_t_maskdiff",
+    "backbone": "swin_t",
+    "pretrained": true,
+    "pretrained_weights": "IMAGENET1K_V1",
+    "num_classes": 4,
+    "input_order": ["pre", "post"],
+    "shared_encoder": true,
+    "spatial_fusion_stages": ["stage3", "stage4"],
+    "fusion_features": ["post", "pre", "post_minus_pre", "abs_post_minus_pre"],
+    "fusion_reduction": "1x1_conv_layer_norm",
+    "building_mask_head": {
+      "enabled": true,
+      "target": "post_building_polygon",
+      "dilate_pixels": 2
+    },
+    "pooling": "predicted_mask_attention_pooling",
+    "residual_gate": {
+      "enabled": false,
+      "reason": "optimized-v2 gate remained near zero; keep as a later isolated ablation"
+    },
+    "ordinal_head": false,
+    "binary_damage_head": false
+  },
+  "preprocessing": {
+    "crop_size": 224,
+    "context": 16,
+    "resize": "bilinear",
+    "alignment": {
+      "enabled": true,
+      "method": "phase_translation",
+      "max_shift": 6,
+      "downsample": 4
+    },
+    "radiometric": {
+      "enabled": true,
+      "method": "robust_pair_zscore",
+      "clip": 3.0,
+      "min_scale": 0.03
+    },
+    "normalization": {
+      "name": "imagenet_per_timestamp",
+      "apply_before_fusion": true,
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225]
+    },
+    "augmentation": {
+      "enabled": false,
+      "note": "keep disabled in the primary run; D4/TTA belongs to a separate ablation"
+    }
+  },
+  "loss": {
+    "classification": "train_only_inverse_frequency_cross_entropy",
+    "classification_weight": 1.0,
+    "mask_dice_weight": 0.5,
+    "mask_focal_weight": 0.5
+  },
+  "warm_start": {
+    "enabled": true,
+    "checkpoint": "../runs/expanded_b1_swin_t_seed2026_bs16/best.pt",
+    "load_encoder": true,
+    "load_post_classifier": true,
+    "load_mask_heads": false
+  },
+  "epochs": 20,
+  "early_stopping_patience": 5,
+  "batch_size": 8,
+  "gradient_accumulation_steps": 2,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.01,
+  "scheduler": "cosine",
+  "sampler": "none",
+  "checkpoint_selection": "val_macro_f1_strict_improvement",
+  "tie_rule": "earlier_epoch",
+  "seed": 2026,
+  "device": "cuda",
+  "num_workers": 4,
+  "pin_memory": true,
+  "persistent_workers": true,
+  "prefetch_factor": 2,
+  "max_open_files": 64,
+  "amp": true,
+  "amp_dtype": "float16",
+  "channels_last": true,
+  "gradient_checkpointing": true,
+  "deterministic": true,
+  "allow_tf32": false,
+  "compile": false,
+  "inference": {
+    "mask_source": "predicted",
+    "mask_threshold": 0.5,
+    "minimum_mask_fraction": 0.02,
+    "fallback": "post_bbox_center_prior",
+    "tta": "none"
+  },
+  "evaluation": {
+    "selection_metric": "pooled_validation_macro_f1",
+    "report_confusion_matrix": true,
+    "report_per_event": true,
+    "report_per_class": true,
+    "report_mask_iou": true,
+    "eval_test": false
+  },
+  "matched_controls": [
+    "swin_t_expanded_b2_early_seed2026_bs16_v1",
+    "swin_t_expanded_b1_seed2026_bs16_v1"
+  ],
+  "success_criteria": {
+    "macro_f1_gain_over_b2_seed2026": 0.005,
+    "major_f1_drop_max": 0.01,
+    "require_three_paired_seeds_before_final_claim": true,
+    "sealed_test_remains_closed": true
+  }
+}
