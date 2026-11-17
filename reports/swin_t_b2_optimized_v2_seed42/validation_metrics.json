@@ -1,0 +1,105 @@
+{
+  "checkpoint": "<selected best checkpoint; not published>",
+  "split": "val",
+  "rows": 45002,
+  "metrics": {
+    "n": 45002,
+    "accuracy": 0.6615928180969735,
+    "macro_f1": 0.5038679171812398,
+    "balanced_accuracy": 0.5566672889067139,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.8001310110974106,
+        "recall": 0.8832036068223384,
+        "f1": 0.8396174918626044,
+        "support": 23511
+      },
+      "minor": {
+        "precision": 0.6740516951997314,
+        "recall": 0.30385110085495953,
+        "f1": 0.4188787483702738,
+        "support": 13217
+      },
+      "major": {
+        "precision": 0.1725972730295976,
+        "recall": 0.16392924826279218,
+        "f1": 0.1681516280576705,
+        "support": 3166
+      },
+      "destroyed": {
+        "precision": 0.4435299950421418,
+        "recall": 0.8756851996867658,
+        "f1": 0.5888238004344105,
+        "support": 5108
+      }
+    },
+    "confusion": [
+      [
+        20765,
+        1209,
+        813,
+        724
+      ],
+      [
+        4156,
+        4016,
+        1548,
+        3497
+      ],
+      [
+        684,
+        572,
+        519,
+        1391
+      ],
+      [
+        347,
+        161,
+        127,
+        4473
+      ]
+    ],
+    "macro_ap": 0.6351749777240308
+  },
+  "model_report": {
+    "pretrained": true,
+    "warm_start": {
+      "checkpoint": "<selected best checkpoint; not published>",
+      "loaded_count": 185,
+      "encoder_loaded_count": 183,
+      "encoder_loaded_examples": [
+        "encoder.features.0.0.weight",
+        "encoder.features.0.0.bias",
+        "encoder.features.0.2.weight",
+        "encoder.features.0.2.bias",
+        "encoder.features.1.0.norm1.weight",
+        "encoder.features.1.0.norm1.bias",
+        "encoder.features.1.0.attn.relative_position_bias_table",
+        "encoder.features.1.0.attn.relative_position_index",
+        "encoder.features.1.0.attn.qkv.weight",
+        "encoder.features.1.0.attn.qkv.bias"
+      ],
+      "head_loaded": true,
+      "head_loaded_keys": [
+        "post_head.weight",
+        "post_head.bias"
+      ],
+      "loaded_examples": [
+        "encoder.features.0.0.weight",
+        "encoder.features.0.0.bias",
+        "encoder.features.0.2.weight",
+        "encoder.features.0.2.bias",
+        "encoder.features.1.0.norm1.weight",
+        "encoder.features.1.0.norm1.bias",
+        "encoder.features.1.0.attn.relative_position_bias_table",
+        "encoder.features.1.0.attn.relative_position_index",
+        "encoder.features.1.0.attn.qkv.weight",
+        "encoder.features.1.0.attn.qkv.bias"
+      ],
+      "skipped_count": 0,
+      "skipped_examples": []
+    }
+  },
+  "test_evaluated": false,
+  "publication_note": "Independent validation evaluation of the selected best checkpoint. Local checkpoint paths are redacted."
+}

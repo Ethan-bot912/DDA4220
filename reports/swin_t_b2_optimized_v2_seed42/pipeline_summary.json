@@ -1,0 +1,30 @@
+{
+  "config": "<local path redacted>",
+  "source_manifest": "dataset/expanded_7events/manifest_classification.csv",
+  "calibration_manifest": "<generated local manifest; not published>",
+  "split_report": {
+    "source": "<local source artifact; not published>",
+    "destination": "<local generated artifact; not published>",
+    "fraction": 0,
+    "seed": 42,
+    "counts": {
+      "train": 104152,
+      "val": 45002
+    }
+  },
+  "checkpoint": "<selected best checkpoint; not published>",
+  "hard_negative": {
+    "output": "<local generated artifact; not published>",
+    "allowed_train_keys": 104152,
+    "source": "<local source artifact; not published>",
+    "mode": "key_file_filtered",
+    "filtered": {
+      "input": 1295,
+      "selected": 1295
+    }
+  },
+  "calibration": null,
+  "calibration_applied_to_validation": false,
+  "test_evaluated": false,
+  "publication_note": "Pipeline artifact paths are redacted; no sealed test split was evaluated."
+}

@@ -1,0 +1,123 @@
+{
+  "experiment_id": "swin_t_b2_optimized_seed42_v2",
+  "project_root": "<local project root>",
+  "manifest": "dataset/expanded_7events/manifest_classification.csv",
+  "manifest_sha256": "410a7a822f6d97d5cfd651b51c0a56cae8dd68b3744dc1419a8502286e6e81b2",
+  "output_dir": "<local run output directory>",
+  "train_split": "train",
+  "val_split": "val",
+  "test_split": "test",
+  "model": "dual_stream_swin_t",
+  "pretrained": true,
+  "pretrained_weights": "IMAGENET1K_V1",
+  "num_classes": 4,
+  "crop_size": 224,
+  "context": 16,
+  "max_open_files": 64,
+  "input_order": [
+    "pre",
+    "post"
+  ],
+  "alignment": {
+    "enabled": true,
+    "method": "phase_translation",
+    "max_shift": 6,
+    "downsample": 4,
+    "min_score": 0.05
+  },
+  "radiometric": {
+    "enabled": true,
+    "method": "robust_pair_zscore",
+    "clip": 3,
+    "min_scale": 0.03
+  },
+  "augmentation": {
+    "enabled": true,
+    "d4": true,
+    "independent_photometric": true,
+    "photometric_probability": 0.35,
+    "brightness": 0.1,
+    "contrast": 0.1,
+    "gamma": 0.08,
+    "misalignment_probability": 0.2,
+    "misalignment_pixels": 2,
+    "pre_dropout_probability": 0.1
+  },
+  "epochs": 12,
+  "early_stopping_patience": 5,
+  "batch_size": 8,
+  "gradient_accumulation_steps": 2,
+  "learning_rate": 0.0001,
+  "backbone_learning_rate": 0.00002,
+  "head_learning_rate": 0.0005,
+  "weight_decay": 0.01,
+  "warmup_epochs": 2,
+  "freeze_backbone_epochs": 1,
+  "head_dropout": 0.2,
+  "ema": true,
+  "ema_decay": 0.999,
+  "eval_use_ema": true,
+  "class_weight_power": 0.7,
+  "event_sampler": {
+    "enabled": true,
+    "power": 0.5,
+    "max_weight": 2,
+    "class_power": 0.35,
+    "hard_negative_multiplier": 2,
+    "samples_per_epoch": 0,
+    "replacement": true
+  },
+  "hard_negative_file": "<per-building train-only key file; not published>",
+  "hard_negative_source": "<prior train-only held-out prediction artifact; not published>",
+  "hard_negative": {
+    "enabled": true,
+    "high_change_no_damage": 0.12,
+    "low_change_damage": 0.03,
+    "low_registration": 0.1
+  },
+  "loss": {
+    "ordinal_weight": 0.2,
+    "damage_weight": 0.1,
+    "distill_weight": 0.05,
+    "focal_gamma": 0
+  },
+  "gate": {
+    "enabled": true,
+    "initial_bias": -3,
+    "quality_features": [
+      "registration_score",
+      "valid_fraction",
+      "shift_norm",
+      "radiometric_shift"
+    ]
+  },
+  "b1_checkpoint": "<local B1 checkpoint; not published>",
+  "calibration_fraction": 0,
+  "seed": 42,
+  "device": "cuda",
+  "num_workers": 4,
+  "pin_memory": true,
+  "persistent_workers": true,
+  "prefetch_factor": 2,
+  "amp": true,
+  "amp_dtype": "float16",
+  "channels_last": true,
+  "deterministic": true,
+  "allow_tf32": false,
+  "max_train": 0,
+  "max_val": 0,
+  "eval_test": false,
+  "hard_negative_provenance": {
+    "output": "<local generated artifact; not published>",
+    "allowed_train_keys": 104152,
+    "source": "<local source artifact; not published>",
+    "mode": "key_file_filtered",
+    "filtered": {
+      "input": 1295,
+      "selected": 1295
+    }
+  },
+  "_generated_by": "run_full_pipeline.py",
+  "hard_negative_file_sha256": "68855e12dbdeb94a15a58ba126b10cac358cec18b07b9189122a8c870a917e92",
+  "publication_note": "Local artifact paths and the per-building hard-negative key file are redacted. Hyperparameters, counts, and hashes describe the executed run."
+}
