@@ -1,6 +1,6 @@
 {
   "experiment_id": "swin_t_b2_maskdiff_seed2026_v1",
-  "status": "ready",
+  "status": "running",
   "comparison_role": "champion_inspired_mask_aware_spatial_difference",
   "implementation": {
     "status": "implemented",

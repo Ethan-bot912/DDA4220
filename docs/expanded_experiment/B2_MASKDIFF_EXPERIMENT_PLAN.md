@@ -1,6 +1,6 @@
 # B2-MaskDiff：冠军启发的 mask-aware 空间差分实验
 
-> 状态：代码已实现；smoke/128-sample benchmark 通过；等待 seed 2026 full 20-epoch 启动。
+> 状态：代码已实现；smoke/128-sample benchmark 通过；seed 2026 full 20-epoch 运行中。
 
 ## 1. 问题
 
