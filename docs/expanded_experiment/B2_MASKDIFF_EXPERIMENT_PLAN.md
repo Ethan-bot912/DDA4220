@@ -2,6 +2,8 @@
 
 > 状态：代码已实现；smoke/128-sample benchmark 通过；seed 2026 attempt03 在 epoch 14 后按用户要求停止。
 
+结果与负结论见 [实验卡](../../reports/swin_t_b2_maskdiff_seed2026_bs16/README.md)。
+
 ## 1. 问题
 
 optimized B2 v2 已经验证了“共享双流 Swin-T + 配准/辐射归一化 + 全局特征差 + B1 残差门控”，但 pooled validation Macro-F1 为 `0.503868`，仍低于 B1 的 `0.507549`。同时，v2 的 gate 均值仅 `0.0163`，主要修正分支基本未启用，且 `major` F1 降到 `16.82%`。

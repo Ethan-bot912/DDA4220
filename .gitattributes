@@ -18,7 +18,7 @@
 /reports/expanded_swin_t_seed42_bs16/** -text whitespace=cr-at-eol
 /configs/swin_t_b2_maskdiff_seed2026_v1.json text eol=lf
 /docs/expanded_experiment/B2_MASKDIFF_EXPERIMENT_PLAN.md text eol=lf
-/reports/planned_swin_t_b2_maskdiff_seed2026/** text eol=lf
+/reports/swin_t_b2_maskdiff_seed2026_bs16/** text eol=lf
 /stage_b_damage/swin_t_b2_maskdiff/** text eol=lf
 
 # Preserve original within-event evidence bytes; do not rewrite training fingerprints.
