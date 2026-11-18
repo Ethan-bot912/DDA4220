@@ -9,6 +9,7 @@
 | 扩大实验中不同验证事件表现有差异 | [EX-001](../reports/expanded_seed42/README.md) | 5 train / 2 val，单 seed；不与四事件合并分数直接比较；尚未最终 test |
 | 并行加载可改善参考 GPU 环境的耗时 | [PERF-001](../reports/speed_four_event_20261024/README.md) | 指定机器和协议，说明短对照与历史完整耗时基线 |
 | CPU 裁剪缓存与 worker 对照 | [PERF-002](../reports/speed_io_cpu_20261025/README.md) | 指定 CPU 环境；A 组基线不完整；微基准与训练耗时分开；不外推 GPU 收益 |
+| 事件内完整 B1+B2 训练从约10小时缩短到约49分钟 | [PERF-003](../reports/speed_within_event_20261026/README.md) | 同机、同划分、单seed；训练计时12.26×，首次缓存计入后10.95×；仅效率结论，不外推设备或模型效果 |
 | 事件内验证较跨事件设置明显提高，Matthew改善最突出 | [WE-000](../reports/within_event_mm/original_baseline/README.md) / [分析](../reports/within_event_mm/original_baseline/analysis_report.md) | 单seed且训练池/验证样本变化，支持分布差异解释，不证明净因果效应或未知事件泛化提升；test未评估 |
 | 后续匹配基线与候选因素 | 不在本次发布范围 | 不将本地其他实验状态混为WE-000成果 |
 | 多 seed 稳定性、最终 test、Stage A | 尚未发布对应成果 | 不能写成已完成结论 |

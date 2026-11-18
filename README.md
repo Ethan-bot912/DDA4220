@@ -23,7 +23,7 @@
 
 上述为单 seed、验证集选优结果，测试集尚未评估。上述实验的训练和验证范围不同，合并分数不能直接用于判断模型升级收益。
 
-另有[四事件诊断分析](reports/b1_b2_similarity_20261018/README.md)、[GPU 并行加载研究](reports/speed_four_event_20261024/README.md)和[CPU 裁剪缓存研究](reports/speed_io_cpu_20261025/README.md)。提速测量来自各自设备与协议，不能跨机器套用加速倍数。
+另有[四事件诊断分析](reports/b1_b2_similarity_20261018/README.md)、[GPU 并行加载研究](reports/speed_four_event_20261024/README.md)、[CPU 裁剪缓存研究](reports/speed_io_cpu_20261025/README.md)和[事件内完整训练提速](reports/speed_within_event_20261026/README.md)。提速测量来自各自设备与协议，不能跨机器套用加速倍数。
 
 ## 当前研究方向
 
