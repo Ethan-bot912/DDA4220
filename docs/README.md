@@ -18,6 +18,7 @@
 | 扩大实验 | [入口](expanded_experiment/START_HERE.md)、[数据](expanded_experiment/DATA.md)、[运行](expanded_experiment/RUN.md)、[排障](expanded_experiment/TROUBLESHOOTING.md)、[交付](expanded_experiment/COLLABORATION.md)、[参考机验收](expanded_experiment/LOCAL_VALIDATION.md) |
 | 事件内原始基线 | [实验卡](../reports/within_event_mm/original_baseline/README.md)、[冻结协议](within_event_mm/PROTOCOL_v3.md)、[发布与复现](within_event_mm/PUBLICATION_PLAN.md) |
 | Swin-T B2 后续改进 | [配准、双流差分、warm-start、hard negative 与校准方案](expanded_experiment/B2_SWINT_IMPROVEMENT_PLAN.md)；[v2 结果、源码与证据](../reports/swin_t_b2_optimized_v2_seed42/README.md) |
+| 7 事件内 Swin-T 对照（计划） | [B1、B2-simple、B2-4 冻结方案](expanded_experiment/WITHIN_EVENT_7EVENT_SWINT_COMPARISON_PLAN.md)、[实验卡](../reports/within_event_swin_t_7events/README.md) |
 | 提速的证据与适用边界 | [训练与效率说明](training.md) |
 | 实验身份、种子与记录 | [实验管理](experiment_management.md) |
 | 课程写作 | [paper 入口](../paper/README.md) |

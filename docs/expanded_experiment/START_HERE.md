@@ -28,6 +28,8 @@
 
 后续只使用 Swin-T 的 B2 改进路线见 [Swin-T B2 改进方案](B2_SWINT_IMPROVEMENT_PLAN.md)。该文档是补充实验设计，不修改本页记录的早期融合主对照。
 
+新的七事件事件内对照会在每个事件内部按 tile 留出 Train/Val/sealed test，用于比较 B1、B2-simple 与 B2-4；它与本页的跨事件验证不是同一口径，详见[冻结方案](WITHIN_EVENT_7EVENT_SWINT_COMPARISON_PLAN.md)与[实验卡](../../reports/within_event_swin_t_7events/README.md)。
+
 所有命令均在仓库根目录执行。Windows PowerShell 使用 `.venv/Scripts/python.exe`；Linux 使用 `.venv/bin/python`。数据目录固定为仓库内相对路径，不照抄作者D盘绝对路径。用户目录、环境和数据不进Git。
 
 ## 固定协议
