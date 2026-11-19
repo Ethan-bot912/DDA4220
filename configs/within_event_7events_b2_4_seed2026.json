@@ -1,0 +1,160 @@
+{
+  "experiment_id": "within_event_7events_b2_4_seed2026_v1",
+  "project_root": "..",
+  "manifest": "dataset/within_event_7events/manifest_classification.csv",
+  "manifest_sha256": "8d5e4f48e8b368e5b8c93ba2d6b534dc39deaa53e991ad8e7c137df536794e8c",
+  "output_dir": "../runs/within_event_7events/b2_4/seed2026",
+  "train_split": "train",
+  "val_split": "val",
+  "test_split": "test",
+  "model": "dual_stream_swin_t",
+  "pretrained": true,
+  "pretrained_weights": "IMAGENET1K_V1",
+  "num_classes": 4,
+  "crop_size": 224,
+  "context": 16,
+  "max_open_files": 64,
+  "input_order": [
+    "pre",
+    "post"
+  ],
+  "alignment": {
+    "enabled": true,
+    "method": "phase_translation",
+    "max_shift": 6,
+    "downsample": 4,
+    "min_score": 0.05
+  },
+  "radiometric": {
+    "enabled": true,
+    "method": "robust_pair_zscore",
+    "clip": 3.0,
+    "min_scale": 0.03
+  },
+  "augmentation": {
+    "enabled": true,
+    "d4": true,
+    "independent_photometric": true,
+    "photometric_probability": 0.35,
+    "brightness": 0.1,
+    "contrast": 0.1,
+    "gamma": 0.08,
+    "misalignment_probability": 0.2,
+    "misalignment_pixels": 2,
+    "pre_dropout_probability": 0.1
+  },
+  "epochs": 12,
+  "early_stopping_patience": 5,
+  "batch_size": 8,
+  "gradient_accumulation_steps": 2,
+  "learning_rate": 0.0001,
+  "backbone_learning_rate": 2e-05,
+  "head_learning_rate": 0.0005,
+  "weight_decay": 0.01,
+  "warmup_epochs": 2,
+  "freeze_backbone_epochs": 1,
+  "head_dropout": 0.2,
+  "ema": true,
+  "ema_decay": 0.999,
+  "eval_use_ema": true,
+  "class_weight_power": 0.7,
+  "event_sampler": {
+    "enabled": true,
+    "power": 0.5,
+    "max_weight": 2.0,
+    "class_power": 0.35,
+    "hard_negative_multiplier": 2.0,
+    "samples_per_epoch": 0,
+    "replacement": true
+  },
+  "hard_negative_file": "",
+  "hard_negative_note": "The executed run used 1,295 train-only OOF-derived keys. The per-building key file is intentionally not published; its SHA256 and provenance are recorded in reports/swin_t_b2_optimized_v2_seed42/ARTIFACTS.md. An empty value activates the deterministic training-only fallback in run_full_pipeline.py.",
+  "hard_negative": {
+    "enabled": true,
+    "high_change_no_damage": 0.12,
+    "low_change_damage": 0.03,
+    "low_registration": 0.1
+  },
+  "loss": {
+    "ordinal_weight": 0.2,
+    "damage_weight": 0.1,
+    "distill_weight": 0.05,
+    "focal_gamma": 0.0
+  },
+  "gate": {
+    "enabled": true,
+    "initial_bias": -3.0,
+    "quality_features": [
+      "registration_score",
+      "valid_fraction",
+      "shift_norm",
+      "radiometric_shift"
+    ]
+  },
+  "b1_checkpoint": "../runs/within_event_7events/b1/seed2026/best.pt",
+  "calibration_fraction": 0,
+  "seed": 2026,
+  "device": "cuda",
+  "num_workers": 4,
+  "pin_memory": true,
+  "persistent_workers": true,
+  "prefetch_factor": 2,
+  "amp": true,
+  "amp_dtype": "float16",
+  "channels_last": true,
+  "deterministic": true,
+  "allow_tf32": false,
+  "max_train": 0,
+  "max_val": 0,
+  "eval_test": false,
+  "train_events": [
+    "hurricane-harvey",
+    "hurricane-matthew",
+    "hurricane-michael",
+    "joplin-tornado",
+    "lower-puna-volcano",
+    "moore-tornado",
+    "tuscaloosa-tornado"
+  ],
+  "val_events": [
+    "hurricane-harvey",
+    "hurricane-matthew",
+    "hurricane-michael",
+    "joplin-tornado",
+    "lower-puna-volcano",
+    "moore-tornado",
+    "tuscaloosa-tornado"
+  ],
+  "test_events": [
+    "hurricane-harvey",
+    "hurricane-matthew",
+    "hurricane-michael",
+    "joplin-tornado",
+    "lower-puna-volcano",
+    "moore-tornado",
+    "tuscaloosa-tornado"
+  ],
+  "expected_train_rows": 104344,
+  "expected_val_rows": 22388,
+  "expected_test_rows": 22422,
+  "expected_train_counts": {
+    "no_damage": 60091,
+    "minor": 21215,
+    "major": 14602,
+    "destroyed": 8436
+  },
+  "expected_val_counts": {
+    "no_damage": 12875,
+    "minor": 4551,
+    "major": 3149,
+    "destroyed": 1813
+  },
+  "expected_test_counts": {
+    "no_damage": 12876,
+    "minor": 4530,
+    "major": 3209,
+    "destroyed": 1807
+  },
+  "hard_negative_bootstrap": false,
+  "hard_negative_source": "deterministic_train_only_manifest_fallback; regenerate from current-train OOF when available"
+}

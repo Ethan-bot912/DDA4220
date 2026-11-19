@@ -58,6 +58,42 @@ class OptimizedB2Contracts(unittest.TestCase):
         self.assertTrue(torch.equal(model.post_head.weight, weight))
         self.assertTrue(torch.equal(model.post_head.bias, bias))
 
+    def test_b1_warm_start_rejects_manifest_or_seed_mismatch(self) -> None:
+        model = DualStreamSwinT(pretrained=False)
+        with tempfile.TemporaryDirectory(prefix="optimized_b2_contract_") as raw:
+            checkpoint = Path(raw) / "b1.pt"
+            torch.save(
+                {
+                    "model": {"head.weight": model.post_head.weight.detach().clone()},
+                    "manifest_sha256": "current-manifest",
+                    "config": {"seed": 2026},
+                },
+                checkpoint,
+            )
+            self.assertEqual(
+                load_b1_warm_start(
+                    model,
+                    checkpoint,
+                    expected_manifest_sha256="current-manifest",
+                    expected_seed=2026,
+                )["head_loaded"],
+                True,
+            )
+            with self.assertRaisesRegex(RuntimeError, "manifest does not match"):
+                load_b1_warm_start(
+                    model,
+                    checkpoint,
+                    expected_manifest_sha256="different-manifest",
+                    expected_seed=2026,
+                )
+            with self.assertRaisesRegex(RuntimeError, "seed"):
+                load_b1_warm_start(
+                    model,
+                    checkpoint,
+                    expected_manifest_sha256="current-manifest",
+                    expected_seed=3407,
+                )
+
     def test_dataset_returns_quality_and_pair(self) -> None:
         with tempfile.TemporaryDirectory(prefix="optimized_b2_") as raw:
             root = Path(raw)

@@ -1,0 +1,87 @@
+{
+  "experiment_id": "within_event_7events_b1_seed2026_bs16_v1",
+  "status": "complete",
+  "protocol": "within-event tile split v3; 70/15/15",
+  "seed": 2026,
+  "model": "swin_t",
+  "pretrained_weights": "IMAGENET1K_V1",
+  "train_rows": 104344,
+  "val_rows": 22388,
+  "sealed_test_rows": 22422,
+  "train_class_counts": {
+    "no_damage": 60091,
+    "minor": 21215,
+    "major": 14602,
+    "destroyed": 8436
+  },
+  "completed_epochs": 20,
+  "best_epoch": 6,
+  "best_val": {
+    "n": 22388,
+    "accuracy": 0.7898874396998392,
+    "macro_f1": 0.7299141167742242,
+    "balanced_accuracy": 0.7375625579649159,
+    "macro_ap": 0.7682838856407654,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.8964421855146124,
+        "recall": 0.8767378640776698,
+        "f1": 0.8864805434483842,
+        "support": 12875
+      },
+      "minor": {
+        "precision": 0.631326352530541,
+        "recall": 0.6359041968798066,
+        "f1": 0.6336070060207992,
+        "support": 4551
+      },
+      "major": {
+        "precision": 0.6435975609756097,
+        "recall": 0.6703715465227056,
+        "f1": 0.6567117747705707,
+        "support": 3149
+      },
+      "destroyed": {
+        "precision": 0.7199792960662525,
+        "recall": 0.7672366243794815,
+        "f1": 0.7428571428571429,
+        "support": 1813
+      }
+    },
+    "confusion": [
+      [11288, 931, 477, 179],
+      [1025, 2894, 516, 116],
+      [216, 576, 2111, 246],
+      [63, 183, 176, 1391]
+    ]
+  },
+  "training_seconds": 15412.453568999998,
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "rasterio": "1.4.3",
+    "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "acceleration": {
+    "amp": true,
+    "amp_dtype": "float16",
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "channels_last": true,
+    "compile": false
+  },
+  "hashes": {
+    "manifest_sha256": "8d5e4f48e8b368e5b8c93ba2d6b534dc39deaa53e991ad8e7c137df536794e8c",
+    "split_map_sha256": "d586b076e99201db7998553f01314e4db05d42b5f2d8b6d1df800a7aaa38d3ce",
+    "data_lock_sha256": "3177555c0fa446df65b08bcc4e043fedee8d4e1f103b9da0844732982da66b5f",
+    "config_sha256": "cb99f2e273b07b6519a3bb1e078bd3773fb39a9b566e076075c7d7a04c3e0e77",
+    "best_checkpoint_sha256": "1e04218503d2e5fdd2a53d47c34631559f4391f77516eea90f0f9245e0983f25",
+    "last_checkpoint_sha256": "53189352bf3db91747669d449774430afa633de0995c188eee51250306d0713a"
+  },
+  "test_evaluated": false,
+  "publication_note": "Single-seed validation result. Local paths and artifacts are redacted; the sealed test split was not evaluated."
+}

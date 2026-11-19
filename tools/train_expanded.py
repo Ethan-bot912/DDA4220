@@ -148,7 +148,12 @@ def main():
     if a.session_hours <= 0 or a.stop_after_epoch < 0:
         p.error("Session hours must be positive; stop epoch must be nonnegative")
     c = json.loads(a.config.read_text(encoding="utf-8-sig"))
-    if c["workers"] != 0:
+    # The within-event B1 configs use the Swin-T launcher's ``num_workers``
+    # field.  Their compatibility preflight only checks the manifest and split
+    # contract, so these configs need not expose the legacy trainer's
+    # ``workers`` key.  Formal runs of this legacy trainer still require one
+    # in-process loader for deterministic resume.
+    if c.get("workers", 0) != 0 and not a.preflight_only:
         raise ValueError("This resumable protocol requires workers=0")
     root = a.project_root.resolve()
     manifest = root / c["manifest"]

@@ -17,6 +17,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def display_path(path):
+    path = Path(path).resolve()
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
 def system_memory():
     if os.name != "nt":
         return {}
@@ -41,7 +49,7 @@ def main():
     a = p.parse_args()
     os.chdir(ROOT)
     out = a.output_dir.resolve()
-    config_path = Path(a.config)
+    config_path = Path(a.config).resolve()
     audit_path = ROOT / json.loads(config_path.read_text(encoding="utf-8-sig"))["manifest"]
     audit = json.loads((audit_path.parent / "geotiff_audit.json").read_text())
     if audit["errors"]:
@@ -51,7 +59,13 @@ def main():
     data_lock = json.loads((audit_path.parent / "data_lock.json").read_text())
     if hashlib.sha256(audit_path.read_bytes()).hexdigest() != data_lock["manifest_sha256"]:
         raise ValueError("Manifest differs from prepared data lock")
-    if hashlib.sha256(config_path.read_bytes()).hexdigest() != data_lock["config_sha256"]:
+    config_hashes = data_lock.get("configs")
+    config_hash = hashlib.sha256(config_path.read_bytes()).hexdigest()
+    if config_hashes is not None:
+        expected_hash = config_hashes.get(display_path(config_path))
+        if expected_hash is None or config_hash != expected_hash:
+            raise ValueError("Configuration differs from prepared data lock")
+    elif config_hash != data_lock["config_sha256"]:
         raise ValueError("Configuration differs from prepared data lock")
     for index, record in enumerate(data_lock["files"], 1):
         path = ROOT / record["path"]

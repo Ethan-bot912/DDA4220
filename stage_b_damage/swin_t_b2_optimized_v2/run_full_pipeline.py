@@ -205,7 +205,10 @@ def main() -> int:
         output_dir=output_dir,
         config_dir=config_dir,
         explicit_input=configured_hard_input,
-        disabled=bool(args.disable_hard_negative_bootstrap),
+        disabled=bool(
+            args.disable_hard_negative_bootstrap
+            or not config.get("hard_negative_bootstrap", True)
+        ),
         fallback_fraction=float(args.fallback_hard_negative_fraction),
         seed=int(config.get("seed", 42)),
     )

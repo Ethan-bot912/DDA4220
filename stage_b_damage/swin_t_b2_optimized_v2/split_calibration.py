@@ -27,6 +27,21 @@ def make_split(source: Path, destination: Path, fraction: float, seed: int) -> d
             raise ValueError("Manifest has no header")
         rows = list(reader)
         fields = list(reader.fieldnames)
+    if fraction == 0.0:
+        # No calibration split is requested: preserve the frozen manifest bytes.
+        # Rewriting the CSV would change its SHA256 on Windows and break the
+        # data-lock/config contract without changing any row.
+        counts = Counter(row.get("split", "unknown") for row in rows)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(source.read_bytes())
+        return {
+            "source": str(source),
+            "destination": str(destination),
+            "fraction": fraction,
+            "seed": seed,
+            "counts": dict(counts),
+            "bytes_preserved": True,
+        }
     counts = Counter()
     for row in rows:
         if row.get("split") == "train":

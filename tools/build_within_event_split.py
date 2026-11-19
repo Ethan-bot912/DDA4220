@@ -391,13 +391,27 @@ def verify_split_files(out):
     return report
 
 
-def write_lock(out, config_path):
+def write_lock(out, config_paths):
     """Section 3 step 6: audit, preflight, then a data lock in prepare_expanded's format."""
-    config_path = Path(config_path).resolve()
+    config_paths = [Path(path).resolve() for path in config_paths]
+    if not config_paths:
+        raise ValueError("At least one final config is required")
+    config_path = config_paths[0]
     config = json.loads(config_path.read_text(encoding="utf-8-sig"))
     manifest = out / MANIFEST
     if (ROOT / config["manifest"]).resolve() != manifest.resolve():
         raise ValueError(f"Config manifest {config['manifest']!r} is not {display_path(manifest)}")
+    config_hashes = {}
+    for candidate in config_paths:
+        candidate_config = json.loads(candidate.read_text(encoding="utf-8-sig"))
+        if (ROOT / candidate_config["manifest"]).resolve() != manifest.resolve():
+            raise ValueError(f"Config manifest {candidate_config['manifest']!r} is not {display_path(manifest)}")
+        expected_hash = candidate_config.get("manifest_sha256")
+        if expected_hash and expected_hash != sha256_file(manifest):
+            raise ValueError(f"Config manifest hash differs: {display_path(candidate)}")
+        if candidate_config.get("eval_test"):
+            raise ValueError(f"Config must keep eval_test=false: {display_path(candidate)}")
+        config_hashes[display_path(candidate)] = sha256_file(candidate)
 
     def call(*args):
         subprocess.run([sys.executable, *map(str, args)], cwd=ROOT, check=True)
@@ -413,18 +427,27 @@ def write_lock(out, config_path):
             paths.update(row[name].replace("\\", "/") for name in FILE_COLUMNS)
     records = []
     for relative in sorted(paths):
-        path = (ROOT / relative).resolve()
+        # Keep the manifest-relative path in the lock.  The E-drive dataset
+        # entry is a junction, so Path.resolve() can leave the project tree
+        # even though the declared path is stable and portable.
+        declared = Path(relative)
+        path = (ROOT / declared).resolve()
         if not path.is_file():
             raise FileNotFoundError(path)
-        records.append({"path": path.relative_to(ROOT).as_posix(), "bytes": path.stat().st_size,
+        records.append({"path": declared.as_posix(), "bytes": path.stat().st_size,
                         "sha256": sha256_file(path)})
-    payload = {"manifest_sha256": hashlib.sha256(manifest.read_bytes()).hexdigest(),
-               "config_sha256": hashlib.sha256(config_path.read_bytes()).hexdigest(),
-               "files": records, "test_prepared": False}
+    payload = {
+        "manifest_sha256": hashlib.sha256(manifest.read_bytes()).hexdigest(),
+        "config_sha256": config_hashes[display_path(config_path)],
+        "configs": config_hashes,
+        "files": records,
+        "test_prepared": False,
+    }
     lock = out / LOCK
     lock.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     return {"data_lock_sha256": hashlib.sha256(lock.read_bytes()).hexdigest(), "files": len(records),
-            "manifest_sha256": payload["manifest_sha256"], "config_sha256": payload["config_sha256"]}
+            "manifest_sha256": payload["manifest_sha256"], "config_sha256": payload["config_sha256"],
+            "configs": len(config_hashes)}
 
 
 def main(argv=None):
@@ -433,7 +456,12 @@ def main(argv=None):
     p.add_argument("--events", nargs="+", required=True)
     p.add_argument("--ratios", nargs=3, default=["0.6", "0.2", "0.2"], help="train val test")
     p.add_argument("--output-dir", type=Path, required=True)
-    p.add_argument("--config", type=Path, help="final config; also writes geotiff_audit.json and data_lock.json")
+    p.add_argument(
+        "--config",
+        type=Path,
+        action="append",
+        help="final config; repeat to freeze all configs sharing the same manifest",
+    )
     p.add_argument("--accept-reported-deviations", action="store_true",
                    help="lock despite 1.5pp/25%% violations; only after Ethan accepted the report")
     a = p.parse_args(argv)

@@ -441,11 +441,33 @@ class SplitToolTest(unittest.TestCase):
         config = base_config(relative(lock_dir / split_tool.MANIFEST), **fields)
         config_path = self.root / "locked_config.json"
         config_path.write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8", newline="")
-        self.assertEqual(self.build_split(lock_dir, "--config", str(config_path)), 0)
+        second_config = dict(config, experiment="second_frozen_config")
+        second_config_path = self.root / "second_locked_config.json"
+        second_config_path.write_text(
+            json.dumps(second_config, indent=2) + "\n", encoding="utf-8", newline=""
+        )
+        self.assertEqual(
+            self.build_split(
+                lock_dir,
+                "--config",
+                str(config_path),
+                "--config",
+                str(second_config_path),
+            ),
+            0,
+        )
         lock = json.loads((lock_dir / split_tool.LOCK).read_text(encoding="utf-8"))
-        self.assertEqual(list(lock), ["manifest_sha256", "config_sha256", "files", "test_prepared"])
+        self.assertEqual(
+            list(lock),
+            ["manifest_sha256", "config_sha256", "configs", "files", "test_prepared"],
+        )
         self.assertIs(lock["test_prepared"], False)
         self.assertEqual(lock["config_sha256"], sha256(config_path))
+        self.assertEqual(lock["configs"][relative(config_path)], sha256(config_path))
+        self.assertEqual(
+            lock["configs"][relative(second_config_path)],
+            sha256(second_config_path),
+        )
         self.assertEqual(lock["manifest_sha256"], sha256(lock_dir / split_tool.MANIFEST))
         referenced = set()
         with (lock_dir / split_tool.MANIFEST).open(encoding="utf-8", newline="") as handle:

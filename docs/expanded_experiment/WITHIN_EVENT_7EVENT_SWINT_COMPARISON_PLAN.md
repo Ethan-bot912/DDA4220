@@ -1,6 +1,7 @@
 # 7 事件内 Swin-T 对照实验：B1、B2 简单融合与 B2-4
 
-> 状态：开跑前方案；截至 2026-11-18 尚无本方案的训练或测试结果。
+> 状态：执行中；B1 seed2026 已完成 20/20 epochs（validation-only），sealed test
+> 尚未读取。其余 seed 与 B2 运行待完成。
 >
 > 本文不覆盖已发布的跨事件 B1、B2 early-fusion 或 Optimized B2 v2 记录。它规定的是一套新的、事件内空间泛化基准。
 

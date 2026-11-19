@@ -122,7 +122,13 @@ class DualStreamSwinT(nn.Module):
         return output
 
 
-def load_b1_warm_start(model: DualStreamSwinT, checkpoint_path: str | Path) -> dict[str, Any]:
+def load_b1_warm_start(
+    model: DualStreamSwinT,
+    checkpoint_path: str | Path,
+    *,
+    expected_manifest_sha256: str | None = None,
+    expected_seed: int | None = None,
+) -> dict[str, Any]:
     """Load a compatible B1 encoder and classifier warm-start.
 
     The optimized model keeps a separate ``post_head`` so that the residual
@@ -135,6 +141,18 @@ def load_b1_warm_start(model: DualStreamSwinT, checkpoint_path: str | Path) -> d
     """
     path = Path(checkpoint_path)
     checkpoint = torch.load(path, map_location="cpu", weights_only=False)
+    checkpoint_manifest = checkpoint.get("manifest_sha256")
+    if expected_manifest_sha256 is not None and checkpoint_manifest != expected_manifest_sha256:
+        raise RuntimeError(
+            "B1 warm-start manifest does not match the current within-event manifest: "
+            f"{checkpoint_manifest} != {expected_manifest_sha256}"
+        )
+    checkpoint_config = checkpoint.get("config", {})
+    checkpoint_seed = checkpoint_config.get("seed")
+    if expected_seed is not None and int(checkpoint_seed) != int(expected_seed):
+        raise RuntimeError(
+            f"B1 warm-start seed {checkpoint_seed!r} does not match B2-4 seed {expected_seed}"
+        )
     state = checkpoint.get("ema_model") or checkpoint.get("model") or checkpoint
     if not isinstance(state, dict):
         raise TypeError(f"Unsupported checkpoint state in {path}")
@@ -201,8 +219,12 @@ def build_model(config: dict[str, Any]) -> tuple[DualStreamSwinT, dict[str, Any]
     checkpoint = str(config.get("b1_checkpoint", ""))
     if checkpoint:
         path = Path(config["_config_dir"]) / checkpoint
-        if path.is_file():
-            report["warm_start"] = load_b1_warm_start(model, path)
-        else:
-            report["warm_start"] = {"checkpoint": str(path), "status": "missing"}
+        if not path.is_file():
+            raise FileNotFoundError(f"Required same-seed B1 warm-start is missing: {path}")
+        report["warm_start"] = load_b1_warm_start(
+            model,
+            path,
+            expected_manifest_sha256=str(config.get("manifest_sha256", "")) or None,
+            expected_seed=int(config["seed"]) if "seed" in config else None,
+        )
     return model, report
