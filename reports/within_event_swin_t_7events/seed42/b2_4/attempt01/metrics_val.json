@@ -1,0 +1,104 @@
+{
+  "checkpoint": "runs/within_event_7events/b2_4/seed42/train/best.pt",
+  "split": "val",
+  "rows": 22388,
+  "metrics": {
+    "n": 22388,
+    "accuracy": 0.7797480793282116,
+    "macro_f1": 0.730003900231037,
+    "balanced_accuracy": 0.7369618895772936,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.9244570349386213,
+        "recall": 0.8364271844660194,
+        "f1": 0.8782417223943891,
+        "support": 12875
+      },
+      "minor": {
+        "precision": 0.5611349957007739,
+        "recall": 0.7169852779608877,
+        "f1": 0.629558170943469,
+        "support": 4551
+      },
+      "major": {
+        "precision": 0.6512630930375847,
+        "recall": 0.6713242299142584,
+        "f1": 0.6611415168100078,
+        "support": 3149
+      },
+      "destroyed": {
+        "precision": 0.7812872467222884,
+        "recall": 0.7231108659680088,
+        "f1": 0.7510741907762818,
+        "support": 1813
+      }
+    },
+    "confusion": [
+      [
+        10769,
+        1563,
+        408,
+        135
+      ],
+      [
+        710,
+        3263,
+        498,
+        80
+      ],
+      [
+        120,
+        763,
+        2114,
+        152
+      ],
+      [
+        50,
+        226,
+        226,
+        1311
+      ]
+    ],
+    "macro_ap": 0.7660829280234195
+  },
+  "model_report": {
+    "pretrained": true,
+    "warm_start": {
+      "checkpoint": "runs/within_event_7events/b1/seed42/best.pt",
+      "loaded_count": 185,
+      "encoder_loaded_count": 183,
+      "encoder_loaded_examples": [
+        "encoder.features.0.0.weight",
+        "encoder.features.0.0.bias",
+        "encoder.features.0.2.weight",
+        "encoder.features.0.2.bias",
+        "encoder.features.1.0.norm1.weight",
+        "encoder.features.1.0.norm1.bias",
+        "encoder.features.1.0.attn.relative_position_bias_table",
+        "encoder.features.1.0.attn.relative_position_index",
+        "encoder.features.1.0.attn.qkv.weight",
+        "encoder.features.1.0.attn.qkv.bias"
+      ],
+      "head_loaded": true,
+      "head_loaded_keys": [
+        "post_head.weight",
+        "post_head.bias"
+      ],
+      "loaded_examples": [
+        "encoder.features.0.0.weight",
+        "encoder.features.0.0.bias",
+        "encoder.features.0.2.weight",
+        "encoder.features.0.2.bias",
+        "encoder.features.1.0.norm1.weight",
+        "encoder.features.1.0.norm1.bias",
+        "encoder.features.1.0.attn.relative_position_bias_table",
+        "encoder.features.1.0.attn.relative_position_index",
+        "encoder.features.1.0.attn.qkv.weight",
+        "encoder.features.1.0.attn.qkv.bias"
+      ],
+      "skipped_count": 0,
+      "skipped_examples": []
+    }
+  },
+  "test_evaluated": false
+}

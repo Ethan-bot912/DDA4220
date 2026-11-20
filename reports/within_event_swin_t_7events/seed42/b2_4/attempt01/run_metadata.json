@@ -1,0 +1,269 @@
+{
+  "experiment_id": "within_event_7events_b2_4_seed42_v1",
+  "config": {
+    "experiment_id": "within_event_7events_b2_4_seed42_v1",
+    "project_root": ".",
+    "manifest": "runs/within_event_7events/b2_4/seed42/manifest_with_calibration.csv",
+    "manifest_sha256": "8d5e4f48e8b368e5b8c93ba2d6b534dc39deaa53e991ad8e7c137df536794e8c",
+    "output_dir": "runs/within_event_7events/b2_4/seed42/train",
+    "train_split": "train",
+    "val_split": "val",
+    "test_split": "test",
+    "model": "dual_stream_swin_t",
+    "pretrained": true,
+    "pretrained_weights": "IMAGENET1K_V1",
+    "num_classes": 4,
+    "crop_size": 224,
+    "context": 16,
+    "max_open_files": 64,
+    "input_order": [
+      "pre",
+      "post"
+    ],
+    "alignment": {
+      "enabled": true,
+      "method": "phase_translation",
+      "max_shift": 6,
+      "downsample": 4,
+      "min_score": 0.05
+    },
+    "radiometric": {
+      "enabled": true,
+      "method": "robust_pair_zscore",
+      "clip": 3.0,
+      "min_scale": 0.03
+    },
+    "augmentation": {
+      "enabled": true,
+      "d4": true,
+      "independent_photometric": true,
+      "photometric_probability": 0.35,
+      "brightness": 0.1,
+      "contrast": 0.1,
+      "gamma": 0.08,
+      "misalignment_probability": 0.2,
+      "misalignment_pixels": 2,
+      "pre_dropout_probability": 0.1
+    },
+    "epochs": 12,
+    "early_stopping_patience": 5,
+    "batch_size": 8,
+    "gradient_accumulation_steps": 2,
+    "learning_rate": 0.0001,
+    "backbone_learning_rate": 2e-05,
+    "head_learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "warmup_epochs": 2,
+    "freeze_backbone_epochs": 1,
+    "head_dropout": 0.2,
+    "ema": true,
+    "ema_decay": 0.999,
+    "eval_use_ema": true,
+    "class_weight_power": 0.7,
+    "event_sampler": {
+      "enabled": true,
+      "power": 0.5,
+      "max_weight": 2.0,
+      "class_power": 0.35,
+      "hard_negative_multiplier": 2.0,
+      "samples_per_epoch": 0,
+      "replacement": true
+    },
+    "hard_negative_file": "runs/within_event_7events/b2_4/seed42/hard_negatives.csv",
+    "hard_negative_note": "The executed run used 1,295 train-only OOF-derived keys. The per-building key file is intentionally not published; its SHA256 and provenance are recorded in reports/swin_t_b2_optimized_v2_seed42/ARTIFACTS.md. An empty value activates the deterministic training-only fallback in run_full_pipeline.py.",
+    "hard_negative": {
+      "enabled": true,
+      "high_change_no_damage": 0.12,
+      "low_change_damage": 0.03,
+      "low_registration": 0.1
+    },
+    "loss": {
+      "ordinal_weight": 0.2,
+      "damage_weight": 0.1,
+      "distill_weight": 0.05,
+      "focal_gamma": 0.0
+    },
+    "gate": {
+      "enabled": true,
+      "initial_bias": -3.0,
+      "quality_features": [
+        "registration_score",
+        "valid_fraction",
+        "shift_norm",
+        "radiometric_shift"
+      ]
+    },
+    "b1_checkpoint": "runs/within_event_7events/b1/seed42/best.pt",
+    "calibration_fraction": 0.0,
+    "seed": 42,
+    "device": "cuda",
+    "num_workers": 4,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "amp": true,
+    "amp_dtype": "float16",
+    "channels_last": true,
+    "deterministic": true,
+    "allow_tf32": false,
+    "max_train": 0,
+    "max_val": 0,
+    "eval_test": false,
+    "train_events": [
+      "hurricane-harvey",
+      "hurricane-matthew",
+      "hurricane-michael",
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "moore-tornado",
+      "tuscaloosa-tornado"
+    ],
+    "val_events": [
+      "hurricane-harvey",
+      "hurricane-matthew",
+      "hurricane-michael",
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "moore-tornado",
+      "tuscaloosa-tornado"
+    ],
+    "test_events": [
+      "hurricane-harvey",
+      "hurricane-matthew",
+      "hurricane-michael",
+      "joplin-tornado",
+      "lower-puna-volcano",
+      "moore-tornado",
+      "tuscaloosa-tornado"
+    ],
+    "expected_train_rows": 104344,
+    "expected_val_rows": 22388,
+    "expected_test_rows": 22422,
+    "expected_train_counts": {
+      "no_damage": 60091,
+      "minor": 21215,
+      "major": 14602,
+      "destroyed": 8436
+    },
+    "expected_val_counts": {
+      "no_damage": 12875,
+      "minor": 4551,
+      "major": 3149,
+      "destroyed": 1813
+    },
+    "expected_test_counts": {
+      "no_damage": 12876,
+      "minor": 4530,
+      "major": 3209,
+      "destroyed": 1807
+    },
+    "hard_negative_bootstrap": false,
+    "hard_negative_source": "configs/deterministic_train_only_manifest_fallback; regenerate from current-train OOF when available",
+    "hard_negative_provenance": {
+      "output": "runs/within_event_7events/b2_4/seed42/hard_negatives.csv",
+      "allowed_train_keys": 104344,
+      "source": null,
+      "mode": "manifest_fallback",
+      "fallback": {
+        "source": "runs/within_event_7events/b2_4/seed42/manifest_with_calibration.csv",
+        "split": "train",
+        "selected": 9018,
+        "fraction": 0.25
+      }
+    },
+    "_generated_by": "run_full_pipeline.py",
+    "hard_negative_file_sha256": "378f6b3433c44dc2bb6edd8153a0d46b546a6e7c9dbe228dff78f5b71bb90b85",
+    "_config_dir": "runs/within_event_7events/b2_4/seed42"
+  },
+  "config_sha256": "d88d70634596a612af2bc49442ccc0fe857e9c348b9dbaae4f2d39e9cb382b74",
+  "manifest": "runs/within_event_7events/b2_4/seed42/manifest_with_calibration.csv",
+  "manifest_sha256": "8d5e4f48e8b368e5b8c93ba2d6b534dc39deaa53e991ad8e7c137df536794e8c",
+  "model": "dual_stream_swin_t",
+  "device": "cuda",
+  "hardware": "NVIDIA GeForce RTX 2080 Ti",
+  "versions": {
+    "python": "3.10.12",
+    "torch": "2.4.0a0+f70bd71a48.nv24.06",
+    "torchvision": "0.19.0a0",
+    "numpy": "1.24.4"
+  },
+  "train_rows": 104344,
+  "val_rows": 22388,
+  "class_counts": {
+    "no_damage": 60091,
+    "minor": 21215,
+    "major": 14602,
+    "destroyed": 8436
+  },
+  "class_weights": [
+    0.4116448163986206,
+    0.853177011013031,
+    1.1081552505493164,
+    1.6270228624343872
+  ],
+  "sampler": {
+    "enabled": true,
+    "event_power": 0.5,
+    "class_power": 0.35,
+    "event_cap": 2.0,
+    "hard_negative_multiplier": 2.0,
+    "hard_negative_count": 9018,
+    "samples_per_epoch": 104344,
+    "event_counts": {
+      "hurricane-harvey": 26159,
+      "hurricane-matthew": 15793,
+      "hurricane-michael": 24587,
+      "joplin-tornado": 10285,
+      "lower-puna-volcano": 1997,
+      "moore-tornado": 15657,
+      "tuscaloosa-tornado": 9866
+    },
+    "class_counts": {
+      "destroyed": 8436,
+      "major": 14602,
+      "minor": 21215,
+      "no_damage": 60091
+    },
+    "mean_weight": 1.0000000000000002
+  },
+  "model_report": {
+    "pretrained": true,
+    "warm_start": {
+      "checkpoint": "runs/within_event_7events/b1/seed42/best.pt",
+      "loaded_count": 185,
+      "encoder_loaded_count": 183,
+      "encoder_loaded_examples": [
+        "encoder.features.0.0.weight",
+        "encoder.features.0.0.bias",
+        "encoder.features.0.2.weight",
+        "encoder.features.0.2.bias",
+        "encoder.features.1.0.norm1.weight",
+        "encoder.features.1.0.norm1.bias",
+        "encoder.features.1.0.attn.relative_position_bias_table",
+        "encoder.features.1.0.attn.relative_position_index",
+        "encoder.features.1.0.attn.qkv.weight",
+        "encoder.features.1.0.attn.qkv.bias"
+      ],
+      "head_loaded": true,
+      "head_loaded_keys": [
+        "post_head.weight",
+        "post_head.bias"
+      ],
+      "loaded_examples": [
+        "encoder.features.0.0.weight",
+        "encoder.features.0.0.bias",
+        "encoder.features.0.2.weight",
+        "encoder.features.0.2.bias",
+        "encoder.features.1.0.norm1.weight",
+        "encoder.features.1.0.norm1.bias",
+        "encoder.features.1.0.attn.relative_position_bias_table",
+        "encoder.features.1.0.attn.relative_position_index",
+        "encoder.features.1.0.attn.qkv.weight",
+        "encoder.features.1.0.attn.qkv.bias"
+      ],
+      "skipped_count": 0,
+      "skipped_examples": []
+    }
+  },
+  "amp": true
+}

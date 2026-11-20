@@ -13,7 +13,7 @@
 | PERF-001 | GPU 提速研究已发布 | 四事件；RTX4060 Laptop；seed42 | [并行加载](speed_four_event_20261024/README.md)；与其指定基线比较 |
 | PERF-002 | CPU 缓存研究已发布 | 四事件；i7-1165G7 CPU；单 seed 对照 | [缓存与 workers](speed_io_cpu_20261025/README.md)；A 组基线不完整，倍数限该环境 |
 | WE-000 | 事件内原始基线完成，test未评估；历史补录 | Matthew/Moore固定tile划分；B1/B2 seed42 attempt01 | [实验卡与划分对照](within_event_mm/original_baseline/README.md)；与EX-001为不同数据条件的诊断比较 |
-| WE-SWIN-7 | B1 和 B2-simple seed42 各完成 20 轮；test 未评估 | 7 事件内按 tile 划分；104,344 train / 22,388 val | [验证记录](within_event_swin_t_7events/seed42/README.md)；B2-4 seed42 待完成 |
+| WE-SWIN-7 | seed42 三组训练完成，B2-4 早停于第 11 轮并复跑验证；test 未评估 | 7 事件内按 tile 划分；104,344 train / 22,388 val | [验证记录](within_event_swin_t_7events/seed42/README.md) |
 
 ## 准备与历史材料
 
