@@ -12,6 +12,7 @@
 | 事件内验证较跨事件设置明显提高，Matthew改善最突出 | [WE-000](../reports/within_event_mm/original_baseline/README.md) / [分析](../reports/within_event_mm/original_baseline/analysis_report.md) | 单seed且训练池/验证样本变化，支持分布差异解释，不证明净因果效应或未知事件泛化提升；test未评估 |
 | 后续匹配基线与候选因素 | 不在本次发布范围 | 不将本地其他实验状态混为WE-000成果 |
 | 多 seed 稳定性、最终 test、Stage A | 尚未发布对应成果 | 不能写成已完成结论 |
+| 七事件内 seed42 的验证 Macro-F1 为 B1 72.41%、B2-simple 73.05%、B2-4 73.00% | [WE-SWIN-7 seed42](../reports/within_event_swin_t_7events/seed42/README.md) | 同一验证集选优，B2-simple 使用不同训练环境；尚缺同环境重复、多 seed 全组配对及留出评估 |
 
 ## 图表登记规则
 

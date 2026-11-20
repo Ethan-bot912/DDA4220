@@ -1,0 +1,33 @@
+{
+  "config": "runs/within_event_7events/b2_4/seed42/resolved_config.json",
+  "source_manifest": "dataset/within_event_7events/manifest_classification.csv",
+  "calibration_manifest": "runs/within_event_7events/b2_4/seed42/manifest_with_calibration.csv",
+  "split_report": {
+    "source": "dataset/within_event_7events/manifest_classification.csv",
+    "destination": "runs/within_event_7events/b2_4/seed42/manifest_with_calibration.csv",
+    "fraction": 0.0,
+    "seed": 42,
+    "counts": {
+      "train": 104344,
+      "test": 22422,
+      "val": 22388
+    },
+    "bytes_preserved": true
+  },
+  "checkpoint": "runs/within_event_7events/b2_4/seed42/train/best.pt",
+  "hard_negative": {
+    "output": "runs/within_event_7events/b2_4/seed42/hard_negatives.csv",
+    "allowed_train_keys": 104344,
+    "source": null,
+    "mode": "manifest_fallback",
+    "fallback": {
+      "source": "runs/within_event_7events/b2_4/seed42/manifest_with_calibration.csv",
+      "split": "train",
+      "selected": 9018,
+      "fraction": 0.25
+    }
+  },
+  "calibration": null,
+  "calibration_applied_to_validation": false,
+  "test_evaluated": false
+}
