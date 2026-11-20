@@ -189,6 +189,7 @@ def dataset_from_config(
     *,
     return_meta: bool = False,
     max_rows: int = 0,
+    max_open_files: int | None = None,
 ) -> Dataset:
     crop_size, context = crop_spec_from_config(config)
     dataset_class = XBDPairedDataset if is_paired_config(config) else XBDPostDataset
@@ -200,7 +201,11 @@ def dataset_from_config(
         context=context,
         max_rows=max_rows,
         return_meta=return_meta,
-        max_open_files=int(config.get("max_open_files", 64)),
+        max_open_files=int(
+            config.get("max_open_files", 64)
+            if max_open_files is None
+            else max_open_files
+        ),
         augmentation=config.get("augmentation"),
         crop_geometry=config.get("crop_geometry"),
     )
@@ -214,8 +219,9 @@ def make_loader(
     seed: int | None = None,
     generator: torch.Generator | None = None,
     sampler: Any | None = None,
+    workers: int | None = None,
 ) -> DataLoader:
-    workers = int(config["num_workers"])
+    workers = int(config["num_workers"] if workers is None else workers)
     kwargs: dict[str, Any] = {
         "dataset": dataset,
         "batch_size": int(config["batch_size"]),
@@ -382,16 +388,24 @@ def restore_rng(state: dict, loader_generator: torch.Generator) -> None:
     loader_generator.set_state(loader_state.detach().cpu())
 
 
-def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) -> tuple[Dataset, Dataset]:
+def validate_dataset_contract(
+    config: dict,
+    manifest: Path,
+    project_root: Path,
+    *,
+    max_open_files: int | None = None,
+) -> tuple[Dataset, Dataset]:
     if sha256_file(manifest) != config["manifest_sha256"]:
         raise RuntimeError("Manifest SHA256 does not match config; stop before training")
     # Validate the complete contract first. A bounded pilot may take only the
     # first N rows, which is not expected to contain every event.
     full_train = dataset_from_config(
-        config, manifest, config["train_split"], project_root, max_rows=0
+        config, manifest, config["train_split"], project_root, max_rows=0,
+        max_open_files=max_open_files,
     )
     full_val = dataset_from_config(
-        config, manifest, config["val_split"], project_root, max_rows=0
+        config, manifest, config["val_split"], project_root, max_rows=0,
+        max_open_files=max_open_files,
     )
     if len(full_train) != config["expected_train_rows"]:
         raise RuntimeError(f"Unexpected train rows: {len(full_train)}")
@@ -406,10 +420,12 @@ def validate_dataset_contract(config: dict, manifest: Path, project_root: Path) 
     train = full_train if not config["max_train"] else dataset_from_config(
         config, manifest, config["train_split"], project_root,
         max_rows=int(config["max_train"]),
+        max_open_files=max_open_files,
     )
     val = full_val if not config["max_val"] else dataset_from_config(
         config, manifest, config["val_split"], project_root,
         max_rows=int(config["max_val"]),
+        max_open_files=max_open_files,
     )
     return train, val
 
@@ -548,6 +564,18 @@ def main() -> int:
     parser.add_argument("--max-train", type=int, default=None)
     parser.add_argument("--max-val", type=int, default=None)
     parser.add_argument("--epochs", type=int, default=None)
+    parser.add_argument(
+        "--num-workers",
+        type=int,
+        default=None,
+        help="Runtime DataLoader worker override; the frozen config hash is unchanged.",
+    )
+    parser.add_argument(
+        "--max-open-files",
+        type=int,
+        default=None,
+        help="Runtime per-dataset file-handle limit override.",
+    )
     args = parser.parse_args()
 
     config, project_root, manifest = load_config(args.config)
@@ -564,6 +592,18 @@ def main() -> int:
         config["max_val"] = args.max_val
     if args.epochs is not None:
         config["epochs"] = args.epochs
+    runtime_workers = int(
+        config["num_workers"] if args.num_workers is None else args.num_workers
+    )
+    runtime_max_open_files = int(
+        config.get("max_open_files", 64)
+        if args.max_open_files is None
+        else args.max_open_files
+    )
+    if runtime_workers < 0:
+        raise ValueError("--num-workers must be non-negative")
+    if runtime_max_open_files < 2:
+        raise ValueError("--max-open-files must be at least 2")
     output_dir = (args.output_dir or (args.config.parent / config["output_dir"])).resolve()
     if output_dir.exists() and any(output_dir.iterdir()) and not args.resume:
         raise FileExistsError(f"Output directory is non-empty: {output_dir}; use --resume")
@@ -575,15 +615,24 @@ def main() -> int:
         torch.backends.cuda.matmul.allow_tf32 = bool(config["allow_tf32"])
         torch.backends.cudnn.allow_tf32 = bool(config["allow_tf32"])
     amp_enabled, amp_dtype, scaler = make_amp(device, config)
-    train_ds, val_ds = validate_dataset_contract(config, manifest, project_root)
+    train_ds, val_ds = validate_dataset_contract(
+        config,
+        manifest,
+        project_root,
+        max_open_files=runtime_max_open_files,
+    )
     loader_generator = torch.Generator().manual_seed(int(config["seed"]))
     event_sampler, event_sampler_metadata = build_event_sampler(
         train_ds, config, loader_generator
     )
     train_loader = make_loader(
-        train_ds, config, train=True, generator=loader_generator, sampler=event_sampler
+        train_ds, config, train=True, generator=loader_generator,
+        sampler=event_sampler, workers=runtime_workers,
     )
-    val_loader = make_loader(val_ds, config, train=False, seed=int(config["seed"]) + 1)
+    val_loader = make_loader(
+        val_ds, config, train=False, seed=int(config["seed"]) + 1,
+        workers=runtime_workers,
+    )
 
     model, weight_name = build_model(
         num_classes=int(config["num_classes"]),
@@ -680,7 +729,12 @@ def main() -> int:
         },
         "acceleration": {
             "amp": amp_enabled,
-            "num_workers": config["num_workers"],
+            "num_workers": runtime_workers,
+            "config_num_workers": config["num_workers"],
+            "runtime_worker_override": args.num_workers is not None,
+            "max_open_files": runtime_max_open_files,
+            "config_max_open_files": config.get("max_open_files", 64),
+            "runtime_max_open_files_override": args.max_open_files is not None,
             "pin_memory": config["pin_memory"],
             "persistent_workers": config["persistent_workers"],
             "channels_last": config["channels_last"],
