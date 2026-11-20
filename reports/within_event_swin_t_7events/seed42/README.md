@@ -1,6 +1,8 @@
 # WE-SWIN-7 seed42 验证记录
 
-B1 和 B2-simple 各完成 20 轮，B2-4 早停于第 11 轮。三组使用同一份七事件内按 tile 分组的划分与 seed42，训练 104,344 栋、验证 22,388 栋，留出集 22,422 栋未评估。[实验卡与其他种子](https://github.com/Ethan-bot912/DDA4220/blob/ca4b2bec7ea5ee1ab74474a03585a55604c32557/reports/within_event_swin_t_7events/README.md)
+B1 和 B2-simple 各完成 20 轮，B2-4 早停于第 11 轮。三组使用同一份七事件内按 tile 分组的划分与 seed42，训练 104,344 栋、验证 22,388 栋，留出集 22,422 栋未评估。
+
+seed42 的运行状态和验证结果以本页为准。原先的七事件协议和 seed2026 运行记录可查[历史实验卡](https://github.com/Ethan-bot912/DDA4220/blob/ca4b2bec7ea5ee1ab74474a03585a55604c32557/reports/within_event_swin_t_7events/README.md)。
 
 | 模型 | attempt | 最佳轮次 | 验证 pooled Macro-F1 | 运行证据 |
 | --- | --- | ---: | ---: | --- |
