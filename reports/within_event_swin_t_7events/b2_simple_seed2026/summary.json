@@ -1,0 +1,115 @@
+{
+  "experiment_id": "within_event_7events_b2_simple_seed2026_bs16_v1",
+  "status": "complete",
+  "protocol": "within-event tile split v3; 70/15/15",
+  "seed": 2026,
+  "model": "swin_t",
+  "mode": "early",
+  "input_channels": 6,
+  "pretrained_weights": "IMAGENET1K_V1",
+  "train_rows": 104344,
+  "val_rows": 22388,
+  "sealed_test_rows": 22422,
+  "completed_epochs": 20,
+  "best_epoch": 7,
+  "stopping_reason": "max_epochs",
+  "best_val": {
+    "n": 22388,
+    "accuracy": 0.7839914239771306,
+    "macro_f1": 0.7254122319572607,
+    "balanced_accuracy": 0.7175638182456968,
+    "macro_ap": 0.7640180254483807,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.8908831003811944,
+        "recall": 0.8713009708737864,
+        "f1": 0.8809832332037538,
+        "support": 12875
+      },
+      "minor": {
+        "precision": 0.5770628862231916,
+        "recall": 0.6976488683805757,
+        "f1": 0.631652243111509,
+        "support": 4551
+      },
+      "major": {
+        "precision": 0.7065217391304348,
+        "recall": 0.5986027310257225,
+        "f1": 0.6481003953928143,
+        "support": 3149
+      },
+      "destroyed": {
+        "precision": 0.7835178351783518,
+        "recall": 0.7027027027027027,
+        "f1": 0.7409130561209654,
+        "support": 1813
+      }
+    },
+    "confusion": [
+      [11218, 1284, 250, 123],
+      [983, 3175, 315, 78],
+      [302, 811, 1885, 151],
+      [89, 232, 218, 1274]
+    ]
+  },
+  "b1_reference": {
+    "seed": 2026,
+    "best_epoch": 6,
+    "accuracy": 0.7898874396998392,
+    "macro_f1": 0.7299141167742242,
+    "balanced_accuracy": 0.7375625579649159,
+    "macro_ap": 0.7682838856407654
+  },
+  "delta_vs_b1": {
+    "accuracy": -0.0058960157227086,
+    "macro_f1": -0.0045018848169635,
+    "balanced_accuracy": -0.0199987397192191,
+    "macro_ap": -0.0042658601923847
+  },
+  "training_seconds_all_epochs": 16985.065647919662,
+  "resume_training_seconds": 7340.066457504407,
+  "environment": {
+    "platform": "CUHK-Shenzhen AI HPC",
+    "node": "warshel-gpu01",
+    "hardware": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_memory_total_mib": 11264,
+    "cpu_cores": 3,
+    "python": "3.10.12",
+    "torch": "2.4.0a0+f70bd71a48.nv24.06",
+    "torchvision": "0.19.0a0",
+    "numpy": "1.24.4",
+    "rasterio": "1.4.3"
+  },
+  "runtime_acceleration": {
+    "amp": true,
+    "initial_num_workers": 4,
+    "resume_num_workers": 2,
+    "resume_max_open_files": 32,
+    "config_num_workers": 4,
+    "config_max_open_files": 64,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "channels_last": true,
+    "compile": false
+  },
+  "recovery": {
+    "oom_at_epoch": 12,
+    "container_memory_limit_bytes": 17179869184,
+    "oom_kill_count": 1,
+    "resumed_from_epoch": 12,
+    "frozen_config_hash_preserved": true,
+    "manifest_hash_preserved": true
+  },
+  "hashes": {
+    "manifest_sha256": "8d5e4f48e8b368e5b8c93ba2d6b534dc39deaa53e991ad8e7c137df536794e8c",
+    "split_map_sha256": "d586b076e99201db7998553f01314e4db05d42b5f2d8b6d1df800a7aaa38d3ce",
+    "data_lock_sha256": "3177555c0fa446df65b08bcc4e043fedee8d4e1f103b9da0844732982da66b5f",
+    "config_file_sha256": "c4c17b599d0aec2e06ff64ff6f70309ee4a27af0c1da7f55e4ce1656a68ca810",
+    "config_stable_sha256": "52df7bc8ac55a6d4edbf54fce1f7b150d0c4f3838d5c0ca9ac17647cb33cec19",
+    "best_checkpoint_sha256": "c55d4326b044129f2272d3ddf30b6f12b340cdc1239f795e399188f5e8c0db28",
+    "last_checkpoint_sha256": "dac0a2ddde828e5287d9412249ba613dfc4d2c7833c651a76f10f22c232482b1",
+    "history_sha256": "ac829e9f30718f1b8f6ac65abe8fef60aac5553ef3208ed050c9c3bf64410860"
+  },
+  "test_evaluated": false,
+  "publication_note": "Single-seed validation result on a school GPU node. The frozen config hash was preserved through the DataLoader-only OOM recovery. Local paths and artifacts are redacted; the sealed test split was not evaluated."
+}
