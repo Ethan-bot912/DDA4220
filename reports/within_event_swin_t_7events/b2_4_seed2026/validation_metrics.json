@@ -1,0 +1,53 @@
+{
+  "checkpoint": "<local B2-4 best checkpoint; not published>",
+  "split": "val",
+  "rows": 22388,
+  "metrics": {
+    "n": 22388,
+    "accuracy": 0.781445417187779,
+    "macro_f1": 0.733959937443437,
+    "balanced_accuracy": 0.743988302361165,
+    "macro_ap": 0.770265473647521,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.9283359361443693,
+        "recall": 0.8310679611650486,
+        "f1": 0.8770132371624114,
+        "support": 12875
+      },
+      "minor": {
+        "precision": 0.5699167244968771,
+        "recall": 0.7218193803559657,
+        "f1": 0.6369365002423655,
+        "support": 4551
+      },
+      "major": {
+        "precision": 0.641874084919473,
+        "recall": 0.6960939980946332,
+        "f1": 0.667885435709933,
+        "support": 3149
+      },
+      "destroyed": {
+        "precision": 0.7831253713606655,
+        "recall": 0.7269718698290127,
+        "f1": 0.754004576659039,
+        "support": 1813
+      }
+    },
+    "confusion": [
+      [10700, 1568, 464, 143],
+      [668, 3285, 528, 70],
+      [112, 693, 2192, 152],
+      [46, 218, 231, 1318]
+    ]
+  },
+  "warm_start": {
+    "checkpoint": "<local B1 seed2026 best checkpoint; not published>",
+    "loaded_count": 185,
+    "encoder_loaded_count": 183,
+    "head_loaded": true,
+    "skipped_count": 0
+  },
+  "test_evaluated": false,
+  "publication_note": "Independent validation of the selected best checkpoint. Local paths are redacted."
+}

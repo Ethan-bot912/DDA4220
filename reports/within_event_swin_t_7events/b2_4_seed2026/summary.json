@@ -1,0 +1,123 @@
+{
+  "experiment_id": "within_event_7events_b2_4_seed2026_v1",
+  "status": "complete",
+  "protocol": "within-event tile split v3; 70/15/15",
+  "seed": 2026,
+  "model": "dual_stream_swin_t",
+  "pretrained_weights": "IMAGENET1K_V1",
+  "train_rows": 104344,
+  "val_rows": 22388,
+  "sealed_test_rows": 22422,
+  "train_class_counts": {
+    "no_damage": 60091,
+    "minor": 21215,
+    "major": 14602,
+    "destroyed": 8436
+  },
+  "maximum_epochs": 12,
+  "completed_epochs": 9,
+  "best_epoch": 4,
+  "early_stop": {
+    "patience": 5,
+    "rule": "validation pooled Macro-F1 strict improvement",
+    "stale_epochs": 5,
+    "stale_epoch_range": [5, 9],
+    "triggered": true
+  },
+  "training_best_val": {
+    "n": 22388,
+    "accuracy": 0.7814007504020011,
+    "macro_f1": 0.7339014647197861,
+    "balanced_accuracy": 0.7439333693794028,
+    "macro_ap": 0.7702616618115639
+  },
+  "independent_validation": {
+    "n": 22388,
+    "accuracy": 0.781445417187779,
+    "macro_f1": 0.733959937443437,
+    "balanced_accuracy": 0.743988302361165,
+    "macro_ap": 0.770265473647521,
+    "per_class": {
+      "no_damage": {
+        "precision": 0.9283359361443693,
+        "recall": 0.8310679611650486,
+        "f1": 0.8770132371624114,
+        "support": 12875
+      },
+      "minor": {
+        "precision": 0.5699167244968771,
+        "recall": 0.7218193803559657,
+        "f1": 0.6369365002423655,
+        "support": 4551
+      },
+      "major": {
+        "precision": 0.641874084919473,
+        "recall": 0.6960939980946332,
+        "f1": 0.667885435709933,
+        "support": 3149
+      },
+      "destroyed": {
+        "precision": 0.7831253713606655,
+        "recall": 0.7269718698290127,
+        "f1": 0.754004576659039,
+        "support": 1813
+      }
+    },
+    "confusion": [
+      [10700, 1568, 464, 143],
+      [668, 3285, 528, 70],
+      [112, 693, 2192, 152],
+      [46, 218, 231, 1318]
+    ]
+  },
+  "b1_reference": {
+    "seed": 2026,
+    "best_epoch": 6,
+    "accuracy": 0.7898874396998392,
+    "macro_f1": 0.7299141167742242,
+    "balanced_accuracy": 0.7375625579649159,
+    "macro_ap": 0.7682838856407654,
+    "checkpoint_sha256": "1e04218503d2e5fdd2a53d47c34631559f4391f77516eea90f0f9245e0983f25"
+  },
+  "delta_vs_b1": {
+    "accuracy": -0.008442022512060166,
+    "macro_f1": 0.004045820669212774,
+    "balanced_accuracy": 0.0064257443962491,
+    "macro_ap": 0.001981588006755519
+  },
+  "training_seconds": 24076.3197782,
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.0.2",
+    "hardware": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "amp": "float16"
+  },
+  "warm_start": {
+    "manifest_sha256": "8d5e4f48e8b368e5b8c93ba2d6b534dc39deaa53e991ad8e7c137df536794e8c",
+    "seed": 2026,
+    "loaded_count": 185,
+    "encoder_loaded_count": 183,
+    "head_loaded": true,
+    "skipped_count": 0
+  },
+  "hard_negative": {
+    "bootstrap": false,
+    "mode": "manifest_fallback",
+    "selected_train_keys": 9039,
+    "fraction": 0.25
+  },
+  "calibration_applied_to_validation": false,
+  "hashes": {
+    "manifest_sha256": "8d5e4f48e8b368e5b8c93ba2d6b534dc39deaa53e991ad8e7c137df536794e8c",
+    "split_map_sha256": "d586b076e99201db7998553f01314e4db05d42b5f2d8b6d1df800a7aaa38d3ce",
+    "data_lock_sha256": "3177555c0fa446df65b08bcc4e043fedee8d4e1f103b9da0844732982da66b5f",
+    "config_sha256": "f1172818ae54b8c8620347da88d1ff9a6e202aae8818f1a7cdf69e94fd7bccba",
+    "best_checkpoint_sha256": "74d0184542d0f0867d6632f3d72a002aa76b9c0ebce13793f100c9550075a0e6",
+    "last_checkpoint_sha256": "6a7d271638dfb16dc24b68b4840c3ddf252d6bea1ceb01d1fe13698f44b686e8",
+    "history_sha256": "4014fb9a2b1082c56ec8f3079139f3cf620aede897685a6b06d8c66845d0ac46"
+  },
+  "test_evaluated": false,
+  "publication_note": "Single-seed validation result. Early stopping is part of the frozen max-12/patience-5 protocol. Local paths and artifacts are redacted; the sealed test split was not evaluated."
+}

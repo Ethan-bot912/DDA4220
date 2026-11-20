@@ -3,7 +3,7 @@
 | 字段 | 内容 |
 | --- | --- |
 | 编号 / 名称 | WE-SWIN-7 / B1、B2-simple 与 B2-4 事件内对照 |
-| 类型 / 状态 | 预注册的组合对照；B1 seed2026 已完成，其余运行尚未启动 |
+| 类型 / 状态 | 预注册的组合对照；B1 与 B2-4 seed2026 已完成，其余运行尚未启动 |
 | 记录性质 / 日期 | 开跑前制定；2026-11-18 |
 | 问题与预定判读 | 在同一事件的未见 tile 上，简单时相输入与 B2-4 优化包是否优于 post-only B1？ |
 | 对照对象 | B1 post-only、B2 six-channel early concat、B2-4 optimized paired Swin-T |
@@ -11,7 +11,7 @@
 | 计划三侧样本数 | Train 104,344；Val 22,388；sealed test 22,422 |
 | 模型 / 计划种子 | B1、B2-simple、B2-4；42 / 2026 / 3407 |
 | 选优 / 最终评估 | 仅 Val pooled Macro-F1 选 checkpoint；所有配置冻结后才一次性 test |
-| 结果与限制 | B1 seed2026：Val Macro-F1 0.729914；单 seed、test 未评估。该实验是事件内空间泛化，不是跨事件泛化。 |
+| 结果与限制 | seed2026：B1 Val Macro-F1 0.729914，B2-4 为 0.733960；单 seed、test 未评估。该实验是事件内空间泛化，不是跨事件泛化。 |
 | paper 用途 | 后续补充实验；在完整三 seed 和冻结 test 前不得作为最终结论。 |
 
 完整协议、精确类别计数、数据锁边界、B2-4 warm-start 与 calibration 规则见[7 事件内 Swin-T 对照方案](../../docs/expanded_experiment/WITHIN_EVENT_7EVENT_SWINT_COMPARISON_PLAN.md)。
@@ -50,7 +50,7 @@ GitHub 上已有的 `expanded_swin_t_b1_seed2026_bs16` 是旧跨事件划分（m
 | B2-4 | 42 | 待创建 | 未运行 | 待完成 | 待完成 |
 | B1 | 2026 | attempt01 | 完成 20/20 | [报告](b1_seed2026/README.md) / [summary](b1_seed2026/summary.json) / [history](b1_seed2026/history.jsonl) | 本地 `best.pt`；[SHA256](b1_seed2026/checkpoint_hashes.txt) |
 | B2-simple | 2026 | 待创建 | 未运行 | 待完成 | 待完成 |
-| B2-4 | 2026 | 待创建 | 未运行 | 待完成 | 待完成 |
+| B2-4 | 2026 | attempt02 | 早停完成 9/12 | [报告](b2_4_seed2026/README.md) / [summary](b2_4_seed2026/summary.json) / [history](b2_4_seed2026/history.jsonl) | 本地 `best.pt`；[SHA256](b2_4_seed2026/checkpoint_hashes.txt) |
 | B1 | 3407 | 待创建 | 未运行 | 待完成 | 待完成 |
 | B2-simple | 3407 | 待创建 | 未运行 | 待完成 | 待完成 |
 | B2-4 | 3407 | 待创建 | 未运行 | 待完成 | 待完成 |
@@ -58,6 +58,6 @@ GitHub 上已有的 `expanded_swin_t_b1_seed2026_bs16` 是旧跨事件划分（m
 ## 结果与证据
 
 B1 seed2026 已在 event-internal validation 上完成 20/20 epochs，最佳 Epoch 6，
-Val Macro-F1 为 0.729914。该运行是单 seed 基线，不能单独形成 B1/B2 结论；
-sealed test 仍未读取。后续运行必须继续保留实际 manifest/split-map/config/source/
-environment 哈希、完整状态，以及失败或中止记录。
+Val Macro-F1 为 0.729914。B2-4 seed2026 使用同划分、同 seed 的 B1 warm-start，
+在 Epoch 4 得到 Val Macro-F1 0.733960，并在 Epoch 9 按 patience=5 正常早停。
+两者都是单 seed 结果，不能单独形成稳定结论；sealed test 仍未读取。

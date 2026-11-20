@@ -233,9 +233,10 @@ def main() -> int:
     resolved_config.write_text(json.dumps(resolved, indent=2, ensure_ascii=False), encoding="utf-8")
 
     python = sys.executable
+    code_dir = Path(__file__).resolve().parent
     train_command = [
         python,
-        str(config_dir / "train.py"),
+        str(code_dir / "train.py"),
         "--config", str(resolved_config),
         "--device", args.device,
     ]
@@ -251,7 +252,7 @@ def main() -> int:
     validation_dir = output_dir / "validation_raw"
     run([
         python,
-        str(config_dir / "evaluate.py"),
+        str(code_dir / "evaluate.py"),
         "--config", str(resolved_config),
         "--manifest", str(calibration_manifest),
         "--checkpoint", str(checkpoint),
@@ -268,7 +269,7 @@ def main() -> int:
         calibration_dir = output_dir / "calibration"
         run([
             python,
-            str(config_dir / "evaluate.py"),
+            str(code_dir / "evaluate.py"),
             "--config", str(resolved_config),
             "--manifest", str(calibration_manifest),
             "--checkpoint", str(checkpoint),
@@ -279,7 +280,7 @@ def main() -> int:
         calibration_json = output_dir / "calibration.json"
         run([
             python,
-            str(config_dir / "calibrate.py"),
+            str(code_dir / "calibrate.py"),
             "--input", str(calibration_dir / "predictions_calibration.csv"),
             "--apply-to", str(validation_dir / "predictions_val.csv"),
             "--calibrated-csv", str(output_dir / "predictions_val_calibrated.csv"),
